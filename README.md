@@ -1,622 +1,788 @@
-# Robot Gripper × VLA — IROS 2027 Execution Plan
+# 机器人夹爪 × VLA — IROS 2027 执行计划
 
-> **Working title:** *Same Brain, Different Fingers: Task-Aligned Gripper Morphology for Vision-Language-Action Manipulation*
+> **暂定论文题目：** *Same Brain, Different Fingers: Task-Aligned Gripper Morphology for Vision-Language-Action Manipulation*
 >
-> **Target:** IROS 2027
+> **目标会议：** IROS 2027
 >
-> **Target submission date:** 2027-03-01
+> **目标截稿日期：** 2027-03-01
 
-This repository tracks a research project on whether **task-aligned gripper finger morphology can improve manipulation success under the same robot and shared policy**.
+本仓库用于推进一个核心研究问题：在**机器人平台、夹爪驱动机构、传感器、动作空间以及策略主体保持一致**的情况下，针对不同任务选择与任务特性匹配的手指形态，是否能够显著提高机器人操作成功率？
 
-The detailed research protocol and experimental TODO remain in [`IROS_2027_TODO.md`](./IROS_2027_TODO.md). This README does **not** replace that document. Its purpose is to translate the research plan into a schedule that matches the actual amount of time available for physical experiments at the Shanghai Jiao Tong University lab.
+详细的研究协议、实验变量、统计方案与原始 TODO 保留在 [`IROS_2027_TODO.md`](./IROS_2027_TODO.md) 中。
+
+本 README **不覆盖、不替代原 TODO**，而是把原研究计划重新映射到真实可用的上海交通大学实验室机时，作为项目的实际执行计划。
 
 ---
 
-## 1. Core research question
+## 1. 核心研究问题
 
-Under the following controlled conditions:
+在以下条件尽量保持一致时：
 
-- same robot platform;
-- same gripper actuator and interface;
-- same sensors;
-- same action space;
-- same policy architecture and checkpoint;
-- same test objects and initial-condition protocol;
+- 同一机器人平台；
+- 同一夹爪驱动机构与安装接口；
+- 同一传感器配置；
+- 同一动作空间；
+- 同一策略架构及检查点；
+- 同一测试物体与初始条件生成协议；
 
-can different finger morphologies produce a stable **task type × gripper morphology interaction effect**?
+不同的手指形态是否会产生稳定的：
 
-The main hypothesis is that:
+> **任务类型 × 夹爪形态交互效应**
 
-- a **narrow precision finger** should be better for constrained, fine manipulation;
-- a **wide stable finger** should be better for large-contact, transport-oriented manipulation;
-- a neutral finger should serve as the baseline;
-- a morphology-conditioned shared policy should handle all three finger types better than a policy that is unaware of morphology.
+当前主要假设为：
+
+- **窄而精细的手指 `G_P`** 更适合空间受限、对准要求高的精细操作；
+- **宽而稳定的手指 `G_W`** 更适合需要较大接触面积和运输稳定性的任务；
+- **中性手指 `G_N`** 作为基线；
+- 在同一个共享策略中加入夹爪形态信息后，策略应当比“完全不知道当前夹爪形态”的共享策略表现更稳定。
+
+研究重点不是证明“某一个夹爪整体最好”，而是证明：
+
+> **不同任务存在与之匹配的夹爪形态。**
 
 ---
 
-## 2. Frozen minimum experimental scope
+## 2. 最小实验范围
 
-### Gripper morphologies
+### 2.1 三种手指形态
 
-- `G_P`: precision finger, target tip width ≈ 8 mm
-- `G_N`: neutral baseline, target tip width ≈ 18 mm
-- `G_W`: stable finger, target tip width ≈ 32 mm
+- `G_P`：精细型，末端宽度初值约 **8 mm**；
+- `G_N`：中性基线，末端宽度初值约 **18 mm**；
+- `G_W`：稳定型，末端宽度初值约 **32 mm**。
 
-For the first complete experiment, **only terminal finger width should change** as much as possible. Length, material, surface treatment, interface, TCP, maximum gripping force, and mass should remain controlled or documented.
+第一轮完整实验中，应尽量做到**只改变手指末端宽度**。
 
-### Main tasks
+以下变量应尽量保持一致，或者至少完整记录：
 
-Precision-oriented:
+- 手指长度；
+- 材料；
+- 接触表面；
+- 安装接口；
+- TCP；
+- 最大夹持力；
+- 手指质量与惯量。
 
-- `P1`: insertion of an oriented connector
-- `P2`: thin-object pick/place inside a narrow slot
+---
 
-Stability-oriented:
+### 2.2 四个主任务
 
-- `W1`: bottle grasp followed by lateral acceleration/deceleration transport
-- `W2`: wide-box grasp, transport, and placement
+#### 精细操作类
 
-### Main real-robot test matrix
+- `P1`：带方向插接件插入；
+- `P2`：狭槽中的薄片取放。
+
+#### 稳定抓持类
+
+- `W1`：瓶体抓取后进行横向加减速搬运；
+- `W2`：宽盒抓取、搬运和放置。
+
+---
+
+### 2.3 主实验规模
 
 ```text
-3 grippers × 4 tasks × 3 unseen objects × 20 paired trials = 720 trials
+3 种夹爪 × 4 个任务 × 3 个未见物体 × 20 次配对试验
+= 720 次真实机器人试验
 ```
 
-The 720-trial experiment is the **minimum primary evidence**. Additional tasks, selector models, automatic gripper exchange, or more complicated morphology learning are optional and must not block the main paper.
+这 **720 次试验是主论文最重要的最小证据闭环**。
+
+以下内容都属于加分项，不允许阻塞主线：
+
+- 自动预测最佳夹爪形态的 selector；
+- 第三类高扭矩任务；
+- 扩展到 6 个任务 / 1080 次试验；
+- 自动换爪机构；
+- 更复杂的 morphology embedding；
+- 形态生成网络；
+- 与核心假设无关的新传感器或新控制系统。
 
 ---
 
-## 3. Real-world time constraints
+## 3. 真实时间约束
 
-The project schedule must be based on **physical robot access**, not calendar days.
+整个项目必须按照**真实可获得的机器人机时**规划，而不能仅按照日历时间规划。
 
-### Semester schedule
+### 3.1 学期安排
 
-- Semester begins: **2026-09-07**
-- During normal weeks, most days are spent at university.
-- In practice, roughly **one full weekend day per week** can be used at the SJTU lab.
-- Travel time from university to the SJTU lab is about **1.5 hours one way**.
+- **2026-09-07 开学**；
+- 正常上课期间，一周大约有 **6 天主要待在学校**；
+- 平时通常只能抽出 **每周约 1 个完整周末日**前往交大实验室；
+- 从学校前往交大实验室，**单程约 1.5 小时**；
+- 一次实验室往返仅交通就需要约 **3 小时**。
 
-### Concentrated lab windows
-
-- Mid-Autumn Festival: **3 days**
-- National Day holiday: **7 days**
-- New Year holiday: **3 days**
-- Winter concentrated lab period: **2027-01-11 to 2027-01-24 at the latest**
-- New semester begins: **2027-02-22**
-
-### Planning assumption
-
-The calendar may contain around forty theoretically usable lab days from September to late January, but the project should be planned around only **~32–35 reliable physical experiment days** after accounting for coursework, travel, equipment occupancy, failures, exams, and unexpected interruptions.
-
-Therefore:
-
-> **Every physical lab day must be treated as an execution day rather than a software-development day.**
+因此，实验室日必须尽量用于机器人本身，而不能大量用于写代码、装环境或者临时设计方案。
 
 ---
 
-## 4. School vs. SJTU lab division of work
+### 3.2 集中实验窗口
 
-### Work that should be completed at school / remotely
+当前能够利用的集中时间主要包括：
 
-- literature review;
-- experiment design;
-- CAD modification before printing;
-- policy code development;
-- dataset tooling;
-- training scripts;
-- replay and offline evaluation;
-- simulation;
-- statistics code;
-- plotting;
-- paper writing;
-- experiment configuration preparation;
-- issue diagnosis from previous robot runs;
-- model training and checkpoint comparison;
-- Git / data / experiment-log organization.
+- 中秋节：**3 天**；
+- 国庆节：**7 天**；
+- 元旦：**3 天**；
+- 寒假可集中待在交大实验室：**2027-01-11 ～ 2027-01-24（最晚）**；
+- **2027-02-22 新学期开学**。
 
-### Work that should be reserved for the SJTU lab
+从 2026 年 9 月到 2027 年 1 月下旬，理论上可以得到约 40 个左右可用实验日，但考虑：
 
-- robot calibration;
-- gripper installation and measurement;
-- fixture installation;
-- real-robot data collection;
-- teleoperation demonstrations;
-- closed-loop policy tests;
-- mechanical interaction tests;
-- force/slip/collision validation;
-- formal trials;
-- hardware ablations;
-- final video evidence.
+- 课程；
+- 作业与考试；
+- 来回交通；
+- 实验室设备占用；
+- 硬件故障；
+- 临时事务；
+- 实验失败与返工；
 
-A successful weekly cycle should look like:
+实际规划时应只按照约 **32～35 个可靠真机实验日**进行预算。
+
+因此整个项目遵循一条原则：
+
+> **每一个交大实验室日，都应尽量成为“执行日”，而不是“开发日”。**
+
+---
+
+## 4. 学校与交大实验室的工作分工
+
+### 4.1 在学校 / 远程完成
+
+以下工作原则上不占用宝贵的真机时间：
+
+- 文献调研；
+- 实验设计；
+- CAD 修改；
+- policy / VLA 代码开发；
+- 数据集工具编写；
+- 训练脚本；
+- replay 与离线验证；
+- 仿真；
+- 统计分析代码；
+- 绘图；
+- 论文写作；
+- 下次实验配置准备；
+- 对上一次实验问题进行分析；
+- 模型训练；
+- checkpoint 比较；
+- Git 管理；
+- 数据整理；
+- 实验日志整理。
+
+---
+
+### 4.2 在交大实验室完成
+
+真机日主要用于：
+
+- Piper 标定；
+- gripper 安装与测量；
+- 任务夹具安装；
+- 真实机器人数据采集；
+- 遥操作示教；
+- policy 闭环执行；
+- 机械效应测试；
+- 力 / 滑移 / 碰撞验证；
+- 正式 trial；
+- 必须依赖硬件的消融实验；
+- 论文视频素材采集。
+
+---
+
+### 4.3 理想的一周研究循环
 
 ```text
-School / remote days
+学校 / 远程
     ↓
-code + training + simulation + experiment preparation
+写代码 + 训练 + 仿真 + 分析上一周结果
     ↓
-freeze the weekend experiment configuration
+提前冻结周末实验配置
     ↓
-SJTU lab day
+交大实验室
     ↓
-calibrate → execute trials → collect logs/video → backup
+标定 → 连续执行试验 → 自动记录 → 视频 → 备份
     ↓
-return to school and analyze results
+回学校分析数据
+    ↓
+准备下一次实验
 ```
 
-The goal is to avoid spending valuable robot time on package installation, large code rewrites, environment debugging, or exploratory architecture changes.
+应尽量避免出现：
+
+```text
+到了实验室
+↓
+才开始装依赖
+↓
+才发现代码 bug
+↓
+现场大改网络
+↓
+下午才真正开机器人
+```
+
+这种情况会严重浪费有限的真机机会。
 
 ---
 
-## 5. Hard execution milestones
+## 5. 项目硬节点
 
-| Date | Required state |
+| 日期 | 必须达到的状态 |
 |---|---|
-| **2026-09-06** | Three finger prototypes and four task prototypes substantially ready; basic logging pipeline available |
-| **2026-09-27** | Gate 1: at least one precision task and one stability task show repeatable morphology-dependent trends |
-| **2026-10-07** | National Day sprint complete: full robot-policy loop demonstrated on at least two tasks |
-| **2026-11-01** | Gate 2: shared-policy pipeline stable enough for repeatable data collection |
-| **2026-12-13** | Main training data largely collected; model candidates and experiment configuration ready to freeze |
-| **2026-12-14** | Gate 3: hardware, tasks, metrics, object split, model-selection rule and formal protocol frozen |
-| **2027-01-10** | Formal testing already underway; ideally 150–250 valid primary trials completed |
-| **~2027-01-20** | Target date for completing the 720 primary trials |
-| **2027-01-24** | **All required real-robot experiments finished** |
-| **2027-02-07** | Full paper draft v1 |
-| **2027-02-14** | Internal review version |
-| **2027-02-21** | **Submission-ready paper** |
-| **2027-03-01** | Target IROS submission deadline |
+| **2026-09-06** | 三种手指 prototype 与四个任务 prototype 基本就绪；基础 logging pipeline 可用 |
+| **2026-09-27** | **Gate 1**：至少一个精细任务和一个稳定任务出现可重复的形态优势 |
+| **2026-10-07** | 国庆集中攻关结束：至少两个任务跑通完整 robot-policy 闭环 |
+| **2026-11-01** | **Gate 2**：共享策略管线已经足够稳定，可以重复进行数据采集 |
+| **2026-12-13** | 主训练数据基本完成，候选模型和正式实验配置可以冻结 |
+| **2026-12-14** | **Gate 3**：硬件、任务、指标、物体划分、模型选择规则和正式实验协议冻结 |
+| **2027-01-10** | 正式实验已经开始，理想状态完成约 **150～250 次有效 trial** |
+| **约 2027-01-20** | 目标完成全部 **720 次主实验** |
+| **2027-01-24** | **所有必须依赖真机的实验全部结束** |
+| **2027-02-07** | 论文全文初稿 v1 |
+| **2027-02-14** | 内部审稿版 |
+| **2027-02-21** | **Submission-ready，可以直接投稿的版本** |
+| **2027-03-01** | IROS 2027 目标截稿日期 |
 
-`2027-02-21` is treated as the **personal deadline**, because the new semester begins on `2027-02-22`. The final week before submission should only be used for formatting, reference checks, typo fixes, anonymous-material checks, PDF compilation, and other low-risk changes.
+由于 **2027-02-22 已经开学**，因此项目内部不把 3 月 1 日视为真正的工作 deadline。
 
----
+真正的个人 deadline 是：
 
-## 6. Phase strategy under limited robot access
+> # **2027-02-21**
 
-### Phase 0 — Before semester start
+2 月 22 日之后只允许进行低风险修改，例如：
 
-**Now → 2026-09-06**
+- typo；
+- 引用核对；
+- 匿名检查；
+- 格式检查；
+- PDF 编译；
+- 少量措辞调整。
 
-Primary goal: eliminate mechanical uncertainty while lab access is relatively concentrated.
-
-Priority order:
-
-1. finalize common gripper interface and equal-TCP geometry;
-2. manufacture / print `G_P`, `G_N`, `G_W`;
-3. measure real dimensions and mass;
-4. build first versions of P1/P2/W1/W2 fixtures;
-5. establish automated trial logging and video naming;
-6. run scripted mechanical tests;
-7. verify that the task difficulty is neither trivial nor impossible.
-
-The desired state on September 7 is:
-
-> **The gripper hardware is basically usable, and weekend lab visits are for experiments rather than continued gripper invention.**
+不应再指望这一周重新设计实验或者大幅重写论文。
 
 ---
 
-### Phase 1 — Mechanical identifiability
+## 6. 按真实机时重新划分研究阶段
+
+## Phase 0：开学前消灭机械不确定性
+
+**现在 → 2026-09-06**
+
+这是非常重要的一段集中开发窗口。
+
+主要目标不是训练复杂模型，而是尽可能把机械和实验基础设施提前做完。
+
+优先级：
+
+1. 冻结三种手指的共用接口；
+2. 确保三种手指尽量等 TCP；
+3. 制造 / 3D 打印 `G_P`、`G_N`、`G_W`；
+4. 测量真实尺寸和质量；
+5. 制作 P1/P2/W1/W2 第一版任务夹具；
+6. 建立自动 trial 日志；
+7. 建立统一视频命名规则；
+8. 运行第一轮脚本控制机械实验；
+9. 判断任务难度是否既不太简单，也不是几乎无法完成；
+10. 准备远程代码、训练与数据同步环境。
+
+### 9 月 7 日希望达到的状态
+
+> **夹爪硬件已经基本能用，之后的周末主要用来做实验，而不是继续发明夹爪。**
+
+---
+
+## Phase 1：机械可辨识性验证
 
 **2026-09-07 → 2026-09-27**
 
-Use weekend and Mid-Autumn lab access to establish whether morphology genuinely affects task mechanics.
+利用正常周末以及中秋节机时，验证不同 morphology 是否确实对不同任务产生机械差异。
 
-Minimum target:
+最低目标：
 
-- three grippers physically usable;
-- four task fixtures reproducible;
-- at least 10 small-sample tests per useful gripper-task cell where practical;
-- clear failure taxonomy;
-- at least one precision task favors the precision morphology;
-- at least one stability task favors the wider morphology.
+- 三种夹爪均可真实安装和执行；
+- 四个任务夹具具有基本重复性；
+- 对关键的 `gripper × task` 组合完成小规模重复测试；
+- 建立失败类型 taxonomy；
+- 至少一个精细任务明显更偏向 `G_P`；
+- 至少一个稳定任务明显更偏向 `G_W`。
 
-#### Gate 1 — 2026-09-27
+### Gate 1 — 2026-09-27
 
-Continue the VLA main line only if a repeatable cross-task morphology effect exists.
+只有当跨任务 morphology effect 具有重复性时，才继续大规模 VLA 主线。
 
-If this effect is absent, only one controlled revision to task difficulty / fixture / width parameter is allowed before deciding whether the main hypothesis needs to be narrowed.
+如果没有明显交互趋势，只允许对：
+
+- 任务难度；
+- 夹具；
+- 单一宽度参数；
+
+进行一次有控制的修改。
+
+不能无限调参直到出现想要的结果。
 
 ---
 
-### Phase 2 — National Day system sprint
+## Phase 2：国庆系统闭环攻关
 
 **2026-09-28 → 2026-10-07**
 
-The seven-day National Day window is the first major system-integration sprint.
+国庆 7 天是整个项目第一次真正的**系统集成冲刺期**。
 
-The most important output is not high success rate. The most important output is a complete closed loop:
+这一阶段最重要的结果不是成功率有多高，而是完整跑通：
 
 ```text
-observation
+Observation
     ↓
-policy / VLA
+Policy / VLA
     ↓
-action
+Action
     ↓
 Piper
     ↓
-gripper
+Gripper
     ↓
-task execution
+Task Execution
     ↓
-automatic logging
+Automatic Logging
 ```
 
-By the end of October 7, the system should ideally demonstrate:
+### 10 月 7 日之前理想状态
 
-- at least two tasks in closed loop;
-- at least two or three finger morphologies supported by the same pipeline;
-- fixed observation format;
-- fixed action representation;
-- stable camera and robot synchronization;
-- complete experiment logs;
-- repeatable model launch / evaluation scripts.
+至少完成：
 
-This window should also pull forward part of the data-collection work originally scheduled for November–December.
+- 2 个任务真实闭环；
+- 同一套 pipeline 能支持至少 2～3 种手指；
+- observation 格式冻结；
+- action representation 冻结；
+- 相机与机器人同步稳定；
+- 日志完整；
+- 可以一键 / 标准化启动 evaluation；
+- 可以重复运行模型而不是每次手工改大量配置。
+
+同时应把原来计划放在 11～12 月的数据采集工作**提前一部分到国庆**。
+
+国庆结束后，真机时间会重新变成每周约一天，因此不能把系统闭环问题拖到 11 月。
 
 ---
 
-### Phase 3 — Shared policy and data loop
+## Phase 3：共享策略与数据闭环
 
 **2026-10-08 → 2026-11-01**
 
-Main objective: turn the National Day prototype into a repeatable research pipeline.
+核心目标：把国庆期间跑通的 prototype 变成真正可重复的研究系统。
 
-Required comparisons:
+至少需要完成三种策略设置：
 
-1. shared policy without morphology input;
-2. shared policy with discrete gripper ID;
-3. shared policy with continuous morphology parameters.
+1. **无 morphology 输入的共享策略**；
+2. **加入离散 gripper ID 的共享策略**；
+3. **加入连续几何参数的共享策略**。
 
-A minimal morphology vector may include:
+最小连续 morphology vector 可以先使用：
 
 ```text
 [tip_width, finger_length, corner_radius, finger_mass]
 ```
 
-All variants must preserve the intended experimental claim: the comparison should not quietly become three independent policies trained separately for three grippers.
+三种 setting 都必须保持实验主张成立：
 
-#### Gate 2 — 2026-11-01
+> 不能偷偷把三种夹爪分别训练成三个完全独立模型，然后称为“同一策略”。
 
-Continue only if:
+### Gate 2 — 2026-11-01
 
-- at least two tasks execute reliably enough for data collection;
-- training is reproducible;
-- logs are complete;
-- morphology conditioning does not destroy the neutral baseline;
-- the same policy pipeline can operate all target morphologies.
+继续主线的条件：
+
+- 至少两个任务稳定到可以进行数据采集；
+- 训练流程可以重复；
+- 日志完整；
+- morphology conditioning 不会破坏中性基线；
+- 同一个共享 policy pipeline 可以运行目标夹爪形态。
 
 ---
 
-### Phase 4 — Full data collection and pre-experiments
+## Phase 4：完整数据采集与预实验
 
 **2026-11-02 → 2026-12-13**
 
-Because normal semester weeks provide very little physical robot time, this phase must use weekends primarily for **data acquisition and pre-experiments**, not architecture exploration.
+这一阶段在日历上有一个多月，但真实能够到交大做机器人实验的时间非常有限。
 
-Goals:
+因此：
 
-- finish training demonstrations for all three grippers and four tasks;
-- freeze train / validation / test object split by physical object instance;
-- train all three morphology-conditioning variants;
-- run multiple training seeds offline;
-- verify real-robot stability on representative cases;
-- estimate true time per formal trial;
-- verify automatic success/failure logging;
-- prepare all final plots and statistics scripts before formal data arrives.
+> **周末主要用于数据采集和预实验，而不是继续探索新网络。**
 
-By early December, most remaining uncertainty should be experimental variance rather than system engineering.
+阶段目标：
+
+- 完成三种 gripper × 四个任务的训练示教；
+- 按物体实例冻结 train / validation / test；
+- 训练三个 morphology-conditioning 版本；
+- 离线完成多个训练 seed；
+- 在代表性场景完成小规模真机稳定性验证；
+- 测量一次正式 trial 的真实耗时；
+- 验证自动成功 / 失败判定；
+- 验证视频与 metadata；
+- 在正式实验开始以前把统计脚本和论文图表模板准备好。
+
+进入 12 月以后，项目剩余的主要不确定性应该逐渐变成：
+
+> **实验结果本身的方差**
+
+而不是：
+
+> **系统到底能不能跑。**
 
 ---
 
-### Phase 5 — Formal experiment freeze
+## Phase 5：正式实验冻结
 
 **2026-12-14**
 
-Freeze:
+冻结以下内容：
 
-- finger hardware;
-- task definitions;
-- fixtures;
-- train/test objects;
-- initial-condition sampling procedure;
-- observation and action spaces;
-- model checkpoints / selection rule;
-- success criterion;
-- failure taxonomy;
-- primary metrics;
-- statistical analysis plan.
+- 手指硬件；
+- 任务定义；
+- 任务夹具；
+- train / test 物体；
+- 初始条件采样规则；
+- observation space；
+- action space；
+- 模型 checkpoint / 模型选择规则；
+- 成功判据；
+- 失败类型；
+- 主指标；
+- 统计分析方案。
 
-After this point, formal results must not be used as justification for repeatedly redesigning the experiment.
+从此以后，不能因为看到正式实验结果“不够漂亮”，就不断修改硬件或评价协议。
 
 ---
 
-### Phase 6 — Formal real-robot testing
+## Phase 6：正式真实机器人实验
 
 **2026-12-15 → 2027-01-24**
 
-Primary target:
+核心任务：
 
 ```text
-720 valid paired real-robot trials
+完成 720 次有效、配对、可追溯的真实机器人 trial
 ```
 
-The first 5% should be treated as smoke testing for:
+### 前 5%：Smoke Test
 
-- logging;
-- calibration;
-- initial-condition generation;
-- success criteria;
-- video capture;
-- randomization.
+首先验证：
 
-Formal trial order should be randomized across:
+- logging；
+- calibration；
+- 初始条件生成；
+- success criterion；
+- 视频；
+- trial randomization；
+- metadata 完整性。
 
-- gripper;
-- task;
-- object;
-- initial-condition seed.
+### 正式 trial 顺序
 
-#### Target throughput
+需要尽量随机化：
 
-If all 720 trials were concentrated into the January 11–24 period:
+- gripper；
+- task；
+- object；
+- initial-condition seed。
 
-```text
-720 / 14 ≈ 52 trials/day
-```
-
-This is feasible only if the system is already stable before January 11. Therefore the real goal is to begin formal testing in December and reach roughly **150–250 valid trials before January 11**.
-
-Then the January concentrated period becomes a high-throughput evidence-collection sprint rather than a debugging sprint.
+避免把某一种夹爪全部安排在同一天造成时间漂移偏差。
 
 ---
 
-## 7. Winter lab sprint: 2027-01-11 → 2027-01-24
+### 正式实验吞吐量
 
-This is the final guaranteed concentrated real-robot window.
+如果全部 720 次都压到 1 月 11～24 日：
 
-### Rule
+```text
+720 / 14 ≈ 52 trials / day
+```
 
-> **No architecture-level development during this period unless the current system is completely unusable.**
+因此数学上并不是完全不可行。
 
-Avoid:
+真正的问题是：
 
-- switching to a new VLA model;
-- redesigning the gripper from scratch;
-- changing the action space;
-- introducing a new perception stack;
-- changing the primary hypothesis after seeing results.
+> **1 月 11 日的时候系统是否已经完全稳定。**
 
-Recommended sequence:
+所以更安全的目标是：
 
-### Jan 11–12
+> **在 2027-01-10 之前，已经完成约 150～250 次有效正式 trial。**
 
-- calibration;
-- smoke tests;
-- verify all three grippers;
-- verify all four tasks;
-- confirm logging and randomization.
+这样 1 月 11～24 日的集中时间就是：
 
-### Jan 13–18
+> **高速生产论文证据**
 
-- high-throughput primary trials.
+而不是：
 
-### Jan 19–20
-
-- finish remaining 720-trial matrix.
-
-### Jan 21–22
-
-- mandatory hardware-dependent ablations;
-- scripted mechanical baseline;
-- morphology-conditioning comparison where real-robot evidence is required;
-- visual-occlusion ablation if it remains part of the paper.
-
-### Jan 23
-
-- rerun missing / invalid trials according to pre-defined rules;
-- resolve device-failure gaps;
-- final video capture.
-
-### Jan 24
-
-- final data audit;
-- verify trial counts;
-- verify all metadata;
-- create multiple independent backups;
-- freeze the real-robot dataset.
-
-**All experiments requiring physical access to the SJTU robot should be completed by this date.**
+> **集中修系统 bug。**
 
 ---
 
-## 8. Paper-only period
+## 7. 寒假真机总攻：2027-01-11 ～ 2027-01-24
+
+这是最后一个能够保证连续使用真实机器人的窗口。
+
+### 核心纪律
+
+> **除非现有系统已经完全无法工作，否则这一阶段禁止 architecture-level development。**
+
+不应再做：
+
+- 临时更换 VLA；
+- 从头设计新 gripper；
+- 修改 action space；
+- 临时加入新的 perception stack；
+- 看到实验结果以后重新修改主假设；
+- 为加分项大规模改系统。
+
+---
+
+### 1 月 11～12 日
+
+- 完成最终 calibration；
+- smoke test；
+- 确认三种 gripper 都可以使用；
+- 确认四个任务都可以运行；
+- 检查日志；
+- 检查 randomization。
+
+### 1 月 13～18 日
+
+- 高吞吐推进 720 次主实验。
+
+### 1 月 19～20 日
+
+- 目标完成剩余主实验矩阵；
+- 尽量在 **1 月 20 日左右清零 720 次主实验**。
+
+### 1 月 21～22 日
+
+完成所有必须依赖真实机器人完成的消融，例如：
+
+- script / state-control 机械 baseline；
+- shared policy morphology-conditioning 对照；
+- 必须依赖真实机器人验证的视觉遮挡消融；
+- 其他已经提前写进论文协议中的硬件消融。
+
+### 1 月 23 日
+
+- 按预先规则补跑 invalid / missing trial；
+- 补设备故障造成的数据缺口；
+- 采集最终论文视频素材。
+
+### 1 月 24 日
+
+- 最终 trial 数审计；
+- metadata 审计；
+- calibration 状态归档；
+- 日志完整性检查；
+- 多份独立备份；
+- 正式冻结 real-robot dataset。
+
+> # **2027-01-24 之后，主论文不应再依赖交大真实机器人才能完成。**
+
+---
+
+## 8. 纯数据分析与论文阶段
 
 **2027-01-25 → 2027-02-21**
 
-This period should require no physical robot access.
+这一阶段理论上应当可以完全脱离真实机器人推进。
 
-Primary work:
+主要工作：
 
-- data cleaning under pre-defined rules;
-- mixed-effects logistic regression;
-- confidence intervals;
-- per-object analysis;
-- `gripper × task_type` interaction analysis;
-- `Delta_match` analysis;
-- failure-mode analysis;
-- tables and plots;
-- paper writing;
-- supplementary material;
-- experiment video editing;
-- code cleanup;
-- independent number verification.
+- 按预注册 / 预定义规则清洗数据；
+- mixed-effects logistic regression；
+- confidence interval；
+- 逐物体结果；
+- `gripper × task_type` interaction；
+- `Delta_match`；
+- failure taxonomy；
+- 图表；
+- 论文正文；
+- supplementary material；
+- 实验视频剪辑；
+- code cleanup；
+- 独立复算所有表格数字。
 
-Suggested internal deadlines:
+### 内部写作 deadline
 
-- **2027-02-07:** complete first full manuscript
-- **2027-02-14:** internal review version
-- **2027-02-18:** freeze main figures, tables, supplement and video
-- **2027-02-21:** submission-ready package
+- **2027-02-07：**完整全文初稿；
+- **2027-02-14：**内部审稿版；
+- **2027-02-18：**冻结主要图、表、supplement 和 video；
+- **2027-02-21：**submission-ready。
 
 ---
 
-## 9. Weekly project dashboard
+## 9. 每周项目 Dashboard
 
-Every week, update only a small set of operational numbers:
+每周只需要跟踪少量真正能够反映项目健康度的数据：
 
-- completed / planned CAD and fixture work;
-- number of valid demonstrations;
-- number of valid formal or pre-experiment trials;
-- P1/P2/W1/W2 closed-loop status;
-- automatic logging completeness;
-- dominant failure modes;
-- current estimated date for reaching 720 trials;
-- current largest blocker;
-- unfinished items before the next Gate.
+- 已完成 / 计划中的 CAD 与夹具；
+- 有效示教数；
+- 有效 pre-trial 数；
+- 有效 formal trial 数；
+- P1/P2/W1/W2 闭环运行状态；
+- 自动日志完整率；
+- 当前主要失败类型；
+- 预计完成 720 次正式试验的日期；
+- 当前最大 blocker；
+- 距离下一个 Gate 的未完成项。
 
-A simple weekly status format:
+推荐每周记录：
 
 ```text
-Week:
+本周：
 
-Hardware:
-- G_P:
-- G_N:
-- G_W:
+【硬件】
+G_P：
+G_N：
+G_W：
 
-Tasks:
-- P1:
-- P2:
-- W1:
-- W2:
+【任务】
+P1：
+P2：
+W1：
+W2：
 
-Data:
-- valid demonstrations:
-- valid pre-trials:
-- valid formal trials:
-- logging completeness:
+【数据】
+有效示教：
+有效预实验 trial：
+有效正式 trial：
+日志完整率：
 
-Models:
-- no morphology input:
-- discrete gripper ID:
-- continuous morphology parameters:
+【模型】
+无 morphology 输入：
+离散 gripper ID：
+连续 morphology 参数：
 
-Largest blocker:
+当前最大阻塞：
 
-Estimated 720-trial completion date:
+预计完成 720 trial 日期：
 
-Next Gate:
+下一 Gate：
 
-Decision:
-- on track / at risk / fallback required
+当前判断：
+正常 / 有风险 / 需要启用备选路线
 ```
 
 ---
 
-## 10. Lab-day operating rule
+## 10. 实验室日执行纪律
 
-Because one SJTU lab visit costs about three hours of round-trip travel, every visit should have a pre-written experiment sheet before departure.
+由于每次前往交大实验室都有较高的时间成本，因此在出发之前应准备好一份明确的实验计划。
 
-A good lab day should begin with:
+### 到实验室之前
 
-- code already pulled and tested;
-- required checkpoints already trained;
-- exact task configuration known;
-- exact trial count known;
-- fixtures and printed parts ready;
-- automatic logging enabled;
-- backup destination prepared.
+应尽量做到：
 
-And end with:
+- 代码已经在非真机环境测试；
+- checkpoint 已经提前训练好；
+- 当天任务配置已经确定；
+- 当天计划 trial 数已经确定；
+- 所需夹具和打印件准备好；
+- logging 已经配置；
+- 数据备份位置已经准备好；
+- 知道当天成功的最低标准是什么。
 
-- all experiment logs copied;
-- videos indexed;
-- invalid trials marked rather than silently deleted;
-- calibration state recorded;
-- next week's blockers written down.
+### 离开实验室之前
 
----
+必须完成：
 
-## 11. Main risk hierarchy
-
-The project risks are ordered approximately as follows:
-
-1. **robot-policy pipeline is not stable by October/November;**
-2. training-data collection consumes too many scarce lab days;
-3. task difficulty does not create a measurable morphology interaction;
-4. hardware / fixtures are not repeatable enough for paired testing;
-5. automatic logs or trial metadata are incomplete;
-6. formal testing starts too late;
-7. too many optional ideas distract from the 720-trial core evidence;
-8. paper writing is delayed until after all experiments are finished.
-
-The project should therefore optimize for **early system closure**, not early sophistication.
+- 实验日志备份；
+- 视频索引；
+- invalid trial 标记；
+- 不允许悄悄删除失败数据；
+- 记录 calibration 状态；
+- 写出下周最大 blocker；
+- 明确下一次来实验室要验证什么。
 
 ---
 
-## 12. Scope control
+## 11. 当前风险优先级
 
-The following are optional and must not delay the minimum paper:
+项目风险大致按照以下顺序排列：
 
-- automatic morphology selector;
-- extra high-torque task category;
-- six-task / 1080-trial expansion;
-- automatic gripper exchange;
-- morphology generation network;
-- complex adaptive control conditioned on geometry;
-- additional sensors that are not necessary for the main claim.
+1. **到 10～11 月 robot-policy pipeline 仍然不稳定；**
+2. 训练数据采集消耗过多稀缺真机日；
+3. 四个任务本身无法产生足够明显的 morphology interaction；
+4. 夹具 / 硬件重复性不足，无法进行可靠 paired test；
+5. logging 或 metadata 不完整；
+6. 正式测试开始时间过晚；
+7. 加分项太多，分散 720 次核心实验的资源；
+8. 一直等到实验结束才开始论文写作。
 
-The preferred order is:
+因此整个项目的优化目标应该是：
+
+> **尽早完成系统闭环，而不是尽早把系统做复杂。**
+
+---
+
+## 12. Scope Control：严格控制研究范围
+
+以下工作只有在主线健康时才允许开展：
+
+- 自动 morphology selector；
+- 第三类高扭矩任务；
+- 6-task / 1080-trial 扩展；
+- 自动换爪；
+- morphology generation network；
+- 更复杂的 adaptive control；
+- 与核心研究问题关系较弱的新传感器。
+
+正确顺序应当是：
 
 ```text
-prove morphology effect
-    ↓
-prove shared-policy feasibility
-    ↓
-finish 720-trial evidence
-    ↓
-finish morphology-conditioning ablation
-    ↓
-only then add optional contributions
+先证明 morphology effect
+        ↓
+再证明 shared-policy 可行
+        ↓
+完成 720 次核心证据
+        ↓
+完成 morphology-conditioning 消融
+        ↓
+最后再考虑加分项
 ```
 
 ---
 
-## 13. Decision philosophy
+## 13. 投稿决策原则
 
-The goal is not to force a paper into IROS at any cost.
+项目目标是 IROS 2027，但不是“不惜一切代价必须赶上 IROS”。
 
-If the required evidence is not ready at a Gate:
+如果某个 Gate 明确未通过：
 
-- narrow the claim;
-- remove optional work;
-- preserve experimental integrity;
-- or move to a later RA-L / T-RL route rather than compromising the protocol.
+- 缩小 claim；
+- 删除可选工作；
+- 保留实验设计完整性；
+- 必要时转入后续 RA-L / T-RL 路线。
 
-A strong delayed paper is preferable to a rushed result whose experimental design cannot support the claim.
+原则：
 
----
-
-## 14. Current immediate priorities
-
-Before the semester begins, the project should prioritize:
-
-- [ ] freeze the three finger-interface sketches;
-- [ ] manufacture the first three finger variants;
-- [ ] measure real geometry and mass;
-- [ ] prototype all four task fixtures;
-- [ ] define exact success / failure / timeout conditions;
-- [ ] build trial logging and video naming;
-- [ ] run first scripted mechanical tests;
-- [ ] prepare remote code / training / data synchronization;
-- [ ] ensure weekend lab sessions can begin directly with robot execution.
+> **宁可得到一篇稍晚但证据扎实的论文，也不要为了赶截稿牺牲实验可信度。**
 
 ---
 
-## Repository documents
+## 14. 当前最优先事项
 
-- [`README.md`](./README.md): execution plan under real lab-access constraints
-- [`IROS_2027_TODO.md`](./IROS_2027_TODO.md): detailed research protocol, experimental design, gates, metrics, and original TODO
+开学前优先推进：
 
-The README should evolve as the real project schedule changes, while the frozen experiment protocol should only change through explicit research decisions rather than convenience.
+- [ ] 冻结三种手指的共用安装接口；
+- [ ] 完成 `G_P / G_N / G_W` 第一版；
+- [ ] 测量三种手指真实尺寸与质量；
+- [ ] 制作四个主任务的 prototype 夹具；
+- [ ] 定义一次 trial 的开始 / 成功 / 失败 / timeout；
+- [ ] 建立自动日志格式；
+- [ ] 建立统一视频命名规则；
+- [ ] 完成第一轮 script-control 机械小试；
+- [ ] 建立远程代码、训练和数据同步能力；
+- [ ] 确保开学后的周末到实验室后可以直接执行机器人实验。
+
+---
+
+## 15. 仓库文档说明
+
+- [`README.md`](./README.md)：按照真实实验室机时制定的项目执行计划；
+- [`IROS_2027_TODO.md`](./IROS_2027_TODO.md)：详细研究协议、实验设计、统计指标、Gate 和原始 TODO。
+
+README 可以随着实际课程安排和机时变化持续调整。
+
+而正式实验协议一旦冻结，则只能基于明确的科研理由进行修改，不能仅因为实验结果不符合预期而改变。
