@@ -1,49 +1,102 @@
-# 机器人夹爪 × VLA — IROS 2027 执行计划
+# 机器人夹爪 × VLA — IROS 2027
 
-> **暂定论文题目：** *Same Brain, Different Fingers: Task-Aligned Gripper Morphology for Vision-Language-Action Manipulation*
+> **暂定论文题目：** *Same Brain, Different Fingers: Task-Aligned Morphology and Embodiment Shift in Vision-Language-Action Manipulation*
 >
-> **目标会议：** IROS 2027
->
-> **目标截稿日期：** 2027-03-01
+> **目标会议：** IROS 2027  
+> **目标截稿：** 2027-03-01
 
-本仓库记录一个围绕 **“同一策略，不同手指”** 展开的机器人操作研究：在机器人、夹爪执行器、传感器、动作空间和策略保持一致的前提下，仅改变末端手指形态，研究任务匹配的 gripper morphology 是否能够系统性提高不同操作任务的成功率和鲁棒性。
+本仓库研究一个受控的机器人操作问题：
 
-详细研究协议、统计方案和原始 TODO 见 [`IROS_2027_TODO.md`](./IROS_2027_TODO.md)。本 README 不覆盖原 TODO，而是根据真实实验室时间、当前硬件方案和最新任务选择，给出更具体的执行路线。
+> **在机器人、执行器、传感器、动作空间、训练流程和策略检查点保持一致时，只改变末端手指形态，不同任务是否存在不同的最优 morphology？进一步地，换手指是否会给同一个 VLA 带来可测量的 embodiment / deployment distribution shift，而显式形态条件能否缓解这种变化？**
+
+详细实验协议、统计方案、Gate 和逐阶段 TODO 见 [`IROS_2027_TODO.md`](./IROS_2027_TODO.md)。
 
 ---
 
-## 1. 当前核心研究问题
+## 1. 研究故事
 
-在以下条件尽量保持一致时：
+项目不再只把问题表述为“8 mm、14 mm、25 mm 哪个成功率高”，而是按三层展开：
 
-- 同一台 Piper 机械臂；
-- 同一套夹爪驱动机构；
-- 同一安装接口；
-- 同一 TCP；
-- 同一材料和接触表面；
-- 同一相机与观测；
-- 同一动作空间；
-- 同一训练流程；
-- 同一个共享策略 / 检查点；
+```text
+Layer 1 — Mechanical Effect
+不同任务存在不同的最优 finger morphology
 
-不同的末端手指宽度是否会产生稳定的 **任务类型 × 手指形态交互效应**？
+Layer 2 — Embodiment Shift
+换 finger 会改变 contact geometry、可达空间、视觉外观和 action consequences
 
-核心假设：
+Layer 3 — Morphology-Aware Policy
+显式 morphology conditioning 是否帮助同一个 VLA 更好适应不同末端形态
+```
 
-- 窄手指在狭窄进入、精确定位、插接等任务中具有优势；
-- 宽手指在大物体稳定抓取、搬运和抗滑移任务中具有优势；
-- 中等宽度手指作为折中基线；
-- 显式输入形态信息的共享策略，能够比“不知道自己正在使用哪种手指”的策略更好地利用不同形态。
+可以把整体关系概括为：
 
-研究重点不是寻找一个“全局最优夹爪”，而是验证：
+```text
+Morphology
+    ↓
+Physical Affordance / Contact Geometry
+    ↓
+Execution Distribution Shift
+    ↓
+Policy Performance
+```
 
-> **不同任务可能存在不同的最优手指形态。**
+第一版实验只主动改变 **末端有效宽度**，因此主要形态变量优先写成：
+
+```text
+m = tip_width
+```
+
+而不是为了模型复杂度人为增加没有实际变化的参数。
 
 ---
 
-## 2. 第一版三档手指宽度
+## 2. 两个必须完成的贡献
 
-当前冻结为：
+### Contribution 1：Task–Morphology Interaction
+
+建立一个可控的三指形 Piper 实验平台，验证：
+
+> **不存在一个在所有任务上都最优的 finger morphology。**
+
+理想趋势是：
+
+```text
+精细 / 受限空间任务：8 mm 更有优势
+稳定 / 大物体搬运任务：25 mm 更有优势
+14 mm 作为中性折中基线
+```
+
+真正需要证明的是稳定、可重复的：
+
+```text
+task_type × morphology interaction
+```
+
+而不是某个夹爪总体平均成功率最高。
+
+### Contribution 2：Morphology-Aware Shared Policy
+
+在同一训练池和同一共享策略框架下比较：
+
+```text
+A. π(a | image, state, language)
+
+B. π(a | image, state, language, gripper_id)
+
+C. π(a | image, state, language, tip_width)
+```
+
+研究显式 morphology awareness 是否能让共享 VLA 更好利用不同的末端物理特性，并减轻换指形后出现的 execution distribution shift。
+
+主实验必须保持：
+
+> **Same Brain, Different Fingers.**
+
+不得用三个独立训练模型代替共享策略结果。
+
+---
+
+## 3. 三种冻结的末端宽度
 
 | 编号 | 定位 | 末端宽度 |
 |---|---|---:|
@@ -51,140 +104,76 @@
 | `G_N` | 中性基线 | **14 mm** |
 | `G_W` | 稳定型 | **25 mm** |
 
-第一轮实验尽量只改变 **末端有效宽度**。
-
-以下因素应保持一致或尽量受控：
+第一轮尽量只改变末端宽度，并控制：
 
 - 手指长度；
 - 根部结构；
 - 安装孔位；
 - TCP；
 - 材料；
-- 表面处理；
+- 接触表面；
 - 最大夹持力；
-- 夹爪驱动器；
+- 驱动器；
 - 运动速度与加速度。
 
-三档宽度不是为了数学等间距，而是覆盖：
+打印后必须记录：
 
-```text
-8 mm     → 明显偏精细
-14 mm    → 中性 / 常规基线
-25 mm    → 明显偏宽接触
-```
+- 实际宽度；
+- 单指质量；
+- 整套末端质量；
+- 材料；
+- 打印参数；
+- 安装偏差；
+- TCP / 接触中心。
 
-在正式实验前允许根据机械 Pre-Pilot 的结果对尺寸做 **一次受控调整**，但不能在看到正式测试结果后不断修改宽度。
+除非出现明确机械不可行问题，否则不再根据实验结果反复修改 8 / 14 / 25 mm。
 
 ---
 
-## 3. 当前四个主任务 Prototype
-
-第一版不追求任务数量，而追求不同任务之间存在清晰的物理需求差异。
+## 4. 四个主任务
 
 ### P1：Type-C 刚性插头插入
 
 **任务类型：精细定位 / 插接**
 
-场景：
-
-- 购买一个带 Type-C 接口的插排、扩展坞或固定接口模块；
-- Type-C 公头优先安装在一个短刚性手柄上；
-- 机器人夹持刚性手柄，而不是第一版就处理柔软数据线；
-- 接口本体固定在可重复定位夹具上。
-
-执行：
-
-```text
-抓住 Type-C 刚性插头
-        ↓
-移动到接口附近
-        ↓
-姿态对准
-        ↓
-插入
-```
-
 主要观察：
 
-- 插入成功率；
+- 成功率；
 - 周边碰撞；
 - 对准失败；
-- 插入耗时；
+- 插入时间；
 - 最大接触力 / 腕部力矩；
 - 最终插入深度。
 
-设计原则：
+要求 25 mm 手指“更困难但仍可完成”，避免任务退化为简单尺寸可行性判断。
 
-> 25 mm 手指应该“更难”，但不能因为夹具几何设计而绝对不可能完成。
-
-否则实验只会变成简单的尺寸可行性判断，而不是形态对任务容错性的影响。
-
----
-
-### P2：窄盒 / 窄槽内部小物体取出
+### P2：窄盒 / 窄槽内部取物
 
 **任务类型：狭窄进入 / 受限空间抓取**
-
-不是简单“抓起一个窄盒子”，而是让机器人从窄空间中抓取物体。
-
-场景示意：
-
-```text
-┌────────────────┐
-│                │
-│      [物体]     │
-│                │
-└────────────────┘
-```
-
-机器人需要从上方进入盒内 / 槽内：
-
-```text
-进入受限空间
-    ↓
-夹住小刚体
-    ↓
-提取
-    ↓
-放置到目标区域
-```
 
 主要观察：
 
 - 成功率；
-- 手指与侧壁碰撞次数；
-- 是否能够到达有效抓取位姿；
+- 手指与侧壁碰撞；
+- 是否能到达有效抓取位姿；
 - 重抓次数；
 - 完成时间。
 
-后续可以设置 easy / medium / hard 三档空间宽度，但第一版先只固定一个能够区分形态、同时又不会让宽手指完全失效的中等难度。
-
----
-
 ### W1：宽瓶抓取与动态搬运
 
-**任务类型：稳定抓取 / 抗滑移**
+**任务类型：稳定抓取 / 抗滑移 / 抗转动**
 
-场景：
-
-- 选择直径相对较大的瓶体；
-- 固定初始位置和抓取高度；
-- 第一版尽量使用刚性、可重复的瓶体；
-- 后续再增加不同直径、质量和表面的测试对象。
-
-执行：
+流程：
 
 ```text
-抓住瓶体
-    ↓
+抓取
+  ↓
 抬升
-    ↓
+  ↓
 横向移动
-    ↓
+  ↓
 加速 / 减速
-    ↓
-移动到目标区域
-    ↓
+  ↓
 放置
 ```
 
@@ -197,33 +186,9 @@
 - 重抓次数；
 - 搬运时间。
 
-这个任务用于验证 25 mm 宽手指是否能通过更大的接触范围获得稳定性优势。
-
----
-
 ### W2：宽盒抓取、搬运与放置
 
 **任务类型：大接触面稳定搬运**
-
-场景：
-
-- 使用长方体纸盒或塑料盒；
-- 两侧提供可重复的抓取区域；
-- 后续可通过改变盒体质量、宽度和表面摩擦形成未见物体测试。
-
-执行：
-
-```text
-定位宽盒
-   ↓
-两侧夹持
-   ↓
-抬升
-   ↓
-搬运
-   ↓
-放入指定区域
-```
 
 主要观察：
 
@@ -231,384 +196,112 @@
 - 姿态稳定性；
 - 滑移 / 转动；
 - 重抓次数；
-- 放置误差。
-
-W1 与 W2 分别覆盖曲面物体和大平面物体的稳定抓取需求。
+- 最终放置误差。
 
 ---
 
-## 4. 一个额外但暂不进入四任务主线的任务
+## 5. 为什么不能只看 success / fail
 
-### M1：普通插头插入插座
-
-普通插头插入任务同时包含：
-
-- 精确定位；
-- 姿态对准；
-- 插入力；
-- 抗滑移与稳定夹持。
-
-因此它不是纯粹的“越窄越好”任务，更适合作为后续 **混合型任务**。
-
-如果使用插排的普通插座进行实验，只使用 **未通电状态**，优先采用固定的仿真 / 机械插座夹具进行机器人测试。
-
-该任务不阻塞 P1/P2/W1/W2 主线。
-
----
-
-## 5. 正式实验的最小矩阵
-
-当前主线仍采用：
+宽手指的假设不能简单写成：
 
 ```text
-3 种手指 × 4 个任务 × 3 个未见物体 × 20 次配对测试
+接触面积更大 → 摩擦力一定更大
+```
+
+因为在最简单 Coulomb friction 模型中，摩擦上限主要由摩擦系数和法向力决定。
+
+真正值得验证的机制包括：
+
+- 接触区域和压力分布变化；
+- 对姿态误差的容忍度；
+- 对物体转动的抵抗能力；
+- contact wrench 能力变化；
+- 狭窄空间中的碰撞和可达性变化。
+
+因此正式实验除 success rate 外还记录：
+
+```text
+slip
+rotation Δθ
+collision
+regrasp
+pose error
+contact force / wrist torque
+```
+
+希望最终能够形成：
+
+```text
+morphology
+    ↓
+contact / access mechanism
+    ↓
+slip / rotation / collision / regrasp
+    ↓
+success
+```
+
+而不是只报告相关性。
+
+---
+
+## 6. 正式主实验矩阵
+
+```text
+3 种手指
+× 4 个任务
+× 3 个未见物体
+× 20 次配对测试
 = 720 次真实机器人试验
 ```
 
-其中：
+要求：
 
-- `G_P = 8 mm`
-- `G_N = 14 mm`
-- `G_W = 25 mm`
+- 训练集和测试集按 **物体实例** 划分，不能按轨迹随机划分；
+- 各 morphology 使用相同初始条件编号、位置、姿态扰动种子；
+- 正式 trial 顺序随机化；
+- 先完成 720 次主证据，再运行额外扩展。
 
-主任务：
+主统计包括：
 
-- `P1` Type-C 插接；
-- `P2` 窄盒 / 窄槽取物；
-- `W1` 宽瓶动态搬运；
-- `W2` 宽盒搬运。
-
-720 次实验是论文最小主证据。
-
-额外任务、自动换爪、更多传感器、复杂形态生成器、自动任务选爪等都不得阻塞主实验。
+- 每个物体等权成功率；
+- `gripper × task_type` interaction；
+- `Delta_match`；
+- 最差物体成功率；
+- 跨物体置信区间；
+- failure taxonomy。
 
 ---
 
-## 6. 开学前的第一优先级：先验证机械效应
+## 7. 机械 Pre-Pilot 先于大规模 VLA
 
-在正式训练 VLA 前，先用固定脚本 / 状态控制回答：
+在正式训练前，先用固定脚本 / 状态控制验证：
 
-> **不依赖学习策略时，8 / 14 / 25 mm 三种手指是否已经表现出与任务相关的机械差异？**
+> **不依赖学习策略时，8 / 14 / 25 mm 是否已经产生可解释的 task-dependent mechanical effect？**
 
-推荐进行一次 Pre-Pilot：
+推荐第一轮：
 
 ```text
 3 种手指 × 4 个任务 × 5 次
-= 60 次小规模机械试验
+= 60 次 Pre-Pilot
 ```
 
-如果时间充足可扩展到每格 10 次，即 120 次。
+重点检查：
 
-此阶段不追求统计显著性，重点检查：
+1. 是否所有手指都接近 100%，任务太简单；
+2. 是否所有手指都接近 0%，任务太难；
+3. 8 mm 与 14 mm 是否可区分；
+4. 25 mm 在精细任务中是否仍然可做；
+5. 25 mm 在稳定任务中是否确有稳定性优势；
+6. 差异是否来自进入空间、碰撞、滑移、转动等可解释机制。
 
-1. 任务是否太简单，所有夹爪几乎 100% 成功；
-2. 任务是否太难，所有夹爪几乎全部失败；
-3. 8 mm 与 14 mm 是否具有可观察差异；
-4. 25 mm 在 P1/P2 中是否仍然“可做但更困难”；
-5. 25 mm 在 W1/W2 中是否表现出实际稳定性优势；
-6. 失败是否能解释为进入空间、碰撞、滑移、转动、掉落等形态相关因素。
-
-理想的早期趋势不是某个手指总体最好，而是类似：
-
-```text
-P 类任务：8 mm > 14 mm > 25 mm
-W 类任务：25 mm > 14 mm > 8 mm
-```
-
-真实结果不需要严格单调，但至少应该出现可解释、可重复的 task × morphology 交互趋势。
+如果机械层本身没有任何可辨识交互趋势，不应直接投入大量 VLA 数据采集。
 
 ---
 
-## 7. 开学前的 Learning PoC：只跑通一条最短链路
+## 8. Learning PoC：先跑通最短链路
 
-开学前不要求立即完成三种手指 × 四任务的完整 VLA。
-
-第一版学习 PoC 只做：
-
-```text
-任务：W1 宽瓶搬运
-手指：G_N = 14 mm
-目标：跑通完整 learning pipeline
-```
-
-需要跑通：
-
-```text
-真机 / 仿真 observation
-        ↓
-数据集
-        ↓
-训练
-        ↓
-checkpoint
-        ↓
-policy inference
-        ↓
-Piper / 仿真机器人 rollout
-        ↓
-日志与成功判定
-```
-
-### 为什么先选 W1
-
-相比 Type-C 插入，宽瓶搬运：
-
-- 接触精度要求更低；
-- 更容易采集示教；
-- 更容易判断策略是否真的学会；
-- 能快速验证 observation → action → robot 的完整链路；
-- 不会因为插接精度问题掩盖训练管线本身的问题。
-
-因此开学前 Learning PoC 的目标只有：
-
-> **证明整个策略训练与部署闭环能够工作，而不是追求论文级成功率。**
-
----
-
-## 8. 真机少量示教与仿真 PoC 两条路线
-
-### 路线 A：少量真机示教
-
-如果 Piper 遥操作和数据记录已经稳定：
-
-1. 使用 `G_N = 14 mm`；
-2. 只采 W1；
-3. 采一批质量较高的 demonstration；
-4. 训练一个最简单可工作的 imitation / VLA baseline；
-5. 在真机上做少量 rollout；
-6. 验证训练、部署、日志闭环。
-
-第一轮不要追求复杂模型，只需要能够快速迭代。
-
-### 路线 B：仿真优先
-
-如果真机数据采集管线还不成熟，可先在仿真中建立：
-
-```text
-Piper / 对应机器人模型
-+
-14 mm 中性手指
-+
-瓶体
-+
-桌面和目标区域
-```
-
-先让一个简单策略完成 W1 的抓取与搬运，再把 observation / action / dataset / checkpoint 结构设计成以后可以迁移到真机。
-
-### Cosmos 的定位
-
-Cosmos 相关能力可以作为一个 **可选的策略 / 世界模型 PoC** 来尝试，但开学前不把 Cosmos 设为主线 Gate。
-
-如果使用 Cosmos，仍应明确区分：
-
-- 物理接触与机器人动力学仿真；
-- 数据生成 / 世界模型；
-- 策略学习。
-
-开学前的判断标准不是“有没有成功使用 Cosmos”，而是：
-
-> **有没有跑通一条可复用的 learning pipeline。**
-
-如果 Cosmos 配置成本过高，应立即退回更简单的仿真 / imitation baseline，避免新工具拖慢机械实验。
-
----
-
-## 9. Learning PoC 之后的第一个跨形态测试
-
-当 W1 + `G_N = 14 mm` 的策略已经能执行后，可以做一个很有价值的早期测试：
-
-```text
-同一个冻结 policy
-        ↓
-G_P = 8 mm
-G_N = 14 mm
-G_W = 25 mm
-```
-
-不重新训练，只替换 finger morphology。
-
-这个实验不作为最终主实验，而是用于早期观察：
-
-- policy 对形态变化是否敏感；
-- 哪些失败来自机械差异；
-- 哪些失败可能来自视觉外观变化；
-- 是否需要显式 morphology conditioning。
-
-之后才进入真正的共享策略：
-
-```text
-三种手指数据合并
-        ↓
-共享训练池
-        ↓
-一个策略
-        ↓
-无形态输入 / 离散 ID / 连续几何参数
-```
-
----
-
-## 10. 三种共享策略对照
-
-正式方法至少比较：
-
-### Baseline A：无形态输入
-
-```text
-π(a | image, robot_state, language)
-```
-
-模型不知道当前是 8 / 14 / 25 mm。
-
-### Baseline B：离散 Gripper ID
-
-```text
-π(a | image, robot_state, language, gripper_id)
-```
-
-其中：
-
-```text
-G_P / G_N / G_W
-```
-
-### Method C：连续形态参数
-
-第一版最小输入可直接使用：
-
-```text
-m_g = [tip_width]
-```
-
-如果后续正式形态不仅宽度发生变化，再扩展为：
-
-```text
-m_g = [tip_width, length, corner_radius, mass, ...]
-```
-
-第一版只改变宽度时，不必为了“看起来复杂”人为加入没有发生变化的参数。
-
----
-
-## 11. 开学前需要购买 / 准备的实验物品
-
-### P1
-
-- [ ] 带 Type-C 接口的固定模块 / 插排 / 扩展坞；
-- [ ] Type-C 公头；
-- [ ] Type-C 刚性夹持手柄或自制固定件；
-- [ ] 接口定位夹具。
-
-### P2
-
-- [ ] 一个窄盒 / 自制窄槽；
-- [ ] 若干尺寸合适的小刚体；
-- [ ] 可重复定位底座；
-- [ ] 后续可替换的不同宽度侧壁。
-
-### W1
-
-- [ ] 一个较宽瓶体；
-- [ ] 至少 2–3 个不同直径 / 质量的候选瓶体；
-- [ ] 桌面初始位置标记；
-- [ ] 目标放置区域。
-
-### W2
-
-- [ ] 一个宽纸盒或塑料盒；
-- [ ] 2–3 个不同尺寸 / 质量的候选盒体；
-- [ ] 初始定位区；
-- [ ] 目标放置区。
-
-### 通用
-
-- [ ] 8 mm finger；
-- [ ] 14 mm finger；
-- [ ] 25 mm finger；
-- [ ] 共用安装件；
-- [ ] 称重工具；
-- [ ] 卡尺；
-- [ ] 备用打印件 / 螺钉；
-- [ ] 实验视频拍摄方案；
-- [ ] 数据备份设备。
-
----
-
-## 12. 开学前具体执行清单
-
-目标日期：**2026-09-06**
-
-### A. 手指硬件
-
-- [ ] 完成统一母模型；
-- [ ] 导出 8 / 14 / 25 mm 三个版本；
-- [ ] 检查相同长度、相同根部、相同接口和 TCP；
-- [ ] 完成第一轮打印；
-- [ ] Piper 实际安装；
-- [ ] 检查完全张开 / 闭合时是否碰撞；
-- [ ] 修改并打印 V1；
-- [ ] 测量实际宽度；
-- [ ] 记录质量；
-- [ ] 拍摄三种手指对比照片。
-
-### B. 四任务场景
-
-- [ ] P1 Type-C 夹具完成；
-- [ ] P2 窄盒 / 窄槽完成；
-- [ ] W1 宽瓶场景完成；
-- [ ] W2 宽盒场景完成；
-- [ ] 为每个任务写清初始状态；
-- [ ] 写清成功条件；
-- [ ] 写清失败条件；
-- [ ] 写清超时时间；
-- [ ] 固定相机位置和桌面位置。
-
-### C. Trial 系统
-
-每次 trial 建议自动生成唯一 ID，例如：
-
-```text
-20260828_P2_GP_obj01_seed03_trial04
-```
-
-建议目录：
-
-```text
-trial_xxxxxx/
-├── config.json
-├── robot_state.csv
-├── gripper_state.csv
-├── result.json
-├── camera_1.mp4
-├── camera_2.mp4
-└── notes.txt
-```
-
-开学前至少完成：
-
-- [ ] 自动 trial 编号；
-- [ ] config 保存；
-- [ ] robot state 保存；
-- [ ] 视频统一命名；
-- [ ] success / failure 字段；
-- [ ] failure type 字段；
-- [ ] 数据自动备份或一键备份。
-
-### D. Scripted Mechanical Pre-Pilot
-
-- [ ] P1 固定脚本能执行；
-- [ ] P2 固定脚本能执行；
-- [ ] W1 固定脚本能执行；
-- [ ] W2 固定脚本能执行；
-- [ ] 三种 finger 均可正常安装与运行；
-- [ ] 完成至少 60 次小规模 trial；
-- [ ] 统计每种主要失败模式；
-- [ ] 判断 8 / 14 / 25 是否保留到下一阶段。
-
-### E. Learning PoC
-
-最低目标：
+第一版只做：
 
 ```text
 G_N = 14 mm
@@ -616,467 +309,268 @@ G_N = 14 mm
 W1 宽瓶搬运
 ```
 
-- [ ] 确定 observation；
-- [ ] 确定 action space；
-- [ ] 建立 dataset 格式；
-- [ ] 采少量真机 demonstration 或建立仿真数据；
-- [ ] 训练至少一个简单 policy；
-- [ ] 保存 checkpoint；
-- [ ] 做 rollout；
-- [ ] 自动保存 rollout 日志；
-- [ ] 记录失败原因。
-
-如果有余力：
-
-- [ ] 同一冻结 policy 直接测试 8 / 14 / 25 mm；
-- [ ] 尝试 Cosmos 相关仿真 / policy PoC；
-- [ ] 记录 sim-to-real 需要补齐的接口。
-
-这些属于 **加分项，不阻塞 9 月 6 日 Gate**。
-
----
-
-## 13. 开学前的 Gate 0
-
-### 日期
-
-**2026-09-06**
-
-### 必须达到
-
-- 三种 finger 都能装上 Piper 并正常开合；
-- 8 / 14 / 25 mm 实际尺寸有测量记录；
-- P1/P2/W1/W2 四个实验场景能重复搭建；
-- 至少一个统一 scripted control 流程可以批量跑 trial；
-- trial logging 与视频命名可用；
-- 至少完成一次小规模 mechanical Pre-Pilot；
-- 已经知道目前最主要的 failure modes。
-
-### 强烈希望达到
-
-- `G_N = 14 mm + W1` 的 learning pipeline 至少在仿真或真机中跑通一次；
-- 能完成 dataset → train → checkpoint → rollout；
-- 不要求高成功率。
-
-### 不要求达到
-
-- 三种手指共享 VLA 已经训练完成；
-- Type-C VLA 插接已经稳定；
-- 720 次正式实验；
-- morphology selector；
-- 自动换爪；
-- Cosmos 成为完整主训练系统。
-
----
-
-## 14. 真实时间约束
-
-### 学期安排
-
-- 开学：**2026-09-07**
-- 平时绝大多数时间在学校；
-- 正常情况下每周约 **1 个完整周末日**可以去交大实验室；
-- 学校到交大实验室单程约 **1.5 小时**。
-
-### 集中实验窗口
-
-- 中秋节：约 3 天；
-- 国庆节：约 7 天；
-- 元旦：约 3 天；
-- 寒假集中交大实验时间：**2027-01-11 至 2027-01-24（最晚）**；
-- 下学期开学：**2027-02-22**。
-
-整个项目不能按照日历天数规划，而必须按照 **真实可用机器人机时** 规划。
-
-按约 32–35 个可靠真机日进行保守规划。
-
-> **实验室日应该尽可能成为“执行日”，而不是“开发环境日”。**
-
----
-
-## 15. 学校与交大实验室的工作分工
-
-### 学校 / 远程完成
-
-- 文献阅读；
-- CAD 修改；
-- 仿真；
-- policy 代码；
-- dataset 工具；
-- 训练；
-- checkpoint 对比；
-- replay；
-- 统计代码；
-- 画图；
-- 实验配置准备；
-- 分析上一周失败；
-- 论文写作。
-
-### 交大实验室完成
-
-- Piper 标定；
-- finger 安装；
-- 夹具安装；
-- 真机示教；
-- mechanical pilot；
-- policy rollout；
-- 正式 trial；
-- 硬件相关 ablation；
-- 最终视频证据。
-
-理想周循环：
-
-```text
-学校 6 天
-    ↓
-代码 / 训练 / 仿真 / 分析 / 准备下一批实验
-    ↓
-冻结周末实验配置
-    ↓
-交大 1 天
-    ↓
-标定 → 连续执行 → 采数据 → 备份
-    ↓
-回学校分析
-```
-
----
-
-## 16. 关键里程碑
-
-| 日期 | 必须达到的状态 |
-|---|---|
-| **2026-09-06** | Gate 0：三手指 + 四任务 Prototype + logging + Mechanical Pre-Pilot；尽量完成 W1 Learning PoC |
-| **2026-09-27** | Gate 1：至少一个精细任务和一个稳定任务出现可重复的 morphology 优势 |
-| **2026-10-07** | 国庆集中攻关结束：至少两个任务跑通完整 policy 闭环 |
-| **2026-11-01** | Gate 2：共享策略 pipeline 稳定，可重复采集数据 |
-| **2026-12-13** | 主要训练数据基本完成，模型候选与实验配置准备冻结 |
-| **2026-12-14** | Gate 3：硬件、任务、测试对象、指标和模型选择规则冻结 |
-| **2027-01-10** | 正式实验已开始，理想状态完成约 150–250 次有效 trial |
-| **约 2027-01-20** | 完成 720 次主实验 |
-| **2027-01-24** | **所有必须依赖交大真机的实验结束** |
-| **2027-02-07** | 完整论文初稿 v1 |
-| **2027-02-14** | 内部审稿版 |
-| **2027-02-21** | **个人 submission-ready deadline** |
-| **2027-03-01** | IROS 2027 目标截稿日 |
-
----
-
-## 17. 国庆集中攻关目标
-
-**2026-09-28 → 2026-10-07**
-
-七天国庆窗口是第一次真正的系统集成 Sprint。
-
-最重要的不是高成功率，而是跑通：
+目标不是论文级成功率，而是跑通：
 
 ```text
 observation
     ↓
-policy / VLA
+dataset
     ↓
-action
+training
     ↓
-Piper
+checkpoint
     ↓
-gripper
+policy inference
     ↓
-task execution
+Piper rollout
     ↓
 automatic logging
 ```
 
-10 月 7 日前希望达到：
-
-- 至少两个任务能闭环运行；
-- 三种 finger 都能被统一 pipeline 支持；
-- observation format 冻结；
-- action representation 冻结；
-- camera / robot 同步稳定；
-- 日志完整；
-- 模型启动和评估脚本可重复执行。
-
-同时尽量提前承担原本 11–12 月的一部分数据采集。
+W1 比 Type-C 插接更适合作为第一条 learning pipeline，因为接触精度要求更低，能减少“机械精度问题”和“训练管线问题”的混淆。
 
 ---
 
-## 18. 11 月到 12 月：数据和共享策略阶段
+## 9. 第一个 morphology-shift 实验
 
-**2026-11-02 → 2026-12-13**
-
-周末真机时间优先用于：
-
-- demonstration 采集；
-- 真机预实验；
-- 三种 morphology 的统一测试；
-- 真实 failure mode 验证。
-
-学校时间用于：
-
-- 训练无形态输入 baseline；
-- 训练离散 ID baseline；
-- 训练连续 width conditioning；
-- 多随机种子训练；
-- 离线评估；
-- 统计脚本；
-- 图表模板。
-
-此阶段避免继续大幅修改网络结构和机械设计。
-
----
-
-## 19. 正式实验冻结
-
-**2026-12-14** 冻结：
-
-- `8 / 14 / 25 mm` 三种 finger；
-- P1/P2/W1/W2；
-- task fixture；
-- train / validation / test 物体划分；
-- observation；
-- action space；
-- policy checkpoint / model selection rule；
-- success criterion；
-- failure taxonomy；
-- primary metrics；
-- statistical analysis plan。
-
-之后不能因为看到正式结果不理想就重复修改任务和形态。
-
----
-
-## 20. 正式真实机器人实验
-
-**2026-12-15 → 2027-01-24**
-
-目标：
+当 `G_N = 14 mm + W1` 的策略可以运行后，直接冻结 policy：
 
 ```text
-720 valid paired real-robot trials
+同一个 checkpoint
+        ↓
+8 mm
+14 mm
+25 mm
 ```
 
-前 5% 用作 smoke test，确认：
+不重新训练。
 
-- logging；
-- calibration；
-- initial condition；
-- success / failure 判据；
-- 视频；
-- randomization。
+这个 early pilot 用来观察：
 
-正式 trial 按 gripper / task / object / seed 随机化顺序。
+- 换手指后 performance 是否下降；
+- 哪些失败来自纯机械限制；
+- 哪些失败来自视觉外观变化；
+- 哪些失败来自同一个 action 在不同 morphology 下产生不同物理结果。
 
-如果全部压到 1 月 11–24：
+从研究角度，可以把它理解为：
 
 ```text
-720 / 14 ≈ 52 trials/day
+P_test(m = 8)
+P_test(m = 14)
+P_test(m = 25)
 ```
 
-因此目标是在 1 月 11 日前已经完成约 150–250 次正式 trial，让寒假集中期成为批量实验，而不是系统开发。
+之间是否存在可测量的 execution distribution shift。
 
 ---
 
-## 21. 寒假真机总攻：2027-01-11 → 2027-01-24
+## 10. 一个必须重视的消融：视觉形态泄漏
+
+如果腕部相机能直接看到 finger，模型即使没有显式 `tip_width`，也可能从图像中推断当前 morphology。
+
+因此“无 morphology 输入”不能自动等价于“模型不知道 morphology”。
+
+建议至少预注册以下 2 × 2 消融：
+
+| | width token OFF | width token ON |
+|---|---:|---:|
+| finger visible | A | B |
+| finger masked / 仅第三视角 | C | D |
+
+它可以回答：
+
+1. VLA 是否会隐式识别自己的 embodiment；
+2. 显式几何参数是否在视觉已经可见时仍有增益；
+3. 当 morphology 外观被遮罩后，连续 width conditioning 是否更加重要。
+
+---
+
+## 11. Unseen Morphology：真正的跨形态泛化实验
+
+三种训练宽度全部被模型见过时，连续 `tip_width` 可能只是另一种 ID 编码。
+
+因此如果主线进度健康，可额外打印一个：
+
+```text
+G_U = unseen width
+```
+
+它：
+
+- 不参与训练；
+- 不参与模型选择；
+- 只在主实验完成后用于测试。
+
+此时才能真正问：
+
+> **Can a geometry-conditioned shared policy generalize to an unseen end-effector morphology?**
+
+`G_U` 的结果单独报告，不与 8 / 14 / 25 mm 主矩阵混合统计。
+
+---
+
+## 12. 少量纠正数据的 morphology adaptation
+
+另一个高级扩展是参考 DAgger：
+
+```text
+已训练 morphology
+      ↓
+切换到另一 morphology
+      ↓
+performance drop
+      ↓
+人工纠正少量失败状态
+      ↓
+0 / 5 / 10 / 20 corrections
+      ↓
+性能恢复曲线
+```
+
+研究问题：
+
+> **How much corrective experience is required for a VLA to adapt to a new end-effector morphology?**
+
+这可以把项目进一步连接到 embodiment adaptation / robot generalization，但它是高级扩展，不能阻塞 720 次主实验。
+
+---
+
+## 13. Kai0 / openpi 对本项目的定位
+
+[`OpenDriveLab/kai0`](https://github.com/OpenDriveLab/kai0) 对本项目最有价值的是 **工程基础设施和 train–deploy alignment 思想**，而不是把它的全部算法搬进论文。
+
+优先参考 / 复用：
+
+- openpi / π₀.₅ fine-tuning；
+- LeRobot dataset pipeline；
+- policy server / client inference；
+- Piper + RealSense 部署经验；
+- temporal smoothing / ensembling；
+- DAgger 数据采集逻辑；
+- 数据转换与 augmentation 工具。
+
+暂不进入主线：
+
+### Model Arithmetic
+
+可以研究：
+
+```text
+π8 + π14 + π25 → πmerged
+```
+
+但这需要 morphology-specific checkpoints，会破坏主实验的：
+
+> **Same Brain, Different Fingers**
+
+因此只允许作为 appendix / future work，不代替 shared checkpoint 主结果。
+
+### Stage Advantage
+
+更适合长程、多 semantic stage 的操作。当前 P1/P2/W1/W2 不为使用该方法而人为复杂化。
 
 原则：
 
-> **除非现有系统完全不可用，否则不再进行 architecture-level development。**
-
-### 1 月 11–12 日
-
-- 标定；
-- smoke test；
-- 三种 finger 验证；
-- 四任务验证；
-- logging / randomization 检查。
-
-### 1 月 13–18 日
-
-- 高吞吐主实验。
-
-### 1 月 19–20 日
-
-- 完成剩余 720 主实验矩阵。
-
-### 1 月 21–22 日
-
-- 必须依赖真机的 morphology ablation；
-- scripted mechanical baseline；
-- shared-policy 对照；
-- 如果论文需要，再做视觉遮挡消融。
-
-### 1 月 23 日
-
-- 按预注册规则补跑设备故障 / 缺失 trial；
-- 最终视频。
-
-### 1 月 24 日
-
-- 最终数据审计；
-- trial 数核对；
-- metadata 检查；
-- 多份备份；
-- 真机数据集冻结。
-
-**所有必须依赖交大实验室的实验原则上在这一天结束。**
+> **用 Kai0 帮我们少造基础设施，不让 Kai0 改写我们的研究问题。**
 
 ---
 
-## 22. 论文期：2027-01-25 → 2027-02-21
+## 14. Scope Control
 
-这个阶段原则上不再依赖真机。
-
-主要任务：
-
-- 数据清洗；
-- 混合效应逻辑回归；
-- 置信区间；
-- object-level 结果；
-- `gripper × task_type` interaction；
-- `Delta_match`；
-- failure mode；
-- 图表；
-- 论文；
-- supplementary；
-- 视频；
-- 代码整理；
-- 数字独立复算。
-
-内部截止：
-
-- **2027-02-07：** 全文 v1；
-- **2027-02-14：** 内部审稿版；
-- **2027-02-18：** 主图、表、补充材料、视频冻结；
-- **2027-02-21：** submission-ready。
-
-由于 2 月 22 日开学，2 月 21 日作为个人实际 deadline。
-
----
-
-## 23. 每周项目 Dashboard
-
-每周只更新少量关键数字：
-
-- CAD / fixture 完成情况；
-- 有效 demonstrations 数；
-- 有效 pre-trial 数；
-- 有效 formal trial 数；
-- P1/P2/W1/W2 闭环状态；
-- logging 完整率；
-- 主要失败模式；
-- 预计完成 720 次的日期；
-- 当前最大 blocker；
-- 距离下一 Gate 的未完成项。
-
-模板：
+### 主线必须完成
 
 ```text
-Week:
-
-Hardware:
-- G_P 8 mm:
-- G_N 14 mm:
-- G_W 25 mm:
-
-Tasks:
-- P1 Type-C:
-- P2 Narrow Box:
-- W1 Bottle:
-- W2 Wide Box:
-
-Data:
-- valid demonstrations:
-- valid pre-trials:
-- valid formal trials:
-- logging completeness:
-
-Models:
-- no morphology input:
-- discrete gripper ID:
-- continuous width:
-
-Largest blocker:
-
-Estimated 720-trial completion date:
-
-Next Gate:
-
-Decision:
-- on track / at risk / fallback required
+8 / 14 / 25 mm 硬件验证
+        ↓
+Mechanical Pre-Pilot
+        ↓
+Learning PoC
+        ↓
+Frozen-policy morphology-shift pilot
+        ↓
+共享策略：none / ID / continuous width
+        ↓
+720 次正式实验
+        ↓
+视觉泄漏与 morphology conditioning 消融
 ```
 
----
+### 高价值扩展
 
-## 24. 当前风险优先级
+- unseen morphology `G_U`；
+- DAgger few-correction adaptation；
+- morphology selector；
+- 更多任务。
 
-1. **到 10–11 月 policy pipeline 仍不稳定；**
-2. Mechanical Pre-Pilot 没有出现可解释的 morphology × task 趋势；
-3. 真机示教采集消耗过多稀缺机时；
-4. Type-C 插接任务过难，反过来拖慢整体闭环；
-5. fixture 不可重复；
-6. 日志或视频不完整；
-7. 正式实验启动太晚；
-8. Cosmos / 新 VLA / 新仿真框架带来额外工程负担；
-9. 被自动选爪、自动换爪等加分项分散注意力；
-10. 所有论文工作都拖到实验结束后才开始。
+### 不得阻塞主线
 
-整个项目应该优先优化：
-
-> **早闭环、早发现失败、早冻结变量，而不是尽早堆复杂方法。**
-
----
-
-## 25. Scope Control
-
-以下内容均为加分项，不得阻塞最小论文闭环：
-
-- 自动 morphology selector；
-- 普通插头 / 旋钮 / 螺母等混合任务；
-- 六任务 / 1080 次扩展；
+- Model Arithmetic；
 - 自动换爪；
 - 复杂 morphology generation；
-- 新增大量触觉或其他传感器；
+- 大量新增传感器；
 - Cosmos 深度集成；
-- 更复杂的 adaptive control。
-
-优先级始终保持：
-
-```text
-证明 8 / 14 / 25 mm 的机械差异
-        ↓
-跑通一个最简单 Learning PoC
-        ↓
-跑通三 morphology 共享策略
-        ↓
-完成 720 次正式证据
-        ↓
-完成 morphology conditioning 消融
-        ↓
-最后才增加自动选择或其他扩展
-```
+- architecture-level 大改。
 
 ---
 
-## 26. 当前立即执行
+## 15. 当前时间线
 
-从现在到开学前，按优先级执行：
-
-1. **CAD：** 完成 8 / 14 / 25 mm 三档统一手指；
-2. **采购：** Type-C 固定接口、窄盒 / 槽、宽瓶、宽盒；
-3. **夹具：** 为 P1/P2/W1/W2 建立可重复位置；
-4. **日志：** trial ID、config、robot state、video、result；
-5. **机械脚本：** 四任务至少跑通固定 scripted motion；
-6. **Pre-Pilot：** 至少完成 60 次三形态 × 四任务小试；
-7. **分析：** 判断 8 / 14 / 25 是否确实产生可解释的任务相关差异；
-8. **Learning PoC：** 优先 `G_N 14 mm + W1 宽瓶搬运`；
-9. **仿真可选：** 用简单仿真或 Cosmos 相关流程验证 policy pipeline；
-10. **开学前冻结：** hardware v1、四任务 prototype、logging v1、主要 failure taxonomy。
+| 日期 | Gate / 目标 |
+|---|---|
+| **2026-09-06** | Gate 0：三手指 + 四任务 Prototype + logging + Mechanical Pre-Pilot；尽量完成 W1 Learning PoC |
+| **2026-09-28** | Gate 1：至少一个精细任务和一个稳定任务出现方向相反、可重复的 morphology 优势 |
+| **2026-10-07** | 国庆 Sprint：至少两个任务跑通完整 policy 闭环 |
+| **2026-11-02** | Gate 2：共享策略 pipeline 稳定，并完成 frozen-policy 跨形态 pilot |
+| **2026-12-14** | Gate 3：硬件、任务、测试对象、模型、指标和主假设冻结 |
+| **2027-01-24** | 所有必须依赖真机的主实验原则上结束 |
+| **2027-02-07** | 全文 v1 |
+| **2027-02-14** | 内部审稿版 |
+| **2027-02-21** | submission-ready |
+| **2027-03-01** | IROS 2027 目标截稿 |
 
 ---
 
-## 仓库文档
+## 16. 当前立即执行
 
-- [`README.md`](./README.md)：根据真实时间与最新实验方案维护的执行计划；
-- [`IROS_2027_TODO.md`](./IROS_2027_TODO.md)：详细研究协议、统计方案、Gate 与原始 TODO。
+### 2026-08-24：打印与装机
 
-README 可以随着真实项目进度持续调整；正式实验协议一旦进入冻结阶段，则只能通过明确的研究决策修改，不能因为测试结果不理想而随意改变。
+- [ ] 打印 8 / 14 / 25 mm 三种 finger；
+- [ ] 记录实际宽度、质量、材料和打印参数；
+- [ ] 逐一安装到 Piper；
+- [ ] 检查张开、闭合、左右对称和机械干涉；
+- [ ] 检查接触中心和 TCP 一致性；
+- [ ] 拍摄固定机位装机记录；
+- [ ] 记录腕部相机中 finger 是否明显可见。
+
+### 2026-08-25 至 08-30：机械冒烟测试
+
+- [ ] 完成 3 种 finger × 当前 3 个对象的 3–5 次冒烟测试；
+- [ ] 记录 success / fail；
+- [ ] 记录 collision；
+- [ ] 记录 slip；
+- [ ] 记录 rotation；
+- [ ] 记录 drop；
+- [ ] 记录 cannot-enter；
+- [ ] 记录 regrasp；
+- [ ] 确定四任务夹具与难度；
+- [ ] 定义 trial 开始 / 成功 / 失败 / 超时标准；
+- [ ] 建立统一日志和视频命名。
+
+本阶段不做：
+
+- 不因为某几次结果不好就改 8 / 14 / 25 mm；
+- 不在机械效应没有被确认前采大量 VLA 数据；
+- 不把现有三个物体直接当最终测试集；
+- 不训练三个独立 policy 冒充 shared policy；
+- 不为了使用 Kai0 的全部模块而改变论文问题。
+
+---
+
+## 17. 仓库文档
+
+- [`README.md`](./README.md)：研究问题、主实验、Kai0 启示和当前执行路线；
+- [`IROS_2027_TODO.md`](./IROS_2027_TODO.md)：完整实验协议、统计方案、Gate、扩展实验与投稿决策。
+
+项目原则：
+
+> **早闭环、早发现失败、早冻结变量；先证明物理效应，再增加学习复杂度。**
