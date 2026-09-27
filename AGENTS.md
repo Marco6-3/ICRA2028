@@ -1,43 +1,59 @@
-# 科研协作约定
+# Research Workspace Rules
 
-本仓库是具身智能机器人操作的科研工作区。研究范围与候选问题以 README.md 和 docs/RESEARCH_DIRECTIONS.md 为准，用户本轮明确指令优先。当前处于重新选题阶段，不能将推荐问题自动写成已冻结主线。
+本仓库是机器人操作研究 idea 工作区。README.md 是方向索引，具体研究问题放在 `ideas/`。
 
-## 研究者背景与协作目的
+## 1. 不恢复已删除旧方向
 
-研究者为机械类、智能制造方向本科生，对机械结构、多模态感知、机器人学习与物理交互感兴趣。机械设计、制造约束和对真实接触的理解可以用于提出问题、控制变量和设计测量，不把专业背景当作能力上限。
+用户已经明确要求：此前仓库中的所有旧研究方向均不再保留。不要从 Git 历史、旧摘要、旧 TODO 或其他对话中自动恢复 OM-1、旧 D1-D7、夹爪宽度、旧 pilot 等内容。需要追溯时只通过 Git history 查看，不重新写回当前目录，除非用户再次明确要求。
 
-帮助研究者形成可靠问题和证据。主动检查问题是否真实、相关工作已经做到什么、方法是否只是工程组合、评价能否支持贡献。不直接附和猜想，不预设一定使用大模型。
+## 2. 一个 idea 一个文件
 
-## 方案应回答的问题
+每个 idea 使用独立文件：
 
-技术方案覆盖以下六项，可按需要采用自然段或表格：
-A. Problem：具体机器人问题是什么？
-B. Existing work：现有方法已经解决什么，什么仍未被验证？不得编造现有方法必然失败。
-C. Hypothesis：假设、竞争解释和适用边界是什么？
-D. Method：需要哪些观测、学习方法、控制与机械实现？
-E. Evaluation：基线、消融、失败案例、未见条件、物理约束和统计单位是什么？
-F. Publication potential：什么证据足以构成贡献，现阶段还缺什么？
+```text
+ideas/Ixxx_SHORT_NAME.md
+```
 
-视觉、触觉、力/力矩、本体状态和状态估计均按问题需要选择；学习方法同理，不要求堆齐所有模态或算法。
+README 只维护索引和极短摘要，不把某一个 candidate 自动提升为整个仓库唯一主线。
 
-## 证据与实验
+每个 idea 建议包含：
 
-- 区分用户报告、作者报告、核验过的原始记录、推断、待检验假设；未运行不得声称复现。
-- 论文日期、版本、已读范围与 URL 应可追溯；有限检索不能证明“首次”。
-- 权重图、注意力图、聚类或线性可解码性不足以证明功能定位；结合有效干预和闭环行为。
-- 真机证据用于支持现实部署主张；仿真与离线研究可先用于筛选与诊断，明确外推限制。
-- 对接触任务检查基线、消融、失败模式、鲁棒性、未见物体与物理约束。
-- 帧和窗口不是独立试验；按物体、轨迹、采集批次和训练种子组织评价，保留不确定性。
-- 原始信号、标定、时间戳、失效记录与有效结果共同保存，不能只保留成功视频。
-- 任何在线方法只能用决策时刻以前已到达的信息。采样率、通信率、策略率与执行率分别测量。
-- 当前工作以文献与方案为主；实体机器人执行按实验室流程由现场人员监督，计划文档不等于已经运行。
-- 设备与时间信息以 IROS_2027_TODO.md 的带日期上下文为准；不把历史资源自动视为当前已预约。
+- Problem
+- Why the problem may exist
+- Terminology / scope
+- Hypotheses
+- Proposed architecture or method
+- Data and sensing requirements
+- Mechanics / physics variables worth measuring
+- Minimal experiments
+- Baselines and ablations
+- Metrics
+- Generalization split
+- Falsification / stop conditions
+- Risks and nearest-work questions
+- Next actions
 
-## 仓库维护
+## 3. 科研表述
 
-保持一个明确问题、一个可运行基线和一套可检查证据。需要更多研究空间时更新候选地图，不把多个课题强行拼成一篇论文。
+- “可能”“假设”“待验证”与“已经实验证明”必须严格区分。
+- 不因为结构看起来合理就宣称新颖性；相关工作需要单独检索。
+- attention、latent visualization、linear probe 等只能作为诊断，不单独证明因果机制。
+- 先设计能推翻假设的实验，再考虑扩模型。
+- 评价按 episode / object / trajectory / seed 等独立单位统计，不能把连续帧当独立样本。
+- 所有在线方法只能使用决策时刻以前已到达的信息，避免未来信息泄漏。
+- 记录 sensor rate、policy rate、communication latency、actuation rate 与 end-to-end reaction latency，不能只报告网络 forward latency。
 
-用户已要求撤除的课题内容不得从 Git 历史、旧摘要或旧待办自动恢复。当前目录不保留旧课题归档或链接；需要追溯时使用已有 Git 历史。不要重写历史或改动其他仓库来完成本仓库的内容更新。
+## 4. 触觉与物理变量
 
-新增实验结果时保留原假设和版本、解释新证据改变了什么；用户要求等待同步的实验不得据猜测推进。仅更新当前任务授权范围内的文件与 GitHub 状态。
+研究触觉时，不默认需要完整机器人动力学模型。优先区分：
+
+- raw tactile signal
+- contact mechanics / contact state
+- full robot dynamics
+
+法向力、剪切力、力矩、滑移、接触面积、形变、振动、变化率等可以作为测量量、privileged labels、分析变量或控制变量；是否真正有用由消融和闭环结果决定。
+
+## 5. 修改仓库时
+
+新增方向优先扩展 `ideas/`，不要把所有相近想法写进同一个文件。若一个 idea 已经明显分裂成不同科学问题，应拆成新的 ID。
 

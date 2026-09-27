@@ -1,46 +1,56 @@
-# 具身智能研究问题地图 · IROS 2027
+# Robot Manipulation Research Ideas
 
-更新：2026-09-17。状态：重新选题；下列问题均为候选，没有把建议写成已完成实验或已确定贡献。
+这个仓库用于记录和推进具身智能 / 机器人操作中的研究 idea。它不是一个已经冻结的单一课题，也不默认任何 idea 已经具备论文贡献。
 
-本仓库围绕机器人如何利用视觉、触觉与交互历史理解接触、预测动作结果，并适应新物体和工具展开。当前以一个可验证的问题为单位推进，目标是在 IROS 2027 前形成可靠证据。
+当前原则：
 
-**投稿基准：2027-03-01。** IEEE RAS 官方活动日历已列出该日期；具体时刻、时区与补充材料要求仍待详细 CFP 核验。会期为 2027-09-26 至 10-01，佛罗伦萨。[官方来源](https://www.ieee-ras.org/event/2027-ieee-rsj-international-conference-on-intelligent-robots-and-systems-iros-70525/)
+- 每个方向独立放在 `ideas/` 下，先写清问题、假设、最小实验、失败条件，再决定是否投入更多资源。
+- 新方向可以彼此相近，例如都围绕触觉、物理交互、多时间尺度控制或 in-context adaptation，但不要为了“凑一篇论文”强行合并。
+- 仓库只保留当前仍认可的研究 idea；已经放弃的旧方向不在当前目录归档，需要追溯时使用 Git history。
+- 文档中的模型结构、频率、传感器与机器人平台默认都是待验证设计，不把建议写成实验事实。
 
-## 优先看哪些问题
+## Ideas
 
-| 编号 | 方向 | 真正要回答的问题 | 当前建议 |
+| ID | 方向 | 状态 | 核心问题 |
 | --- | --- | --- | --- |
-| D1 | 触觉时间信息与多频率融合 | 在控制频率相同时，关键接触事件的时间位置是否比增加样本数更重要？ | 优先小试 |
-| D2 | 多模态策略的真实依赖 | 模型利用的是当前接触信息，还是触觉中的任务阶段与轨迹线索？ | 与 D1 共用实验，也可成为独立备选 |
-| D3 | 人类交互数据与跨本体迁移 | 人类接触历史提供了哪些机器人少量数据无法替代的信息？ | 最贴近 OM-1；数据链路现成时优先级上升 |
-| D4 | 短时探测与跨工具适配 | 一个非任务示范的短交互，能否让冻结策略识别工具动力学并调整动作？ | 第二梯队；先仿真筛选 |
-| D5 | 动作语义与上下文学习 | 表示能否保留“对物体造成什么效果”，并在换场景、换轨迹时仍指导动作？ | 学校可做的备选 |
-| D6 | 短期接触预测 | 预测将发生的接触变化，什么时候比仅响应当前触觉更有用？ | 需证明预测带来控制收益 |
-| D7 | SNN 与边缘触觉响应 | 在同一设备和完整链路上，稀疏事件计算是否真的降低延迟或能耗？ | 保留兴趣，暂不预设为主线 |
+| [I001](ideas/I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md) | 高频触觉反馈中的时序上下文与 in-context adaptation | Candidate | 高频触觉策略是否应利用短期历史估计当前接触状态，并利用更长的交互历史在线推断接触动力学，从而在不更新权重的情况下调整局部控制？ |
 
-**当前推荐：先用 D2 的干预方法检查 D1 的现象。** 若事件时间信息没有稳定影响，就缩小结论或换问题；若有效，再研究怎样以较少输入保留关键事件。这个组合连接了触觉、OM-1 的原生频率输入，以及你关心的模型可解释性。它不要求先搭建一个通用基础模型。
+后续新增方向时，在 `ideas/` 中创建新的 `Ixxx_*.md`，并把索引加入上表。
 
-这里的排序是按当前资源与时间做的建议，不是用户已选定方向。近期工作已覆盖慢快触觉控制、执行期间的触觉更新、跨传感器对齐、动作潜变量和触觉预测；这些组件本身不构成新颖性证明。详见相关工作表。
+## 当前 I001 的一句话版本
 
-## 长期路线：Physical Intelligence
+瞬时触觉通常不足以判断“是否应该修正动作”。当前 idea 将触觉控制拆成两个时间尺度：
 
-在当前候选问题之外，仓库新增了一条不等于当前投稿主线的长期路线：
+```text
+slow semantic / task policy
+        │
+        │ nominal action
+        ▼
+fast tactile loop
+  short history  -> current contact state
+  long context   -> contact dynamics / object property
+        │
+        ▼
+ residual correction
+```
 
-> 触觉表征 → 物理状态估计 → 高频局部策略 → 与通用 VLA / general policy 的多时间尺度融合。
+重点不只是“把触觉跑得更快”，而是研究：
 
-核心问题不是简单追求“把大 Transformer 跑到 1 kHz”，而是研究：哪些状态必须高频更新、哪些信息可以低频处理，以及不同时间尺度的策略怎样共享状态与动作。机械/力学先验也可以进入状态估计、约束与 residual learning，而不是只作为机械结构设计知识。
+1. **短时历史是否是高频触觉反馈真正需要的信息；**
+2. **触觉历史中是否必须同时包含 action / proprioception，才能区分环境变化和机器人自己造成的变化；**
+3. **更长的 episode interaction history 能否形成类似 in-context system identification 的能力；**
+4. **这种 fast tactile policy 是否应该作为 slow semantic policy 的 residual / local controller，而不是做成一个 monolithic multimodal policy。**
 
-详见 [Physical Intelligence Roadmap](docs/PHYSICAL_INTELLIGENCE_ROADMAP.md)。
+完整细节见 [I001](ideas/I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md)。
 
-## 文档入口
+## Repository structure
 
-- [研究方向与问题](docs/RESEARCH_DIRECTIONS.md)：每个候选的问题、已有研究边界、假设、最小实验、评价与投稿风险。
-- [Physical Intelligence Roadmap](docs/PHYSICAL_INTELLIGENCE_ROADMAP.md)：触觉表征、latent physical state、高频局部策略、多时间尺度接口与力学先验的长期研究路线。
-- [OM-1 证据与未知](docs/OM1_EVIDENCE.md)：承接 9 月 15 日讨论，区分公开接口、未知内部机制和可检验推断。
-- [首轮验证协议](docs/PILOT_PROTOCOL.md)：D1/D2 的对照、时间因果性、统计单位和继续/停止条件。
-- [IROS 2027 计划](IROS_2027_TODO.md)：资源假设、课程约束、时间节点与当前待办。
-- [触觉相关工作](docs/TACTILE_RELATED_WORK.md)：最接近的研究及可能重复之处。
-- [来源索引](docs/REFERENCES.md)：日期、动作语义、ICL、触觉预测与工具探测来源。
-- [科研协作约定](AGENTS.md)：证据标准、研究边界与仓库维护规则。
+```text
+.
+├── README.md
+├── AGENTS.md
+└── ideas/
+    ├── README.md
+    └── I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md
+```
 
-当前仅完成文献核查和方案整理。新方向尚无采集数据、训练日志或实测结果。
