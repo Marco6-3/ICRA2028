@@ -13,18 +13,18 @@
 - semantic / visuomotor reasoning 往往更慢、更贵；
 - tactile reaction 需要更快、更局部、更低延迟。
 
-因此一个核心问题不是简单地“触觉是否应该更高频”，而是：
+核心问题不是简单地“触觉是否应该更高频”，而是：
 
 > How should asynchronous slow semantic and fast tactile policies communicate under different control rates?
 
-更具体地，需要回答：
+需要回答：
 
 1. **异步运行是否优于强制同步运行？**
 2. **两个 policy 应共享多少信息？**
-3. **共享的是 coarse action、少量 learned tokens、完整 semantic latent，还是更接近全量 multimodal context？**
+3. **共享的是 coarse action、少量 learned tokens、完整 semantic latent，还是接近全量 multimodal context？**
 4. **共享信息可以陈旧多久，fast policy 仍然能够稳定工作？**
 5. **通信应该是 semantic -> tactile 单向，还是 semantic <-> tactile 双向？**
-6. **是否应该固定频率更新 semantic policy，还是由 tactile / uncertainty / contact event 触发重新规划？**
+6. **semantic policy 应固定频率更新，还是由 tactile / uncertainty / contact event 触发重新规划？**
 
 这些都作为待验证问题，不预设答案。
 
@@ -34,7 +34,7 @@
 
 [I001](I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md) 主要研究：
 
-- 高频 tactile policy 是否需要短期触觉 / action / proprioception history；
+- 高频 tactile policy 是否需要短期 tactile / action / proprioception history；
 - 更长 interaction history 是否可以形成 in-context adaptation / implicit system identification。
 
 I002 主要研究：
@@ -43,31 +43,24 @@ I002 主要研究：
 - 两个 policy 之间交换什么信息、交换多少、多久更新一次；
 - 通信机制本身如何影响闭环性能、延迟与泛化。
 
-因此：
+可以概括成：
 
-[
-	ext{I001: fast tactile policy 内部需要什么时间上下文}
-]
-
-[
-	ext{I002: fast tactile policy 与 slow semantic policy 之间如何通信}
-]
+- **I001:** fast tactile policy 内部需要什么时间上下文？
+- **I002:** fast tactile policy 与 slow semantic policy 之间如何通信？
 
 两者可以共享实验基础设施，但不是同一个科学问题。
 
 ---
 
-## 3. 为什么异步可能是必要的
+## 3. 为什么异步可能有意义
 
-一个简单同步多模态策略可以写成：
+同步多模态策略可以抽象为：
 
-[
-a_t = pi(V_t, T_t, q_t, L)
-]
+`a_t = pi(V_t, T_t, q_t, L)`
 
-其中视觉、触觉、语言和机器人状态在同一时刻一起进入同一个 policy。
+视觉、触觉、语言和机器人状态在同一时刻一起进入同一个 policy。
 
-这种设计的问题可能包括：
+潜在问题包括：
 
 - 所有模态被迫以同一 policy rate 运行；
 - semantic backbone 的推理成本限制 tactile reaction rate；
@@ -76,17 +69,13 @@ a_t = pi(V_t, T_t, q_t, L)
 
 异步设计则允许：
 
-[
-z_s^{(k)} = f_s(V,L,q), qquad f_s approx 2	ext{–}10 mathrm{Hz}
-]
+`z_s = f_s(V, L, q), semantic rate ~ 2-10 Hz`
 
-[
-a_t = f_t(T_{t-H:t}, q_t, M_t), qquad f_t approx 20	ext{–}200+ mathrm{Hz}
-]
+`a_t = f_t(T_history, q_t, M_t), tactile rate ~ 20-200+ Hz`
 
-其中 (M_t) 是 semantic 与 tactile 模块之间的共享信息。
+其中 `M_t` 是 semantic 与 tactile 模块之间的共享信息。
 
-重点不是先规定具体频率，而是研究 **multi-rate execution + communication**。
+重点不是提前规定频率，而是研究 **multi-rate execution + communication**。
 
 ---
 
@@ -94,43 +83,29 @@ a_t = f_t(T_{t-H:t}, q_t, M_t), qquad f_t approx 20	ext{–}200+ mathrm{Hz}
 
 不能预设“少量 token 一定最好”。
 
-设 semantic network 输出 hidden representation：
+设 semantic network 输出：
 
-[
-H_s in mathbb{R}^{N 	imes d}
-]
+`H_s in R^(N x d)`
 
-可以构造不同通信容量：
+可以构造不同通信容量。
 
 ### A. 只共享 coarse action
 
-[
-M = a^{semantic}
-]
+`M = a_semantic`
 
-这是最强信息瓶颈之一。
+这是很强的信息瓶颈。
 
 ### B. 共享少量 learned tokens
 
-[
-H_s
-ightarrow
-	ext{Token Compressor}
-ightarrow
-M_K in mathbb{R}^{K	imes d}
-]
+`H_s -> Token Compressor -> M_K`
 
-测试：
+测试例如：
 
-[
-K in {1,4,16,64,ldots}
-]
+`K = {1, 4, 16, 64, ...}`
 
 ### C. 共享完整 semantic latent
 
-[
-M = H_s
-]
+`M = H_s`
 
 不做显式压缩。
 
@@ -138,56 +113,54 @@ M = H_s
 
 fast tactile policy 可以访问大量 visual / language / semantic tokens。
 
-这时系统虽然仍可在软件上保持两个异步模块，但功能耦合会越来越强。
+这时系统即使软件上仍是两个异步模块，功能耦合也会越来越强。
 
-这里所谓“趋向 monolithic”不是指性能一定下降，而是：
+这里所谓“趋向 monolithic”**不是指性能一定下降**，而是可能出现：
 
 - fast loop 对完整 semantic context 的依赖增强；
 - communication bandwidth 增加；
-- high-rate inference 成本可能上升；
-- 对 stale semantic context 的脆弱性可能增加；
-- 两个时间尺度的功能独立性可能降低。
+- high-rate inference 成本上升；
+- 对 stale semantic context 的脆弱性增加；
+- 两个时间尺度的功能独立性降低。
 
-这些都需要实验验证，而不是理论上直接断言。
+这些必须通过实验验证，不能先当成结论。
 
 ---
 
 ## 5. Proposed architecture
 
-第一版可以采用显式双流：
+第一版采用显式双流：
 
 ```text
 RGB / language / task state
-            │
-            ▼
+            |
+            v
       Semantic policy
-          2–10 Hz
-            │
-            ├──── coarse action
-            │
-            └──── semantic tokens / latent
-                         │
-                         ▼
+          2-10 Hz
+            |
+            +---- coarse action
+            |
+            +---- semantic tokens / latent
+                         |
+                         v
                 Shared policy memory
-                         ▲
-                         │
-tactile history ──> Fast tactile policy
-proprioception       20–200+ Hz
-                         │
-                         ▼
+                         ^
+                         |
+tactile history --> Fast tactile policy
+proprioception       20-200+ Hz
+                         |
+                         v
                   residual / refined action
-                         │
-                         ▼
+                         |
+                         v
                  robot controller
 ```
 
-一种基础动作形式：
+基础动作形式可以先采用：
 
-[
-a_t = a_t^{semantic} + Delta a_t^{tactile}
-]
+`a_t = a_semantic + delta_a_tactile`
 
-但 residual 形式也只是 baseline，不排除：
+但 residual 形式本身也只是 baseline，不排除：
 
 - tactile policy 直接预测 refined action；
 - tactile policy 输出 action gate / gain；
@@ -202,16 +175,14 @@ a_t = a_t^{semantic} + Delta a_t^{tactile}
 
 研究 shared representation 大小：
 
-[
-K = 0,1,4,16,64,	ext{full}
-]
+`K = 0, 1, 4, 16, 64, full`
 
 观察是否存在：
 
 - saturation；
 - under-capacity；
 - over-coupling；
-- bandwidth–performance trade-off。
+- bandwidth-performance trade-off。
 
 ### 6.2 Communication content
 
@@ -226,29 +197,25 @@ K = 0,1,4,16,64,	ext{full}
 
 不提前规定 token 必须具有“task phase”“contact state”等人类语义。
 
-可以在训练后通过 probing / visualization 分析，但这些诊断不能单独证明因果。
+训练后可以通过 probing / visualization 分析，但这些诊断不能单独证明因果。
 
 ### 6.3 Staleness
 
 semantic token 在一次更新后可能被 fast tactile policy 重复使用：
 
-[
-M_{t_0}, M_{t_0}, ldots, M_{t_0}
-]
+`M(t0), M(t0), ..., M(t0)`
 
 直到下一次 semantic update。
 
-测试：
+测试例如：
 
-[
-Delta t = 0, 50, 100, 200, 500 mathrm{ms}, ldots
-]
+`delta_t = 0, 50, 100, 200, 500 ms, ...`
 
 核心问题：
 
 > How stale can semantic context become before fast tactile control degrades?
 
-同时应区分：
+同时区分：
 
 - deterministic delay；
 - random jitter；
@@ -260,17 +227,8 @@ Delta t = 0, 50, 100, 200, 500 mathrm{ms}, ldots
 
 比较：
 
-#### Uni-directional
-
-[
-semantic ightarrow tactile
-]
-
-#### Bi-directional
-
-[
-semantic leftrightarrow tactile
-]
+- **Uni-directional:** semantic -> tactile
+- **Bi-directional:** semantic <-> tactile
 
 tactile 可以向 semantic 返回：
 
@@ -280,7 +238,7 @@ tactile 可以向 semantic 返回：
 - anomaly / failure signal；
 - interaction summary。
 
-但这些信号形式本身也不应过早固定。
+但信号形式本身也不应过早固定。
 
 ### 6.5 Update schedule
 
@@ -292,32 +250,21 @@ tactile 可以向 semantic 返回：
 - tactile-event-triggered replanning；
 - adaptive semantic rate。
 
-例如 tactile policy 检测到重大接触变化后触发：
-
-[
-e_t = 	ext{replan}
-]
-
-使 semantic policy 不必始终以固定高频运行。
+例如 tactile policy 检测到重大接触变化后发出 `replan` 事件，使 semantic policy 不必始终高频运行。
 
 ---
 
 ## 7. First simulation platform: Franka
 
-第一阶段计划优先在仿真中的 Franka 平台验证。
+第一阶段优先在仿真的 Franka 平台验证。
 
 Franka 只是实验平台，不希望科学问题依赖 Franka 特定关节定义。
 
-### 上层动作空间优先保持 embodiment-agnostic
+### 上层动作空间尽量保持 embodiment-agnostic
 
-例如使用：
+例如：
 
-[
-a =
-[Delta x,Delta y,Delta z,
-Delta r_x,Delta r_y,Delta r_z,
-Delta g]
-]
+`a = [delta_x, delta_y, delta_z, delta_rx, delta_ry, delta_rz, gripper]`
 
 即：
 
@@ -326,15 +273,9 @@ Delta g]
 
 下面再由 robot-specific controller 转换：
 
-[
-a_{EE}
-ightarrow
-	ext{IK / operational-space controller}
-ightarrow
-q_{target}
-]
+`EE action -> IK / operational-space controller -> joint target`
 
-这样后期即使课题组真机不是 Franka，也可以保留上层 semantic–tactile architecture，只替换：
+这样后期即使课题组真机不是 Franka，也可以保留上层 semantic-tactile architecture，只替换：
 
 - robot model；
 - controller；
@@ -343,13 +284,13 @@ q_{target}
 
 ### 真机阶段不绑定 Franka
 
-后期可能使用课题组能够提供的其他机械臂。
+后期使用课题组实际能够提供的机械臂。
 
-真机验证目标应优先是：
+真机验证目标优先是：
 
-> 异步通信机制是否能够跨 controller / embodiment 保持作用。
+> 异步通信机制是否能够跨 controller / embodiment 保持作用？
 
-而不是要求仿真和真机必须是同型号机器人。
+而不是要求仿真和真机必须同型号。
 
 ---
 
@@ -359,12 +300,9 @@ q_{target}
 
 ### Stage A — low-dimensional contact sensing
 
-先使用可控的物理量：
+先使用可控物理量：
 
-[
-T_t =
-[F_x,F_y,F_z,	au_x,	au_y,	au_z]
-]
+`T_t = [Fx, Fy, Fz, Tx, Ty, Tz]`
 
 或：
 
@@ -388,23 +326,14 @@ T_t =
 
 这样可以区分：
 
-[
-	ext{architecture contribution}
-]
-
-和
-
-[
-	ext{sensor realism contribution}
-]
+- architecture contribution；
+- sensor realism contribution。
 
 ---
 
 ## 9. Minimal tasks
 
 任务需要真的依赖快速接触反馈，而不是纯视觉即可完成。
-
-优先候选：
 
 ### Task A — disturbed grasp
 
@@ -436,7 +365,7 @@ T_t =
 
 ## 10. Baselines
 
-至少比较：
+至少考虑：
 
 1. **Synchronous monolithic multimodal policy**
 2. **Slow semantic only**
@@ -447,7 +376,7 @@ T_t =
 7. **Async + bidirectional communication**
 8. **Async + event-triggered semantic update**
 
-如果算力有限，可以分阶段增加，而不是一次训练全部。
+算力有限时分阶段增加，不要求一次完成全部。
 
 ---
 
@@ -479,7 +408,7 @@ T_t =
 - forward latency；
 - average semantic calls per episode；
 - fast-policy compute；
-- total energy / compute proxy（如果可测）。
+- total compute proxy。
 
 ### Communication
 
@@ -506,21 +435,15 @@ T_t =
 
 ### Token-count ablation
 
-[
-K = 0,1,4,16,64,	ext{full}
-]
+`K = 0, 1, 4, 16, 64, full`
 
 ### Rate ablation
 
 例如：
 
-[
-f_s in {2,5,10,20} mathrm{Hz}
-]
+`semantic rate = {2, 5, 10, 20} Hz`
 
-[
-f_t in {20,50,100,200} mathrm{Hz}
-]
+`tactile rate = {20, 50, 100, 200} Hz`
 
 具体频率根据仿真和硬件可实现范围决定，不提前把数字写成结论。
 
@@ -535,11 +458,7 @@ f_t in {20,50,100,200} mathrm{Hz}
 
 ### Direction ablation
 
-[
-Sightarrow T
-quad 	ext{vs}quad
-Sleftrightarrow T
-]
+`semantic -> tactile` vs `semantic <-> tactile`
 
 ### Representation ablation
 
@@ -552,7 +471,7 @@ Sleftrightarrow T
 
 ## 13. Local compute plan
 
-本方向第一阶段应尽量能在 RTX 5060 Laptop 上推进。
+第一阶段应尽量能在 RTX 5060 Laptop 上推进。
 
 ### Local 5060
 
@@ -594,9 +513,9 @@ T-Rex 等工作已经说明 tactile-reactive manipulation 可以采用不同时�
 
 - 是否已有系统研究 shared-token capacity；
 - 是否已有 semantic-token staleness analysis；
-- 是否已有双向 semantic–tactile communication；
+- 是否已有双向 semantic-tactile communication；
 - 是否已有 tactile-triggered semantic replanning；
-- 是否已有 communication bandwidth / compute–performance trade-off；
+- 是否已有 communication bandwidth / compute-performance trade-off；
 - 是否已有跨 embodiment 的 multi-rate communication study。
 
 潜在贡献应来自这些更具体的问题，而不是“做一个双流架构”。
@@ -612,25 +531,11 @@ T-Rex 等工作已经说明 tactile-reactive manipulation 可以采用不同时�
 
 下面结果都应该被允许出现：
 
-### H1 被推翻
-
-同步 multimodal policy 在相同 compute budget 下始终更好，异步没有明显收益。
-
-### H2 被推翻
-
-shared token 数量几乎不影响性能，communication bottleneck 不是关键变量。
-
-### H3 被推翻
-
-full latent sharing 同时获得最好性能与可接受延迟，没有观察到明显 coupling / bandwidth 问题。
-
-### H4 被推翻
-
-semantic context 对 fast tactile policy 很快失效，无法在低 semantic rate 下维持稳定控制。
-
-### H5 被推翻
-
-双向 tactile -> semantic communication 不提升任何任务性能，也不减少失败恢复时间。
+- **H1 被推翻：** 同步 multimodal policy 在相同 compute budget 下始终更好，异步没有明显收益。
+- **H2 被推翻：** shared token 数量几乎不影响性能，communication bottleneck 不是关键变量。
+- **H3 被推翻：** full latent sharing 同时获得最好性能与可接受延迟，没有明显 coupling / bandwidth 问题。
+- **H4 被推翻：** semantic context 对 fast tactile policy 很快失效，无法在低 semantic rate 下维持稳定控制。
+- **H5 被推翻：** 双向 tactile -> semantic communication 不提升任务性能，也不减少失败恢复时间。
 
 如果主要假设被连续推翻，应停止为这个结构继续堆模型，而不是通过增加网络复杂度强行制造贡献。
 
@@ -651,13 +556,8 @@ semantic context 对 fast tactile policy 很快失效，无法在低 semantic ra
 
 实现：
 
-[
-semanticightarrow coarse action
-]
-
-[
-tactileightarrow residual
-]
+- semantic -> coarse action；
+- tactile -> residual。
 
 先验证不同 rate 下系统能够稳定运行。
 
@@ -665,9 +565,7 @@ tactileightarrow residual
 
 实现：
 
-[
-K = 0,1,4,16,64,	ext{full}
-]
+`K = 0, 1, 4, 16, 64, full`
 
 同时记录 success / latency / bandwidth。
 
