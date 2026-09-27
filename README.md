@@ -14,34 +14,70 @@
 | ID | 方向 | 状态 | 核心问题 |
 | --- | --- | --- | --- |
 | [I001](ideas/I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md) | 高频触觉反馈中的时序上下文与 in-context adaptation | Candidate | 高频触觉策略是否应利用短期历史估计当前接触状态，并利用更长的交互历史在线推断接触动力学，从而在不更新权重的情况下调整局部控制？ |
+| [I002](ideas/I002_ASYNC_SEMANTIC_TACTILE_COMMUNICATION.md) | 异步多速率 semantic–tactile policy 通信 | Candidate | 低频 semantic policy 与高频 tactile policy 在异步运行时应该共享什么、共享多少、允许信息陈旧多久，以及是否需要双向 / 事件触发通信？ |
 
 后续新增方向时，在 `ideas/` 中创建新的 `Ixxx_*.md`，并把索引加入上表。
 
-## 当前 I001 的一句话版本
+## 当前方向关系
 
-瞬时触觉通常不足以判断“是否应该修正动作”。当前 idea 将触觉控制拆成两个时间尺度：
+### I001 — fast tactile policy 内部需要什么历史？
+
+I001 研究的是 tactile branch 自身：
 
 ```text
-slow semantic / task policy
-        │
-        │ nominal action
-        ▼
-fast tactile loop
-  short history  -> current contact state
-  long context   -> contact dynamics / object property
-        │
-        ▼
- residual correction
+tactile / action / proprioception history
+                │
+                ▼
+      short contact context
+                +
+      long interaction context
+                │
+                ▼
+       fast tactile policy
 ```
 
-重点不只是“把触觉跑得更快”，而是研究：
+重点是：
 
-1. **短时历史是否是高频触觉反馈真正需要的信息；**
-2. **触觉历史中是否必须同时包含 action / proprioception，才能区分环境变化和机器人自己造成的变化；**
-3. **更长的 episode interaction history 能否形成类似 in-context system identification 的能力；**
-4. **这种 fast tactile policy 是否应该作为 slow semantic policy 的 residual / local controller，而不是做成一个 monolithic multimodal policy。**
+1. 短时历史是否帮助估计 contact state；
+2. action / proprioception history 是否帮助区分环境变化与机器人自身动作造成的变化；
+3. 更长 interaction history 是否能够形成不更新权重的 in-context adaptation。
 
 完整细节见 [I001](ideas/I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md)。
+
+### I002 — fast tactile 与 slow semantic 之间如何通信？
+
+I002 不预设“少量共享 token 一定最好”，而是把通信机制本身作为实验变量：
+
+```text
+vision / language / task state
+            │
+            ▼
+      semantic policy
+          slow rate
+            │
+            ▼
+      shared memory / tokens
+            ▲
+            │
+       tactile policy
+          fast rate
+            │
+            ▼
+      refined robot action
+```
+
+核心变量包括：
+
+- shared token / latent 的数量与内容；
+- coarse action only vs compressed tokens vs full latent；
+- semantic context staleness；
+- semantic -> tactile 单向 vs 双向通信；
+- fixed-rate vs tactile-event-triggered semantic update；
+- performance / reaction latency / compute / communication bandwidth 的 trade-off。
+
+第一阶段计划以 **Franka 仿真**作为实验平台，但研究问题不绑定 Franka。上层尽量使用 end-effector delta pose + gripper command，并通过 robot-specific controller 适配后续可能获得的其他真机机械臂。
+
+完整细节见 [I002](ideas/I002_ASYNC_SEMANTIC_TACTILE_COMMUNICATION.md)。
 
 ## Repository structure
 
@@ -51,6 +87,6 @@ fast tactile loop
 ├── AGENTS.md
 └── ideas/
     ├── README.md
-    └── I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md
+    ├── I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md
+    └── I002_ASYNC_SEMANTIC_TACTILE_COMMUNICATION.md
 ```
-
