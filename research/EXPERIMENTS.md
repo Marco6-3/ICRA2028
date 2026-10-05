@@ -58,11 +58,12 @@ no-contact → contact → load → redistribution / roll / tilt → release
 
 ## Stage 1 — Representation Bottleneck
 
-比较三类表示：
+比较四类表示：
 
 1. **Raw**：原始 tactile map；
-2. **Physics**：约 11D physically interpretable contact state；
-3. **Learned**：从 Raw 学得、维度与 Physics 匹配的 compact latent。
+2. **LeFlexiTac-style dense tactile tokens**：保留 dense spatial tactile information 的现代 policy / VLA 接口；
+3. **Physics**：约 11D physically interpretable contact state；
+4. **Learned**：从 Raw 学得、维度与 Physics 匹配的 compact latent。
 
 推荐的最小读出：
 
@@ -72,6 +73,7 @@ no-contact → contact → load → redistribution / roll / tilt → release
 | Raw | Linear | 检查高维 raw 的直接可分性 |
 | Raw | Tiny CNN | learned spatial baseline |
 | Learned 11D | Tiny encoder + linear head | 与 Physics 同维度比较 inductive bias |
+| LeFlexiTac-style dense tokens | matched policy head / available official path | 检查直接 dense token 化是否已经足够，记录 training / inference cost |
 
 不要预设 Physics 必须击败 Raw。Physics 的潜在价值是 **compactness、data efficiency、OOD robustness、latency 与 interpretability**，不是信息量更大。
 
@@ -154,7 +156,7 @@ $$
 
 | Representation | Temporal model / interface | 所回答的问题 |
 | --- | --- | --- |
-| scalar total force | streaming memory | TacMamba 风格低维基线 |
+| scalar total force | **matched TacMamba-style streaming memory** | 最关键 memory baseline；隔离 spatial state 的增量价值 |
 | Physics state | streaming memory | 物理结构是否是更好的长历史接口 |
 | Learned compact latent | matched temporal model | 收益是否来自 physics inductive bias |
 | Raw / rich tactile | temporal encoder | 信息更丰富但成本更高的参照 |
@@ -172,11 +174,41 @@ $$
 
 ---
 
+## 三个诊断任务
+
+不追求“很多任务 SOTA”，而是逐层检验三个 scientific claims。
+
+### Task 1 — Blind bistable / click counting
+
+检验 Physics state 是否保留 scalar-force memory 擅长的时间事件与长时计数能力。
+
+关键比较：scalar force + matched memory vs Physics state + matched memory。visual-only policy 仅作为 observability negative control，不预设其具体成功率。
+
+### Task 2 — Contact Redistribution Recovery under Eccentric Loading
+
+检验总接触强度近似不变时，空间 contact geometry 是否提供 scalar force 看不到的控制信息。尽量构造 $P_t$ 近似稳定而 $c_t,\Sigma_t$ 明显变化的扰动。
+
+关键比较必须使用 same temporal model，避免把收益归因于更强 backbone。CoP movement 只解释为 contact redistribution cue，不能未经验证称为 incipient slip。
+
+### Task 3 — History-dependent tactile search / insertion
+
+检验当前 tactile state 存在歧义时，contact history 是否真正有用。任务应尽量满足：
+
+$
+s_t^A \approx s_t^B,\qquad s_{t-H:t}^A \neq s_{t-H:t}^B.
+$
+
+关键消融：Physics state without memory vs Physics state + memory，并与 Learned compact latent / dense tactile baseline 比较。
+
+详细逻辑见 [BASELINES.md](BASELINES.md)。
+
+---
+
 ## Stage 3 — Closed-Loop Control
 
 Representation 与 memory 都只是假设链条中的中间变量。最终若要声称“改善 tactile-reactive manipulation”，必须进入真实闭环任务。
 
-优先任务应由 Stage 1/2 暴露出的 contact-state需求决定，而不是提前冻结。候选包括：
+优先从上述三个诊断任务中选择能直接支撑当前 claim 的任务；若前期证据否定某个任务假设，可以替换，而不是为了保持故事强行执行。额外候选包括：
 
 - sustained contact with disturbance；
 - rolling / contact redistribution；
@@ -207,6 +239,9 @@ Representation 与 memory 都只是假设链条中的中间变量。最终若要
 ## 投稿前证据门槛
 
 - Physics representation 的收益和失败边界都有定量证据；
+- LeFlexiTac-style dense tactile path 是认真实现或明确说明适配差异的 baseline；
+- TacMamba-style scalar memory 使用 matched temporal model；
+- RDP / nearest slow-fast controller 在 closed-loop claim 需要时作为 reactive baseline；
 - 同维 learned latent 是认真调优的 baseline；
 - temporal model 的收益不能只是更多参数、更多历史或不同刷新率；
 - 报告完整端到端 latency，不只报 descriptor 或网络 forward；
