@@ -2,48 +2,68 @@
 
 更新：2026-10-05。所有阶段均为计划，完成状态不能从日期自动推断。
 
-## 稳定的问题与可替换的方法
+## 稳定问题与当前候选入口
 
-长期问题是：机器人如何从接触历史形成足够有用的内部状态，并在不同时间尺度上用它控制操作？
+长期问题是：机器人如何把快速、高维的触觉交互压缩成有用内部状态，并在长时间执行过程中利用这些状态进行低延迟闭环控制？
 
-第一篇论文先收窄到**固定控制与计算预算下，选择性触觉记忆对执行时修正的价值和边界**。以一篇最合适的已有论文为母体，在其方法、公开实现与评价上发展一个有依据的改进。选题顺序是论文中的具体假设/局限 → 改进机制 → 原方法与改进方法的对比 → 支撑贡献的消融及泛化。具体骨干与任务由这条证据链决定。
+当前第一候选入口是 **Physics-Guided Contact-State Compression**：
 
-## 2027 年投稿准备
+高维触觉阵列 → compact physical contact state → representation validation → temporal memory → closed-loop control
+
+这条路线必须逐层通过继续条件。FlexiTac、11D descriptor 和 Mamba 都是候选工具，不是预先保证成立的贡献。
+
+## 2026-10 至 2027 投稿路线
 
 | 阶段 | 计划时间 | 必须形成的产物 | 继续条件 |
 | --- | --- | --- | --- |
-| 文献与基线落地 | 2026-10 至 11 | 三篇核心论文笔记；选定主要方法论文；核查其代码/权重/数据；在原任务建立可比较基线 | 数据、时间戳和动作接口可检查，知道最接近的方法已做到什么 |
-| 明确方法改进点 | 2026-11 至 12 | 原论文的设计假设与失败边界；一个最小改进版本；原方法/改进方法的初步结果 | 改动解决具体问题，差异不来自数据泄漏、额外观测或不公平训练 |
-| 检验一个核心方法 | 2027-01 至 03 | 围绕历史条件化/选择性记忆的一个方法改进；原方法、改进方法、关键消融及最接近工作对比 | 在共同延迟预算下有可重复收益，或得到清晰的适用边界 |
-| 真机与泛化 | 2027-04 至 05 | 至少覆盖插接/卡扣、受扰持续接触两类需求；未见条件；负对照 | 主要结论跨对象或参数成立，仿真主张与真机主张分开 |
-| 完整证据与论文 | 2027-06 至 07 | 完整结果表、消融、失败、延迟曲线、视频和初稿 | 证据能支持一个清晰主张；核心对比不是仅击败无触觉模型 |
-| 投稿准备 | 2027-08 起至正式截止前 | 更新相关工作；作者与导师审阅；格式、匿名与补充材料核查 | 以最终 CFP 为准，留出补实验与修改缓冲 |
+| Stage 0：硬件与 physics sanity check | 2026-10 | 固定 FlexiTac / 触觉硬件版本；raw recorder；11D descriptor；重复 contact/load/redistribution/release 数据；P50/P95 latency | descriptor 数值稳定、事件响应可重复、没有明显 preprocessing artifact |
+| Stage 1：representation bottleneck | 2026-10 至 12 | Raw / Physics 11D / Learned 11D；data-efficiency 曲线；OOD；moment-matched failure pairs；compute/latency | Physics 至少在 compactness、低样本、OOD、延迟或诊断价值上有清晰收益，且信息损失可接受 |
+| Stage 2：temporal memory | 2026-12 至 2027-02 | scalar / physics / learned / rich history 的公平 temporal comparison；固定刷新率与延迟预算 | 长历史机制带来可重复增量，且收益不是更多参数、历史或刷新率造成 |
+| Stage 3：closed-loop task | 2027-02 至 04 | 由前两阶段选择的 contact-rich tasks；真实 event→action latency；成功率与失败 taxonomy | 表示 / memory 的收益能转化为实际闭环行为 |
+| 泛化与关键消融 | 2027-04 至 05 | unseen objects/contact conditions；主要机制消融；强邻近方法比较 | 论文核心 claim 跨条件成立或得到清晰边界 |
+| 完整证据与论文 | 2027-06 至 07 | 完整结果表、延迟曲线、失败、视频、初稿 | 证据支持一个清晰主张，不依赖“用了 Mamba / physics / 新传感器”本身 |
+| 投稿准备 | 2027-08 起至正式截止前 | 更新相关工作；导师与作者审阅；格式、匿名、补充材料核查 | 以最终 ICRA 2028 CFP 为准 |
 
-内部初稿日期设为 **2027-07-31**，是项目管理目标，不是官方截止日期。若学校课程或真机访问改变，优先缩小方法与任务范围，不把所有验证挤到最后。
+内部完整初稿日期继续设为 **2027-07-31**，只是项目管理目标，不是官方截止。
 
-## 投稿年份与官方日期核验
+## 近期最小产物
+
+近期工作不以“再增加研究 idea”为目标，而以以下可检查产物推进：
+
+1. 固定实际 FlexiTac / 触觉硬件、固件、串口和时间戳格式。
+2. 产生一份原始数据记录，包含 no-contact → contact → load → redistribution / roll → release。
+3. 生成 11D descriptor 与 preprocessing 配置，能从同一 raw recording 完全重放。
+4. 输出 Stage 0 报告：重复性、漂移、event response、P50/P95 preprocessing latency 与 phase-plane 图。
+5. 根据 Stage 0 决定是否投入 Stage 1；未通过则先修表示，不训练 temporal model。
+
+## 文献与母体关系
+
+继续精读 TacMamba、T-Rex、TacForcing，并补充 FlexiTac / VTAP 与最接近的 tactile representation 工作。
+
+当前不再要求先选出唯一“母体论文”才允许做 Stage 0，因为 Stage 0 是一个低成本表示 sanity check；但在 Stage 2 / Stage 3 形成正式方法前，必须明确主要方法母体、原论文已有能力和本项目增量。
+
+## 投稿日期核验
 
 查询日期：2026-10-05。
 
-- [ICRA 2027 官方 CFP](https://2027.ieee-icra.org/contribute/call-for-icra-2027-papers-now-accepting-submissions/) 标记 Submission Closed；列出的常规论文截止为 2026-09-16。因此现在启动的新项目不能按常规论文通道规划“2027 年 ICRA 发表”。
-- [RAS ICRA 2028 条目 A](https://www.ieee-ras.org/event/2028-ieee-international-conference-on-robotics-and-automation-icra-74101/) 列出 2027-09-15。
-- [RAS ICRA 2028 条目 B](https://www.ieee-ras.org/event/2028-ieee-international-conference-on-robotics-and-automation-icra-64236/) 列出 2027-08-16；地点信息也与 A 不一致。
-- 两条官方日历互相冲突，本次未能访问 [2028 会议站](https://2028.ieee-icra.org/)。不能把任一日期写成最终确认值。正式 CFP 发布后再核验日期、时区、论文页数等。
+- ICRA 2027 常规论文投稿已经关闭，因此本项目按 **2027 年投稿、目标 ICRA 2028** 管理。
+- ICRA 2028 的官方日历目前存在冲突记录；正式 CFP / PaperPlaza 发布后重新核验截止日期、时区、页数与匿名要求。
+- 不把仓库名或内部时间表解释为录用承诺。
 
-本路线采用“2027 年投稿，目标 ICRA 2028”。若目标必须是 2027 年正式发表，需要另选仍开放的会议/期刊，而不能把 ICRA 年份混用。完成路线不保证录用。
+## 失败时如何收缩
 
-## 第一篇之后如何自然延伸
+- Stage 0 不稳定：优先修传感器、标定、threshold、baseline 和 filtering，不引入大模型。
+- Stage 1 Physics 无优势：保留负结果，转 learned compact latent 或重新定义 contact state。
+- Stage 2 temporal memory 无增量：不要为了 Mamba 更换更多骨干，先判断任务是否真的需要长历史。
+- Stage 3 离线指标不能转化为闭环：相应缩小论文 claim，而不是继续堆离线实验。
 
-第一篇只检验记忆与快速修正。若有证据，再沿同一问题推进：
+## 第一篇之后的自然延伸
 
-1. 从保留接触事件，发展到行动条件化的接触状态：区分自身动作和外部扰动。
-2. 从固定快慢频率，发展到由接触状态触发的语义重规划，研究何时局部修正已不足够。
-3. 从单设备记忆，发展到跨物体、材料、传感器的交互适应；预测只在能改善决策时加入。
+只有第一条证据链成立后，再考虑：
 
-这些是后续路径，不是第一篇必须一次实现的组件。若改进没有超越原方法，检查是否实现有效、问题是否真实；根据证据修订假设或改进点，不为了更换骨干而继续扩大项目。
+1. fast compact physics state + sparse rich tactile token；
+2. event-triggered rich tactile update；
+3. 行动条件化 contact state，用于区分自身动作和外界扰动；
+4. 跨物体、材料、传感器的 contact-state adaptation。
 
-## 资源与近期工作
-
-现有对话中的资源是历史背景：5060 Laptop 8GB、实验室算力、Piper 或其他机械臂均需重新确认可用性。笔记本先用于数据处理、小模型与仿真；大型 VLA 训练与真机采集由基线需求决定。首个工程核查应记录代码版本、许可证、权重/数据可用性、显存与传感器接口，尚未完成这些核查。
-
-下一次讨论以三项产物为依据：所选母体论文与选择理由、拟改进机制及区别于原方法的地方、原实现与评测的可运行性记录。不要在尚未读完消融时先铺开大量实验。
+这些均不是当前第一篇必须一次实现的组件。
