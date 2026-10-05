@@ -21,7 +21,7 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 对应三个阶段：
 
 1. **Stage 0 — Physics sanity check**：不训练网络，检查 descriptor 的噪声、漂移、重复性、事件响应和真实延迟。
-2. **Stage 1 — Representation bottleneck**：比较 Raw / Physics 11D / Learned 11D 的数据效率、OOD、延迟和信息丢失。
+2. **Stage 1 — Representation bottleneck**：比较 Raw / LeFlexiTac-style dense tactile tokens / Physics 11D / Learned 11D 的数据效率、OOD、延迟、训练代价和信息丢失。
 3. **Stage 2 — Temporal memory**：只有前两阶段成立后，才比较 physics-state history 与 learned/raw temporal representation；Mamba 是强候选但不预设为最终答案。
 
 详细定义见 [Physics-Guided Contact-State Compression](research/PHYSICS_BOTTLENECK.md)。
@@ -49,7 +49,7 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 
 1. 固定 FlexiTac 硬件 / 固件版本与真实数据格式，实测采样率、传输和 preprocessing latency；不要沿用文献数字代替本机测量。
 2. 实现 research/PHYSICS_BOTTLENECK.md 中的 11D contact descriptor，并完成 Stage 0：contact → load → redistribution / roll → release 的重复数据。
-3. 只有 descriptor 数值稳定、事件响应可重复后，进入 Stage 1：Raw vs Physics 11D vs Learned 11D。
+3. 只有 descriptor 数值稳定、事件响应可重复后，进入 Stage 1：Raw vs LeFlexiTac-style dense tactile vs Physics 11D vs Learned 11D。
 4. Stage 1 若显示 physics bottleneck 在 compactness / data efficiency / OOD / latency 中至少具有清晰价值，再进入 temporal memory；否则停止或修改 bottleneck，而不是直接堆 Mamba。
 
 **不把好看的相平面图当成论文证据，不把 Mamba、FlexiTac 或“physics”本身当 novelty。** 最终贡献必须来自可重复的增量证据和明确失败边界。
