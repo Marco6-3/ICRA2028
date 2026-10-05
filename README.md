@@ -12,7 +12,7 @@
 
 当前候选切入点是 **Physics-Guided Contact-State Compression**：先用 FlexiTac 一类二维触觉阵列研究“高维接触场 → 低维、物理可解释 contact state”的信息保真与失败边界；只有这个 bottleneck 经验证成立后，再研究 TacMamba / Mamba 一类流式长历史模型。这样把“表示是否足够”与“历史如何记忆”分开验证。
 
-T-Rex 提供 temporal / spatial tactile representation 与快慢触觉控制参照；TacMamba 提供低维流式长历史压缩参照；TacForcing 提供 execution-time tactile conditioning 参照。它们是方法来源和强基线，不作为模块拼装清单。
+当前实验定位锚定三类强基线：**TacMamba = long tactile memory**、**LeFlexiTac = dense FlexiTac-to-policy/VLA**、**RDP = fast tactile-reactive control**。T-Rex 与 TacForcing继续作为多速率触觉与 execution-time conditioning 的关键 supporting work。详见 [Core Baselines](research/BASELINES.md)。
 
 ## 当前候选证据链
 
@@ -36,6 +36,7 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 | --- | --- |
 | [研究主线](research/CORE.md) | 核心问题、候选假设、方法边界与可能的论文贡献 |
 | [Physics Bottleneck](research/PHYSICS_BOTTLENECK.md) | 当前最高优先级候选：FlexiTac contact state、预处理、Stage 0/1/2 与停止条件 |
+| [Core Baselines](research/BASELINES.md) | TacMamba / LeFlexiTac / RDP 的角色、三类诊断任务与 Go/No-Go 逻辑 |
 | [实验方案](research/EXPERIMENTS.md) | 公平比较、因果时间约束、指标和投稿前证据门槛 |
 | [研究路线](ROADMAP.md) | 从当前小实验到 2027 年投稿准备 |
 | [论文地图](papers/README.md) | 核心与邻近文献、来源、已读范围和与本路线的关系 |
