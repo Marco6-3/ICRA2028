@@ -43,6 +43,20 @@
 
 这不是模块拼装路线。当前工作先验证 physics bottleneck；若不成立，不进入“FlexiTac + Mamba”系统开发。
 
+## 当前 baseline 定位
+
+正式实验不使用“找很多论文逐一击败”的叙事，而用三篇代表工作锚定三个维度：
+
+| 维度 | 核心 baseline | 角色 |
+| --- | --- | --- |
+| Long tactile memory | **TacMamba** | 1D force + streaming SSM memory；用于隔离 spatial contact state 的增量价值 |
+| Dense tactile → policy/VLA | **LeFlexiTac** | FlexiTac dense map / tactile tokens 接入 LeRobot policies 与 π0.5；用于回答为什么不直接 token 化高维触觉 |
+| Fast tactile control | **RDP** | slow-fast tactile-reactive control；用于比较即时 action reaction 与 persistent state memory |
+
+π0 / π0.5 主要作为 backbone / visual-only system ablation；T-Rex、TacForcing、VTAP、ImplicitRDP 等继续作为 supporting / nearest work，而不是从论文地图中删除。
+
+详细定位、禁止的过强表述与诊断任务见 [BASELINES.md](BASELINES.md)。
+
 ## 当前待检验假设
 
 ### H1 — Compact physical state
