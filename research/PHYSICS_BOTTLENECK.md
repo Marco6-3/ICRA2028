@@ -15,7 +15,7 @@
 - **TacMamba**：证明了高频低维力信号可以通过递推状态维持长历史与低单步延迟，但其真实系统使用单点 1D force sensing，缺少丰富空间接触拓扑。
 - **T-Rex**：把时间力动态与空间 deformation 分开编码，说明 temporal / spatial tactile information 可以分工处理。
 - **TacForcing**：强调触觉信息在执行时刻进入动作生成，提醒本项目最终仍需验证端到端闭环价值，而不能停留在离线表示指标。
-- **FlexiTac / VTAP**：提供柔性高密度法向接触阵列与指尖部署参考，适合把“高维空间接触场 -> 低维接触状态”作为一个干净的研究对象。
+- **FlexiTac / VTAP**：提供柔性高密度法向接触阵列与指尖部署参考，适合把“高维空间接触场 → 低维接触状态”作为一个干净的研究对象。
 
 这些工作提供方法来源和比较对象；本项目不把已有模块直接拼接后称为贡献。
 
@@ -38,13 +38,13 @@ FlexiTac 的主要优势是二维法向接触分布清晰；主要边界是缺�
 
 原始触觉帧：
 
-[
+$$
 X_t \in \mathbb{R}^{H\times W}.
-]
+$$
 
-经过 baseline / calibration 后得到非负或有统一语义的 taxel 权重 (w_i)。第一版候选状态为：
+经过 baseline / calibration 后得到非负或有统一语义的 taxel 权重 $w_i$。第一版候选状态为：
 
-[
+$$
 s_t=
 [
 P'_t,
@@ -56,16 +56,16 @@ o_x,o_y,
 \Delta c_x,\Delta c_y
 ]
 \in \mathbb{R}^{11}.
-]
+$$
 
 其中：
 
-- (P_t=\sum_i w_i)：总接触强度 / force proxy；
-- ((c_x,c_y))：pressure-weighted / intensity-weighted contact centroid；
-- (A'_t=N_{active}/N_{taxel})：归一化有效接触面积；
-- ((\sigma_1,\sigma_2))：归一化二阶矩主尺度；
-- ((o_x,o_y))：带各向异性置信度的主方向编码；
-- (\Delta P'_t,\Delta c_x,\Delta c_y)：接触动态变化。
+- $P_t=\sum_i w_i$：总接触强度 / force proxy；
+- $(c_x,c_y)$：pressure-weighted / intensity-weighted contact centroid；
+- $A'_t=N_{active}/N_{taxel}$：归一化有效接触面积；
+- $(\sigma_1,\sigma_2)$：归一化二阶矩主尺度；
+- $(o_x,o_y)$：带各向异性置信度的主方向编码；
+- $\Delta P'_t,\Delta c_x,\Delta c_y$：接触动态变化。
 
 这组量称为 **physically interpretable contact descriptors**，不称为“完整空间信息”或“物理不变量”。
 
@@ -75,14 +75,14 @@ o_x,o_y,
 
 直接用传感器归一化坐标：
 
-[
+$$
 \tilde x_i=2\frac{i}{N_x-1}-1,\qquad
 \tilde y_j=2\frac{j}{N_y-1}-1.
-]
+$$
 
 由这些坐标计算 CoP 与二阶矩，使空间 descriptor 对阵列物理尺寸和 taxel 数量更稳定。
 
-[
+$$
 \tilde\Sigma_t=
 \frac{
 \sum_i w_i
@@ -91,29 +91,29 @@ o_x,o_y,
 }{
 \sum_i w_i+\epsilon
 }.
-]
+$$
 
 ### 2. 总压力尺度不要默认在线滑动 Z-score
 
 在线滑动 Z-score 可能把长期稳定抓持重新中心化到 0，破坏本来希望保留的长期载荷状态。默认采用：
 
-[
+$$
 P'_t=
 \log\left(
 1+
 \frac{\max(P_t-P_{base},0)}{P_{ref}}
 \right).
-]
+$$
 
-- (P_{base})：只在 no-contact 状态更新，接触时冻结；
-- (P_{ref})：由训练 / 标定数据固定，测试时不自适应；
+- $P_{base}$：只在 no-contact 状态更新，接触时冻结；
+- $P_{ref}$：由训练 / 标定数据固定，测试时不自适应；
 - 任何归一化参数不得从测试 episode 的未来数据估计。
 
 ### 3. 主方向避免直接求 \(\theta\)
 
 令：
 
-[
+$$
 \Sigma=
 \begin{bmatrix}
 a & b\\
@@ -121,28 +121,28 @@ b & d
 \end{bmatrix},
 \qquad
 D=\sqrt{(a-d)^2+4b^2}.
-]
+$$
 
 定义各向异性置信度：
 
-[
+$$
 q_{ani}=
 \frac{D}{a+d+\epsilon}.
-]
+$$
 
 方向编码：
 
-[
+$$
 o_x=q_{ani}\frac{a-d}{D+\epsilon},
 \qquad
 o_y=q_{ani}\frac{2b}{D+\epsilon}.
-]
+$$
 
-当接触近似各向同性时，((o_x,o_y)\to(0,0))，避免随机主轴方向污染模型。
+当接触近似各向同性时，$(o_x,o_y)\to(0,0)$，避免随机主轴方向污染模型。
 
 ### 4. 差分特征保留方向且需滤波
 
-优先保留 (\Delta c_x,\Delta c_y)，而不是只保留 (\|\Delta\mathbf c\|)。差分前需要固定因果滤波或短窗口 slope estimator；必须测量滤波造成的额外事件检测延迟。
+优先保留 $\Delta c_x,\Delta c_y$，而不是只保留 $\|\Delta\mathbf c\|$。差分前需要固定因果滤波或短窗口 slope estimator；必须测量滤波造成的额外事件检测延迟。
 
 CoP 漂移只称为 **contact redistribution cue**，不能直接宣称为 slip。
 
@@ -152,7 +152,7 @@ CoP 漂移只称为 **contact redistribution cue**，不能直接宣称为 slip�
 
 采集重复的：
 
-[
+$$
 \text{no-contact}
 \rightarrow
 \text{contact}
@@ -162,7 +162,7 @@ CoP 漂移只称为 **contact redistribution cue**，不能直接宣称为 slip�
 \text{redistribution / roll}
 \rightarrow
 \text{release}.
-]
+$$
 
 检查：
 
@@ -170,7 +170,7 @@ CoP 漂移只称为 **contact redistribution cue**，不能直接宣称为 slip�
 - episode / repeated-trial repeatability；
 - 接触开始与释放的事件响应；
 - 持续载荷是否被 baseline tracking 错误抹掉；
-- ((P,\Delta P))、((c_x,\Delta c_x))、((A,\sigma_1/\sigma_2)) 等 phase-plane trajectory 是否具有可重复结构；
+- $(P,\Delta P)$、$(c_x,\Delta c_x)$、$(A,\sigma_1/\sigma_2)$ 等 phase-plane trajectory 是否具有可重复结构；
 - raw acquisition、descriptor computation 与 filtering 的真实 P50 / P95 latency。
 
 **继续条件**：descriptor 在重复实验中数值稳定、事件响应具有可重复性，且不存在明显由 baseline / threshold / filtering 人工制造的结构。漂亮的 phase plot 只生成 hypothesis，不证明论文主张。
@@ -179,8 +179,8 @@ CoP 漂移只称为 **contact redistribution cue**，不能直接宣称为 slip�
 
 比较三种表示在相同数据划分下保留和丢弃的信息：
 
-1. **Raw**：原始 (H\times W) tactile map；
-2. **Physics**：11D (s_t^{phys})；
+1. **Raw**：原始 $H\times W$ tactile map；
+2. **Physics**：11D $s_t^{phys}$；
 3. **Learned**：从 raw 学得、维度与 Physics 匹配的 11D latent。
 
 最小 baseline：
@@ -205,13 +205,13 @@ Physics representation 的目标不是“信息比 Raw 更多”，而是验证�
 
 ### A. Moment-matched but locally different
 
-不要人工强行同时调平所有 (P,CoP,A,\Sigma)。先采集不同接触 pattern，再跨类别寻找：
+不要人工强行同时调平所有 $P,CoP,A,\Sigma$。先采集不同接触 pattern，再跨类别寻找：
 
-[
+$$
 (i,j)^*=
 \arg\min_{y_i\neq y_j}
 \|s_i-s_j\|_2
-]
+$$
 
 同时要求 raw map 距离较大。这样寻找真实的“physics descriptor 几乎相同，但局部接触图明显不同”的样本对，直接量化 many-to-one compression 丢失的信息。
 
@@ -219,7 +219,7 @@ Physics representation 的目标不是“信息比 Raw 更多”，而是验证�
 
 建议至少包含两类动力学：
 
-- bistable / click-like event：(\Delta P) 大而 CoP 变化小；
+- bistable / click-like event：$\Delta P$ 大而 CoP 变化小；
 - rolling / tilting / redistribution：总压力变化较缓而 CoP / 主轴持续变化。
 
 先观察 compact state 的轨迹，再做事件识别。不要预设 Physics 一定击败 Raw；要检验在少数据、OOD 和计算约束下是否更高效。
@@ -228,11 +228,11 @@ Physics representation 的目标不是“信息比 Raw 更多”，而是验证�
 
 如果 compact contact state 在 Stage 1 中表现出足够信息保真和明确边界，再研究：
 
-[
+$$
 s_{1:t}^{phys}
 \rightarrow
 h_t.
-]
+$$
 
 TacMamba / Mamba 是此时的强候选，而不是预先锁死的答案。需要比较：
 
