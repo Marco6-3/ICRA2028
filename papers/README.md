@@ -1,6 +1,6 @@
 # 触觉记忆与执行时修正：论文地图
 
-检索/核验日期：2026-10-05。使用 Exa 检索与原始论文/作者项目页核对；只收录与主线直接相关的 8 项，不宣称穷尽。读过论文不等于运行过代码或复现过结果。未列论文的会议录用状态均不作推断。
+检索/核验日期：2026-10-05。使用 Exa 检索与原始论文/作者项目页核对；只收录与主线直接相关的 10 项，不宣称穷尽。读过论文不等于运行过代码或复现过结果。未列论文的会议录用状态均不作推断。
 
 ## 阅读顺序与差异
 
@@ -9,6 +9,8 @@
 | 核心 | [T-Rex: Tactile-Reactive Dexterous Manipulation](https://arxiv.org/html/2606.17055v2)；[项目](https://tactile-reactive-dexterous.github.io/) | v2 方法 §4、实验 §5 及部分附录文本 | 已有短时历史和快慢修正，不能把“历史触觉 + 异步”本身当贡献；[笔记](T_REX.md) |
 | 核心 | [TacMamba: A Tactile History Compression Adapter Bridging Fast Reflexes and Slow VLA Reasoning](https://arxiv.org/html/2603.01700v1) | v1 方法 §IV、实验 §V 的设置与比较 | 历史压缩与输入选择性；需强流式基线和完整闭环证据；[笔记](TACMAMBA.md) |
 | 核心 | [TacForcing: Streaming Action Generation with Execution-Time Tactile Feedback](https://arxiv.org/html/2608.25798) | 方法 §3、实验 §4 含 EATA 消融 | 执行时更新与动作块对齐；“后续块不更新”是误读；[笔记](TACFORCING.md) |
+| 硬件/表示 | [FlexiTac: Flexible and Low-Cost Tactile Sensing](https://arxiv.org/abs/2604.28156) | 当前核对硬件规格、阵列读出与传感原理；尚未运行实物 | 为 spatial tactile field → compact contact state 提供第一候选 testbed；绝对压力仍需标定，不能把 ADC 直接当 N/Pa |
+| 部署参考 | [VTAP](https://yuhao-zhou.com/vtap/index.html) | 当前核对 FlexiTac 指尖部署与 tactile-reactive manipulation 用法 | 证明 FlexiTac 可进入机器人指尖操作平台；不代表本项目的 physics bottleneck 已有现成实现 |
 | 强基线 | [Reactive Diffusion Policy](https://reactive-diffusion-policy.github.io/) | 作者项目页方法、任务与推理时间说明 | 慢 latent policy + 快 tactile/force controller；参考擦拭和受扰任务设计 |
 | 强基线 | [ImplicitRDP: An End-to-End Visual-Force Diffusion Policy with Structural Slow-Fast Learning](https://arxiv.org/html/2512.10946)；[项目](https://implicit-rdp.github.io/) | 摘要、引言、方法检索摘录，尚未逐项审计实验 | 已有因果 GRU 力编码、因果注意力和统一快慢融合；是新记忆方案必须认真面对的比较对象 |
 | 预测分支 | [ViTacFormer: Learning Cross-Modal Representation for Visuo-Tactile Dexterous Manipulation](https://arxiv.org/html/2506.15953) | 摘要/引言，另核对方法检索摘录 | 视觉触觉融合 + 未来触觉预测辅助动作；预测是备选拓展，不强塞进第一篇 |
@@ -19,12 +21,13 @@
 
 ## 把论文放在同一个问题里读
 
+- **表示什么**：FlexiTac / VTAP 提供二维法向接触场；本项目首先检验这些空间观测能否压缩成 compact physical contact state。
 - **记住什么**：T-Rex 的近期时间编码、TacMamba 的持续历史压缩。
 - **何时使用**：TacForcing 对齐执行时刻，RDP/ImplicitRDP 将反馈送入闭环。
 - **是否需要预测**：ViTacFormer、DexTacWAM 提供预测路径；预测误差低不自动等于控制收益。
 - **如何改进已有方法**：以选定论文的原方法为首要基线，围绕新增机制设计消融；Mamba 等仅是可能的方法来源，具体比较由贡献决定。
 
-第一轮精读顺序：T-Rex → TacMamba → TacForcing → ImplicitRDP/RDP。先厘清输入、更新时刻、动作输出和消融，再决定主基线。
+当前精读/核查顺序：TacMamba → T-Rex → FlexiTac / VTAP → TacForcing → ImplicitRDP/RDP。先把传感输入、表示、更新时刻、动作输出和消融分开，再决定正式方法母体。先厘清输入、更新时刻、动作输出和消融，再决定主基线。
 
 ## 本项目需要持续维护的差异表
 
