@@ -1,65 +1,105 @@
-# 研究主线：在已有策略中改进触觉历史的使用方式
+# 研究主线：从接触状态压缩到长时触觉记忆
 
 状态：研究路线，未形成已验证贡献。更新：2026-10-05。
 
-## 长期问题与第一篇范围
+## 长期问题
 
-长期问题：机器人如何利用接触历史理解当前交互，并在执行过程中及时调整动作？
+机器人如何把高维、快速变化的触觉观测压缩成足够有用的内部接触状态，并在长时间执行过程中利用这些状态及时修正动作？
 
-第一篇以一篇已有论文为方法母体，研究**触觉历史如何条件化执行中的动作生成**。选择性记忆、历史权重和执行时对齐是可能的改进点，不能在读懂原方法前冻结某种骨干。
+当前最高优先级候选问题：
 
-工作顺序：
+> **What is the minimal tactile state that preserves control-relevant spatial contact information over long horizons?**
 
-1. 精读最接近论文的方法、训练、消融和公开实现，确认其实际能力。
-2. 指出一个具体设计假设及其可能不适用的接触条件。
-3. 在原方法和评价上提出一个明确改进，保留其他关键设置。
-4. 用原方法与改进方法的结果、必要消融和泛化支撑贡献。
+第一篇不从“设计一个更复杂网络”开始，而先拆成两个可独立否证的问题：
 
-## 三篇论文如何汇入一条路线
+1. **Representation**：低维、物理可解释的 contact state 是否保留了闭环控制需要的主要空间接触信息？
+2. **Memory**：如果 representation 足够，怎样在固定延迟预算下保存其长历史？
 
-| 论文 | 已有能力 | 本项目可研究的改进接口 |
+详细的第一阶段定义见 [PHYSICS_BOTTLENECK.md](PHYSICS_BOTTLENECK.md)。
+
+## 当前候选方法接口
+
+候选 testbed 是 FlexiTac 一类二维法向触觉阵列。先把 raw tactile field 通过无参或少量标定的解析统计压缩为约 11D contact descriptor，再与同维 learned latent、raw tactile representation 比较。
+
+当前候选 contact state 包括：
+
+- total contact intensity / force proxy；
+- contact centroid；
+- normalized active area；
+- 二阶矩主尺度；
+- 带各向异性置信度的主方向表示；
+- total load 与 centroid 的因果动态变化。
+
+这些变量称为 **physically interpretable contact descriptors**。不声称它们包含完整空间信息，也不把 CoP 漂移直接解释为 slip。
+
+## 与核心论文的关系
+
+| 论文 | 已有能力 | 对当前候选问题的作用 |
 | --- | --- | --- |
-| T-Rex | 近期历史编码、快慢专家与执行时触觉修正 | 触觉专家如何读取与压缩跨接触阶段的历史，而非只增加一个已有时序模块 |
-| TacMamba | 流式历史压缩与低频 VLA 条件化 | 历史状态如何进入执行时动作生成；何种事件应保留或遗忘 |
-| TacForcing | 执行时触觉更新及 EATA，已有消融支持 | 保留执行对齐原则，改进送入当前待执行块的触觉历史表示 |
+| TacMamba | 单点 1D force 的高频流式长历史压缩，递推更新与低单步延迟 | 提供“长历史 + streaming memory”母体；其空间接触信息不足构成当前表示问题的动机之一 |
+| T-Rex | 将 temporal force dynamics 与 spatial deformation 分开编码，并做快慢触觉修正 | 说明空间与时间触觉可以分工；也是 rich tactile representation 的强参照 |
+| TacForcing | execution-time tactile feedback 与动作块对齐 | 提醒最终贡献必须进入真实执行闭环，而不能停在离线 representation accuracy |
+| FlexiTac / VTAP | 柔性高密度法向触觉阵列及指尖部署 | 提供研究“spatial tactile field → compact contact state”的硬件基础 |
 
-来源与已读范围见 [论文地图](../papers/README.md)。三篇的分工是帮助定位方法改进，而不是各取一个模块拼成系统。
+这不是模块拼装路线。当前工作先验证 physics bottleneck；若不成立，不进入“FlexiTac + Mamba”系统开发。
 
-## 优先评估的论文母体
+## 当前待检验假设
 
-**优先评估 TacForcing 的执行时条件化接口**：它能把“何时使用触觉”与“使用哪些历史信息”相对清楚地分开，适合检验保持执行时对齐、同时改善历史利用的想法。
+### H1 — Compact physical state
 
-选择尚未冻结。需先核查原代码、权重、训练需求与任务平台；这些本次没有完成。若不可复用，评估 T-Rex 的快慢专家接口或其他最接近的公开实现，并记录变化原因。TacMamba 提供时序建模的参考，不意味着必须把 Mamba 接到所有框架里。
+在接触开始、持续载荷、载荷重分布、滚动 / 倾覆和释放等事件中，一个约 10–12 维的 physically structured contact state 可以以远低于 raw tactile map 的表示维度，保留足够的 control-relevant information。
 
-不能因某个基础模型容易实现，就让它替代主要论文基线。也不要求复现所选论文全部预训练：可采用公开权重或范围明确的适配，准确报告与原文的差异。
+H1 的优势若存在，应主要表现为：
 
-## 当前候选改进：执行对齐的历史触觉条件化
+- 更好的低样本 inductive bias；
+- 更稳定的 OOD generalization；
+- 更小的表示与推理成本；
+- 可解释的失败边界。
 
-待检验假设：
+H1 **不要求** Physics 在信息量上优于 Raw；Raw 包含计算这些 descriptor 所需的原始信息。
 
-> 在当前接触状态有歧义、而较早的接触事件仍影响下一动作时，使临近执行的动作访问经过选择的接触历史，可能比原方法的历史使用方式更有效；接触阶段改变后则需要抑制过时信息。
+### H2 — Long-horizon memory
 
-如果选择 TacForcing，可优先考虑：
+若 H1 成立，则 compact physical state 的历史可以通过递推 temporal model 形成长时 contact memory，而无需在每个时刻重新处理完整高维 tactile history。
 
-- 保留原有 streaming 生成与 EATA 的执行对齐逻辑。
-- 先核查其触觉编码器实际包含的历史范围，不能把“当前 token”误认为“完全无历史”。
-- 只改触觉条件表示或历史访问机制，检验是否能保留与当前操作有关的事件、减少旧接触干扰。
-- 具体使用衰减权重、选择性状态或其他机制，由原方法接口和假设决定。它们是备选方案，不是必须全部完成的清单。
+Mamba / SSM 是强候选，但具体骨干只有在 Stage 1 后确定。不能把“用了 Mamba”本身当贡献。
 
-如果选择 T-Rex，则在其已有时序触觉编码/专家接口上提出同一问题，保留原有慢快生成框架做比较。最终一轮实验只围绕一个母体，不同时重建多个系统。
+### H3 — Hybrid extension（后续）
 
-## 要排除的替代解释
+若 H1 在局部纹理、partial slip 或细粒度 pressure pattern 上存在明确失败，可进一步测试：
 
-收益可能只来自额外历史、更多参数、更多训练或更快刷新，而非拟提出的机制；记忆也可能只识别任务阶段，未改善接触控制。旧历史可能在接触切换后干扰动作。
+- fast compact physics state；
+- low-rate / event-triggered rich tactile token。
 
-因此主要比较必须是**原论文方法与改进方法**，随后用与改动对应的消融隔离贡献。具体辅助模型取决于主张，不预先要求一组固定网络。仿真或可视化提供的线索不能代替闭环证据。
+这属于后续扩展，不是第一阶段默认系统。
 
-## 预期论文贡献与边界
+## 必须排除的替代解释
 
-拟争取的贡献（尚未成立）：
+任何收益都需要排除：
 
-1. 对原方法某一接触条件下的局限给出可重复证据。
-2. 一个针对该局限的方法改进，并说明与已有历史建模/执行时反馈方法的区别。
-3. 原评价任务、未见接触条件和必要真机实验中的效果、代价与失败边界。
+- 仅来自归一化或 threshold 调参；
+- Physics baseline 使用了测试期未来统计；
+- learned baseline 训练不足；
+- 更多参数、更多数据或更长历史；
+- hardware sampling rate 不一致；
+- descriptor computation 快，但 sensor / transport / actuator 仍主导端到端延迟；
+- 离线事件分类更好，却没有闭环控制价值。
 
-不要求把触觉是否有用等领域已有结论从头证明，但需要证明本次新增机制有实际价值。第一篇不同时承诺完整世界模型、通用 VLA、跨本体和事件触发通信。后续可沿同一问题扩展，不把它们都塞进当前论文。
+## 可能的第一篇贡献形式
+
+只有证据成立后，才可能形成以下贡献：
+
+1. 一个可复现的、sensor-aware 的 compact tactile contact-state representation；
+2. 对它保留 / 丢失哪些触觉信息的定量边界；
+3. 在长历史与实时闭环条件下，相对 scalar force、learned compact latent 或 rich tactile encoder 的效率 / 泛化收益；
+4. 必要的真实机器人闭环任务与失败案例。
+
+如果 Stage 0 / Stage 1 不能支持前两项，就停止或修改路线，而不是继续堆 temporal model。
+
+## 研究纪律
+
+- 论文事实、作者报告、候选假设和本项目结果分开记录。
+- 不把漂亮 phase plot 当作贡献成立。
+- 不把 FlexiTac、Mamba、physics descriptor 或神经科学类比本身当 novelty。
+- 仿生快慢系统只可作为设计启发，不能替代机器人系统的定量证据。
+- 第一篇不同时承诺世界模型、跨本体、通用 VLA、事件触发通信和完整多传感器融合。
