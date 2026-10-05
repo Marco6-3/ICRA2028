@@ -20,3 +20,9 @@
 - 仿生 mechanoreceptor / spinal-cortical 类比最多作为设计启发；没有定量对应时不能作为机器人方法正确性的证据。
 - 不自动扩张到世界模型、跨本体、事件触发通信、通用 VLA、多传感器大系统；这些只在当前核心 claim 成立后考虑。
 - 本仓库管理研究问题和证据；已有 infra 另行使用，不扩张成泛用机器人平台建设任务。
+
+- **Core Triad**：TacMamba = long tactile memory baseline；LeFlexiTac = dense FlexiTac-to-policy/VLA baseline；RDP = fast tactile-reactive control baseline。正式实验设计优先围绕这三条轴组织，而不是堆叠散乱 baseline。
+- LeFlexiTac 只能表述为：其公开项目在特定 π0.5 设置中采用 tactile tokens，并报告 full fine-tuning 优于其 action-expert-only / LoRA 尝试。不能扩写成“π0.5 触觉融合普遍必须 full fine-tune”，也不能未经实测写死其实际 tactile loop 频率。
+- 不用“first FlexiTac + Mamba”作为主要 novelty。未检索到关键词组合不是新颖性证明；novelty 必须落在 dense tactile → physical bottleneck → persistent streaming memory → policy interface 的完整问题与证据链。
+- RDP 的角色是 fast reactive control baseline。不要把其理论网络吞吐当作真实闭环频率，也不要未经论文/源码核查写成“没有长时记忆”。
+- 三个诊断任务的逻辑优先于任务数量：Task 1 temporal non-regression；Task 2 spatial necessity；Task 3 history necessity。不要提前写死成功率、50 ms 等结果。
