@@ -1,59 +1,15 @@
-# Research Workspace Rules
+# ICRA2028 research collaboration
 
-本仓库是机器人操作研究 idea 工作区。README.md 是方向索引，具体研究问题放在 `ideas/`。
+用户当前目标：围绕触觉整理一条长期研究路线，在 2027 年准备并投稿 ICRA 2028。以 README.md、research/CORE.md 为当前问题定义；用户后续明确指令优先。
 
-## 1. 不恢复已删除旧方向
-
-用户已经明确要求：此前仓库中的所有旧研究方向均不再保留。不要从 Git 历史、旧摘要、旧 TODO 或其他对话中自动恢复 OM-1、旧 D1-D7、夹爪宽度、旧 pilot 等内容。需要追溯时只通过 Git history 查看，不重新写回当前目录，除非用户再次明确要求。
-
-## 2. 一个 idea 一个文件
-
-每个 idea 使用独立文件：
-
-```text
-ideas/Ixxx_SHORT_NAME.md
-```
-
-README 只维护索引和极短摘要，不把某一个 candidate 自动提升为整个仓库唯一主线。
-
-每个 idea 建议包含：
-
-- Problem
-- Why the problem may exist
-- Terminology / scope
-- Hypotheses
-- Proposed architecture or method
-- Data and sensing requirements
-- Mechanics / physics variables worth measuring
-- Minimal experiments
-- Baselines and ablations
-- Metrics
-- Generalization split
-- Falsification / stop conditions
-- Risks and nearest-work questions
-- Next actions
-
-## 3. 科研表述
-
-- “可能”“假设”“待验证”与“已经实验证明”必须严格区分。
-- 不因为结构看起来合理就宣称新颖性；相关工作需要单独检索。
-- attention、latent visualization、linear probe 等只能作为诊断，不单独证明因果机制。
-- 先设计能推翻假设的实验，再考虑扩模型。
-- 评价按 episode / object / trajectory / seed 等独立单位统计，不能把连续帧当独立样本。
-- 所有在线方法只能使用决策时刻以前已到达的信息，避免未来信息泄漏。
-- 记录 sensor rate、policy rate、communication latency、actuation rate 与 end-to-end reaction latency，不能只报告网络 forward latency。
-
-## 4. 触觉与物理变量
-
-研究触觉时，不默认需要完整机器人动力学模型。优先区分：
-
-- raw tactile signal
-- contact mechanics / contact state
-- full robot dynamics
-
-法向力、剪切力、力矩、滑移、接触面积、形变、振动、变化率等可以作为测量量、privileged labels、分析变量或控制变量；是否真正有用由消融和闭环结果决定。
-
-## 5. 修改仓库时
-
-新增方向优先扩展 `ideas/`，不要把所有相近想法写进同一个文件。若一个 idea 已经明显分裂成不同科学问题，应拆成新的 ID。
-
+- 维护一条主线：选择性触觉记忆如何支持执行中的多速率闭环操作。不要自动恢复已删除旧目录、旧课题和旧实验结论。
+- 先读最接近论文及其消融，再提出缺口。T-Rex 已编码近期历史；TacMamba 已压缩历史；TacForcing 已评估 EATA。不能声称这些能力尚不存在。
+- 论文事实、作者报告、项目推断、待验证假设和本项目结果分开记录。未运行不能声称复现，未确认不能声称首次或必然录用。
+- 保留来源 URL、版本或读取日期、已读范围。新方法不能仅以拼装模块或更换骨干作为贡献。
+- 不预设 Mamba 优于 GRU、有限窗口 Transformer、事件检测器或控制基线。用同数据、同观测、合理训练预算与实际延迟比较。
+- 在线输入只使用决策时刻之前已到达的信息；episode 边界重置记忆；离线预测、标定和归一化也不能泄漏未来。
+- 采样频率、编码频率、策略频率、执行频率与端到端反应延迟分别报告。硬件资源在执行前核实。
+- 仿真摩擦、真实接触状态等 privileged 信息默认只用于锁定模型后的只读诊断，不能进入策略、选模或测试调参。
+- 在已授权任务范围内推进文献与代码工作；不要因路线文档而擅自启动长时训练、采购或真机运行。
+- 新结果应记录设置、版本、独立试验单位、全部失败与负结果、原假设和更新后的判断。不要追溯性改写假设。
+- 本仓库管理研究问题和证据；已有 infra 另行使用，不扩张成泛用平台建设任务。

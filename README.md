@@ -1,92 +1,39 @@
-# Robot Manipulation Research Ideas
+# ICRA2028 · 触觉记忆驱动的多速率机器人操作
 
-这个仓库用于记录和推进具身智能 / 机器人操作中的研究 idea。它不是一个已经冻结的单一课题，也不默认任何 idea 已经具备论文贡献。
+更新：2026-10-05。状态：研究路线与文献准备；尚未运行本路线的实验。
 
-当前原则：
+## 一条长期主线
 
-- 每个方向独立放在 `ideas/` 下，先写清问题、假设、最小实验、失败条件，再决定是否投入更多资源。
-- 新方向可以彼此相近，例如都围绕触觉、物理交互、多时间尺度控制或 in-context adaptation，但不要为了“凑一篇论文”强行合并。
-- 仓库只保留当前仍认可的研究 idea；已经放弃的旧方向不在当前目录归档，需要追溯时使用 Git history。
-- 文档中的模型结构、频率、传感器与机器人平台默认都是待验证设计，不把建议写成实验事实。
+**研究机器人应当记住哪些接触历史，以及如何用这些记忆及时修正正在执行的动作。**
 
-## Ideas
+长期方向：接触状态感知的选择性触觉记忆（contact-aware selective tactile memory）与多速率闭环操作。第一篇论文聚焦：
 
-| ID | 方向 | 状态 | 核心问题 |
-| --- | --- | --- | --- |
-| [I001](ideas/I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md) | 高频触觉反馈中的时序上下文与 in-context adaptation | Candidate | 高频触觉策略是否应利用短期历史估计当前接触状态，并利用更长的交互历史在线推断接触动力学，从而在不更新权重的情况下调整局部控制？ |
-| [I002](ideas/I002_ASYNC_SEMANTIC_TACTILE_COMMUNICATION.md) | 异步多速率 semantic–tactile policy 通信 | Candidate | 低频 semantic policy 与高频 tactile policy 在异步运行时应该共享什么、共享多少、允许信息陈旧多久，以及是否需要双向 / 事件触发通信？ |
+> 在同等观测、训练与反应延迟预算下，选择性保留接触历史，能否比当前触觉或固定历史窗口更有效地支持执行中的动作修正，并泛化到未见接触条件？
 
-后续新增方向时，在 `ideas/` 中创建新的 `Ixxx_*.md`，并把索引加入上表。
+T-Rex 提供快慢策略与执行时修正的参照；TacMamba 提供流式历史压缩的参照；TacForcing 提供触觉与执行时刻对齐的参照。三者是问题来源，不是必须全部拼装的模块。Mamba 是候选实现，论文主张不能仅是“换成 Mamba”。
 
-## 当前方向关系
+## 目标年份
 
-### I001 — fast tactile policy 内部需要什么历史？
+按用户指定的仓库名，以 **2027 年完成研究并投稿 ICRA 2028** 为目标，而非承诺录用。ICRA 2027 常规论文投稿已经关闭。ICRA 2028 的 RAS 官方日历存在两条相互冲突的截止日记录，具体日期以正式 CFP / PaperPlaza 为准；内部暂按 **2027-07-31 完整初稿** 留出缓冲。来源及冲突见 [路线与时间表](ROADMAP.md)。
 
-I001 研究的是 tactile branch 自身：
+## 导航
 
-```text
-tactile / action / proprioception history
-                │
-                ▼
-      short contact context
-                +
-      long interaction context
-                │
-                ▼
-       fast tactile policy
-```
+| 文档 | 用途 |
+| --- | --- |
+| [研究主线](research/CORE.md) | 核心问题、假设、方法边界与可能的论文贡献 |
+| [研究路线](ROADMAP.md) | 从近期阅读到 2027 年投稿准备，以及更长期的延伸 |
+| [实验方案](research/EXPERIMENTS.md) | 有区分力的任务、强基线、因果时间约束和继续/停止条件 |
+| [论文地图](papers/README.md) | 8 篇核心与邻近文献、来源、已读范围、与本路线的关系 |
+| [T-Rex](papers/T_REX.md) | 快慢专家、时序触觉编码与去噪过程 |
+| [TacMamba](papers/TACMAMBA.md) | 选择性状态空间、历史压缩与证据边界 |
+| [TacForcing](papers/TACFORCING.md) | 执行时触觉、EATA，以及对既往理解的纠正 |
+| [协作规则](AGENTS.md) | 维护这条主线、证据与实验记录约定 |
 
-重点是：
+## 现在先做什么
 
-1. 短时历史是否帮助估计 contact state；
-2. action / proprioception history 是否帮助区分环境变化与机器人自身动作造成的变化；
-3. 更长 interaction history 是否能够形成不更新权重的 in-context adaptation。
+1. 对照三篇核心论文的方法和消融，确认“已有能力”和“仍需检验的问题”。
+2. 在 RDP / ImplicitRDP 的实现可用性与设备适配核查后，选一个作为工程起点；保留最接近的另一类方法作比较。不是同时重建三个大系统。
+3. 选择**遮挡插接与卡扣就位**作为首个任务族，围绕“当前力相近、接触历史不同”的状态歧义开展实验。
+4. 先比较当前触觉、固定短窗、流式 GRU；有可信差异后，再检验选择性记忆。结果支持才扩展任务与模型。
 
-完整细节见 [I001](ideas/I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md)。
-
-### I002 — fast tactile 与 slow semantic 之间如何通信？
-
-I002 不预设“少量共享 token 一定最好”，而是把通信机制本身作为实验变量：
-
-```text
-vision / language / task state
-            │
-            ▼
-      semantic policy
-          slow rate
-            │
-            ▼
-      shared memory / tokens
-            ▲
-            │
-       tactile policy
-          fast rate
-            │
-            ▼
-      refined robot action
-```
-
-核心变量包括：
-
-- shared token / latent 的数量与内容；
-- coarse action only vs compressed tokens vs full latent；
-- semantic context staleness；
-- semantic -> tactile 单向 vs 双向通信；
-- fixed-rate vs tactile-event-triggered semantic update；
-- performance / reaction latency / compute / communication bandwidth 的 trade-off。
-
-第一阶段计划以 **Franka 仿真**作为实验平台，但研究问题不绑定 Franka。上层尽量使用 end-effector delta pose + gripper command，并通过 robot-specific controller 适配后续可能获得的其他真机机械臂。
-
-完整细节见 [I002](ideas/I002_ASYNC_SEMANTIC_TACTILE_COMMUNICATION.md)。
-
-## Repository structure
-
-```text
-.
-├── README.md
-├── AGENTS.md
-└── ideas/
-    ├── README.md
-    ├── I001_HIGH_FREQUENCY_TACTILE_CONTEXT.md
-    └── I002_ASYNC_SEMANTIC_TACTILE_COMMUNICATION.md
-```
+不把简单抓块作为论文的主要证据，不在此仓库重建通用 infra。当前内容已整体重写；旧方向仅存在于 Git 历史中。
