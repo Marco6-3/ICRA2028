@@ -1,66 +1,216 @@
-# 实验路线：在已有论文上验证方法改进
+# 实验路线：从 Physics Bottleneck 到 Temporal Memory
 
 状态：方案，未运行。更新：2026-10-05。
 
-## 先建立原论文基线
+## 总原则
 
-选定母体论文后，核查代码提交、权重、数据、任务、传感器接口和训练/推理配置。在可获得的原任务上建立可比较结果，记录公开结果、当前复现结果与适配差异。缺失的实现不能靠猜测后宣称忠实复现。
+当前路线不先比较一堆时序网络，而先回答两个问题：
 
-优先评估 TacForcing；T-Rex 等作为候选母体与相关工作，最终选择以问题匹配和可复用性为依据。RDP/ImplicitRDP 可以成为邻近方法比较或工程参考，不预设其必须替代主要论文。
+1. 低维 physics contact state 是否是一个有价值的 tactile bottleneck？
+2. 如果是，长历史 temporal memory 是否能在固定延迟预算下进一步提高闭环控制？
 
-## 最小方法改进
+所有阶段都必须把**表示、时序、控制**分开验证，避免同时改多个轴后只报告最终成功率。
 
-从原论文的具体假设进入，例如：保留执行对齐，改变临近执行动作获取历史触觉的方式。先只修改一个机制，沿用原数据、动作空间、控制器、训练与评价协议。若必须适配，所有比较方法采用相同适配并说明原因。
+---
 
-不把从零比较一批基础网络设为开始研究的门槛。实验首先回答：相对已有方法，这个改进是否有用、为什么适用于目标问题？
+## Stage 0 — Zero-Network Physics Sanity Check
 
-## 对比层次由贡献决定
+候选硬件优先使用 FlexiTac 一类二维法向触觉阵列。固定真实硬件、固件、采样配置与记录格式后，采集重复序列：
 
-| 比较 | 所回答的问题 |
-| --- | --- |
-| 所选论文原方法 vs 改进方法 | 方法改进是否带来增量价值 |
-| 去掉新增机制，保留其余改动 | 收益是否确实依赖新增机制 |
-| 必要的资源/输入匹配变体 | 收益是否只是更多历史、参数、训练或更快刷新 |
-| 最接近的相关论文方法 | 收益是否超出已有方案，论文定位是否成立 |
-| 未见对象/接触条件与失败案例 | 结论在哪些条件下可推广，何时失效 |
+no-contact → contact → load → redistribution / roll / tilt → release
 
-具体网络比较仅在能检验所声称的贡献时补充，不提前指定架构名单。若修改涉及历史选择，可比较相同历史输入下的原机制与新机制；若涉及时间对齐，则单独控制对齐与刷新。不要同时改多个轴后只报告最终成功率。
+第一阶段不训练神经网络。
 
-## 任务选择
+### 必测量
 
-优先使用所选论文的原任务/公开基准，方便核验和比较。增加新任务时必须说明它揭示哪种原评价未覆盖的接触条件。可选扩展包括：
+- raw sampling rate 与 frame timestamp；
+- transport latency；
+- baseline update / threshold / filtering 设置；
+- descriptor compute latency；
+- P50 / P95 event-to-descriptor delay；
+- repeated-trial noise、drift 和 repeatability；
+- sustained load 是否被 baseline tracking 错误抹掉；
+- descriptor 是否在 contact / release / redistribution 等事件处出现可重复变化。
 
-- 遮挡插接或卡扣就位：当前触觉近似，但历史中的接触/释放事件影响下一动作。
-- 受扰持续接触：历史如何帮助恢复接触，何时旧信息会误导。
-- 低动态或状态充分可见的版本：检验不需要复杂历史时的收益与代价。
+### Phase-plane visualization
 
-任务不是冻结清单，也不先从简单抓块另起一套系统。仿真传感器必须能呈现所研究的接触事件；理想接触力不能自动代表真实触觉传感器。
+可视化包括但不限于：
 
-## 推进与修订
+- ((P,\Delta P))；
+- ((c_x,\Delta c_x))、((c_y,\Delta c_y))；
+- ((A,\sigma_1/\sigma_2))；
+- orientation-confidence trajectory。
 
-1. 读懂原文、实现和消融，形成“原方法假设 → 可改进条件 → 新机制”的简短论证。
-2. 建立原方法可比较结果，并做一个最小改进版本。
-3. 若有可信收益，补关键消融和最接近论文对比，再扩展泛化与真机。
-4. 若无收益，区分实现问题、训练不充分与假设不成立；修订改进点，不靠继续堆模块维持叙事。
+这些图只用于形成 hypothesis。结构化轨迹不能替代后续定量比较。
 
-先导实验用于估计变异与正式样本规模；正式比较使用独立训练重复和独立试验，规模依据效果与方差决定。不能把帧、重叠窗口或精选成功视频作为独立重复。
+### 继续条件
 
-## 指标、划分与时间因果性
+只有当 descriptor 在重复实验中：
 
-主要指标：每个任务预定义成功率/连续质量指标；反应延迟与危险/失败接触作为并列指标。报告物理事件发生到新动作实际生效的端到端延迟，至少包含中位数、P95，另列采样、传输、编码、策略和执行耗时。只报网络 forward 不足以支持“反应更快”。
+- 数值稳定；
+- 不依赖测试期未来信息；
+- 事件响应具有可重复性；
+- 不主要由 threshold / filter artifact 产生；
 
-训练/验证/测试按完整轨迹、对象和采集批次划分；未见材料/间隙或扰动条件单列。验证集可调超参，锁定模型后测试集只读。给出效应量、区间与失败类型，不只报平均成功率或显著性。
+才进入 Stage 1。
 
-每个传感器记录采样时间与到达时间；动作记录下发与实际执行时间。所有输入在决策时已到达；episode 开始重置隐状态。归一化参数仅由训练集估计。不能通过双向编码器、未来帧插值、完整 episode 统计或教师强制将未来触觉放入在线策略。
+---
 
-仿真真实摩擦/接触状态默认仅用于训练完成并锁定模型后的只读诊断，不参与输入、选模和最终测试调参。
+## Stage 1 — Representation Bottleneck
+
+比较三类表示：
+
+1. **Raw**：原始 tactile map；
+2. **Physics**：约 11D physically interpretable contact state；
+3. **Learned**：从 Raw 学得、维度与 Physics 匹配的 compact latent。
+
+推荐的最小读出：
+
+| 输入 | 读出 / 模型 | 目的 |
+| --- | --- | --- |
+| Physics 11D | Linear / tiny MLP | 检查物理 bottleneck 的低样本可分性 |
+| Raw | Linear | 检查高维 raw 的直接可分性 |
+| Raw | Tiny CNN | learned spatial baseline |
+| Learned 11D | Tiny encoder + linear head | 与 Physics 同维度比较 inductive bias |
+
+不要预设 Physics 必须击败 Raw。Physics 的潜在价值是 **compactness、data efficiency、OOD robustness、latency 与 interpretability**，不是信息量更大。
+
+### 数据效率
+
+至少报告：
+
+1%、5%、10%、25%、50%、100% training data
+
+下的主要任务指标与方差。
+
+### OOD
+
+按完整 trial / object / acquisition batch 分割，优先测试：
+
+- 未见物体；
+- 未见接触位置；
+- 未见刚度 / 表面条件；
+- 必要时新的 indenter geometry。
+
+不能随机打散帧后声称 OOD。
+
+### 对抗性信息丢失测试
+
+#### A. Moment-matched but locally different
+
+不要人工强行同时匹配 (P,CoP,A,\Sigma)。从真实数据中跨类别搜索：
+
+[
+(i,j)^*=\arg\min_{y_i\neq y_j}\|s_i-s_j\|_2
+]
+
+同时要求 raw tactile map 差异较大。
+
+目标：找到 physics descriptor 近似相同、局部 pressure pattern 不同的真实样本，量化 many-to-one compression 的信息损失。
+
+#### B. Different contact dynamics
+
+至少覆盖两类：
+
+- click / bistable event：(\Delta P) 大，CoP 变化相对小；
+- rolling / tilting / redistribution：总压力变化较缓，CoP / shape 持续变化。
+
+目标不是让 Physics “碾压” Raw，而是判断 compact physical state 是否以更低成本显式暴露控制相关动力学。
+
+### Stage 1 主要指标
+
+- classification / regression task metric；
+- sample efficiency curve；
+- IID → OOD performance drop；
+- representation dimensionality；
+- preprocessing / encoder P50、P95 latency；
+- CPU / GPU / memory footprint；
+- failure examples。
+
+### 继续条件
+
+Physics bottleneck 至少需要在以下一个或多个维度体现清晰价值，且没有不可接受的信息损失：
+
+- data efficiency；
+- OOD robustness；
+- latency / compute；
+- interpretability / diagnostic value。
+
+若 Physics 与 learned compact latent 相比没有明显价值，或丢失的信息正是目标闭环任务所必需，则应停止、修改 descriptor 或转向 learned representation，而不是直接进入 Mamba。
+
+---
+
+## Stage 2 — Temporal Memory
+
+只有 Stage 0 / 1 通过后，才研究：
+
+[
+s_{1:t}\rightarrow h_t.
+]
+
+强候选包括 TacMamba / Mamba 式递推 SSM，但不预设骨干。
+
+建议比较：
+
+| Representation | Temporal model / interface | 所回答的问题 |
+| --- | --- | --- |
+| scalar total force | streaming memory | TacMamba 风格低维基线 |
+| Physics state | streaming memory | 物理结构是否是更好的长历史接口 |
+| Learned compact latent | matched temporal model | 收益是否来自 physics inductive bias |
+| Raw / rich tactile | temporal encoder | 信息更丰富但成本更高的参照 |
+
+需要固定：
+
+- 历史可见范围；
+- hidden-state size / parameter budget；
+- sensor update rate；
+- training data；
+- decision frequency；
+- end-to-end latency budget。
+
+不能只比较模型 forward time。
+
+---
+
+## Stage 3 — Closed-Loop Control
+
+Representation 与 memory 都只是假设链条中的中间变量。最终若要声称“改善 tactile-reactive manipulation”，必须进入真实闭环任务。
+
+优先任务应由 Stage 1/2 暴露出的 contact-state需求决定，而不是提前冻结。候选包括：
+
+- sustained contact with disturbance；
+- rolling / contact redistribution；
+- insertion / snap / click-like transitions；
+- 对局部 pattern 有要求的 negative-control task。
+
+至少报告：
+
+- task success / continuous quality；
+- physical event → action effect 的端到端 P50 / P95 latency；
+- dangerous / excessive-contact events；
+- unseen-object / unseen-contact-condition performance；
+- failure taxonomy。
+
+---
+
+## 因果性与数据纪律
+
+- 每个传感器记录 sampling timestamp 与 arrival timestamp；
+- 动作记录 command timestamp 与实际执行时间；
+- 所有在线输入必须在决策时已经到达；
+- episode 开始重置 memory state；
+- baseline、normalization、threshold 与 calibration 不得使用测试 episode 的未来数据；
+- no-contact baseline 若在线更新，接触时必须按协议冻结；
+- 训练 / 验证 / 测试按完整轨迹、对象和采集批次划分；
+- 仿真 privileged friction / object state 默认只用于锁定模型后的只读诊断。
 
 ## 投稿前证据门槛
 
-- 有最接近且认真调优的记忆/反应基线，不只对视觉模型。
-- 主要差异可跨种子与未见条件复查；报告失败与代价。
-- 关键机制消融能改变判断，未证明部分明确降级为解释或假设。
-- 要主张真实接触操作，需真机闭环证据；只有仿真时相应缩小主张。
-- 数据、版本、配置和推理时延可追溯，不能用论文中的指标充当本项目结果。
+- Physics representation 的收益和失败边界都有定量证据；
+- 同维 learned latent 是认真调优的 baseline；
+- temporal model 的收益不能只是更多参数、更多历史或不同刷新率；
+- 报告完整端到端 latency，不只报 descriptor 或网络 forward；
+- 若主张真实 contact-rich manipulation，必须有真实机器人闭环证据；
+- 负结果与停止条件保留，不能追溯性重写假设。
 
-这些是形成可信论文的工作标准，不是录用保证。
+详细 descriptor 与底层预处理定义见 [PHYSICS_BOTTLENECK.md](PHYSICS_BOTTLENECK.md)。
