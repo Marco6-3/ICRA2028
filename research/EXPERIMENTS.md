@@ -36,9 +36,9 @@ no-contact → contact → load → redistribution / roll / tilt → release
 
 可视化包括但不限于：
 
-- ((P,\Delta P))；
-- ((c_x,\Delta c_x))、((c_y,\Delta c_y))；
-- ((A,\sigma_1/\sigma_2))；
+- $(P,\Delta P)$；
+- $(c_x,\Delta c_x)$、$(c_y,\Delta c_y)$；
+- $(A,\sigma_1/\sigma_2)$；
 - orientation-confidence trajectory。
 
 这些图只用于形成 hypothesis。结构化轨迹不能替代后续定量比较。
@@ -98,11 +98,11 @@ no-contact → contact → load → redistribution / roll / tilt → release
 
 #### A. Moment-matched but locally different
 
-不要人工强行同时匹配 (P,CoP,A,\Sigma)。从真实数据中跨类别搜索：
+不要人工强行同时匹配 $P,CoP,A,\Sigma$。从真实数据中跨类别搜索：
 
-[
+$$
 (i,j)^*=\arg\min_{y_i\neq y_j}\|s_i-s_j\|_2
-]
+$$
 
 同时要求 raw tactile map 差异较大。
 
@@ -112,7 +112,7 @@ no-contact → contact → load → redistribution / roll / tilt → release
 
 至少覆盖两类：
 
-- click / bistable event：(\Delta P) 大，CoP 变化相对小；
+- click / bistable event：$\Delta P$ 大，CoP 变化相对小；
 - rolling / tilting / redistribution：总压力变化较缓，CoP / shape 持续变化。
 
 目标不是让 Physics “碾压” Raw，而是判断 compact physical state 是否以更低成本显式暴露控制相关动力学。
@@ -144,9 +144,9 @@ Physics bottleneck 至少需要在以下一个或多个维度体现清晰价值�
 
 只有 Stage 0 / 1 通过后，才研究：
 
-[
+$$
 s_{1:t}\rightarrow h_t.
-]
+$$
 
 强候选包括 TacMamba / Mamba 式递推 SSM，但不预设骨干。
 
