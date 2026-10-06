@@ -1,6 +1,6 @@
 # 研究主线：从接触状态压缩到长时触觉记忆
 
-状态：研究路线，未形成已验证贡献。更新：2026-10-05。
+状态：研究路线，未形成已验证贡献。更新：2026-10-06。
 
 ## 长期问题
 
@@ -13,7 +13,7 @@
 第一篇不从“设计一个更复杂网络”开始，而先拆成两个可独立否证的问题：
 
 1. **Representation**：低维、物理可解释的 contact state 是否保留了闭环控制需要的主要空间接触信息？
-2. **Memory**：如果 representation 足够，怎样在固定延迟预算下保存其长历史？
+2. **Memory**：长历史是否提供当前 tactile state 无法唯一确定的动态信息，以及如何在固定延迟预算下保存这种历史？
 
 详细的第一阶段定义见 [PHYSICS_BOTTLENECK.md](PHYSICS_BOTTLENECK.md)。
 
@@ -41,7 +41,7 @@
 | TacForcing | execution-time tactile feedback 与动作块对齐 | 提醒最终贡献必须进入真实执行闭环，而不能停在离线 representation accuracy |
 | FlexiTac / VTAP | 柔性高密度法向触觉阵列及指尖部署 | 提供研究“spatial tactile field → compact contact state”的硬件基础 |
 
-这不是模块拼装路线。当前工作先验证 physics bottleneck；若不成立，不进入“FlexiTac + Mamba”系统开发。
+这不是模块拼装路线。当前仍不把“FlexiTac + Mamba”视为既定系统；但允许一个低成本 matched-memory probe 检查表示×记忆交互，避免因为单帧表示结果模糊而误杀真正只在时序条件下出现的价值。
 
 ## 当前 baseline 定位
 
@@ -72,11 +72,11 @@ H1 的优势若存在，应主要表现为：
 
 H1 **不要求** Physics 在信息量上优于 Raw；Raw 包含计算这些 descriptor 所需的原始信息。
 
-### H2 — Long-horizon memory
+### H2 — Coupled spatiotemporal value
 
-若 H1 成立，则 compact physical state 的历史可以通过递推 temporal model 形成长时 contact memory，而无需在每个时刻重新处理完整高维 tactile history。
+候选核心不是“11D 单帧一定更好”，而是 structured spatial state 与 temporal memory 是否存在可测的交互：当总载荷历史不足以区分不同空间接触过程，spatial state 应提供额外可观测性；当当前 spatial state 本身存在歧义时，历史轨迹应提供额外信息。
 
-Mamba / SSM 是强候选，但具体骨干只有在 Stage 1 后确定。不能把“用了 Mamba”本身当贡献。
+低成本 Stage-2P 可以在 Stage 1 尚未正式通过时检验这一点，使用 Scalar、Scalar+centroid、Physics11D、Learned11D 接入同一 streaming temporal backbone。Mamba / SSM 是强候选母体，但不能把“用了 Mamba”本身当贡献，也不能预设 11D 必须优于更小的 spatial state。
 
 ### H3 — Hybrid extension（后续）
 
@@ -108,7 +108,7 @@ Mamba / SSM 是强候选，但具体骨干只有在 Stage 1 后确定。不能�
 3. 在长历史与实时闭环条件下，相对 scalar force、learned compact latent 或 rich tactile encoder 的效率 / 泛化收益；
 4. 必要的真实机器人闭环任务与失败案例。
 
-如果 Stage 0 / Stage 1 不能支持前两项，就停止或修改路线，而不是继续堆 temporal model。
+如果 Stage 0 / Stage 1 不能支持前两项，且 Stage-2P 也没有显示 representation×memory 交互，则停止或修改路线，而不是继续堆 temporal model 或接入 VLA。若 Stage-2P 只支持更小的 spatial state，则缩减 descriptor，而不是维护“完整 11D 必要”的故事。
 
 ## 研究纪律
 
