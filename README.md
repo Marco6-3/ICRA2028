@@ -20,7 +20,7 @@
 
 > **What is the minimal tactile state that preserves control-relevant spatial contact information over long horizons?**
 
-当前候选切入点是 **Physics-Guided Contact-State Compression**：先用 FlexiTac 一类二维触觉阵列研究“高维接触场 → 低维、物理可解释 contact state”的信息保真与失败边界；只有这个 bottleneck 经验证成立后，再研究 TacMamba / Mamba 一类流式长历史模型。这样把“表示是否足够”与“历史如何记忆”分开验证。
+当前候选切入点是 **Physics-Guided Contact-State Compression + Streaming Memory**：先用 FlexiTac 一类二维触觉阵列研究“高维接触场 → 低维、物理可解释 contact state”的信息保真与失败边界；同时允许一个严格受限的 Stage-2P probe 检验 representation × memory interaction。正式 Mamba/VLA 系统仍需前序证据，但不再用严格串行门控错过“单帧不显著、长历史才显现”的可能价值。
 
 当前实验定位锚定三类强基线：**TacMamba = long tactile memory**、**LeFlexiTac = dense FlexiTac-to-policy/VLA**、**RDP = fast tactile-reactive control**。T-Rex 与 TacForcing继续作为多速率触觉与 execution-time conditioning 的关键 supporting work。详见 [Core Baselines](research/BASELINES.md)。
 
@@ -32,7 +32,8 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 
 1. **Stage 0 — Physics sanity check**：不训练网络，检查 descriptor 的噪声、漂移、重复性、事件响应和真实延迟。
 2. **Stage 1 — Representation bottleneck**：比较 Raw / LeFlexiTac-style dense tactile tokens / Physics 11D / Learned 11D 的数据效率、OOD、延迟、训练代价和信息丢失。
-3. **Stage 2 — Temporal memory**：只有前两阶段成立后，才比较 physics-state history 与 learned/raw temporal representation；Mamba 是强候选但不预设为最终答案。
+3. **Stage 2P — matched temporal probe**：在 Stage 1 尚未正式通过时，允许 Scalar / Scalar+centroid / Physics11D / Learned11D 接入同一 streaming backbone，专门检查表示×记忆交互；不接 VLA，不视为正式 Stage 2。
+4. **Stage 2/3 — Formal temporal memory → Closed loop**：只有前序证据支持后才扩大到正式时序系统与真机闭环。
 
 详细定义见 [Physics-Guided Contact-State Compression](research/PHYSICS_BOTTLENECK.md)。
 
@@ -62,7 +63,8 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 1. 固定 FlexiTac 硬件 / 固件版本与真实数据格式，实测采样率、传输和 preprocessing latency；不要沿用文献数字代替本机测量。
 2. 已有解析 descriptor 与公开数据实现；仍需完成真实 FlexiTac 的 Stage 0：contact → load → redistribution / roll → release 的受控重复数据。公开数据数值检查不能替代硬件噪声、漂移和事件重复性。
 3. 在真实校准与独立标签下比较 Scalar、Scalar+centroid、Physics11D、Raw 与 Learned11D；现有离线结果不足以通过继续条件。dense tactile token 路径尚未运行，不能宣称优于它。
-4. Stage 1 若显示 physics bottleneck 在 compactness / data efficiency / OOD / latency 中至少具有清晰价值，再进入 temporal memory；否则停止或修改 bottleneck，而不是直接堆 Mamba。
+4. 现在可并行启动一个低成本 Stage-2P：固定同一 temporal backbone，比较 Scalar、Scalar+centroid、Physics11D、Learned11D；若 Physics11D 不能超过更小的 spatial state，则优先缩 descriptor，而不是把 11D 当既定贡献。
+5. 真正的 coupled spatiotemporal 任务必须同时包含“Why Spatial”和“Why Memory”的可观测性缺口；在独立真值确认前，不把 CoP/shape 漂移直接称为微滑移或失稳前兆。
 
 **不把好看的相平面图当成论文证据，不把 Mamba、FlexiTac 或“physics”本身当 novelty。** 最终贡献必须来自可重复的增量证据和明确失败边界。
 
