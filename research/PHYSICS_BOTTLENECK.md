@@ -1,6 +1,6 @@
 # 候选主线：Physics-Guided Contact-State Compression
 
-状态：候选研究方向，尚未形成已验证贡献。更新：2026-10-05。
+状态：候选研究方向，尚未形成已验证贡献。更新：2026-10-06。
 
 ## 核心问题
 
@@ -175,6 +175,8 @@ $$
 
 **继续条件**：descriptor 在重复实验中数值稳定、事件响应具有可重复性，且不存在明显由 baseline / threshold / filtering 人工制造的结构。漂亮的 phase plot 只生成 hypothesis，不证明论文主张。
 
+项目级预注册门槛：task-relevant descriptor repeated-trial ICC 目标 ≥ 0.90；固定稳定载荷下 total-load proxy CV 目标 ≤ 5%；preprocessing + descriptor compute P95 ≤ 一个 tactile frame interval 的 20%，event-to-descriptor P95 ≤ 一个 tactile frame interval。硬件/固件/记录格式冻结后，以 4 周主动实验或 3 个独立采集批次（先到者）为一次 timebox；若仍失败则 pivot，而不是无限调阈值。
+
 ## Stage 1：Representation Bottleneck Experiment
 
 比较三种表示在相同数据划分下保留和丢弃的信息：
@@ -224,9 +226,22 @@ $$
 
 先观察 compact state 的轨迹，再做事件识别。不要预设 Physics 一定击败 Raw；要检验在少数据、OOD 和计算约束下是否更高效。
 
-## Stage 2：Temporal Memory（只有 Stage 0/1 成立后才进入）
+## Stage 2P：低成本 temporal interaction probe
 
-如果 compact contact state 在 Stage 1 中表现出足够信息保真和明确边界，再研究：
+Issue #1 指出了严格串行门控可能漏掉 **representation × memory** 交互。因此即使 Stage 1 尚未正式通过，也允许一个小型、预注册的 probe：
+
+- Scalar → matched streaming memory；
+- Scalar + centroid → matched streaming memory；
+- Physics11D → matched streaming memory；
+- Learned11D → matched streaming memory。
+
+四者必须共享 temporal backbone、hidden/parameter budget、history visibility、训练数据和 decision rate。该 probe 只回答“长历史是否暴露单帧读出没有显示的增量”，不接 VLA，不等于认可完整 11D。
+
+若 Physics11D 不能超过 Scalar+centroid，则优先缩减 descriptor；若 Learned11D 更好，则考虑 learned/hybrid bottleneck；若 spatial variants 均无增量，则不继续用更大 Mamba 掩盖表示问题。
+
+## Stage 2：Formal Temporal Memory
+
+如果 compact contact state 在 Stage 1 中表现出足够信息保真和明确边界，或 Stage-2P 给出预注册且可重复的 interaction evidence，再扩大研究：
 
 $$
 s_{1:t}^{phys}
@@ -252,6 +267,7 @@ TacMamba / Mamba 是此时的强候选，而不是预先锁死的答案。需要
 - descriptor 主要由阈值 / baseline / calibration 人工产生，不具重复性；
 - 11D Physics 在少数据、OOD、延迟等维度均没有相对 learned compact latent 的优势；
 - Physics 丢失的局部信息恰好是主要闭环任务必需信息，且需要高频 raw processing 才能恢复；
-- 后续 temporal model 的收益仅来自更多参数或更长输入，而与 physics bottleneck 无关。
+- 后续 temporal model 的收益仅来自更多参数或更长输入，而与 physics bottleneck 无关；
+- Stage-2P 中 Physics11D 与 Scalar+centroid 长历史表现近似，则停止维护“完整 11D 必要”的 claim，优先采用更小状态。
 
 本文件记录的是**待验证假设与实验协议**，不能将任何候选 descriptor、延迟、泛化或控制收益写成已证明结果。
