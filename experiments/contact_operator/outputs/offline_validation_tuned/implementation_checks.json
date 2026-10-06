@@ -1,0 +1,10 @@
+{
+  "vectorized_vs_scalar_max_error": 1.1530681964799783e-07,
+  "zero_contact_finite": true,
+  "causal_prefix_check": true,
+  "full_physics_shape": [
+    24863,
+    11
+  ],
+  "all_physics_finite": true
+}

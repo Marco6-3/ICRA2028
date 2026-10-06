@@ -1,6 +1,16 @@
 # ICRA2028 · 触觉接触状态与长时记忆
 
-更新：2026-10-05。状态：研究路线与首个表示实验设计；尚未运行本路线的实验。
+更新：2026-10-06。状态：已完成数学检查与两轮公开数据探索性离线验证；完整 11D 的增量价值尚未可靠成立，Stage 1 尚未通过，未启动 Mamba / VLA 或实机闭环实验。
+
+## 已完成的验证与当前判断
+
+- **数学检查**：加权零至二阶矩的数值关系通过检查，同时构造出不同原始场对应相同 11D 的精确反例；统计量自洽不等于控制充分或无损。
+- **LeFlexiTac 动作预测**：64 episode、75,041 帧；Physics11D 相对 State-only 的平均 normalized MSE 高约 4.5%，没有证明空间算子的额外收益。
+- **TaF 空间诊断**：以独立 ATI 力矩／法向力比为标签，17 个完整源记录、417,986 测试帧、3 个神经训练种子。稳载子集上 11D 相对 Scalar 的平均 RMSE 低 6.4%，但逐源配对 MSE 区间跨零，且没有超过“总量＋质心”。去掉窗口固定偏置后，11D 的变化预测误差比零变化参照高 10.2%。
+
+因此先保留质心作为候选，继续受控物理验证和消融；不把完整 11D 的必要性、滑移识别、高频闭环或实机收益写成已成立结论。
+
+详见 [成果与决策总览](research/OFFLINE_RESULTS.md) 和 [实验归档／复现入口](experiments/contact_operator/README.md)。
 
 ## 一条长期主线
 
@@ -38,6 +48,8 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 | [Physics Bottleneck](research/PHYSICS_BOTTLENECK.md) | 当前最高优先级候选：FlexiTac contact state、预处理、Stage 0/1/2 与停止条件 |
 | [Core Baselines](research/BASELINES.md) | TacMamba / LeFlexiTac / RDP 的角色、三类诊断任务与 Go/No-Go 逻辑 |
 | [实验方案](research/EXPERIMENTS.md) | 公平比较、因果时间约束、指标和投稿前证据门槛 |
+| [离线成果与决策](research/OFFLINE_RESULTS.md) | 数学反例、两轮离线结果、负结果、协议修订与当前停止条件 |
+| [实验代码与归档](experiments/contact_operator/README.md) | 数据来源、固定版本、协议、图表、模型和复现命令 |
 | [研究路线](ROADMAP.md) | 从当前小实验到 2027 年投稿准备 |
 | [论文地图](papers/README.md) | 核心与邻近文献、来源、已读范围和与本路线的关系 |
 | [T-Rex](papers/T_REX.md) | 快慢专家、时序触觉编码与去噪过程 |
@@ -48,8 +60,8 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 ## 现在先做什么
 
 1. 固定 FlexiTac 硬件 / 固件版本与真实数据格式，实测采样率、传输和 preprocessing latency；不要沿用文献数字代替本机测量。
-2. 实现 research/PHYSICS_BOTTLENECK.md 中的 11D contact descriptor，并完成 Stage 0：contact → load → redistribution / roll → release 的重复数据。
-3. 只有 descriptor 数值稳定、事件响应可重复后，进入 Stage 1：Raw vs LeFlexiTac-style dense tactile vs Physics 11D vs Learned 11D。
+2. 已有解析 descriptor 与公开数据实现；仍需完成真实 FlexiTac 的 Stage 0：contact → load → redistribution / roll → release 的受控重复数据。公开数据数值检查不能替代硬件噪声、漂移和事件重复性。
+3. 在真实校准与独立标签下比较 Scalar、Scalar+centroid、Physics11D、Raw 与 Learned11D；现有离线结果不足以通过继续条件。dense tactile token 路径尚未运行，不能宣称优于它。
 4. Stage 1 若显示 physics bottleneck 在 compactness / data efficiency / OOD / latency 中至少具有清晰价值，再进入 temporal memory；否则停止或修改 bottleneck，而不是直接堆 Mamba。
 
 **不把好看的相平面图当成论文证据，不把 Mamba、FlexiTac 或“physics”本身当 novelty。** 最终贡献必须来自可重复的增量证据和明确失败边界。

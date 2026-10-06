@@ -1,0 +1,19 @@
+{
+  "reference_repository_head": "d6871a30f27dc1144ea4b3b073e1f58206f44a00",
+  "implementation": "Local outputs scripts, repository contains research docs; no Git publication",
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages": {
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.8.0",
+    "torch": "2.11.0+cu128",
+    "pyarrow": "23.0.0",
+    "matplotlib": "3.10.7"
+  },
+  "scripts": {
+    "run_spatial_validation.py": "5d5cd6701a01e1db121633799c2a68ca419da79ddd4a26ae2b76c3079e7704fd",
+    "report_spatial_validation.py": "4657f5f915489d8b67871bd2053e68274aea839f7379d17fee0122f8335b9c2e"
+  },
+  "report_sha256": "f020f8191b2f3fed5f2f4c6375bed318c8fc0eef1d460dc3db4527e848d1f004"
+}

@@ -1,0 +1,53 @@
+{
+  "dataset": "https://huggingface.co/datasets/Tna001/tactile_test_tube_pyflexitac",
+  "metadata_url": "https://huggingface.co/datasets/Tna001/tactile_test_tube_pyflexitac/blob/main/meta/info.json",
+  "metadata_total_episodes": 64,
+  "metadata_total_frames": 75041,
+  "metadata_fps": 30,
+  "shard": "data/chunk-000/file-000.parquet",
+  "shard_sha256": "739b5cc5301534c6c0e06546c310c5882daf0b047cd7c8298353ae739c9edade",
+  "rows": 7083,
+  "shape": [
+    7083,
+    12,
+    32
+  ],
+  "episodes": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "min": 0.0,
+  "max": 1.0,
+  "all_finite": true,
+  "zero_frame_fraction": 0.2596357475645913,
+  "timestamp_interval_quantiles_s": [
+    0.03333282470703125,
+    0.03333282470703125,
+    0.033336639404296875
+  ],
+  "identical_adjacent_frame_fraction": 0.39205990392766316,
+  "static_descriptor_finite": true,
+  "static_descriptor_shape": [
+    7083,
+    8
+  ],
+  "P_ref_episode_0": 10.188889006152749,
+  "sensor_metadata": {
+    "rows": 12,
+    "cols": 32,
+    "threshold": 25.0,
+    "noise_scale": 30.0,
+    "init_frames": 30,
+    "is_calibrated": true
+  },
+  "limits": [
+    "One shard, five episodes; no learned model or action prediction.",
+    "Recorded values are 0..1; exact preprocessing and sensor timing not verified.",
+    "Static 8-coordinate smoke check only; threshold=0 is a diagnostic convention.",
+    "Zero mass is filled with zeros, not interpreted as measured central contact.",
+    "No validation of onset labels, physical continuity, dynamics or real latency."
+  ]
+}

@@ -1,0 +1,8 @@
+# 使文本与归档 SHA-256 在不同平台检出时保持一致
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+*.png binary
+*.npz binary
+*.pt binary

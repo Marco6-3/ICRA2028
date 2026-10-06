@@ -1,0 +1,17 @@
+{
+  "p_ref": 1225.5,
+  "dimensions": {
+    "Scalar": 4,
+    "ScalarCentroid": 8,
+    "Physics11D": 13,
+    "Raw": 290,
+    "FzOracle": 3
+  },
+  "train_frames": 80512,
+  "validation_tuning_frames": 10366,
+  "test_frames": 417986,
+  "all_finite": true,
+  "torch": "2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "test_conditional_frames": 22838
+}

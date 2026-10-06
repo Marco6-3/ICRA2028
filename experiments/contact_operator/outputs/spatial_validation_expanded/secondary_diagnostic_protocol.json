@@ -1,0 +1,5 @@
+{
+  "diagnostic": "Subtract each independently qualified stable-load window mean from target and predictions, then compute equal-source RMSE; no model retuning",
+  "motivation": "Separate fixed source offsets from within-window dynamic tracking",
+  "status": "Added before inspecting prediction scores; supplementary diagnosis, not original primary endpoint"
+}

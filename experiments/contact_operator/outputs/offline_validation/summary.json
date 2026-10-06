@@ -1,0 +1,57 @@
+[
+  {
+    "representation": "State",
+    "mean_macro_nmse": 0.25346201807260516,
+    "sd_across_training_seeds": 0.0012199266390607118,
+    "relative_change_vs_state_percent": 0.0,
+    "paired_delta_nmse_CI95": [
+      0.0,
+      0.0
+    ],
+    "contact_nmse": 0.21986519421140352
+  },
+  {
+    "representation": "Scalar",
+    "mean_macro_nmse": 0.25057050536076225,
+    "sd_across_training_seeds": 0.003079517725279625,
+    "relative_change_vs_state_percent": -1.1408071054711755,
+    "paired_delta_nmse_CI95": [
+      -0.005784298107028018,
+      1.1880683402225406e-05
+    ],
+    "contact_nmse": 0.22078524058063823
+  },
+  {
+    "representation": "Physics11D",
+    "mean_macro_nmse": 0.2602113366127014,
+    "sd_across_training_seeds": 0.0009644850556448855,
+    "relative_change_vs_state_percent": 2.6628520483739315,
+    "paired_delta_nmse_CI95": [
+      0.0003022129833698365,
+      0.01500242700179418
+    ],
+    "contact_nmse": 0.23281471778949103
+  },
+  {
+    "representation": "Raw",
+    "mean_macro_nmse": 0.36841316421826675,
+    "sd_across_training_seeds": 0.005652910433364165,
+    "relative_change_vs_state_percent": 45.35241493766273,
+    "paired_delta_nmse_CI95": [
+      0.08604007841398319,
+      0.14460030364493526
+    ],
+    "contact_nmse": 0.3675210356712341
+  },
+  {
+    "representation": "Learned11D",
+    "mean_macro_nmse": 0.3173686151703199,
+    "sd_across_training_seeds": 0.0020089133443677563,
+    "relative_change_vs_state_percent": 25.213480735172112,
+    "paired_delta_nmse_CI95": [
+      0.04785637799650431,
+      0.08212174601852894
+    ],
+    "contact_nmse": 0.30275203188260397
+  }
+]

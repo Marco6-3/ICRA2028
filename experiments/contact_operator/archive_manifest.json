@@ -1,0 +1,802 @@
+{
+  "date": "2026-10-06",
+  "reference_repository_head": "d6871a30f27dc1144ea4b3b073e1f58206f44a00",
+  "experiments_not_rerun_for_publication": true,
+  "scope": "Math checks, HTT scalar screen, LeFlexiTac pilot/tuned BC, TaF curation and source-held-out spatial diagnosis",
+  "status": "Stage1 not passed; no VLA/Mamba/real closed-loop result",
+  "published_files": [
+    {
+      "path": "DATA_SOURCES.md",
+      "bytes": 2337,
+      "sha256": "46d19089260dbc92b9a27b5f8a047439f91c91468748e013d546f078a5e70dc4"
+    },
+    {
+      "path": "outputs/audit_leflexitac_sample.py",
+      "bytes": 3100,
+      "sha256": "91890888bdb40be153cfe3d4b3d7fd642e85f03bc32ce5ee8e254279d739840d"
+    },
+    {
+      "path": "outputs/export_spatial_windows.py",
+      "bytes": 4065,
+      "sha256": "d504311a42d71246508b64ed626175c03a2d681a62a1e68115036ffd39630042"
+    },
+    {
+      "path": "outputs/leflexitac_sample_audit.json",
+      "bytes": 1523,
+      "sha256": "9cd6d044a1e16151c09aec12778fea86c99f282df7e22a936e8ff3bdeb8d01a4"
+    },
+    {
+      "path": "outputs/make_offline_report.py",
+      "bytes": 12751,
+      "sha256": "a4ca54de75686709fe02d409f5355a45d30a177f906dfacd854b5ea330eb41b5"
+    },
+    {
+      "path": "outputs/offline_validation/data_audit.json",
+      "bytes": 2704,
+      "sha256": "92b674f38c8fe314451514d3121724adfffbf77380fd15742369fb835cc5da28"
+    },
+    {
+      "path": "outputs/offline_validation/data_efficiency.png",
+      "bytes": 121176,
+      "sha256": "daef0ae8076a6c1569aff5f0dde0ecf95059985fff6848d8ab93626c56e93ef9"
+    },
+    {
+      "path": "outputs/offline_validation/descriptor_protocol.json",
+      "bytes": 917,
+      "sha256": "0b0deb3d0b544d1add600086b21502863a25cfe9d81e7aeb114d7833b0ea8e82"
+    },
+    {
+      "path": "outputs/offline_validation/environment.json",
+      "bytes": 268,
+      "sha256": "67d15e1bb3364c6b9fc5097a49d2f2b0f472fed58704465edc9b356e1ea85110"
+    },
+    {
+      "path": "outputs/offline_validation/protocol.json",
+      "bytes": 1567,
+      "sha256": "a63b81a209a590784779d4aa7a464479bbc9db4d7a3f96dec7abd02dabd78a8b"
+    },
+    {
+      "path": "outputs/offline_validation/results.json",
+      "bytes": 311776,
+      "sha256": "2dd425b1b4ff57fdb9f80d959e2a8fbf2b312b0b6537903293473ae382f1df9a"
+    },
+    {
+      "path": "outputs/offline_validation/split.json",
+      "bytes": 685,
+      "sha256": "2b423b817c0d29aa7365c7d073601042cb7e70d2949744b470345129b61c7920"
+    },
+    {
+      "path": "outputs/offline_validation/summary.json",
+      "bytes": 1621,
+      "sha256": "d8b9d09b95a28bcd6a145e40fc35fdfc86eff8251a41a55caebeefc24666b224"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/artifact_verification.json",
+      "bytes": 543,
+      "sha256": "017bede3b20850409e7f432072ad2e0cd279c700a71c44ec9d8e053818e3face"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/cpu_descriptor_timing.json",
+      "bytes": 323,
+      "sha256": "d8574fcb71d2feb6845d9415e47ebba7944ad2be570ac9b255eb7f60ec826f68"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/data_efficiency.png",
+      "bytes": 120142,
+      "sha256": "cf013a244d6b99e9ad527169a9dccc6da7900ccdcb9875f54f0244e2bab8f79b"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/descriptor_protocol.json",
+      "bytes": 917,
+      "sha256": "0b0deb3d0b544d1add600086b21502863a25cfe9d81e7aeb114d7833b0ea8e82"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/implementation_checks.json",
+      "bytes": 203,
+      "sha256": "4559cce6176346a9f335499fdecf27214cd0d1c45da709794d8e0765f2646767"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Learned11D_seed19.pt",
+      "bytes": 237285,
+      "sha256": "b7d8e5af8c42e0c89414513593de6083d76541310dfd78e96e12ea8ab9d257fe"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Learned11D_seed31.pt",
+      "bytes": 237285,
+      "sha256": "af6ea9841ab0994cce3423a46e0464df4c99df5c6ef05fe19cf569f43292344a"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Learned11D_seed7.pt",
+      "bytes": 237269,
+      "sha256": "a0b8209f81490ec1687a9aa4e6388a18df66b58ade0f8395ac2ad1418fb68dde"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Physics11D_seed19.pt",
+      "bytes": 28813,
+      "sha256": "dc9a9fe7461d47d60040d79d0adfb9b9b69f1f7e4d41ba4c807459af77422b74"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Physics11D_seed31.pt",
+      "bytes": 28813,
+      "sha256": "cbff9b97b2c1c82692ca85935fa47c9973154b595d4601562919691ac4bb7a60"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Physics11D_seed7.pt",
+      "bytes": 28801,
+      "sha256": "c07239d6672ad160cfc446b99eab8a6e6c00322cba06f8690d3ac7545d0b0eb5"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/protocol.json",
+      "bytes": 1151,
+      "sha256": "fee36197b47de2e181c553eb51d6d9d08b12c99c906060885173be8a3d4f3f2f"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Raw_seed19.pt",
+      "bytes": 230073,
+      "sha256": "ed492281da2e6006c12320167974adfbb79d934901e1020085c2df22b582ad0e"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Raw_seed31.pt",
+      "bytes": 230073,
+      "sha256": "0ebbb4b821e512b64dfdc0ce8207410fa521290c3534b27b5ecb140334e24cec"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Raw_seed7.pt",
+      "bytes": 230061,
+      "sha256": "4fa4661941eff28e8e4d84787cb8bb57668dfc49f9fe5d4db3ffaba5d27d22fd"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/results.json",
+      "bytes": 407276,
+      "sha256": "458775b90fb270d9d06338915c49247d00a3d87e60584d3c00c25598275e4b38"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Scalar_seed19.pt",
+      "bytes": 26333,
+      "sha256": "406fc61d7ff269003e5b98d226c7e1611a73294cfc55656e00ad3ab5bc845bdb"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Scalar_seed31.pt",
+      "bytes": 26333,
+      "sha256": "e6703f6de266bde6b823caffa54885d47b20ef643bde4e8a6e3a95b339ec7fcf"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/Scalar_seed7.pt",
+      "bytes": 26321,
+      "sha256": "2b6e20fb18bba1eb6a5a3fd28ee932458bc4908b719c0784d796b6ae4c4570a3"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/selected_hyperparameters.json",
+      "bytes": 613,
+      "sha256": "904fd1c101e9a37e2ec5948650672c12094bd075faf22a9ed8f08fdd87c12f25"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/split.json",
+      "bytes": 685,
+      "sha256": "2b423b817c0d29aa7365c7d073601042cb7e70d2949744b470345129b61c7920"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/State_seed19.pt",
+      "bytes": 25233,
+      "sha256": "4aa7249f7f3e0c9bdf7a69a267c2c462d2136e72a322720886a59f0dae8e4209"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/State_seed31.pt",
+      "bytes": 25233,
+      "sha256": "60b71f4415881e63d2c72699c23f11405e0308449460796f20b3d4de0c9a00ec"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/State_seed7.pt",
+      "bytes": 25221,
+      "sha256": "1e351a46894adee3bdb51d86693196a89cfdcd3acb87e73b021fd6c01143c90e"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/summary.json",
+      "bytes": 1621,
+      "sha256": "1af743213fd320c4c966e9c819d0cd13bb899c9f7ab92d54efe9427a94f12ccb"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/validation_tuning.json",
+      "bytes": 109927,
+      "sha256": "8ad6ede75eca851ce5429f97ccc1da25c3e83b89c14fd8bb94fc0a3db696a759"
+    },
+    {
+      "path": "outputs/offline_validation_tuned/离线验证报告.md",
+      "bytes": 10860,
+      "sha256": "7aa34eddce421d3bc390571d6157c8ef3ed5adced2e4dd43a1a82c9f7e061bd5"
+    },
+    {
+      "path": "outputs/operator_validation_results.json",
+      "bytes": 9612,
+      "sha256": "5ec185c5252c3e45f80df4f9577ba10fb07c033146652abb5a2bfb0374a772f0"
+    },
+    {
+      "path": "outputs/report_spatial_validation.py",
+      "bytes": 20520,
+      "sha256": "10e2ce6eb88c4f711379fc5928a3976420d2a06c242ae3b6ebf552d4fc96251a"
+    },
+    {
+      "path": "outputs/run_offline_validation.py",
+      "bytes": 20007,
+      "sha256": "b1458a8c36a9ed8666cc2ef5d6c3b16fa38e4626957f59396bdf5a6c7947c62a"
+    },
+    {
+      "path": "outputs/run_spatial_validation.py",
+      "bytes": 17385,
+      "sha256": "5d5cd6701a01e1db121633799c2a68ca419da79ddd4a26ae2b76c3079e7704fd"
+    },
+    {
+      "path": "outputs/screen_spatial_contact_data.py",
+      "bytes": 11365,
+      "sha256": "fb49ddf261ab72ebada03e68fb0881b176cfd394360a2784102bdb739cb6e108"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/candidate_pairs.json",
+      "bytes": 1586620,
+      "sha256": "261fa9fcef40f1b9a28b2b6a929a23a2b854e8756174d15be8e060779713d6b5"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/load_matched_real_pairs.npz",
+      "bytes": 24866,
+      "sha256": "db579a4482715f1aaf23f86f6b80e90c35a9b1717826e39c2289b1080e3cc330"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/matched_real_maps.png",
+      "bytes": 124474,
+      "sha256": "05cb32bee110121648b766f2aa90435ca10e7a245b93a86fa4c6f80d0b9cc6de"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/protocol.json",
+      "bytes": 1589,
+      "sha256": "23b610c0ca9ab02571052098ca89ef071ead5b01149d11132c7e66826c6ec152"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/selected_pairs.json",
+      "bytes": 36544,
+      "sha256": "f5daf240f68cfd42c6ee68e9df0d3da117d9fbdf59dd9035d0982ecda46b3aaf"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/sequence_audit.json",
+      "bytes": 151382,
+      "sha256": "bc4c4aa38f0d35535c46680cd78d8e8bb4997036a1580fb7271855bcb884e695"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/stable_load_real_windows.npz",
+      "bytes": 732686,
+      "sha256": "59a6ebad1dd51ba90a46eda22368d7f96748dfa9f2bde8c6b00f71580ffd4e40"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/stable_load_windows_index.json",
+      "bytes": 107347,
+      "sha256": "e78e3101d72f6386f9d9ea9c63a2067ae9bb03a535f51dd243f31c29bc88c646"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/stable_window_example.png",
+      "bytes": 193679,
+      "sha256": "ea761668aa12a0e7a4b7a9f93fcea9baadec2c37fbde255d0fb0cb828c64a98c"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/summary.json",
+      "bytes": 547,
+      "sha256": "0558ff259fdf0ceba5f2baafdbdc505ef8ae6d6272fff2e0b142dc83dd826610"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/window_export_verification.json",
+      "bytes": 585,
+      "sha256": "56192089534c645dbaa57c5d423e8b71aedda871175cd182e4018dcf28d5ae96"
+    },
+    {
+      "path": "outputs/spatial_contact_screen/空间接触数据筛查与下一轮方案.md",
+      "bytes": 9977,
+      "sha256": "94b53598cbd98a61ee07c21925d90330f5f09ce3e11b5cade5f8ec2865772762"
+    },
+    {
+      "path": "outputs/spatial_validation/data_audit.json",
+      "bytes": 7157,
+      "sha256": "bf95a0e1f9c71e9d448cdb59d322538304efe3817eb9dfdde3fe18552f9fced7"
+    },
+    {
+      "path": "outputs/spatial_validation/protocol.json",
+      "bytes": 2686,
+      "sha256": "fe87172f604f2e6e4e16f8d7b60f3684990daa93172551e31e460663a93fa3b0"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/all_results.json",
+      "bytes": 418309,
+      "sha256": "40029d98218bd9a812f6d1eabafdf00a8b77974ed90c7b31550d713f49094548"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/artifact_verification.json",
+      "bytes": 3737,
+      "sha256": "9e9bba6c57999c8c3e4ef124769a097040bc17cf40596bcfa45ea9c7874fb817"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/constant_reference.json",
+      "bytes": 6426,
+      "sha256": "0e64beb751e64384644ad1bfda070ce30295f4a6db238d5c76bc2c8026375c38"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/data_audit.json",
+      "bytes": 15297,
+      "sha256": "973eba187130dfa5a394ff4dfdf63d0fdc5744c79b3706400e849481213fc29f"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/eligible_split.json",
+      "bytes": 287,
+      "sha256": "714ad820b0b505162b06d0a9a8c3154cf5884062ebca91182be9fa2a675b1583"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/feature_checks.json",
+      "bytes": 361,
+      "sha256": "d5950639d4efaacf12a3c580a2eac223c12ba260f7e5e4213038e25eab29deb7"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/float32_numerical_pilot/linear_results.json",
+      "bytes": 312729,
+      "sha256": "92a7c7ee30778290576a43f9ab131b8a15c6b2802fc1720043666a3aa08cdf42"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/float32_numerical_pilot/linear_selected_alpha.json",
+      "bytes": 103,
+      "sha256": "de1d3408d870cc166bdc8a1a8a900ce265db97c6257791a66cfaa23e99195c8f"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_data_efficiency.png",
+      "bytes": 72514,
+      "sha256": "b2d543ac9b069d989b31bbfa940f8a598e0c93e60a0043bb18cbc11b180767a6"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_FzOracle_weights.npz",
+      "bytes": 1203,
+      "sha256": "f7529bf3dc99372eee0238411929c4800905d4c901e0ec2bb6e2f08040fdf10b"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_Physics11D_weights.npz",
+      "bytes": 1460,
+      "sha256": "7f06ef64d849bd86299f89ff9db8e3202a8fe93574441b9c2db88999ecf9c978"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_Raw_weights.npz",
+      "bytes": 7858,
+      "sha256": "0efed50556b83b05c3939dee1c8d9be74c35320ef3315b8a46b06ed0b2beeb99"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_results.json",
+      "bytes": 312821,
+      "sha256": "4417535af677a69d06e4b03d0e8617c51547518bf3b072f33ea1ac34836558d9"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_Scalar_weights.npz",
+      "bytes": 1227,
+      "sha256": "d75555d344c9f602d7e0e1a3ce6cc0d23f9ff74a338093b34473a713fdb76620"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_ScalarCentroid_weights.npz",
+      "bytes": 1330,
+      "sha256": "2421b77103483b98f05350a4738e62c20692620f1623da6d4b7b2dfa9c5da3ae"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/linear_selected_alpha.json",
+      "bytes": 103,
+      "sha256": "de1d3408d870cc166bdc8a1a8a900ce265db97c6257791a66cfaa23e99195c8f"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Learned11D_seed19.pt",
+      "bytes": 105877,
+      "sha256": "1f5e7ca408761ad64d39c09a145f14d8dfdb6ab588f2e2ef9e494bf3824de464"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Learned11D_seed31.pt",
+      "bytes": 105877,
+      "sha256": "4d859e44e31f3dd4120b099d10cc48f0316bdd61cfa94b01ca25afbf5c66987d"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Learned11D_seed7.pt",
+      "bytes": 105861,
+      "sha256": "86a779678484f2ce38feb9bb519734b835e8e4de1325998b854de5e78be4560f"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Physics11D_seed19.pt",
+      "bytes": 24865,
+      "sha256": "966479d0a44620cba5743043fb1cf3e4d7272e5da1fd472ffe6ccca858565643"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Physics11D_seed31.pt",
+      "bytes": 24865,
+      "sha256": "f5854393dcc2dcbb323e5b4b406b8485f1e67b6dff09a4511df89280ba7cb993"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Physics11D_seed7.pt",
+      "bytes": 24853,
+      "sha256": "0f419ffc8ad51a56e6927815472e8f2d63f8e837a33fc7ec090e4b7c4d9066e9"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Raw_seed19.pt",
+      "bytes": 98637,
+      "sha256": "b984924333cc8ec87c6caad342afa2a15eaa3fdd4b72e44e65fce17fdd0e1ac4"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Raw_seed31.pt",
+      "bytes": 98637,
+      "sha256": "0257392b8996e3c1aea75140698d10f4e048fe086e33258abb52442491111435"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Raw_seed7.pt",
+      "bytes": 98625,
+      "sha256": "ed46ab3c443e4bea0275ba25370fd8db17c8141e4f0fec802c1ccea3e94daa0a"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Scalar_seed19.pt",
+      "bytes": 22385,
+      "sha256": "1c142589eeddbe9e4853b5da87966fc80e3689c04a4b4eb1701300adc6422fbe"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Scalar_seed31.pt",
+      "bytes": 22385,
+      "sha256": "b9d512c09cabb19638a2113d1e80e895938141180e8efb628616a40b0025e213"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_Scalar_seed7.pt",
+      "bytes": 22373,
+      "sha256": "0073222410d3103d63d9f9a2c8afbf3993f71393400915b9fc7e7dfb3ad54741"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_ScalarCentroid_seed19.pt",
+      "bytes": 23633,
+      "sha256": "d362c1067329df5e109d55bc29e60d940f705d72265bd414dfd72500cce84da3"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_ScalarCentroid_seed31.pt",
+      "bytes": 23633,
+      "sha256": "5c3d198c2e4830f688ee75feb8db9076f14221d46484e5fd0f17b24db69f35ef"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_ScalarCentroid_seed7.pt",
+      "bytes": 23621,
+      "sha256": "ba4eb069dbba1a8f92927f0b7d3c87dc1ccee0d2809c0581f901065afb6d922f"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_selected_config.json",
+      "bytes": 281,
+      "sha256": "3fad96f6c7c2df92ea809b1206c66c305c57a57fd743a5bad566f98e022990d4"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/neural_tuning.json",
+      "bytes": 4324,
+      "sha256": "3d7e0020cd6f8b3c81d6702605e1f9ba396b02e898a323ee5c0cbb99636de8b6"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/numerical_fix.json",
+      "bytes": 283,
+      "sha256": "e3374f2cca2915f79712ab505ad740b039fffa40d24ea7f53550f1b3ae1a3e48"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/paired_comparisons.json",
+      "bytes": 14843,
+      "sha256": "01002df0c26091a6f80f7f581b430a5e8df40488e8a9d6ec42d43bb719faf4d5"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/protocol.json",
+      "bytes": 3156,
+      "sha256": "41d2dc1f10762afe2083d11b23dc42f1aad504b1b89d582d1191ad7fa432842d"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/reproducibility_manifest.json",
+      "bytes": 729,
+      "sha256": "a97ebf330d9a2f0ed062e4446ad92daa8fc28da853da139592ddc24f52d98eb3"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/secondary_diagnostic_protocol.json",
+      "bytes": 360,
+      "sha256": "e50352853994dd52730e7d749cdd5bdc51972243542cd3e6982f29f8bb9cbcfc"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/sensitivity.json",
+      "bytes": 68060,
+      "sha256": "bd63f29ced69634c0e6d7d256d9c840b05a16973155f6bf711c6f44b3614b026"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/spatial_comparison.png",
+      "bytes": 85147,
+      "sha256": "c9c37a72df6359b200226ca49be679d4cff8f6a6617c0b28a10c007cdd39654d"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/summary.json",
+      "bytes": 3181,
+      "sha256": "25df8dee72cd1004677c615941a0edcf3ce30189fe78d5b6072cf44e7e0e6c4f"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/within_window_diagnostic.json",
+      "bytes": 74090,
+      "sha256": "4d70822d4ddae105ec6ee40f1f3730a4875bdd459a05fa13ced97e2fe5188bc2"
+    },
+    {
+      "path": "outputs/spatial_validation_expanded/空间算子离线验证报告.md",
+      "bytes": 11461,
+      "sha256": "c25c6856e8e3a1f74b6f3df2ee0821710a3d1aa04b03f3bf05cfda422664084e"
+    },
+    {
+      "path": "outputs/tune_offline_validation.py",
+      "bytes": 6710,
+      "sha256": "ec7c2c00b99878c36e78df3c4201df33bdef53dc79ff32403af91bbd2c7e57e2"
+    },
+    {
+      "path": "outputs/validate_contact_operator.py",
+      "bytes": 7934,
+      "sha256": "3bf0b21084fff7811e1963ca70b7327cc69b2ca061f3db86617c5978c2fac4d8"
+    },
+    {
+      "path": "outputs/算子初步验证.md",
+      "bytes": 7657,
+      "sha256": "e28ad12fa4134e7f5ade6beaee51921677663a3e398a003d46d3567d2fd33559"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4901,
+      "sha256": "2ae2c901575373f4cf02afa9eec95513a652d64efb01f12d49be9b985d74339e"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 118,
+      "sha256": "b249c5b4e3cbe3cf4a8caaa9e73dc74b06371ad985dc36b04e94966ba487db31"
+    }
+  ],
+  "omitted_regenerable_artifacts": [
+    {
+      "path": "offline_validation/Learned11D_seed19.pt",
+      "bytes": 237285,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Learned11D_seed31.pt",
+      "bytes": 237285,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Learned11D_seed7.pt",
+      "bytes": 237269,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Physics11D_seed19.pt",
+      "bytes": 28813,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Physics11D_seed31.pt",
+      "bytes": 28813,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Physics11D_seed7.pt",
+      "bytes": 28801,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Raw_seed19.pt",
+      "bytes": 230073,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Raw_seed31.pt",
+      "bytes": 230073,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Raw_seed7.pt",
+      "bytes": 230061,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Scalar_seed19.pt",
+      "bytes": 26333,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Scalar_seed31.pt",
+      "bytes": 26333,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/Scalar_seed7.pt",
+      "bytes": 26321,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/State_seed19.pt",
+      "bytes": 25233,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/State_seed31.pt",
+      "bytes": 25233,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation/State_seed7.pt",
+      "bytes": 25221,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Learned11D_seed19.npz",
+      "bytes": 141603,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Learned11D_seed31.npz",
+      "bytes": 141675,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Learned11D_seed7.npz",
+      "bytes": 141658,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Physics11D_seed19.npz",
+      "bytes": 141692,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Physics11D_seed31.npz",
+      "bytes": 141608,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Physics11D_seed7.npz",
+      "bytes": 141700,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Raw_seed19.npz",
+      "bytes": 141572,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Raw_seed31.npz",
+      "bytes": 141574,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Raw_seed7.npz",
+      "bytes": 141604,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Scalar_seed19.npz",
+      "bytes": 141699,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Scalar_seed31.npz",
+      "bytes": 141697,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_Scalar_seed7.npz",
+      "bytes": 141639,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_State_seed19.npz",
+      "bytes": 137713,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_State_seed31.npz",
+      "bytes": 137695,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "offline_validation_tuned/predictions_State_seed7.npz",
+      "bytes": 137615,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_contact_screen/screened_real_frames.npz",
+      "bytes": 736712,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/linear_FzOracle_prediction.npz",
+      "bytes": 5423339,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/linear_Physics11D_prediction.npz",
+      "bytes": 9837459,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/linear_Raw_prediction.npz",
+      "bytes": 9858624,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/linear_ScalarCentroid_prediction.npz",
+      "bytes": 9772961,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/linear_Scalar_prediction.npz",
+      "bytes": 9522419,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Learned11D_seed19_prediction.npz",
+      "bytes": 6519318,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Learned11D_seed31_prediction.npz",
+      "bytes": 6529169,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Learned11D_seed7_prediction.npz",
+      "bytes": 6531815,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Physics11D_seed19_prediction.npz",
+      "bytes": 6499477,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Physics11D_seed31_prediction.npz",
+      "bytes": 6491430,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Physics11D_seed7_prediction.npz",
+      "bytes": 6504185,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Raw_seed19_prediction.npz",
+      "bytes": 6530578,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Raw_seed31_prediction.npz",
+      "bytes": 6529883,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Raw_seed7_prediction.npz",
+      "bytes": 6543597,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_ScalarCentroid_seed19_prediction.npz",
+      "bytes": 6472959,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_ScalarCentroid_seed31_prediction.npz",
+      "bytes": 6468203,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_ScalarCentroid_seed7_prediction.npz",
+      "bytes": 6463026,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Scalar_seed19_prediction.npz",
+      "bytes": 6214333,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Scalar_seed31_prediction.npz",
+      "bytes": 6205778,
+      "reason": "Regenerate via scripts; keep repository compact"
+    },
+    {
+      "path": "spatial_validation_expanded/neural_Scalar_seed7_prediction.npz",
+      "bytes": 6228886,
+      "reason": "Regenerate via scripts; keep repository compact"
+    }
+  ],
+  "packaging_edits": "Chinese overview/navigation/status, archival wording, portable LF line endings; numerical results, model arrays and protocols unchanged"
+}

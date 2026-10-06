@@ -1,0 +1,118 @@
+{
+  "split_disjoint": true,
+  "all_predictions_finite": true,
+  "checkpoints": [
+    {
+      "name": "Scalar",
+      "seed": 7,
+      "cpu_cuda_max_absolute_difference": 9.313225746154785e-10,
+      "sha256": "0073222410d3103d63d9f9a2c8afbf3993f71393400915b9fc7e7dfb3ad54741"
+    },
+    {
+      "name": "Scalar",
+      "seed": 19,
+      "cpu_cuda_max_absolute_difference": 4.656612873077393e-10,
+      "sha256": "1c142589eeddbe9e4853b5da87966fc80e3689c04a4b4eb1701300adc6422fbe"
+    },
+    {
+      "name": "Scalar",
+      "seed": 31,
+      "cpu_cuda_max_absolute_difference": 9.313225746154785e-10,
+      "sha256": "b9d512c09cabb19638a2113d1e80e895938141180e8efb628616a40b0025e213"
+    },
+    {
+      "name": "ScalarCentroid",
+      "seed": 7,
+      "cpu_cuda_max_absolute_difference": 1.862645149230957e-09,
+      "sha256": "ba4eb069dbba1a8f92927f0b7d3c87dc1ccee0d2809c0581f901065afb6d922f"
+    },
+    {
+      "name": "ScalarCentroid",
+      "seed": 19,
+      "cpu_cuda_max_absolute_difference": 1.862645149230957e-09,
+      "sha256": "d362c1067329df5e109d55bc29e60d940f705d72265bd414dfd72500cce84da3"
+    },
+    {
+      "name": "ScalarCentroid",
+      "seed": 31,
+      "cpu_cuda_max_absolute_difference": 1.862645149230957e-09,
+      "sha256": "5c3d198c2e4830f688ee75feb8db9076f14221d46484e5fd0f17b24db69f35ef"
+    },
+    {
+      "name": "Physics11D",
+      "seed": 7,
+      "cpu_cuda_max_absolute_difference": 1.862645149230957e-09,
+      "sha256": "0f419ffc8ad51a56e6927815472e8f2d63f8e837a33fc7ec090e4b7c4d9066e9"
+    },
+    {
+      "name": "Physics11D",
+      "seed": 19,
+      "cpu_cuda_max_absolute_difference": 1.862645149230957e-09,
+      "sha256": "966479d0a44620cba5743043fb1cf3e4d7272e5da1fd472ffe6ccca858565643"
+    },
+    {
+      "name": "Physics11D",
+      "seed": 31,
+      "cpu_cuda_max_absolute_difference": 1.862645149230957e-09,
+      "sha256": "f5854393dcc2dcbb323e5b4b406b8485f1e67b6dff09a4511df89280ba7cb993"
+    },
+    {
+      "name": "Raw",
+      "seed": 7,
+      "cpu_cuda_max_absolute_difference": 1.30385160446167e-08,
+      "sha256": "ed46ab3c443e4bea0275ba25370fd8db17c8141e4f0fec802c1ccea3e94daa0a"
+    },
+    {
+      "name": "Raw",
+      "seed": 19,
+      "cpu_cuda_max_absolute_difference": 9.313225746154785e-09,
+      "sha256": "b984924333cc8ec87c6caad342afa2a15eaa3fdd4b72e44e65fce17fdd0e1ac4"
+    },
+    {
+      "name": "Raw",
+      "seed": 31,
+      "cpu_cuda_max_absolute_difference": 1.4901161193847656e-08,
+      "sha256": "0257392b8996e3c1aea75140698d10f4e048fe086e33258abb52442491111435"
+    },
+    {
+      "name": "Learned11D",
+      "seed": 7,
+      "cpu_cuda_max_absolute_difference": 1.7695128917694092e-08,
+      "sha256": "86a779678484f2ce38feb9bb519734b835e8e4de1325998b854de5e78be4560f"
+    },
+    {
+      "name": "Learned11D",
+      "seed": 19,
+      "cpu_cuda_max_absolute_difference": 3.3527612686157227e-08,
+      "sha256": "1f5e7ca408761ad64d39c09a145f14d8dfdb6ab588f2e2ef9e494bf3824de464"
+    },
+    {
+      "name": "Learned11D",
+      "seed": 31,
+      "cpu_cuda_max_absolute_difference": 4.6566128730773926e-09,
+      "sha256": "4d859e44e31f3dd4120b099d10cc48f0316bdd61cfa94b01ca25afbf5c66987d"
+    },
+    {
+      "name": "linear_Scalar",
+      "reload_max_absolute_difference": 0.0
+    },
+    {
+      "name": "linear_ScalarCentroid",
+      "reload_max_absolute_difference": 0.0
+    },
+    {
+      "name": "linear_Physics11D",
+      "reload_max_absolute_difference": 0.0
+    },
+    {
+      "name": "linear_Raw",
+      "reload_max_absolute_difference": 1.5612511283791264e-17
+    },
+    {
+      "name": "linear_FzOracle",
+      "reload_max_absolute_difference": 0.0
+    }
+  ],
+  "covariance_trace_identity_max_error": 6.061951240976526e-08,
+  "neural_best_epoch_near_cap": []
+}

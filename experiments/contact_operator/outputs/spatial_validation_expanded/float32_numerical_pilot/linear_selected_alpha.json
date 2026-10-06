@@ -1,0 +1,7 @@
+{
+  "Scalar": 1000,
+  "ScalarCentroid": 0.01,
+  "Physics11D": 1000,
+  "Raw": 1000,
+  "FzOracle": 0.01
+}

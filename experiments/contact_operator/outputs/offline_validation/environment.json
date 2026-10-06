@@ -1,0 +1,9 @@
+{
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "numpy": "2.4.6",
+  "torch": "2.11.0+cu128",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "script_sha256": "6bb03f272ca275a807c523e1416999611a341d8e692c9759a9b404ce7567ba46"
+}

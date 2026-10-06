@@ -1,0 +1,8 @@
+{
+  "warmup_frames": 200,
+  "measured_frames": 1000,
+  "p50_ms": 0.0987,
+  "p95_ms": 0.2077949999999999,
+  "scope": "Python CPU EMA, threshold, 8 moments, 3 backward differences and state update; unverified acquisition input",
+  "excludes": "sensor sampling, transport, policy model, actuator and physical event labeling"
+}

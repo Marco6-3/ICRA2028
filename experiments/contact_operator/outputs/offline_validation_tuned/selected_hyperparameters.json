@@ -1,0 +1,37 @@
+{
+  "State": {
+    "config": {
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    },
+    "score": 0.2295137643814087
+  },
+  "Scalar": {
+    "config": {
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    },
+    "score": 0.2298198640346527
+  },
+  "Physics11D": {
+    "config": {
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    },
+    "score": 0.23601457476615906
+  },
+  "Raw": {
+    "config": {
+      "lr": 0.001,
+      "weight_decay": 0.01
+    },
+    "score": 0.3173154592514038
+  },
+  "Learned11D": {
+    "config": {
+      "lr": 0.001,
+      "weight_decay": 0.01
+    },
+    "score": 0.2912164330482483
+  }
+}

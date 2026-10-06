@@ -1,0 +1,84 @@
+{
+  "dataset": "https://huggingface.co/datasets/Tna001/tactile_test_tube_pyflexitac",
+  "revision": "ebd3c711d678aa18bfc7f6a0a1e894104c8c1ea4",
+  "rows": 75041,
+  "episodes": 64,
+  "shape": [
+    75041,
+    12,
+    32
+  ],
+  "min": 0.0,
+  "max": 1.0,
+  "zero_mass_fraction": 0.32246371983315786,
+  "interval_quantiles_s": [
+    0.03333282470703125,
+    0.03333282470703125,
+    0.03333473205566406,
+    0.033336639404296875
+  ],
+  "adjacent_identical_fraction": 0.42693092548381506,
+  "files": [
+    {
+      "path": "data/chunk-000/file-000.parquet",
+      "bytes": 467022,
+      "sha256": "739b5cc5301534c6c0e06546c310c5882daf0b047cd7c8298353ae739c9edade",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-001.parquet",
+      "bytes": 284238,
+      "sha256": "81687c6b4a447d40d9aa82046ea65e39409ef7851c7c44e646e32ede662de39d",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-002.parquet",
+      "bytes": 499636,
+      "sha256": "b6a6e447b2b693caea3dcada7d85c7c6bb0e3eba46109e15e22048e2cf193823",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-003.parquet",
+      "bytes": 1467470,
+      "sha256": "001c9434c0047a34f4fb65add4867f303c0ec16e29ff27a4d27419161bc57236",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-004.parquet",
+      "bytes": 885689,
+      "sha256": "ed817bd7f653b6567a3b08a9857bdbf8d9683541ae8821221dbbb50d9a602375",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-005.parquet",
+      "bytes": 374090,
+      "sha256": "bf57a954394a9d1f59bc50c19fb9e18af7c682575594668976288576a9ebaf4c",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-006.parquet",
+      "bytes": 311609,
+      "sha256": "1524b7d99c412334e2642965fa55fb4e88907f00d3f374b636dfae1dd4446eb0",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-007.parquet",
+      "bytes": 574133,
+      "sha256": "b6ba5b5fe2ecb0995c91da13b2f132511295039eab388330b240f243c2baf458",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-008.parquet",
+      "bytes": 80431,
+      "sha256": "9fb2be26c61f497a62d353631279bf431b5cb372e0a6740f4950899156efc891",
+      "published_lfs_sha256_match": true
+    },
+    {
+      "path": "data/chunk-000/file-009.parquet",
+      "bytes": 267540,
+      "sha256": "6e5e90a1517c1844d6c691bcc1d86fd1baa886b257a567e8d1974b056cdf2747",
+      "published_lfs_sha256_match": true
+    }
+  ],
+  "limits": "Stored 0..1 responses; exact acquisition preprocessing and sensor timestamps unverified."
+}

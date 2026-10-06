@@ -1,0 +1,10 @@
+# 实验缓存、虚拟环境与 Python 生成文件
+__pycache__/
+*.py[cod]
+.venv/
+experiments/contact_operator/work/
+
+# 较大的逐帧预测由复现脚本生成；小型权重与筛查样本显式保留
+experiments/contact_operator/outputs/**/predictions_*.npz
+experiments/contact_operator/outputs/**/*_prediction.npz
+experiments/contact_operator/outputs/spatial_contact_screen/screened_real_frames.npz

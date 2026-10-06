@@ -1,0 +1,16 @@
+{
+  "source_sequences_inspected": 6,
+  "total_raw_rows": 125260,
+  "calibration_qualified_sequences": 4,
+  "sampled_contact_rows": 5273,
+  "eligible_stable_windows": 385,
+  "eligible_low_shear_stable_windows": 316,
+  "candidate_pair_count": 4333,
+  "selected_disjoint_frame_pair_count": 100,
+  "selected_pairs_centroid_distance_quantiles": [
+    0.4709872371864193,
+    0.8439873668678668,
+    1.0248999116825643
+  ],
+  "conclusion": "Real data candidate; no proof of tipping labels, causal necessity, full11D sufficiency or closed-loop benefit"
+}

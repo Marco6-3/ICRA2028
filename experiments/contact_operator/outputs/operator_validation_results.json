@@ -1,0 +1,235 @@
+{
+  "repository_commit": "d6871a30f27dc1144ea4b3b073e1f58206f44a00",
+  "mathematical": {
+    "random_positive_maps": 1000,
+    "maximum_identity_error": 6.106226635438361e-16,
+    "collision_weights_A": [
+      11.0,
+      6.0,
+      16.0,
+      6.0,
+      11.0
+    ],
+    "collision_weights_B": [
+      9.0,
+      14.0,
+      4.0,
+      14.0,
+      9.0
+    ],
+    "collision_descriptor_max_error": 0.0,
+    "collision_raw_L2_distance": 16.73320053068151,
+    "isotropic_orientation": [
+      0.0,
+      0.0
+    ],
+    "threshold_area_jump": 0.25,
+    "note": "Synthetic algebraic checks; not sensor or control evidence."
+  },
+  "real_scalar": {
+    "dataset": "https://huggingface.co/datasets/AllenBi21/HTT-dataset",
+    "dataset_revision": "b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59",
+    "publisher_manifest_sha256_matches": {
+      "force/xela/processed/p1_static/sync_0_press_10.npz": true,
+      "force/xela/processed/p1_static/sync_0_press_11.npz": true,
+      "force/xela/processed/p1_static/sync_0_press_12.npz": true,
+      "force/xela/processed/p2_static/sync_0_press_100.npz": true,
+      "force/xela/processed/p2_static/sync_0_press_101.npz": true,
+      "force/xela/processed/p2_static/sync_0_press_102.npz": true,
+      "force/xela/processed/p3_static/sync_0_press_10.npz": true,
+      "force/xela/processed/p3_static/sync_0_press_11.npz": true,
+      "force/xela/processed/p3_static/sync_0_press_12.npz": true,
+      "force/xela/processed/p4_static/sync_0_press_52.npz": true,
+      "force/xela/processed/p4_static/sync_0_press_53.npz": true,
+      "force/xela/processed/p4_static/sync_0_press_54.npz": true
+    },
+    "episode_count": 12,
+    "frame_count": 12692,
+    "train_episodes": 8,
+    "test_episodes": 4,
+    "P_ref_train_only": 7.616217763439636,
+    "metrics": {
+      "L1_proxy": {
+        "coefficients": [
+          0.04850871212617107,
+          3.681865819436342
+        ],
+        "test_trials": [
+          {
+            "probe": 1,
+            "frames": 1051,
+            "pearson_r": 0.8681948514644428,
+            "mae_N": 5.979501107324195,
+            "rmse_N": 7.610312505179302,
+            "train_mean_baseline_mae_N": 7.006756659690545
+          },
+          {
+            "probe": 2,
+            "frames": 1044,
+            "pearson_r": 0.8818432351596821,
+            "mae_N": 5.2036247838559975,
+            "rmse_N": 7.096306027180678,
+            "train_mean_baseline_mae_N": 7.763398417139337
+          },
+          {
+            "probe": 3,
+            "frames": 1066,
+            "pearson_r": 0.5773432199391421,
+            "mae_N": 2.6954540305381225,
+            "rmse_N": 3.167665906399567,
+            "train_mean_baseline_mae_N": 3.7119120831244503
+          },
+          {
+            "probe": 4,
+            "frames": 1060,
+            "pearson_r": 0.700335051172024,
+            "mae_N": 2.547925671801813,
+            "rmse_N": 3.1604181964183393,
+            "train_mean_baseline_mae_N": 3.433604747594419
+          }
+        ],
+        "macro_MAE_N": 4.106626398380032
+      },
+      "log_L1_proxy": {
+        "coefficients": [
+          4.5278601376810075,
+          0.6266912673257915
+        ],
+        "test_trials": [
+          {
+            "probe": 1,
+            "frames": 1051,
+            "pearson_r": 0.9519349364601029,
+            "mae_N": 3.7137451891167617,
+            "rmse_N": 5.4472954871503925,
+            "train_mean_baseline_mae_N": 7.006756659690545
+          },
+          {
+            "probe": 2,
+            "frames": 1044,
+            "pearson_r": 0.9292753383298192,
+            "mae_N": 3.506759037605071,
+            "rmse_N": 5.364801855686343,
+            "train_mean_baseline_mae_N": 7.763398417139337
+          },
+          {
+            "probe": 3,
+            "frames": 1066,
+            "pearson_r": 0.6915116142098142,
+            "mae_N": 2.5052245865160225,
+            "rmse_N": 3.6061445712265194,
+            "train_mean_baseline_mae_N": 3.7119120831244503
+          },
+          {
+            "probe": 4,
+            "frames": 1060,
+            "pearson_r": 0.7922171273031893,
+            "mae_N": 2.4809775074669473,
+            "rmse_N": 3.587752606192153,
+            "train_mean_baseline_mae_N": 3.433604747594419
+          }
+        ],
+        "macro_MAE_N": 3.0516765801762005
+      }
+    },
+    "manifests": [
+      {
+        "path": "force/xela/processed/p1_static/sync_0_press_10.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p1_static/sync_0_press_10.npz",
+        "frames": 1054,
+        "probe": 1,
+        "split": "train",
+        "sha256": "2fecc444ee4f3e904cb7bd6bc9eed0d28c81b7e701f54f0adf1907494a4061bb"
+      },
+      {
+        "path": "force/xela/processed/p1_static/sync_0_press_11.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p1_static/sync_0_press_11.npz",
+        "frames": 1053,
+        "probe": 1,
+        "split": "train",
+        "sha256": "aa2d2c93a121e47ba736709d9a13b481333a1cc4666a92810c85380c909ca33a"
+      },
+      {
+        "path": "force/xela/processed/p1_static/sync_0_press_12.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p1_static/sync_0_press_12.npz",
+        "frames": 1051,
+        "probe": 1,
+        "split": "test",
+        "sha256": "bf4def8c5963dfe9e6b823c176225fc73838e77dfc89ffd7fc9333c9c6c4d6d6"
+      },
+      {
+        "path": "force/xela/processed/p2_static/sync_0_press_100.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p2_static/sync_0_press_100.npz",
+        "frames": 1052,
+        "probe": 2,
+        "split": "train",
+        "sha256": "ed0efd1e5f4ac62c8683cc80f360890728931e5ce7989c49338725e7d636a52f"
+      },
+      {
+        "path": "force/xela/processed/p2_static/sync_0_press_101.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p2_static/sync_0_press_101.npz",
+        "frames": 1054,
+        "probe": 2,
+        "split": "train",
+        "sha256": "cb9970d9b685d368fc0425167857ecdb9011e6bd9db018459a698d7a211355f6"
+      },
+      {
+        "path": "force/xela/processed/p2_static/sync_0_press_102.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p2_static/sync_0_press_102.npz",
+        "frames": 1044,
+        "probe": 2,
+        "split": "test",
+        "sha256": "26bea9ba42706e5158376d3f2097e7c49c44adb0cd5e8d29620082d5361a37ed"
+      },
+      {
+        "path": "force/xela/processed/p3_static/sync_0_press_10.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p3_static/sync_0_press_10.npz",
+        "frames": 1067,
+        "probe": 3,
+        "split": "train",
+        "sha256": "f187bebdb69a0557e248724773d0401605f44f4da2b812f0d3d791390f168f16"
+      },
+      {
+        "path": "force/xela/processed/p3_static/sync_0_press_11.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p3_static/sync_0_press_11.npz",
+        "frames": 1068,
+        "probe": 3,
+        "split": "train",
+        "sha256": "ee3650e009f9cb4b7567a26270bd15f734c991b1c70e706fbc3db96af6826528"
+      },
+      {
+        "path": "force/xela/processed/p3_static/sync_0_press_12.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p3_static/sync_0_press_12.npz",
+        "frames": 1066,
+        "probe": 3,
+        "split": "test",
+        "sha256": "e880c9189ff7256ad7170e6c20273243c09bc4a2f65227b5c7b6db109b869dca"
+      },
+      {
+        "path": "force/xela/processed/p4_static/sync_0_press_52.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p4_static/sync_0_press_52.npz",
+        "frames": 1061,
+        "probe": 4,
+        "split": "train",
+        "sha256": "8185c4eccdddab410d2d1ca8580e0d47123650ca6f0711648a0ed7967b7126f5"
+      },
+      {
+        "path": "force/xela/processed/p4_static/sync_0_press_53.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p4_static/sync_0_press_53.npz",
+        "frames": 1062,
+        "probe": 4,
+        "split": "train",
+        "sha256": "e4dcd89fc579fd3dc5e2924b3ee5fa91e5e648bda6a078dde1abb87df31189d1"
+      },
+      {
+        "path": "force/xela/processed/p4_static/sync_0_press_54.npz",
+        "url": "https://huggingface.co/datasets/AllenBi21/HTT-dataset/resolve/b3d6f0a275dfc949cbe6c100e4ca767e4ad8bf59/force/xela/processed/p4_static/sync_0_press_54.npz",
+        "frames": 1060,
+        "probe": 4,
+        "split": "test",
+        "sha256": "6917edad266db254f3ab5c9ac916c2bd514ade8d53ae451f8e99c44b2caa1cb0"
+      }
+    ],
+    "limitation": "Scalar screening only: all-channel L1 is not the project normal-taxel P. No verified spatial/channel map, no timestamps, no full 11D, no OOD, no control. Four held-out trials, same probes as train; frames are correlated. Dataset reference frame provenance not independently verified."
+  }
+}

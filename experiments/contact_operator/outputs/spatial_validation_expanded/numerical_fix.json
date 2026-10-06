@@ -1,0 +1,5 @@
+{
+  "reason": "scipy LinAlgWarning ill-conditioned float32 Ridge normal equations; corrected linear solves to float64 before inspecting results",
+  "protocol_change": false,
+  "action": "Rerun unchanged alpha grid, splits, features, endpoints; do not select using test performance"
+}

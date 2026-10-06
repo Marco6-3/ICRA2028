@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-06",
+  "dataset": "https://huggingface.co/datasets/jiamig/taf-dataset",
+  "revision": "239c8ee8156bf11eb6d6c11c004f9a8721528d9d",
+  "source_sequences": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "purpose": "Dataset eligibility and real-pair curation only; no learned representation comparison",
+  "calibration": "First 30 chronological rows only, must have all |Fz|<0.5 in stored units; per-taxel median and 3*1.4826*MAD cutoff; freeze thereafter",
+  "window": "15 rows; pressure CV<=5%, independent |Fz| CV<=5%, |Fz|>=2, external moment/force vector span>=0.002",
+  "pairs": "Pressure-sum ratio and independent-normal-load ratio each within 5%; shear/normal<=0.2; external moment/normal vector difference>=0.003",
+  "pair_selection": "No centroid, orientation or full11D difference enters pair selection",
+  "external_label": "[-Ty/Fz, Tx/Fz] from independent ATI, baseline-subtracted; moment/normal-load ratio only, not verified physical CoP",
+  "limitations": [
+    "No independent jamming, tipping, release or recovery-action labels.",
+    "External ATI pose/offset and exact matrix force calibration not verified.",
+    "Moment/normal-force ratio can reflect shear moments, sensor offsets or normal-contact redistribution.",
+    "Converted episodes can be fixed-length chunks of one recording; split future models by source sequence, not chunks.",
+    "Six source sequences were chosen by fixed numeric IDs before reading results; not a formal Stage1 pass.",
+    "Different sensor from FlexiTac; do not infer identical noise or physical calibration."
+  ]
+}

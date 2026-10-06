@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-06",
+  "dataset": "https://huggingface.co/datasets/Tna001/tactile_test_tube_pyflexitac",
+  "revision": "ebd3c711d678aa18bfc7f6a0a1e894104c8c1ea4",
+  "epochs": 80,
+  "fractions": [
+    0.25,
+    0.5,
+    1
+  ],
+  "training_seeds": [
+    7,
+    19,
+    31
+  ],
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "batch_size": 1024,
+  "early_stopping_patience": 8,
+  "hidden_layers": [
+    64,
+    64
+  ],
+  "target": "action[t+5] - observation.state[t], six position commands; no torque or force label",
+  "common_input": "state[t] and backward state slope; tactile models also get current/previous contact-valid masks",
+  "raw_input": "current and previous causal-EMA tactile fields",
+  "learned": "Supervised 768->64->11 encoder, same 64->64 readout; not PCA and not a fixed pretrained encoder",
+  "normalization": "Input and target scaling fit only chosen training episodes; full-train target std used only for common evaluation units",
+  "metrics": "Whole-episode macro normalized MSE; per-joint MAE; contact-conditioned secondary score",
+  "limitations": [
+    "No images, token baseline, Mamba, independent event ground truth, object OOD or real hardware latency.",
+    "Fixed exploratory hyperparameters; matched readout widths, unequal total parameter counts.",
+    "Frames are correlated; bootstrap clusters over ten test episodes, averaged across three seeds.",
+    "Future action targets are labels only; all model inputs are causal.",
+    "Readout rows every third frame; derivatives and future targets computed on stored 30 Hz timeline."
+  ]
+}

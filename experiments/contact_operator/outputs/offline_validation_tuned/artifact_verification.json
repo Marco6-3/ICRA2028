@@ -1,0 +1,25 @@
+{
+  "split_disjoint": true,
+  "cpu_reload_vs_saved_cuda_predictions": [
+    {
+      "representation": "State",
+      "reload_max_error": 5.245208740234375e-06
+    },
+    {
+      "representation": "Scalar",
+      "reload_max_error": 3.814697265625e-06
+    },
+    {
+      "representation": "Physics11D",
+      "reload_max_error": 6.67572021484375e-06
+    },
+    {
+      "representation": "Raw",
+      "reload_max_error": 7.62939453125e-06
+    },
+    {
+      "representation": "Learned11D",
+      "reload_max_error": 7.62939453125e-06
+    }
+  ]
+}

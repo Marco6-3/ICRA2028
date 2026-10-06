@@ -1,0 +1,40 @@
+{
+  "initial_pilot": "outputs/offline_validation",
+  "tuning_reason": "25/45 pilot fits had best epoch >=75 of 80",
+  "hyperparameter_selection": "Lowest whole-validation-episode macro standardized MSE at full training budget, seed7 only; no candidate test scores",
+  "grid": [
+    {
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    },
+    {
+      "lr": 0.001,
+      "weight_decay": 0.01
+    },
+    {
+      "lr": 0.0003,
+      "weight_decay": 0.0001
+    },
+    {
+      "lr": 0.0003,
+      "weight_decay": 0.01
+    }
+  ],
+  "max_epochs": 240,
+  "early_stopping_patience": 16,
+  "final_seeds": [
+    7,
+    19,
+    31
+  ],
+  "fractions": [
+    0.25,
+    0.5,
+    1
+  ],
+  "test_split_status": "Reused exploratory pilot test; not independent confirmatory evidence",
+  "script_sha256": "ec7c2c00b99878c36e78df3c4201df33bdef53dc79ff32403af91bbd2c7e57e2",
+  "primary": "action[t+5]-state[t]; no images, independent contact labels, tokens or temporal memory model",
+  "parameter_budget": "Matched head widths, unequal parameter counts; see each fit",
+  "limitations": "One task, one split; no OOD. Threshold .01 and EMA .5 fixed without test selection."
+}

@@ -1,0 +1,88 @@
+{
+  "revision": "239c8ee8156bf11eb6d6c11c004f9a8721528d9d",
+  "split": {
+    "train": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "validation": [
+      23,
+      24,
+      25,
+      26
+    ],
+    "test": [
+      27,
+      28,
+      29,
+      30
+    ]
+  },
+  "readout": "Same time t and t-1, no future input; target ATI [-Ty/Fz,Tx/Fz]",
+  "calibration": "First 30 rows must have all stored |Fz|<0.5; frozen per-taxel median, cutoff 3*1.4826*MAD; ATI subtract prefix median",
+  "eligibility": "Rows >=31, same converted episode as previous row, pressure mass>0, |Fz|>=2, finite labels; no shear restriction for primary",
+  "conditional": "15-row nonoverlapping windows, P and |Fz| CV<=.05, independent label span>=.002, all shear ratio<=.2",
+  "splits_are": "Complete source-sequence splits, physical object identity not verified; exclusions do not move IDs between splits",
+  "training": "One row per 3 source rows for optimization; validation tuning also stride3; final test all eligible rows",
+  "linear": "Ridge alpha [.01,.1,1,10,100,1000] selected on equal-source validation MSE; fractions .25,.5,1; seeds7,19,31",
+  "neural": {
+    "configs": [
+      {
+        "lr": 0.001,
+        "wd": 0.0001
+      },
+      {
+        "lr": 0.001,
+        "wd": 0.01
+      },
+      {
+        "lr": 0.0003,
+        "wd": 0.0001
+      },
+      {
+        "lr": 0.0003,
+        "wd": 0.01
+      }
+    ],
+    "seeds": [
+      7,
+      19,
+      31
+    ],
+    "max_epochs": 200,
+    "patience": 20,
+    "batch_size": 4096,
+    "head": [
+      64,
+      64,
+      2
+    ],
+    "learned_encoder": [
+      288,
+      64,
+      11
+    ],
+    "selection": "Equal-source validation MSE, seed7 tuning; final3 seeds, no test-based selection"
+  },
+  "scalar": "log1p(P/P_ref), backward difference; centroid variant also cx,cy and differences",
+  "physics": "8 static moments + 3 backward differences, anisotropy weighted double-angle orientation",
+  "raw": "Current and previous 144 positive responses, no EMA for any representation",
+  "normalization": "Training-subset-only input/output mean,std and P_ref; each group weighted equally in loss",
+  "sensitivity": "Linear frozen-primary alpha, recalculated features for cutoff0 and5*MAD; no retuning on test",
+  "measurements": "Macro-source MAE and RMSE in stored moment/force ratio units; per-source paired errors; bootstrap source clusters",
+  "inference_limits": "Prediction of external ratio, not calibrated CoP, slip, tipping, recovery or causal necessity; conditional window eligibility uses ATI and is retrospective diagnosis"
+}

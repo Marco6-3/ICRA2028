@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Scalar",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 1.173180103302002,
+    "best_epoch": 1,
+    "last_epoch": 21,
+    "parameters": 4610
+  },
+  {
+    "name": "Scalar",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 1.1731234788894653,
+    "best_epoch": 1,
+    "last_epoch": 21,
+    "parameters": 4610
+  },
+  {
+    "name": "Scalar",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 1.0603429079055786,
+    "best_epoch": 1,
+    "last_epoch": 21,
+    "parameters": 4610
+  },
+  {
+    "name": "Scalar",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 1.0603468418121338,
+    "best_epoch": 1,
+    "last_epoch": 21,
+    "parameters": 4610
+  },
+  {
+    "name": "ScalarCentroid",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 0.8721501231193542,
+    "best_epoch": 7,
+    "last_epoch": 27,
+    "parameters": 4866
+  },
+  {
+    "name": "ScalarCentroid",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 0.8719645738601685,
+    "best_epoch": 7,
+    "last_epoch": 27,
+    "parameters": 4866
+  },
+  {
+    "name": "ScalarCentroid",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 0.8709396719932556,
+    "best_epoch": 14,
+    "last_epoch": 34,
+    "parameters": 4866
+  },
+  {
+    "name": "ScalarCentroid",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 0.870947003364563,
+    "best_epoch": 14,
+    "last_epoch": 34,
+    "parameters": 4866
+  },
+  {
+    "name": "Physics11D",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 0.8569580316543579,
+    "best_epoch": 5,
+    "last_epoch": 25,
+    "parameters": 5186
+  },
+  {
+    "name": "Physics11D",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 0.856766402721405,
+    "best_epoch": 5,
+    "last_epoch": 25,
+    "parameters": 5186
+  },
+  {
+    "name": "Physics11D",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 0.8433328866958618,
+    "best_epoch": 14,
+    "last_epoch": 34,
+    "parameters": 5186
+  },
+  {
+    "name": "Physics11D",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 0.8433483242988586,
+    "best_epoch": 14,
+    "last_epoch": 34,
+    "parameters": 5186
+  },
+  {
+    "name": "Raw",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 1.0219389200210571,
+    "best_epoch": 15,
+    "last_epoch": 35,
+    "parameters": 22914
+  },
+  {
+    "name": "Raw",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 0.9245196580886841,
+    "best_epoch": 52,
+    "last_epoch": 72,
+    "parameters": 22914
+  },
+  {
+    "name": "Raw",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 0.9771631956100464,
+    "best_epoch": 49,
+    "last_epoch": 69,
+    "parameters": 22914
+  },
+  {
+    "name": "Raw",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 0.9733651280403137,
+    "best_epoch": 49,
+    "last_epoch": 69,
+    "parameters": 22914
+  },
+  {
+    "name": "Learned11D",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 0.8948690295219421,
+    "best_epoch": 83,
+    "last_epoch": 103,
+    "parameters": 24397
+  },
+  {
+    "name": "Learned11D",
+    "config": {
+      "lr": 0.001,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 0.8977705240249634,
+    "best_epoch": 109,
+    "last_epoch": 129,
+    "parameters": 24397
+  },
+  {
+    "name": "Learned11D",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.0001
+    },
+    "validation_standardized_mse": 1.0136078596115112,
+    "best_epoch": 36,
+    "last_epoch": 56,
+    "parameters": 24397
+  },
+  {
+    "name": "Learned11D",
+    "config": {
+      "lr": 0.0003,
+      "wd": 0.01
+    },
+    "validation_standardized_mse": 1.0175507068634033,
+    "best_epoch": 36,
+    "last_epoch": 56,
+    "parameters": 24397
+  }
+]

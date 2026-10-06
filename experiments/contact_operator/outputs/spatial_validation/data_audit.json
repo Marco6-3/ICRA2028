@@ -1,0 +1,266 @@
+[
+  {
+    "group": 7,
+    "rows": 26703,
+    "sha256": "3b9b376d0d8e5220100c9704af7d1d1e3766043d632ff93ea0aa2c94cc683853",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 0.5737599730491638
+  },
+  {
+    "group": 8,
+    "rows": 27495,
+    "sha256": "f24be2e136c11815dacd9806b491192a1b5e26a1bcb181609899c5585376bb10",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.14343999326229095,
+    "eligible_rows": 18134,
+    "conditional_windows": 154,
+    "conditional_rows": 2309,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 9,
+    "rows": 26643,
+    "sha256": "a479f9f1c29a6fec96f29a4aa07837355af4b929937cb0fb64d0307957716337",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.47335198521614075,
+    "eligible_rows": 26480,
+    "conditional_windows": 67,
+    "conditional_rows": 1004,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 10,
+    "rows": 27497,
+    "sha256": "da3620e6a636e7b6dfc5244db699728e16bea1e6d4ef369fc97d0d2d14b45920",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.12909600138664246,
+    "eligible_rows": 26322,
+    "conditional_windows": 142,
+    "conditional_rows": 2129,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 11,
+    "rows": 27696,
+    "sha256": "633b427b3a2d33dd2820dd4417f2a12b32fb9a2cf3833d7ca4708a127fa32b42",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.18647199869155884,
+    "eligible_rows": 26685,
+    "conditional_windows": 164,
+    "conditional_rows": 2459,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 12,
+    "rows": 27141,
+    "sha256": "e8681ffe6416afdae2091efed7d98b30213fc55a8b7ed1aa8b2a3a2d90fe1f78",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 0.5163840055465698
+  },
+  {
+    "group": 13,
+    "rows": 27000,
+    "sha256": "8f58c121b0623e0392cfd2e4b9991b4d7fe5fb8b6378286968e3edbc7cf28734",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.45900800824165344,
+    "eligible_rows": 26386,
+    "conditional_windows": 158,
+    "conditional_rows": 2370,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 14,
+    "rows": 27000,
+    "sha256": "199388af5207d38b5a176974a5f74e5e043931941cac97873825ec4a19061075",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.2868799865245819,
+    "eligible_rows": 26316,
+    "conditional_windows": 101,
+    "conditional_rows": 1514,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 15,
+    "rows": 27130,
+    "sha256": "4ada63257116155b7f0d6852e17f083dc980cb7b9c36b0b7ab2df1c8fb4d4f50",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 0.6167920231819153
+  },
+  {
+    "group": 16,
+    "rows": 27138,
+    "sha256": "5a3e25b13f3107ccacf0ca276ac5c6aeef2c16cd7e2f331cd4ef20d998c4dad0",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.14343999326229095,
+    "eligible_rows": 26567,
+    "conditional_windows": 82,
+    "conditional_rows": 1230,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 17,
+    "rows": 27155,
+    "sha256": "9f52e6db9239f6560a856b2af4fc513db398b99f3d36518ac58dfd08b067f944",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 8.807215690612793
+  },
+  {
+    "group": 18,
+    "rows": 27171,
+    "sha256": "69427e5a9ccfcc5fea70735d7e3d6061ac99e0d5acce31c6484c6ab72f8c4db7",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 26.1921443939209
+  },
+  {
+    "group": 19,
+    "rows": 13368,
+    "sha256": "6f8c3556bef5338550dd020ce79d95368a9b461b0e8b6a3f9d67e88d177daf4f",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 13.741552352905273
+  },
+  {
+    "group": 20,
+    "rows": 11912,
+    "sha256": "b1aa9f926868469c1d4775f6baabd7f7bec8cf9c21199faec4fd97cd076c473b",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.2725360095500946,
+    "eligible_rows": 11872,
+    "conditional_windows": 69,
+    "conditional_rows": 1035,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 21,
+    "rows": 27000,
+    "sha256": "a64e4461a3d997851212f495f51879f4b283b4e927aecba1f864f71474a67694",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.48769599199295044,
+    "eligible_rows": 26552,
+    "conditional_windows": 138,
+    "conditional_rows": 2070,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 22,
+    "rows": 27103,
+    "sha256": "84154dbb79a93921d07be6095ae8062279a9a16a33500a32487a4dcc6ed5b618",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.18647199869155884,
+    "eligible_rows": 26341,
+    "conditional_windows": 57,
+    "conditional_rows": 854,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 23,
+    "rows": 26978,
+    "sha256": "b0ed599db266e2cf8b7506ecdae2deb9a4c12efbf3a9b2dd5e64bb0113c3ab3c",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 3.413872003555298
+  },
+  {
+    "group": 24,
+    "rows": 4841,
+    "sha256": "957ac9360ffd674111c7f55d60ed6dea0eed0cd723e3a938002ec55ae0ccb454",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.20081600546836853,
+    "eligible_rows": 4511,
+    "conditional_windows": 14,
+    "conditional_rows": 210,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 25,
+    "rows": 27118,
+    "sha256": "0a5ace9ae7479657405c3f1258c9d9049cc5f100a0ed7b6847fb6d9584780ec2",
+    "calibration_ok": true,
+    "prefix_max_abs_Fz": 0.10040800273418427,
+    "eligible_rows": 26604,
+    "conditional_windows": 120,
+    "conditional_rows": 1800,
+    "dt_quantiles": [
+      0.03333282470703125,
+      0.03333282470703125,
+      0.0333404541015625
+    ]
+  },
+  {
+    "group": 26,
+    "rows": 27130,
+    "sha256": "5ba00ae5c800e52d7d6fab9495a9237f7682cca85249449c3e4078719d4af3d9",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 31.585487365722656
+  },
+  {
+    "group": 27,
+    "rows": 27128,
+    "sha256": "c87d8e80056fc815e9e5c6a3ab09b32f0ca2d5505f6725907b504d13fb6d7460",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 6.641272068023682
+  },
+  {
+    "group": 28,
+    "rows": 27000,
+    "sha256": "0ff20f70eee7c8ddf0bd0a8f7c3611b6c8c58c05d6b139808778c9019ea4b78c",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 36.54851150512695
+  },
+  {
+    "group": 29,
+    "rows": 27132,
+    "sha256": "60e2fbafb188bbe8e9b0ecfabcaac14f194ffe5dc0c6fbf66e0be8f9a1098173",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 28.644968032836914
+  },
+  {
+    "group": 30,
+    "rows": 27127,
+    "sha256": "6e0b587863384d1a44e3360b0273f124f75b1741d605a844824d7e96b92f9dc3",
+    "calibration_ok": false,
+    "prefix_max_abs_Fz": 31.34164047241211
+  }
+]

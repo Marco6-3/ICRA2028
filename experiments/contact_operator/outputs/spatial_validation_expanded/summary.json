@@ -1,0 +1,122 @@
+{
+  "linear_FzOracle": {
+    "test": {
+      "rmse_mean": 0.005539177635144737,
+      "rmse_seed_std": 8.673617379884035e-19,
+      "mae_mean": 0.0043152033316397435
+    },
+    "conditional": {
+      "rmse_mean": 0.005559143954997803,
+      "rmse_seed_std": 8.673617379884035e-19,
+      "mae_mean": 0.004563623147804723
+    }
+  },
+  "linear_Physics11D": {
+    "test": {
+      "rmse_mean": 0.005478137880486472,
+      "rmse_seed_std": 8.673617379884035e-19,
+      "mae_mean": 0.004266884579270096
+    },
+    "conditional": {
+      "rmse_mean": 0.005198994373344658,
+      "rmse_seed_std": 0.0,
+      "mae_mean": 0.004275312186217167
+    }
+  },
+  "linear_Raw": {
+    "test": {
+      "rmse_mean": 0.006723973720510527,
+      "rmse_seed_std": 0.0,
+      "mae_mean": 0.005105826890238611
+    },
+    "conditional": {
+      "rmse_mean": 0.006463949788692514,
+      "rmse_seed_std": 0.0,
+      "mae_mean": 0.005043840827470255
+    }
+  },
+  "linear_Scalar": {
+    "test": {
+      "rmse_mean": 0.005486715940439477,
+      "rmse_seed_std": 8.673617379884035e-19,
+      "mae_mean": 0.004336252820203651
+    },
+    "conditional": {
+      "rmse_mean": 0.00554640550437429,
+      "rmse_seed_std": 0.0,
+      "mae_mean": 0.004652861018790024
+    }
+  },
+  "linear_ScalarCentroid": {
+    "test": {
+      "rmse_mean": 0.005145738772840315,
+      "rmse_seed_std": 0.0,
+      "mae_mean": 0.003966689218822961
+    },
+    "conditional": {
+      "rmse_mean": 0.004757869785517362,
+      "rmse_seed_std": 0.0,
+      "mae_mean": 0.003821822601260589
+    }
+  },
+  "neural_Learned11D": {
+    "test": {
+      "rmse_mean": 0.006175689878599609,
+      "rmse_seed_std": 0.00015248372960239163,
+      "mae_mean": 0.004716869498438695
+    },
+    "conditional": {
+      "rmse_mean": 0.005802470606331732,
+      "rmse_seed_std": 0.00010541669590864718,
+      "mae_mean": 0.004666741188688606
+    }
+  },
+  "neural_Physics11D": {
+    "test": {
+      "rmse_mean": 0.005474164935888028,
+      "rmse_seed_std": 8.224517923813877e-05,
+      "mae_mean": 0.004235844346968567
+    },
+    "conditional": {
+      "rmse_mean": 0.005127952164769464,
+      "rmse_seed_std": 0.0001176167244268895,
+      "mae_mean": 0.004176943613143236
+    }
+  },
+  "neural_Raw": {
+    "test": {
+      "rmse_mean": 0.005935453627185494,
+      "rmse_seed_std": 0.00021282881507715955,
+      "mae_mean": 0.004561328091749958
+    },
+    "conditional": {
+      "rmse_mean": 0.005464795054685252,
+      "rmse_seed_std": 0.0003353720648479485,
+      "mae_mean": 0.00437803966833242
+    }
+  },
+  "neural_Scalar": {
+    "test": {
+      "rmse_mean": 0.005439000715519868,
+      "rmse_seed_std": 3.1539077869897844e-05,
+      "mae_mean": 0.004200844062200072
+    },
+    "conditional": {
+      "rmse_mean": 0.005481498247450766,
+      "rmse_seed_std": 5.05174136173196e-05,
+      "mae_mean": 0.004469711255903046
+    }
+  },
+  "neural_ScalarCentroid": {
+    "test": {
+      "rmse_mean": 0.005252277044871567,
+      "rmse_seed_std": 6.483342524960312e-05,
+      "mae_mean": 0.004039267566529851
+    },
+    "conditional": {
+      "rmse_mean": 0.005023798444217035,
+      "rmse_seed_std": 9.728019660537155e-05,
+      "mae_mean": 0.0040537956736835775
+    }
+  }
+}

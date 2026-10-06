@@ -1,0 +1,31 @@
+{
+  "P_ref": 7.443846702575684,
+  "baseline": "No second subtraction",
+  "threshold": 0.01,
+  "threshold_rule": "w_i if w_i>threshold, else zero; shared by all tactile inputs",
+  "contact_mass_min": 1e-06,
+  "ema_alpha": 0.5,
+  "derivatives": "adjacent stored-frame differences, not rates",
+  "centroid_difference": "masked unless both frames have positive contact mass",
+  "static_order": [
+    "log_load",
+    "cx",
+    "cy",
+    "area",
+    "sigma1",
+    "sigma2",
+    "ox",
+    "oy"
+  ],
+  "geometry": "Each array axis normalized to [-1,1]; not physical metric geometry",
+  "horizon_frames": 5,
+  "horizon_nominal_ms": 166.66666666666666,
+  "readout_stride": 3,
+  "state_input_dim": 12,
+  "scalar_dim": 2,
+  "physics_dim": 11,
+  "raw_current_previous_dim": 768,
+  "validity_mask_dim": 2,
+  "causality_prefix_check": true,
+  "contact_labels": "Input-derived positive-mass mask; no independent event ground truth"
+}

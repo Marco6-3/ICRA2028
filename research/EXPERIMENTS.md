@@ -1,6 +1,12 @@
 # 实验路线：从 Physics Bottleneck 到 Temporal Memory
 
-状态：方案，未运行。更新：2026-10-05。
+状态：实验路线方案；已补充数学检查与公开数据探索性离线结果，真实硬件 Stage 0 和闭环尚未完成。更新：2026-10-06。
+
+## 已执行的离线实验
+
+[成果与决策总览](OFFLINE_RESULTS.md) 汇总 LeFlexiTac 动作拟合与 TaF 空间诊断。具体协议、全部失败／排除、验证调参、逐源误差、阈值敏感性、图表和脚本见 [实验归档](../experiments/contact_operator/README.md)。当前结果没有可靠支持完整 11D 的增量价值，不能据此宣布 Stage 1 通过。
+
+下文保留长期实验标准；已经完成的探索性实验不等于所有标准已满足。此次没有运行 dense tactile token、Mamba 或 VLA；TaF 留出的是完整源序列，未核实为物体／材质 OOD。神经小样本效率与实机闭环仍需后续证据。
 
 ## 总原则
 
