@@ -13,7 +13,7 @@
 当前路线不先比较一堆时序网络，而先回答两个问题：
 
 1. 低维 physics contact state 是否是一个有价值的 tactile bottleneck？
-2. 如果是，长历史 temporal memory 是否能在固定延迟预算下进一步提高闭环控制？
+2. 长历史 temporal memory 是否会暴露单帧/短时读出没有显示出来的 representation × memory 交互价值？正式 Stage 2 仍需 Stage 1 支持，但允许一个低成本 Stage-2P probe 提前回答这一诊断问题。
 
 所有阶段都必须把**表示、时序、控制**分开验证，避免同时改多个轴后只报告最终成功率。
 
@@ -59,6 +59,16 @@ no-contact → contact → load → redistribution / roll / tilt → release
 - 不主要由 threshold / filter artifact 产生；
 
 才进入 Stage 1。
+
+### Stage 0 预注册门槛与 timebox
+
+- task-relevant descriptor 的 repeated-trial ICC 目标 ≥ 0.90；ICC 不适用的维度必须在看测试结果前声明绝对误差界；
+- 固定稳定载荷下 total-load proxy 的 CV 目标 ≤ 5%；
+- preprocessing + descriptor compute P95 ≤ 一个 tactile frame interval 的 20%；
+- event-to-descriptor P95 ≤ 一个 tactile frame interval；
+- 硬件、固件与记录格式冻结后，以 4 周主动实验或 3 个独立固定协议采集批次（先到者）作为一次 timebox；仍不稳定则强制进入 descriptor / calibration / hardware pivot 讨论。
+
+这些阈值是项目决策门槛，不是领域通用常数；若真实设备显示阈值不合理，只能基于训练/标定数据和工程约束前瞻性修订，并记录原因，不能看测试成绩后追溯修改。
 
 ---
 
@@ -148,9 +158,39 @@ Physics bottleneck 至少需要在以下一个或多个维度体现清晰价值�
 
 ---
 
-## Stage 2 — Temporal Memory
+## Stage 2P — Low-cost Temporal Interaction Probe
 
-只有 Stage 0 / 1 通过后，才研究：
+Stage 1 当前尚未通过，但允许一个与其并行的低成本诊断 probe，专门检验：
+
+> **Does temporal memory reveal value that instantaneous readout missed?**
+
+该 probe **不是**进入正式 Stage 2，也不能据此宣称 11D 已成立。第一轮固定比较：
+
+| Representation | Temporal backbone | 目的 |
+| --- | --- | --- |
+| Scalar / total load | same Mamba-style streaming model | TacMamba-style 1D memory baseline |
+| Scalar + centroid (3D) | same model | 当前最强的简化 spatial baseline |
+| Physics11D | same model | 检验 richer structured state 是否在长历史中出现增量 |
+| Learned11D | same model | 排除“只是低维 latent”这一替代解释 |
+
+必须固定：相同数据划分、相同可见历史、相同 hidden/parameter budget、相同训练步数/优化协议、相同 decision frequency。history length 可以做一个**预注册的小 sweep**，但不得看 test 后追加长度或网络规模。
+
+首轮 probe 不接 π0.5/VLA，不以最终 manipulation success 为目标，也不要求先复现 TacMamba 的完整系统；只借用其 streaming-memory 范式做 matched comparison。
+
+### Stage-2P 判读
+
+- 若 Physics11D + memory > Scalar+centroid + memory，且优势随有效历史出现而非 current-only 就存在：支持 richer structured spatial state × memory 交互，值得进入正式 Stage 2；
+- 若 Physics11D ≈ Scalar+centroid：优先缩减 descriptor，3D/更小 state 可能已经足够，不维护“11D 必要”的 claim；
+- 若 spatial variants 都不优于 Scalar：削弱 spatial-memory 主线，不进入 VLA 来掩盖结果；
+- Learned11D 若明显更优，则转向 learned/hybrid bottleneck，而不是强保 physics。
+
+Task 1 使用 non-inferiority 判断：Physics+memory 相对 Scalar+memory 的主要指标默认允许 **3% 相对退化 margin**。Task 2/3 的 superiority claim 必须使用预先冻结的主指标与 source/trial-level paired uncertainty；不能只凭单 seed 均值。
+
+---
+
+## Stage 2 — Formal Temporal Memory
+
+只有 Stage 0 / 1 通过，或 Stage-2P 给出足以重新支持 representation×memory 假设的预注册证据后，才扩大研究：
 
 $$
 s_{1:t}\rightarrow h_t.
