@@ -28,7 +28,7 @@
 
 Raw tactile field → Physics contact state → Representation evidence → Temporal memory → Closed-loop control
 
-对应三个阶段：
+对应以下阶段：
 
 1. **Stage 0 — Physics sanity check**：不训练网络，检查 descriptor 的噪声、漂移、重复性、事件响应和真实延迟。
 2. **Stage 1 — Representation bottleneck**：比较 Raw / LeFlexiTac-style dense tactile tokens / Physics 11D / Learned 11D 的数据效率、OOD、延迟、训练代价和信息丢失。
@@ -49,6 +49,7 @@ Raw tactile field → Physics contact state → Representation evidence → Temp
 | [Physics Bottleneck](research/PHYSICS_BOTTLENECK.md) | 当前最高优先级候选：FlexiTac contact state、预处理、Stage 0/1/2 与停止条件 |
 | [Core Baselines](research/BASELINES.md) | TacMamba / LeFlexiTac / RDP 的角色、三类诊断任务与 Go/No-Go 逻辑 |
 | [实验方案](research/EXPERIMENTS.md) | 公平比较、因果时间约束、指标和投稿前证据门槛 |
+| [后续验证路线](research/VALIDATION_ROUTES.md) | 11 条未执行候选：表示精简、时间接口、状态读出与条件扩展；附实验登记表和运行模板 |
 | [离线成果与决策](research/OFFLINE_RESULTS.md) | 数学反例、两轮离线结果、负结果、协议修订与当前停止条件 |
 | [实验代码与归档](experiments/contact_operator/README.md) | 数据来源、固定版本、协议、图表、模型和复现命令 |
 | [研究路线](ROADMAP.md) | 从当前小实验到 2027 年投稿准备 |

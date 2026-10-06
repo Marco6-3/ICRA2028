@@ -8,6 +8,12 @@
 
 下文保留长期实验标准；已经完成的探索性实验不等于所有标准已满足。此次没有运行 dense tactile token、Mamba 或 VLA；TaF 留出的是完整源序列，未核实为物体／材质 OOD。神经小样本效率与实机闭环仍需后续证据。
 
+## 后续候选改进与运行登记
+
+[VALIDATION_ROUTES.md](VALIDATION_ROUTES.md) 收录 11 条尚未运行的验证路线，固定当前目标为“紧凑触觉表示的接触状态估计”，不把任务阶段识别、Mamba 或纠偏控制写成已有结果。先做数据／时间接口 Q0，再按条件选择参数化、差分、面积、质量或读出的小消融；原 Stage-2P 四路对照继续保留。
+
+使用 [候选矩阵](../experiments/validation_routes/MATRIX.csv) 登记进度，实际运行前复制 [记录模板](../experiments/validation_routes/RUN_TEMPLATE.md) 冻结数据、指标、实用差异和预算。当前矩阵全部为 candidate_not_run。新增路线不授权一次性大规模扫描，不覆盖旧协议；根据开发结果选定的组合须使用独立确认数据。
+
 ## 总原则
 
 当前路线不先比较一堆时序网络，而先回答两个问题：
