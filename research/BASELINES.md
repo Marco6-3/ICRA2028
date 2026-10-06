@@ -1,6 +1,6 @@
 # Core Baselines and Positioning
 
-状态：研究定位与实验基线设计，未形成项目结果。更新：2026-10-05。
+状态：研究定位与实验基线设计，未形成项目结果。更新：2026-10-06。
 
 ## 核心问题
 
@@ -187,13 +187,16 @@ $$
 \text{physics state + matched memory}.
 $$
 
-期望判断形式，而不是预设结果：
+期望判断改为预注册 non-inferiority，而不是模糊的“≈”：
 
-$$
+$
 Perf_{\text{physics}}
-\approx
-Perf_{\text{scalar}}
-$$
+\ge
+Perf_{\text{scalar}}-\delta,
+\qquad \delta=3\%\ \text{relative margin}.
+$
+
+如果主指标是“越小越好”的误差，则按等价的相对退化定义转换。3% 是当前项目决策 margin，不宣称为领域通用阈值；只能在看 test 前基于任务量纲前瞻性修改。
 
 同时报告 click detection latency、count error、long-horizon degradation。
 
@@ -269,6 +272,37 @@ $$
 
 不要预设某个 CNN 会因为异形孔“必然过拟合”。
 
+## Stage-2P matched-memory probe
+
+Stage 1 尚未正式通过时，允许一次低成本 probe 检验 **representation × memory** interaction。首轮固定比较：
+
+$
+\{P_t,\ [P_t,c_x,c_y],\ s_t^{phys11D},\ z_t^{learned11D}\}
+\xrightarrow{\text{same streaming memory}}
+h_t.
+$
+
+这一步不接 π0.5/VLA，也不做大规模 backbone search。它只回答“长历史是否暴露单帧读出没有显示的表示价值”，不能用更强网络掩盖当前表示负结果。
+
+### Coupled spatiotemporal diagnostic target
+
+最终最有价值的诊断任务不是单独“偏心检测”或单独“Mamba 压缩”，而是构造两个互补的可观测性缺口：
+
+1. **Why Spatial**：总载荷近似匹配，但接触位置/形状/偏心状态不同，使 scalar history 缺少关键信息；
+2. **Why Memory**：当前 compact spatial state 近似匹配，但此前的接触演化历史不同，使 memoryless predictor 无法唯一判断后续状态或所需动作。
+
+候选物理过程包括 eccentric loading、rolling / redistribution、stick–slip-like transition 或 history-dependent insertion；具体任务必须由传感器可观测性和独立真值决定。FlexiTac 为法向阵列时，不预先把 CoP/shape 变化等同于 shear、slip 或 instability precursor。
+
+关键消融至少包括：
+
+- Spatial state + matched streaming memory；
+- Spatial state + memoryless readout；
+- Scalar + matched streaming memory；
+- Learned compact state + matched streaming memory；
+- 必要时 rich/raw spatial encoder + matched temporal backbone。
+
+Raw/rich baseline 不能简单把 384D 直接塞进同尺寸 Mamba 后据此宣称高维输入“太慢”；应给它合理的空间 encoder，并分别报告 representation cost 与 matched temporal cost。
+
 ## Go / No-Go logic
 
 理想但尚未成立的三层证据：
@@ -298,7 +332,15 @@ $$
 2. spatial contact geometry 在 scalar-force ambiguous conditions 下提供必要信息；
 3. spatial contact history 在部分可观测接触任务中进一步产生闭环价值。
 
-如果任一层不成立，应缩小或修改 claim，而不是继续堆模型。
+决策不采用机械的“任一层失败就整体 No-Go”：
+
+- Task 1 只要求在预注册 margin 内 non-inferior；若轻微劣于 Scalar 但 Task 2 在冻结主指标上给出稳定的 spatial advantage，可以保留“空间几何有用”主线，但缩小 temporal-event claim；
+- Task 2 失败而 Task 3 成立时，只能主张 history-dependent value，不能主张 current spatial state 的普遍优势；
+- Task 3 失败时，不再扩大 persistent-memory claim；
+- 若 Physics11D 与 Scalar+centroid + memory 近似，则缩小 descriptor，放弃“完整 11D 必要”的主张；
+- 若 Learned11D 明显更优，则转向 learned/hybrid bottleneck。
+
+另外预写 dense-path 分支：若 LeFlexiTac-style dense tactile path 在目标任务上达到或超过 compact path，且训练/推理/延迟成本在系统预算内可接受，则 compact-only 路线降级为 efficiency/hybrid 问题；优先考虑 low-rate dense token + high-rate compact state 的 hybrid，而不是强行证明 bottleneck 必须存在。
 
 ## 关于 novelty 的纪律
 
