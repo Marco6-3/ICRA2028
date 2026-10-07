@@ -1,72 +1,109 @@
-# ICRA2028 · 触觉接触状态与长时记忆
+# ICRA2028 · Minimalist Contact Flow 与流式触觉记忆
 
-更新：2026-10-06。状态：已完成数学检查与两轮公开数据探索性离线验证；完整 11D 的增量价值尚未可靠成立，Stage 1 尚未通过，未启动 Mamba / VLA 或实机闭环实验。
+更新：2026-10-07。状态：Stage 1 已根据离线负结果重新划定胜利边界；不再死磕完整静态 11D，下一步优先复用现有 LeFlexiTac / TaF 数据验证 Minimalist Contact Flow。
 
-## 已完成的验证与当前判断
+## 当前科学判断
 
-- **数学检查**：加权零至二阶矩的数值关系通过检查，同时构造出不同原始场对应相同 11D 的精确反例；统计量自洽不等于控制充分或无损。
-- **LeFlexiTac 动作预测**：64 episode、75,041 帧；Physics11D 相对 State-only 的平均 normalized MSE 高约 4.5%，没有证明空间算子的额外收益。
-- **TaF 空间诊断**：以独立 ATI 力矩／法向力比为标签，17 个完整源记录、417,986 测试帧、3 个神经训练种子。稳载子集上 11D 相对 Scalar 的平均 RMSE 低 6.4%，但逐源配对 MSE 区间跨零，且没有超过“总量＋质心”。去掉窗口固定偏置后，11D 的变化预测误差比零变化参照高 10.2%。
+此前结果已经足够支持一次方向收缩，而不是继续给 11D 调参：
 
-因此先保留质心作为候选，继续受控物理验证和消融；不把完整 11D 的必要性、滑移识别、高频闭环或实机收益写成已成立结论。
+- LeFlexiTac 平滑动作预测中，Physics11D 没有显示稳定增量。
+- TaF 独立 ATI 标签上，Scalar+centroid 已经达到或超过完整 11D；二阶矩/方向没有显示可靠额外收益。
+- 窗口内变化诊断中，完整 11D 没有证明动态追踪能力。
 
-详见 [成果与决策总览](research/OFFLINE_RESULTS.md) 和 [实验归档／复现入口](experiments/contact_operator/README.md)。
+这些负结果保留，不追溯性改写。它们意味着：**完整 11D 降级为历史 ablation / failure boundary；高阶静态空间矩不再是默认贡献。**
 
-## 一条长期主线
+详见 [离线成果与决策](research/OFFLINE_RESULTS.md)。
 
-**研究机器人应当保留哪些接触信息，以及如何把这些信息压缩成能够支持长时间、低延迟闭环控制的内部状态。**
+## 当前 Stage 1：Minimalist Contact Flow
 
-当前最高优先级候选问题：
+默认紧凑表示改为：
 
-> **What is the minimal tactile state that preserves control-relevant spatial contact information over long horizons?**
+```text
+z_t  = [f_N, CoP_x, CoP_y, A]
+Δz_t = z_t - z_{t-1}
+MCF_t = [z_t, Δz_t] ∈ R^8
+```
 
-当前候选切入点是 **Physics-Guided Contact-State Compression + Streaming Memory**：先用 FlexiTac 一类二维触觉阵列研究“高维接触场 → 低维、物理可解释 contact state”的信息保真与失败边界；同时允许一个严格受限的 Stage-2P probe 检验 representation × memory interaction。正式 Mamba/VLA 系统仍需前序证据，但不再用严格串行门控错过“单帧不显著、长历史才显现”的可能价值。
+即 **4D contact state + 4D causal first difference = 8D**。不再笼统写“6–8D”；只有后续消融真的删除某些差分项时才改变维数。
 
-当前实验定位锚定三类强基线：**TacMamba = long tactile memory**、**LeFlexiTac = dense FlexiTac-to-policy/VLA**、**RDP = fast tactile-reactive control**。T-Rex 与 TacForcing继续作为多速率触觉与 execution-time conditioning 的关键 supporting work。详见 [Core Baselines](research/BASELINES.md)。
+核心假设变为：
 
-## 当前候选证据链
+> **在 contact-active 时段，一阶空间位置（CoP）及其动态演化，可能比高阶静态空间矩更接近真正有用的紧凑触觉状态。**
 
-Raw tactile field → Physics contact state → Representation evidence → Temporal memory → Closed-loop control
+这仍是待验证假设，不是既定结论。
 
-对应以下阶段：
+完整协议见 [Minimalist Contact Flow](research/MINIMALIST_CONTACT_FLOW.md)。
 
-1. **Stage 0 — Physics sanity check**：不训练网络，检查 descriptor 的噪声、漂移、重复性、事件响应和真实延迟。
-2. **Stage 1 — Representation bottleneck**：比较 Raw / LeFlexiTac-style dense tactile tokens / Physics 11D / Learned 11D 的数据效率、OOD、延迟、训练代价和信息丢失。
-3. **Stage 2P — matched temporal probe**：在 Stage 1 尚未正式通过时，允许 Scalar / Scalar+centroid / Physics11D / Learned11D 接入同一 streaming backbone，专门检查表示×记忆交互；不接 VLA，不视为正式 Stage 2。
-4. **Stage 2/3 — Formal temporal memory → Closed loop**：只有前序证据支持后才扩大到正式时序系统与真机闭环。
+## Stage 1 不再看什么
 
-详细定义见 [Physics-Guided Contact-State Compression](research/PHYSICS_BOTTLENECK.md)。
+不再把“全轨迹、平滑开环 Action MSE”作为主要胜负指标。触觉在大量平稳轨迹中本来可能冗余，容易稀释真正的接触事件。
 
-## 目标年份
+第一轮直接复用现有数据，构造 **Contact-active Subsets**，优先验证：
 
-以 **2027 年完成研究并投稿 ICRA 2028** 为目标，而非承诺录用。ICRA 2028 的正式截止、页数与投稿细则以最终 CFP / PaperPlaza 为准；内部暂按 **2027-07-31 完整初稿** 留出缓冲。来源与日期冲突见 [路线与时间表](ROADMAP.md)。
+1. **Slip onset / contact-instability precursor**：只有存在独立 slip / object-motion / tangential-force 真值时才称 slip；否则称 contact-instability / redistribution event。
+2. **Torque delta / eccentric-load change**：优先使用 TaF 同步 ATI 独立力矩信号，预测短 horizon 的力矩变化。
+
+事件筛选阈值只允许从 training split 冻结；由 tactile 自己生成的事件标签不能再作为独立真值证明自己。
+
+## Stage 1 固定比较
+
+第一轮固定：
+
+| 表示 | 角色 |
+| --- | --- |
+| Scalar `[f_N, Δf_N]` | 低维 force baseline |
+| Static first-order state `[f_N, CoP_x, CoP_y, A]` | 检查空间位置本身 |
+| **Minimalist Contact Flow 8D** | 当前主方法候选 |
+| Dense Raw / matched tiny encoder | 高维信息参照 |
+| Physics11D | 仅历史 ablation，不再要求获胜 |
+
+所有比较固定 split、标签、因果可见范围和 readout capacity。
+
+## Stage 1 新的通过标志
+
+Stage 1 通过不再等价于“11D 显著最好”。需要：
+
+- MCF 在至少一个**独立标注的 contact-active target** 上稳定优于 Scalar；
+- 增量可归因于 CoP / dynamic terms，而不是未来泄漏、阈值或更大模型；
+- MCF 相对 Dense Raw 达到**事先冻结的 non-inferiority 标准**，同时显著更紧凑/低成本。
+
+若 dense comparison 证据不足，只能宣布“相对 Scalar 的增量成立”，不能提前写“与 Dense Raw 相当”。
+
+理想情况下，论文第一观点才可以写成：
+
+> *For contact-active prediction, first-order spatial contact location and its causal evolution preserve most of the useful compact signal, while higher-order static moments add little under the tested conditions.*
+
+## 长期主线
+
+新的证据链是：
+
+**Dense tactile field → Minimalist Contact Flow → Streaming contact memory → Closed-loop recovery**
+
+Stage 2 才研究 current / short-window MCF 与 TacMamba/Mamba-style streaming memory；Stage 3 再回答这种状态与记忆是否真的改善接触扰动后的闭环 recovery。
+
+TacMamba = long tactile memory baseline；LeFlexiTac = dense tactile baseline；RDP = fast tactile-reactive control baseline。T-Rex 与 TacForcing继续作为多速率与 execution-time tactile conditioning 的 supporting work。
+
+## 现在先做什么
+
+1. **不采新数据**：先用已有 LeFlexiTac / TaF split 重提取 8D MCF。
+2. 用 training split 冻结 contact-active window 定义。
+3. 优先做 TaF torque-delta / eccentric-load-change，因为它有独立 ATI 信号。
+4. 若数据确有独立 slip/object-motion 标签，再做 slip-onset；没有就不要制造“滑移真值”。
+5. 固定 Scalar / Static / MCF / Dense Raw 四组 matched readout；Physics11D 只作历史消融。
+6. test 前冻结 dense non-inferiority margin、预测 horizon、主指标和统计单位。
+7. 只有 Stage 1 通过后，才把 MCF 接入 streaming temporal model。
 
 ## 导航
 
 | 文档 | 用途 |
 | --- | --- |
-| [研究主线](research/CORE.md) | 核心问题、候选假设、方法边界与可能的论文贡献 |
-| [Physics Bottleneck](research/PHYSICS_BOTTLENECK.md) | 当前最高优先级候选：FlexiTac contact state、预处理、Stage 0/1/2 与停止条件 |
-| [Core Baselines](research/BASELINES.md) | TacMamba / LeFlexiTac / RDP 的角色、三类诊断任务与 Go/No-Go 逻辑 |
-| [实验方案](research/EXPERIMENTS.md) | 公平比较、因果时间约束、指标和投稿前证据门槛 |
-| [后续验证路线](research/VALIDATION_ROUTES.md) | 11 条未执行候选：表示精简、时间接口、状态读出与条件扩展；附实验登记表和运行模板 |
-| [离线成果与决策](research/OFFLINE_RESULTS.md) | 数学反例、两轮离线结果、负结果、协议修订与当前停止条件 |
-| [实验代码与归档](experiments/contact_operator/README.md) | 数据来源、固定版本、协议、图表、模型和复现命令 |
-| [研究路线](ROADMAP.md) | 从当前小实验到 2027 年投稿准备 |
-| [论文地图](papers/README.md) | 核心与邻近文献、来源、已读范围和与本路线的关系 |
-| [T-Rex](papers/T_REX.md) | 快慢专家、时序触觉编码与去噪过程 |
-| [TacMamba](papers/TACMAMBA.md) | 流式历史压缩、1D force sensing 与证据边界 |
-| [TacForcing](papers/TACFORCING.md) | 执行时触觉、EATA，以及对既往理解的纠正 |
-| [协作规则](AGENTS.md) | 维护假设、证据和实验记录约定 |
+| [Minimalist Contact Flow](research/MINIMALIST_CONTACT_FLOW.md) | **当前 Stage 1 主协议、通过条件与失败分支** |
+| [离线成果与决策](research/OFFLINE_RESULTS.md) | 11D 负结果与历史证据 |
+| [研究主线](research/CORE.md) | representation → memory → closed-loop 总问题 |
+| [实验方案](research/EXPERIMENTS.md) | 长期公平比较与因果纪律 |
+| [Core Baselines](research/BASELINES.md) | TacMamba / LeFlexiTac / RDP |
+| [后续验证路线](research/VALIDATION_ROUTES.md) | 备选消融，不得覆盖当前 Stage 1 主协议 |
+| [研究路线](ROADMAP.md) | 2027 投稿推进顺序 |
+| [协作规则](AGENTS.md) | AI/Agent 执行时必须遵守的证据纪律 |
 
-## 现在先做什么
-
-1. 固定 FlexiTac 硬件 / 固件版本与真实数据格式，实测采样率、传输和 preprocessing latency；不要沿用文献数字代替本机测量。
-2. 已有解析 descriptor 与公开数据实现；仍需完成真实 FlexiTac 的 Stage 0：contact → load → redistribution / roll → release 的受控重复数据。公开数据数值检查不能替代硬件噪声、漂移和事件重复性。
-3. 在真实校准与独立标签下比较 Scalar、Scalar+centroid、Physics11D、Raw 与 Learned11D；现有离线结果不足以通过继续条件。dense tactile token 路径尚未运行，不能宣称优于它。
-4. 现在可并行启动一个低成本 Stage-2P：固定同一 temporal backbone，比较 Scalar、Scalar+centroid、Physics11D、Learned11D；若 Physics11D 不能超过更小的 spatial state，则优先缩 descriptor，而不是把 11D 当既定贡献。
-5. 真正的 coupled spatiotemporal 任务必须同时包含“Why Spatial”和“Why Memory”的可观测性缺口；在独立真值确认前，不把 CoP/shape 漂移直接称为微滑移或失稳前兆。
-
-**不把好看的相平面图当成论文证据，不把 Mamba、FlexiTac 或“physics”本身当 novelty。** 最终贡献必须来自可重复的增量证据和明确失败边界。
-
-本仓库管理研究问题与证据，不重建通用 infra。
+**当前仓库的首要任务不是证明某个预设 descriptor，而是找出最小、因果、对 contact-active prediction 真正有用的 tactile stream。**
