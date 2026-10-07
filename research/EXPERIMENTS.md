@@ -1,5 +1,22 @@
 # 实验路线：从 Physics Bottleneck 到 Temporal Memory
 
+## Stage 3A — Controlled Real-Robot Tactile Reflex（当前最高优先级）
+
+当前不直接接 VLA。先在真实机械臂/夹爪上建立受控 disturbance benchmark，并比较 Fixed / Scalar Reflex / MCF Reflex。
+
+实验优先级：
+1. Anti-Tilt / eccentric disturbance：更直接隔离 spatial contact state 的增量价值；
+2. Anti-Slip / pull disturbance：验证扰动抑制与恢复。
+
+第一轮 residual 只修改 gripper command。必须记录 max slip、max tilt、recovery time、survival/drop、grip effort 与完整 sensor→actuator latency chain。
+
+现有 Stage 2P GRU/Mamba checkpoint 是 now-casting / state reconstruction 模型，不直接作为 residual policy。先采集受控扰动，再冻结 controller supervision / reward、动作边界、训练协议，最后在独立 trial 上做闭环评测。
+
+如果 MCF 没有稳定优于 Scalar，不通过直接接 VLA 掩盖结果。只有 Stage 3A 获得可信闭环增量后，进入 Stage 3B 的 scripted / learned policy / VLA plug-and-play 系统展示。
+
+完整协议见 [STAGE3A_REAL_ROBOT.md](STAGE3A_REAL_ROBOT.md) 与 [real_robot_reflex/PROTOCOL.md](../experiments/real_robot_reflex/PROTOCOL.md)。
+
+
 状态：实验路线方案；已补充数学检查与公开数据探索性离线结果，真实硬件 Stage 0 和闭环尚未完成。更新：2026-10-06。
 
 ## 已执行的离线实验
