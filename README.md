@@ -5,9 +5,9 @@
 
 更新：2026-10-07。
 
-**当前新增实验：离线 Mamba / GRU 对照。** 按用户要求，沿用 TaF 当前状态重构流程，比较 Scalar / MCF、T=50/100、三种子与约48k参数，并测量 batch1 流式延迟。详见 [Mamba 架构实验](research/STAGE2P_MAMBA.md)。
+**已完成离线实验：Mamba / GRU 对照。** 按用户要求，沿用 TaF 当前状态重构流程，比较 Scalar / MCF、T=50/100、三种子与约48k参数，并测量 batch1 流式延迟。详见 [Mamba 架构实验](research/STAGE2P_MAMBA.md)。
 
-**最新决策：Stage 1 条件性通过并封存，当前推进 Stage 2P Now-casting。** 按用户纠偏，将无动作条件的未来力矩目标改为利用 1、20、50 帧历史重构当前剪切力和侧向力矩 `[Fx,Fy,Mx,My]`，比较相同参数量两层 GRU 的 Scalar 与 MCF。详见 [当前重构实验](research/STAGE2P_NOWCAST.md)。[首轮未来预测实验](research/STAGE2P.md) 和下文 Stage 1 方案保留作为历史记录。
+**历史推进记录：Stage 1 条件性通过并封存，随后完成 Stage 2P Now-casting。** 按用户纠偏，将无动作条件的未来力矩目标改为利用 1、20、50 帧历史重构当前剪切力和侧向力矩 `[Fx,Fy,Mx,My]`，比较相同参数量两层 GRU 的 Scalar 与 MCF。详见 [当前重构实验](research/STAGE2P_NOWCAST.md)。[首轮未来预测实验](research/STAGE2P.md) 和下文 Stage 1 方案保留作为历史记录。
 
 ## 已封存 Stage 1
 
