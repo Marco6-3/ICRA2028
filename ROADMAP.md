@@ -1,100 +1,64 @@
-# ICRA2028 长期研究路线与投稿安排
+# ICRA2028 研究路线
 
 更新：2026-10-07。
 
-## 稳定问题
+## 当前路线
 
-长期问题不变：
+长期关注触觉表示、时序信息与接触丰富操作。
 
-> 机器人应该把高维、快速变化的触觉场压缩成什么样的因果内部状态，才能支持低延迟、长历史、接触丰富的闭环控制？
+当前先完成 Stage 1：
 
-但当前入口已经根据 2026-10-06 的离线负结果收缩：
+**Static 11D 收尾 → Minimalist Contact Flow → Contact-active validation → 根据实验结果决定下一步**
 
-**Dense tactile field → Minimalist Contact Flow → Streaming contact memory → Closed-loop recovery**
+## Stage 1：Minimalist Contact Flow
 
-完整静态 11D 不再是必须证明的贡献，而是历史 ablation / failure boundary。
-
-## 当前 Stage 1：先体面收尾，不采新数据
-
-默认 Minimalist Contact Flow：
+候选表示：
 
 ```text
-z_t=[f_N, CoP_x, CoP_y, A]
-MCF_t=[z_t, z_t-z_{t-1}] ∈ R^8
+s_t = [f_N, CoP_x, CoP_y, A]
+delta_s_t = s_t - s_(t-1)
+MCF_t = [s_t, delta_s_t]
 ```
 
-第一轮复用已有 LeFlexiTac / TaF 数据，不以平滑全轨迹 action MSE 为主指标，而聚焦 contact-active windows。
+第一轮直接复用已有 LeFlexiTac / TaF 数据。
 
-优先顺序：
+不再把平滑全轨迹 Action MSE 作为主要验证目标，而是筛选 Contact-active Subsets，研究：
 
-1. **TaF torque-delta / eccentric-load-change**：使用同步 ATI 独立标签；
-2. **contact-instability / redistribution event prediction**；
-3. 只有存在独立 slip / object-motion 真值时才升级为 **slip-onset prediction**。
+- Slip Onset / 接触微滑移前兆；
+- Torque Delta / 倾覆力矩变化。
 
-固定比较 Scalar、Static first-order state、MCF 8D、Dense Raw；Physics11D 仅作历史消融。
+核心比较：
 
-Stage 1 详细协议见 [MINIMALIST_CONTACT_FLOW.md](research/MINIMALIST_CONTACT_FLOW.md)。
+**Scalar vs Minimalist Contact Flow vs Dense Raw tactile representation**
 
-## Stage 1 通过条件
+Static CoP、Physics11D 等可以作为额外消融。
 
-必须同时满足核心科学与工程条件：
+当前希望通过实验回答：
 
-- MCF 在至少一个独立标注 contact-active target 上相对 Scalar 有可重复增量；
-- 消融支持增量来自 CoP / causal dynamics；
-- 与 Dense Raw 的差距落在 test 前冻结的 non-inferiority margin 内，或明确承认 dense equivalence 尚未证明；
-- 紧凑性/计算成本优势可量化。
+> CoP + 差分是否显著优于纯 Scalar，并且能否与 Dense Raw Tokens 表现相当？
 
-若 MCF > Scalar 但 < Dense Raw，则不是失败：转向 compact flow + sparse/event-triggered rich tactile 的 hybrid 路线。
+若实验支持，则进一步讨论“高阶空间矩是否冗余、核心是否主要来自 CoP 及其动态演化”。若不支持，则根据结果重新分析，不预先规定结论。
 
-若 MCF ≈ Scalar，则停止在现有数据上继续调 descriptor，改做真正需要 spatial observability 的受控任务。
+详细方案见 [research/MINIMALIST_CONTACT_FLOW.md](research/MINIMALIST_CONTACT_FLOW.md)。
 
-## 2026-10 至 2027 投稿路线
+## 后续 Stage 2
 
-| 阶段 | 计划时间 | 必须形成的产物 | 继续条件 |
-| --- | --- | --- | --- |
-| **Stage 1A：离线 MCF 收尾** | 2026-10 | 8D extractor；contact-active subset；Scalar/Static/MCF/Raw 对照；独立标签事件/力矩结果 | MCF 对 Scalar 有可靠增量；dense gap 有明确结论 |
-| Stage 1B：必要时确认性采集 | 2026-10 至 11 | 只针对离线证据暴露的缺口采受控数据；随机化偏心方向/载荷；独立真值 | 排除数据集固定偏置与伪标签解释 |
-| Stage 2：temporal memory | 2026-11 至 2027-01 | current / short-window / streaming-memory matched comparison；early prediction | 长历史带来可重复增量，且不是参数量/可见信息不公平 |
-| Stage 3：closed-loop recovery | 2027-01 至 04 | contact redistribution / disturbance recovery 等闭环任务；真实 event→action latency | 表示/记忆收益转化为闭环成功率或安全性 |
-| 泛化与关键消融 | 2027-04 至 05 | unseen objects/contact conditions；核心组件消融；nearest baselines | 核心 claim 跨条件成立或得到清晰边界 |
-| 完整证据与论文 | 2027-06 至 07 | 结果表、延迟、失败、视频、初稿 | 形成一个清晰主张，不靠“用了 Mamba/FlexiTac” |
-| 投稿准备 | 2027-08 起至正式截止前 | 导师审阅、相关工作、匿名/格式/补充材料 | 以最终 ICRA 2028 CFP 为准 |
+Stage 1 得到结果后，再决定如何研究 temporal memory。
 
-内部完整初稿仍以 **2027-07-31** 为项目管理目标，不代表官方截止。
+可能包括把经过验证的 compact tactile representation 接入 Mamba / streaming memory，测试更长历史信息是否有额外作用。
 
-## Stage 2：Streaming Contact Memory
+具体架构、实验任务和 claim 等待 Stage 1 结果后确定，不在当前阶段锁死。
 
-只有 Stage 1 证明 MCF 至少比 Scalar 更有用，才正式研究：
+## Stage 3
 
-- current MCF；
-- fixed short-window MCF；
-- GRU/TCN 等简单 causal memory control；
-- TacMamba/Mamba-style streaming memory。
+若前面的 representation 与 temporal hypothesis 得到支持，再进入真实闭环 manipulation / recovery 实验。
 
-目标不是证明“Mamba 好”，而是：
+具体任务同样根据前序实验结果选择。
 
-> **接触变化是否需要比当前帧/短窗口更长的历史，以及 streaming state 能否以低延迟保存这种信息？**
+## 时间目标
 
-主要看 early prediction、扰动状态识别、历史依赖歧义解除和计算/延迟，而不是只看普通 frame-level accuracy。
+仍以 2027 年形成完整研究成果并准备 ICRA 2028 投稿为长期项目目标。内部可继续以 2027-07-31 作为完整初稿的项目管理参考日期；正式投稿要求以未来官方 CFP 为准。
 
-## Stage 3：Closed-loop recovery
+## 原则
 
-最终论文必须把 representation/memory 转成行为证据。优先任务围绕：
-
-- eccentric-load/contact redistribution recovery；
-- disturbance during grasp；
-- insertion/search 中当前 tactile state 歧义但 history 不同的场景。
-
-最终报告 success/quality、event→action P50/P95、危险接触事件、unseen condition 与 failure taxonomy。
-
-## 失败时如何收缩
-
-- MCF ≈ Scalar：当前任务缺 spatial necessity，换受控问题，不继续刷特征。
-- MCF > Scalar but < Raw：走 hybrid compact+rich tactile。
-- MCF ≈ Raw：Stage 1 最理想结果，进入 memory。
-- Long memory ≈ short window：论文不强行使用 Mamba，缩成 compact dynamic tactile representation + reactive control。
-- 离线收益不能转闭环：缩小 claim，不用更多离线 benchmark 掩盖。
-
-## 第一篇之后的自然延伸
-
-只有第一条证据链成立后，再考虑 event-triggered rich tokens、action-conditioned tactile state、跨传感器 adaptation、VLA 接口等扩展。这些都不是当前 Stage 1 必须完成的组件。
+路线图描述的是当前计划，不代表结果。每一阶段完成后根据真实实验结果更新下一阶段，而不是提前把整篇论文的结论锁死。
