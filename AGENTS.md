@@ -1,5 +1,27 @@
 # ICRA2028 research collaboration
 
+## 当前最高优先级：Stage 3A 真机受控闭环
+
+2026-10-07 用户决定进入真机实验，并采用“先把小脑走深，再做 VLA 即插即用展示”的递进路线。
+
+执行约束：
+- 当前不并行做 VLA 联调。
+- 第一真机主任务：Anti-Tilt / eccentric disturbance；第二任务：Anti-Slip。
+- 主 baseline：Fixed、Scalar Reflex、MCF Reflex。
+- 第一轮 residual 只允许修改 gripper command；不同时学习 XYZ / orientation。
+- Stage 2P 的 GRU/Mamba now-casting checkpoint 输出接触相关状态，不是直接可部署的 residual controller；必须先完成受控数据采集和 matched controller development。
+- GRU 可作为第一版 temporal backbone 以减少变量，但“GRU/Mamba”本身不是当前核心 claim。
+- 必须测真实 sensor→actuator 闭环延迟，不得把 GPU-resident inference latency 等同于 robot reaction time。
+- 必须记录 grip effort / high-grip alternative，排除“只是夹得更紧”的替代解释。
+- MCF 当前只称 compact spatial contact dynamics；没有独立真值前，不写成直接 shear / torque sensing。
+- Stage 3B 只有 Stage 3A 的真实闭环结果支持后才启动；VLA 是后续外部有效性与 plug-and-play 展示。
+
+执行入口：
+- `research/STAGE3A_REAL_ROBOT.md`
+- `experiments/real_robot_reflex/PROTOCOL.md`
+- `experiments/real_robot_reflex/EXPERIMENT_MATRIX.csv`
+
+
 用户后续明确指令优先。
 
 ## 当前最高优先级：Stage 2P
