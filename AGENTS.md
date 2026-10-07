@@ -24,9 +24,9 @@
 
 用户后续明确指令优先。
 
-## 当前最高优先级：Stage 2P
+## 已完成的 Stage 2P 历史执行规则
 
-2026-10-07 最新用户指令：在已完成的 Now-casting 流程上离线比较 Mamba / GRU，Scalar / MCF，T=50/100，约45k–50k参数，三种子和FP32协议不变；实测batch1携带状态延迟。当前入口 `run_stage2p_mamba.py`，说明见 `research/STAGE2P_MAMBA.md`。T100公共样本须重跑GRU，不与旧T50异样本结果直接混比。
+2026-10-07 已执行：在 Now-casting 流程上离线比较 Mamba / GRU，Scalar / MCF，T=50/100，约45k–50k参数，三种子和FP32协议不变；实测batch1携带状态延迟。当前入口 `run_stage2p_mamba.py`，说明见 `research/STAGE2P_MAMBA.md`。T100公共样本须重跑GRU，不与旧T50异样本结果直接混比。
 
 2026-10-07 用户决定：**Stage 1 条件性通过（Conditional Pass）并封存，停止单帧 Stage 1 的局部微调，正式进入 Stage 2P（Matched Temporal Probe）。**
 
