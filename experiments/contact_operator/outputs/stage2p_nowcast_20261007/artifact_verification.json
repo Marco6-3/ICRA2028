@@ -1,0 +1,92 @@
+[
+  {
+    "model": "Scalar_T1_seed7",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T1_seed19",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T1_seed31",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T1_seed7",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T1_seed19",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T1_seed31",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T20_seed7",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T20_seed19",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T20_seed31",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T20_seed7",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T20_seed19",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T20_seed31",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T50_seed7",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T50_seed19",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "Scalar_T50_seed31",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T50_seed7",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T50_seed19",
+    "metric_recomputed": true,
+    "parameters": 47460
+  },
+  {
+    "model": "MCF_T50_seed31",
+    "metric_recomputed": true,
+    "parameters": 47460
+  }
+]

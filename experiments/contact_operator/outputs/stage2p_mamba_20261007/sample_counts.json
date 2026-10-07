@@ -1,0 +1,14 @@
+{
+  "train": {
+    "windows": 6065,
+    "sources": 10
+  },
+  "validation": {
+    "windows": 739,
+    "sources": 2
+  },
+  "test": {
+    "windows": 9867,
+    "sources": 17
+  }
+}

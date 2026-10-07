@@ -1,0 +1,152 @@
+[
+  {
+    "check": "window versus carried-state equivalence",
+    "max_error": 1.1175870895385742e-08,
+    "parameters": 47460
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 8,
+    "rows": 693
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 9,
+    "rows": 650
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 10,
+    "rows": 614
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 11,
+    "rows": 633
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 13,
+    "rows": 634
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 14,
+    "rows": 658
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 16,
+    "rows": 616
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 20,
+    "rows": 307
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 21,
+    "rows": 718
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 22,
+    "rows": 629
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 24,
+    "rows": 135
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 25,
+    "rows": 623
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 31,
+    "rows": 640
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 32,
+    "rows": 497
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 33,
+    "rows": 51
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 34,
+    "rows": 642
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 35,
+    "rows": 594
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 36,
+    "rows": 639
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 37,
+    "rows": 580
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 38,
+    "rows": 530
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 39,
+    "rows": 684
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 40,
+    "rows": 627
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 41,
+    "rows": 800
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 42,
+    "rows": 751
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 43,
+    "rows": 603
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 49,
+    "rows": 649
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 50,
+    "rows": 599
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 51,
+    "rows": 558
+  },
+  {
+    "check": "exact current-frame ATI target and continuous episode support",
+    "source": 54,
+    "rows": 590
+  }
+]

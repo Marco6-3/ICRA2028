@@ -1,0 +1,434 @@
+{
+  "accuracy": [
+    {
+      "T": 1,
+      "metrics": {
+        "Scalar": {
+          "rmse": [
+            0.017210831536966214,
+            0.024873676253300087
+          ],
+          "mse": [
+            0.0002989020265921877,
+            0.0006219633397253632
+          ],
+          "mae": [
+            0.010558593068637101,
+            0.016619954605166815
+          ]
+        },
+        "MCF": {
+          "rmse": [
+            0.0171631892193474,
+            0.024792444800921517
+          ],
+          "mse": [
+            0.0002971645336205542,
+            0.000617814090504658
+          ],
+          "mae": [
+            0.010572268645845206,
+            0.016658530552305425
+          ]
+        },
+        "Dense": {
+          "rmse": [
+            0.01722471536520649,
+            0.024944813118553632
+          ],
+          "mse": [
+            0.00029946842422599304,
+            0.0006256083120117147
+          ],
+          "mae": [
+            0.010644417073504596,
+            0.0168891952500916
+          ]
+        }
+      },
+      "MCF_gain_vs_Scalar_percent": [
+        0.2768158965270495,
+        0.32657598157728174
+      ]
+    },
+    {
+      "T": 20,
+      "metrics": {
+        "Scalar": {
+          "rmse": [
+            0.017128528205349162,
+            0.024786739007515064
+          ],
+          "mse": [
+            0.00029596750591379394,
+            0.0006174191869064874
+          ],
+          "mae": [
+            0.010465272245746032,
+            0.01657312898440104
+          ]
+        },
+        "MCF": {
+          "rmse": [
+            0.017094658651188307,
+            0.02475680502168104
+          ],
+          "mse": [
+            0.00029467734138426534,
+            0.0006160110414402522
+          ],
+          "mae": [
+            0.010509637723147286,
+            0.016632624207904526
+          ]
+        },
+        "Dense": {
+          "rmse": [
+            0.017142551147616376,
+            0.024797540888482447
+          ],
+          "mse": [
+            0.00029631325599563987,
+            0.0006180225760794664
+          ],
+          "mae": [
+            0.010663376564123465,
+            0.01678260883279875
+          ]
+        }
+      },
+      "MCF_gain_vs_Scalar_percent": [
+        0.19773767923783048,
+        0.12076613153891858
+      ]
+    },
+    {
+      "T": 50,
+      "metrics": {
+        "Scalar": {
+          "rmse": [
+            0.017124537908125157,
+            0.024794234547252752
+          ],
+          "mse": [
+            0.00029579146026734117,
+            0.0006178034282307707
+          ],
+          "mae": [
+            0.010484429478060964,
+            0.016570444931002223
+          ]
+        },
+        "MCF": {
+          "rmse": [
+            0.0170896058062128,
+            0.024737981458504994
+          ],
+          "mse": [
+            0.0002944365408563731,
+            0.0006150807768754734
+          ],
+          "mae": [
+            0.010512471363386686,
+            0.016639846815344167
+          ]
+        },
+        "Dense": {
+          "rmse": [
+            0.01717595166216294,
+            0.024921087402046894
+          ],
+          "mse": [
+            0.000297418217444062,
+            0.0006238087987773777
+          ],
+          "mae": [
+            0.010566337390200181,
+            0.016847960486569825
+          ]
+        }
+      },
+      "MCF_gain_vs_Scalar_percent": [
+        0.20398858117967045,
+        0.22687971528442263
+      ]
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "T": 1,
+      "comparison": "MCF minus Scalar MSE",
+      "mean": [
+        -1.7374929716335814e-06,
+        -4.149249220705198e-06
+      ],
+      "CI95": [
+        [
+          -3.198296811509266e-06,
+          -3.0914687194322817e-07
+        ],
+        [
+          -9.667561144120632e-06,
+          8.66735510998329e-07
+        ]
+      ],
+      "source_count": 17
+    },
+    {
+      "T": 1,
+      "comparison": "MCF minus Dense MSE",
+      "mean": [
+        -2.3038906054388636e-06,
+        -7.794221507056668e-06
+      ],
+      "CI95": [
+        [
+          -3.859041238434184e-06,
+          -7.996052933295325e-07
+        ],
+        [
+          -1.1983575663465427e-05,
+          -3.3248494540149323e-06
+        ]
+      ],
+      "source_count": 17
+    },
+    {
+      "T": 20,
+      "comparison": "MCF minus Scalar MSE",
+      "mean": [
+        -1.2901645295285472e-06,
+        -1.408145466235042e-06
+      ],
+      "CI95": [
+        [
+          -2.5610364793786182e-06,
+          4.568006689248852e-08
+        ],
+        [
+          -4.967272537874571e-06,
+          2.0965471990433973e-06
+        ]
+      ],
+      "source_count": 17
+    },
+    {
+      "T": 20,
+      "comparison": "MCF minus Dense MSE",
+      "mean": [
+        -1.6359146113744883e-06,
+        -2.0115346392141796e-06
+      ],
+      "CI95": [
+        [
+          -3.001932090424534e-06,
+          -3.2877834004752244e-07
+        ],
+        [
+          -5.555237836304906e-06,
+          1.3610210147567443e-06
+        ]
+      ],
+      "source_count": 17
+    },
+    {
+      "T": 50,
+      "comparison": "MCF minus Scalar MSE",
+      "mean": [
+        -1.3549194109680818e-06,
+        -2.7226513552972497e-06
+      ],
+      "CI95": [
+        [
+          -2.9280830323627607e-06,
+          1.257751279684101e-07
+        ],
+        [
+          -7.550513649167588e-06,
+          1.6450283332161792e-06
+        ]
+      ],
+      "source_count": 17
+    },
+    {
+      "T": 50,
+      "comparison": "MCF minus Dense MSE",
+      "mean": [
+        -2.981676587688857e-06,
+        -8.728021901904373e-06
+      ],
+      "CI95": [
+        [
+          -4.352052001551909e-06,
+          -1.6499540281217167e-06
+        ],
+        [
+          -1.3162146733877463e-05,
+          -3.714602715655354e-06
+        ]
+      ],
+      "source_count": 17
+    }
+  ],
+  "compute": [
+    {
+      "T": 1,
+      "MCF_vs_Dense_batch_throughput_ratio": 1.0359699423149993,
+      "Dense_vs_MCF_incremental_inference_memory_ratio": 1.0,
+      "MCF_vs_Dense_stream_fps_ratio": 1.030255754153532,
+      "Dense_vs_MCF_training_peak_memory_ratio": 1.0294177839889136,
+      "individual": {
+        "Scalar": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 1,
+            "tokens_per_frame": 1,
+            "window_batch_median_ms": 0.5662000039592385,
+            "window_frames_per_second": 113034.26272071776,
+            "incremental_peak_inference_bytes": 17441792,
+            "stream_batch1_ms_per_frame": 0.4448065000178758,
+            "stream_batch1_frames_per_second": 2248.168585575553,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 87561728
+        },
+        "MCF": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 1,
+            "tokens_per_frame": 1,
+            "window_batch_median_ms": 0.5657500005327165,
+            "window_frames_per_second": 113124.17134730337,
+            "incremental_peak_inference_bytes": 17441792,
+            "stream_batch1_ms_per_frame": 0.44323800000711344,
+            "stream_batch1_frames_per_second": 2256.124249238448,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 87561728
+        },
+        "Dense": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 1,
+            "tokens_per_frame": 144,
+            "window_batch_median_ms": 0.5860999954165891,
+            "window_frames_per_second": 109196.38372375345,
+            "incremental_peak_inference_bytes": 17441792,
+            "stream_batch1_ms_per_frame": 0.4566484999668319,
+            "stream_batch1_frames_per_second": 2189.8681372491837,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 90137600
+        }
+      }
+    },
+    {
+      "T": 20,
+      "MCF_vs_Dense_batch_throughput_ratio": 1.4516615139950644,
+      "Dense_vs_MCF_incremental_inference_memory_ratio": 2.033090668431502,
+      "MCF_vs_Dense_stream_fps_ratio": 1.0187348587692115,
+      "Dense_vs_MCF_training_peak_memory_ratio": 1.8087021524975935,
+      "individual": {
+        "Scalar": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 20,
+            "tokens_per_frame": 1,
+            "window_batch_median_ms": 0.5866999999852851,
+            "window_frames_per_second": 2181694.2219739277,
+            "incremental_peak_inference_bytes": 23208960,
+            "stream_batch1_ms_per_frame": 0.4682469999534078,
+            "stream_batch1_frames_per_second": 2135.625001547268,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 99997696
+        },
+        "MCF": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 20,
+            "tokens_per_frame": 1,
+            "window_batch_median_ms": 0.5973499937681481,
+            "window_frames_per_second": 2142797.3773392416,
+            "incremental_peak_inference_bytes": 23208960,
+            "stream_batch1_ms_per_frame": 0.46664349996717647,
+            "stream_batch1_frames_per_second": 2142.9635258400463,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 99997696
+        },
+        "Dense": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 20,
+            "tokens_per_frame": 144,
+            "window_batch_median_ms": 0.8671499963384122,
+            "window_frames_per_second": 1476099.8736145643,
+            "incremental_peak_inference_bytes": 47185920,
+            "stream_batch1_ms_per_frame": 0.47538600003463216,
+            "stream_batch1_frames_per_second": 2103.5537435413526,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 180866048
+        }
+      }
+    },
+    {
+      "T": 50,
+      "MCF_vs_Dense_batch_throughput_ratio": 3.68171004181333,
+      "Dense_vs_MCF_incremental_inference_memory_ratio": 3.651925820256776,
+      "MCF_vs_Dense_stream_fps_ratio": 1.0238267772144147,
+      "Dense_vs_MCF_training_peak_memory_ratio": 2.904040835140072,
+      "individual": {
+        "Scalar": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 50,
+            "tokens_per_frame": 1,
+            "window_batch_median_ms": 0.670300010824576,
+            "window_frames_per_second": 4773981.722100062,
+            "incremental_peak_inference_bytes": 32302080,
+            "stream_batch1_ms_per_frame": 0.4540975000418257,
+            "stream_batch1_frames_per_second": 2202.170238567472,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 119965696
+        },
+        "MCF": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 50,
+            "tokens_per_frame": 1,
+            "window_batch_median_ms": 0.651449998258613,
+            "window_frames_per_second": 4912119.132019188,
+            "incremental_peak_inference_bytes": 32302080,
+            "stream_batch1_ms_per_frame": 0.4450455000915099,
+            "stream_batch1_frames_per_second": 2246.961265296202,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 119965696
+        },
+        "Dense": {
+          "benchmark": {
+            "batch": 64,
+            "history_frames": 50,
+            "tokens_per_frame": 144,
+            "window_batch_median_ms": 2.398450000328012,
+            "window_frames_per_second": 1334195.0007556414,
+            "incremental_peak_inference_bytes": 117964800,
+            "stream_batch1_ms_per_frame": 0.45564950007246807,
+            "stream_batch1_frames_per_second": 2194.669367224054,
+            "scope": "model only; GPU synchronized wall time, 10 warmups/30 batch measurements; 30 warmups/200 state-carrying streaming frames; features already resident on GPU; not sensor-to-action latency"
+          },
+          "training_peak_bytes": 348385280
+        }
+      }
+    }
+  ],
+  "horizons_frames": [
+    10,
+    30
+  ],
+  "parameters_per_model": 47590,
+  "models": 27
+}

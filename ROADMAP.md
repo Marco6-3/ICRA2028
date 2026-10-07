@@ -2,6 +2,10 @@
 
 更新：2026-10-07。
 
+**最新用户指令：先完成 Mamba 离线验证。** 在当前 Now-casting 管线上进行两层 Mamba 与 GRU 的 T=50/100 对照，保留 Scalar / MCF、FP32和种子协议，验证侧向力矩RMSE与batch1延迟。见 [Mamba实验](research/STAGE2P_MAMBA.md)。
+
+**最新推进决定：Stage 1 Conditional Pass → 封存 → Stage 2P Now-casting。** 首轮未来预测实验保留；当前按用户纠偏，采用同参数量两层 GRU，以 T=1/20/50 触觉历史重构当前 ATI 剪切力和侧向力矩，比较 Scalar / MCF，并比较各自长历史与 T=1。详见 [当前重构实验](research/STAGE2P_NOWCAST.md)。不回调 Stage 1。下文保留原始阶段安排，以上最新决策优先。
+
 ## 当前路线
 
 长期关注触觉表示、时序信息与接触丰富操作。
@@ -24,8 +28,12 @@ MCF_t = [s_t, delta_s_t]
 
 不再把平滑全轨迹 Action MSE 作为主要验证目标，而是筛选 Contact-active Subsets，研究：
 
-- Slip Onset / 接触微滑移前兆；
-- Torque Delta / 倾覆力矩变化。
+- 任务 A（TaF）：预测外力矩变化量 `Δτ_ext`（Torque Delta）；
+- 任务 B（LeFlexiTac）：接触状态跳变检测，检验 MCF 对突然切换（微滑移或失稳前兆）的识别能力。
+
+切片过滤剔除完全空载段和静态死锁且无外力扰动的平淡段；保留 `abs(Δf_N) > ε_f`、`norm(ΔCoP, 2) > ε_p`、`abs(ΔA) > ε_A` 中任一成立的片段。保留事件优先，避免误删脱开瞬间或仅面积变化的片段。
+
+任务 A 预期判定：Scalar 丢失空间偏心信息，预测力矩变化误差必然显著偏高；MCF 依靠 CoP 及其差分，以 8 维捕捉力矩偏置，误差显著低于 Scalar，且逼近 Dense Tokens。保留该假设，实验验证后再修正。
 
 核心比较：
 

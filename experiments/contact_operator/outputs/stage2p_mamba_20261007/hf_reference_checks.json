@@ -1,0 +1,20 @@
+{
+  "reference": "transformers 4.57.6 MambaMixer.slow_forward; identical weights; CPU FP32",
+  "checks": [
+    {
+      "T": 1,
+      "forward_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "T": 50,
+      "forward_max_error": 7.450580596923828e-09,
+      "gradient_max_error": 2.1827872842550278e-11
+    },
+    {
+      "T": 100,
+      "forward_max_error": 1.4901161193847656e-08,
+      "gradient_max_error": 1.4551915228366852e-11
+    }
+  ]
+}

@@ -6,3 +6,6 @@
 *.png binary
 *.npz binary
 *.pt binary
+
+# 完整实验归档按原始字节保存，使 manifest 与训练时源码哈希可核验。
+experiments/contact_operator/outputs/stage2p_mamba_20261007/** -text whitespace=cr-at-eol

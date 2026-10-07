@@ -1,0 +1,125 @@
+{
+  "common_labels_exactly_match_prior": true,
+  "checks": [
+    {
+      "architecture": "GRU",
+      "key": "Scalar_T50_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "Scalar_T50_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "Scalar_T50_seed31",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "MCF_T50_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "MCF_T50_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "MCF_T50_seed31",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "Scalar_T100_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "Scalar_T100_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "Scalar_T100_seed31",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "MCF_T100_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "MCF_T100_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "GRU",
+      "key": "MCF_T100_seed31",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "Scalar_T50_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "Scalar_T50_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "Scalar_T50_seed31",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "MCF_T50_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "MCF_T50_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "MCF_T50_seed31",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "Scalar_T100_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "Scalar_T100_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "Scalar_T100_seed31",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "MCF_T100_seed7",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "MCF_T100_seed19",
+      "metrics_recomputed": true
+    },
+    {
+      "architecture": "Mamba",
+      "key": "MCF_T100_seed31",
+      "metrics_recomputed": true
+    }
+  ]
+}

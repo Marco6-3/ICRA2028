@@ -1,0 +1,29 @@
+[
+  {
+    "T": 1,
+    "parallel_sequential_error": 0.0,
+    "parameter_gradient_error": 0.0,
+    "input_gradient_error": 0.0,
+    "stream_error": 0.0,
+    "causality_error": 0.0,
+    "state_bytes_batch2": 30400
+  },
+  {
+    "T": 50,
+    "parallel_sequential_error": 2.9802322387695312e-08,
+    "parameter_gradient_error": 5.960464477539063e-08,
+    "input_gradient_error": 2.7939677238464355e-09,
+    "stream_error": 5.21540641784668e-08,
+    "causality_error": 0.0,
+    "state_bytes_batch2": 30400
+  },
+  {
+    "T": 100,
+    "parallel_sequential_error": 7.450580596923828e-09,
+    "parameter_gradient_error": 2.2351741790771484e-08,
+    "input_gradient_error": 3.026798367500305e-09,
+    "stream_error": 2.9802322387695312e-08,
+    "causality_error": 0.0,
+    "state_bytes_batch2": 30400
+  }
+]

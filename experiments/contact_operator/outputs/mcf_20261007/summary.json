@@ -1,0 +1,209 @@
+{
+  "a": {
+    "metrics": {
+      "Scalar": {
+        "mse": 4.369566162423842e-05,
+        "rmse": 0.006569251765077021,
+        "mae": 0.0028519729362325927,
+        "xy_rmse": 0.00632232651297076
+      },
+      "MCF": {
+        "mse": 4.274881012308611e-05,
+        "rmse": 0.006497341436425261,
+        "mae": 0.0028461025361263873,
+        "xy_rmse": 0.006203559775124577
+      },
+      "DenseTokens": {
+        "mse": 4.4671221914148766e-05,
+        "rmse": 0.006641029270694536,
+        "mae": 0.0029675082997510246,
+        "xy_rmse": 0.006425081925722314
+      },
+      "Raw": {
+        "mse": 4.563718881827833e-05,
+        "rmse": 0.006700997323016909,
+        "mae": 0.0031787997257767936,
+        "xy_rmse": 0.006483569211673503
+      }
+    },
+    "counts": {
+      "train": {
+        "all_pairs": 256094,
+        "active": 125686,
+        "groups": 10
+      },
+      "validation": {
+        "all_pairs": 31887,
+        "active": 15577,
+        "groups": 2
+      },
+      "test": {
+        "all_pairs": 430583,
+        "active": 208200,
+        "groups": 17
+      }
+    },
+    "thresholds": [
+      66.0,
+      0.024913746863603592,
+      0.04166668653488159
+    ],
+    "paired_comparisons": [
+      {
+        "comparison": "MCF minus Scalar mse",
+        "mean": -9.468515011523036e-07,
+        "CI95": [
+          -1.3126139287587485e-06,
+          -5.936114620471579e-07
+        ]
+      },
+      {
+        "comparison": "MCF minus DenseTokens mse",
+        "mean": -1.9224117910626416e-06,
+        "CI95": [
+          -2.4928385559463766e-06,
+          -1.3612912309826278e-06
+        ]
+      },
+      {
+        "comparison": "MCF minus Raw mse",
+        "mean": -2.8883786951922185e-06,
+        "CI95": [
+          -5.301398395578659e-06,
+          -1.2618179916185643e-06
+        ]
+      }
+    ],
+    "rmse_reduction_vs_scalar_percent": 1.0946502162399119
+  },
+  "b": {
+    "metrics": {
+      "Scalar": {
+        "f1": 0.49591687552213864,
+        "precision": 0.6376984126984127,
+        "recall": 0.4166666666666667,
+        "accuracy": 0.7493589743589745,
+        "brier": 0.2142131837705771,
+        "auroc": 0.6912186379928317,
+        "auprc": 0.6617890717976141
+      },
+      "MCF": {
+        "f1": 0.5705659536541889,
+        "precision": 0.9,
+        "recall": 0.5611111111111112,
+        "accuracy": 0.7685897435897435,
+        "brier": 0.21538307145237923,
+        "auroc": 0.7067514934289129,
+        "auprc": 0.700215917386429
+      },
+      "DenseTokens": {
+        "f1": 0.180746336996337,
+        "precision": 0.3833333333333333,
+        "recall": 0.1259259259259259,
+        "accuracy": 0.6798076923076923,
+        "brier": 0.2170533686876297,
+        "auroc": 0.8019928315412187,
+        "auprc": 0.749945486093965
+      },
+      "Raw": {
+        "f1": 0.3823099415204678,
+        "precision": 0.5126262626262627,
+        "recall": 0.337037037037037,
+        "accuracy": 0.755448717948718,
+        "brier": 0.22427783906459808,
+        "auroc": 0.8433643966547192,
+        "auprc": 0.8104055897879933
+      }
+    },
+    "counts": {
+      "train": {
+        "all_pairs": 52265,
+        "active": 663,
+        "groups": 30
+      },
+      "validation": {
+        "all_pairs": 10985,
+        "active": 113,
+        "groups": 7
+      },
+      "test": {
+        "all_pairs": 11727,
+        "active": 98,
+        "groups": 4
+      }
+    },
+    "thresholds": [
+      0.19333499670028687,
+      0.006558143068104982,
+      0.005208328366279602
+    ],
+    "paired_comparisons": [
+      {
+        "comparison": "MCF minus Scalar brier",
+        "mean": 0.0011698876818021092,
+        "CI95": [
+          -0.008802847315867751,
+          0.009442920486132295
+        ]
+      },
+      {
+        "comparison": "MCF minus DenseTokens brier",
+        "mean": -0.001670297235250466,
+        "CI95": [
+          -0.02415795375903447,
+          0.020817359288533538
+        ]
+      },
+      {
+        "comparison": "MCF minus Raw brier",
+        "mean": -0.008894767612218857,
+        "CI95": [
+          -0.03261868531505267,
+          0.008903391659259796
+        ]
+      }
+    ],
+    "event_recall_including_filtered_events": {
+      "Scalar": {
+        "seed_recalls": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "mean": 0.8000000000000002
+      },
+      "MCF": {
+        "seed_recalls": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "mean": 0.8000000000000002
+      },
+      "DenseTokens": {
+        "seed_recalls": [
+          0.6,
+          0.2,
+          0.4
+        ],
+        "mean": 0.4000000000000001
+      },
+      "Raw": {
+        "seed_recalls": [
+          0.6,
+          0.8,
+          0.0
+        ],
+        "mean": 0.4666666666666666
+      }
+    },
+    "annotation_coverage": {
+      "annotated_events": 42,
+      "unresolved_candidates": 22,
+      "test_events_before_filter": 5,
+      "test_events_surviving_filter": 4,
+      "test_positive_frames_before_filter": 80,
+      "test_positive_frames_after_filter": 30
+    }
+  }
+}

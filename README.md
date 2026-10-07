@@ -2,7 +2,11 @@
 
 更新：2026-10-07。
 
-## 当前 Stage 1
+**当前新增实验：离线 Mamba / GRU 对照。** 按用户要求，沿用 TaF 当前状态重构流程，比较 Scalar / MCF、T=50/100、三种子与约48k参数，并测量 batch1 流式延迟。详见 [Mamba 架构实验](research/STAGE2P_MAMBA.md)。
+
+**最新决策：Stage 1 条件性通过并封存，当前推进 Stage 2P Now-casting。** 按用户纠偏，将无动作条件的未来力矩目标改为利用 1、20、50 帧历史重构当前剪切力和侧向力矩 `[Fx,Fy,Mx,My]`，比较相同参数量两层 GRU 的 Scalar 与 MCF。详见 [当前重构实验](research/STAGE2P_NOWCAST.md)。[首轮未来预测实验](research/STAGE2P.md) 和下文 Stage 1 方案保留作为历史记录。
+
+## 已封存 Stage 1
 
 之前的 Stage 1 主要尝试验证完整静态 11D contact descriptor，包括二阶矩等空间统计量。已有离线实验没有得到理想结果，因此当前不继续在原有静态 11D 上死磕，而是进行一次特征和验证任务的调整。
 
@@ -28,21 +32,18 @@ MCF_t = [s_t, Δs_t]
 
 此前使用平滑轨迹中的开环 Action MSE，触觉信息可能被大量普通、稳定运动稀释。
 
-因此下一轮不需要先采新数据，而是直接复用已有 LeFlexiTac / TaF 数据，筛选：
+因此下一轮不需要先采新数据，而是直接复用已有 LeFlexiTac / TaF 数据进行切片过滤：
 
-- 接触突变；
-- 受力不均；
-- CoP 移动；
-- 接触面积变化；
-- 方向微调；
-- 其它 Contact-active 时段。
+- 剔除完全未接触（`f_N ≈ 0`）的空载段，以及静态死锁且无外力扰动的平淡段。
+- 保留接触 / 脱开瞬间（`abs(Δf_N) > ε_f`）、受力中心移动 / 倾覆阶段（`norm(ΔCoP, 2) > ε_p`）、面积收缩 / 膨胀（`abs(ΔA) > ε_A`）；任一条件满足即保留。
+- 脱开事件和仅面积变化的片段优先保留，避免被空载或静态判据误删。
 
-然后验证两个候选目标：
+两项核心评估任务：
 
-1. **Slip Onset / 接触微滑移前兆**；
-2. **Torque Delta / 倾覆力矩变化**。
+1. **任务 A（TaF）：预测外力矩变化量 `Δτ_ext`（Torque Delta）**。比较 Scalar vs MCF vs Dense Raw Tokens。
+2. **任务 B（LeFlexiTac）：接触状态跳变检测**。检验 MCF 是否能准确识别突然切换（微滑移或失稳前兆）。
 
-若现有数据无法可靠定义 slip onset，则如实记录，并优先使用 TaF 中已有的同步 ATI 力/力矩信息验证 Torque Delta。
+任务 A 的预期判定：Scalar 由于丢失空间偏心信息，预测力矩变化误差必然显著偏高；MCF 凭借 CoP 及其差分，以 8 维捕捉力矩偏置，误差显著低于 Scalar，且逼近 Dense Tokens。这是保留的实验假设，实验验证后再修正。
 
 ## Stage 1 核心比较
 

@@ -1,0 +1,100 @@
+{
+  "stage1_status": "Conditional Pass by user decision; archived, no further local tuning",
+  "task": "Future ATI torque change [t+10 minus t, t+30 minus t], all three axes",
+  "histories": [
+    1,
+    20,
+    50
+  ],
+  "horizons_frames": [
+    10,
+    30
+  ],
+  "split": {
+    "train": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "validation": [
+      23,
+      24,
+      25,
+      26
+    ],
+    "test": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ]
+  },
+  "seeds": [
+    7,
+    19,
+    31
+  ],
+  "filter_epsilon_from_frozen_stage1": [
+    66.0,
+    0.024913746863603592,
+    0.04166668653488159
+  ],
+  "filtering": "Apply only to anchor t; never delete frames inside continuous causal history. Common anchors eligible for T50,H30 for every representation and history. Anchor row modulo20=0.",
+  "backbone": "identical Probe: token MLP8-32-32, mean+max pooling, Linear64-32, 2-layer GRU hidden64, head6",
+  "input": "Scalar one 8D token with [f,df] plus zeros; MCF one 8D token; Dense 144 tokens [raw_current,raw_previous,x,y,0,0,0,0]. Shared architecture, equal nominal trainable parameter count. Inactive padded input columns have no informative gradient; effective input capacity is not identical. Dense tokens pooled within each frame before GRU.",
+  "optimization": {
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch": 64,
+    "max_epochs": 40,
+    "patience": 8,
+    "selection": "equal-source normalized validation MSE; same fixed hyperparameters all representations; no test-based selection"
+  },
+  "normalization": "Training sources only; no future frame in inputs; labels at future horizon are evaluation targets only",
+  "hypotheses": {
+    "temporal_gain": "MCF vs Scalar error reduction may reach15-30% atT20-50, to be tested",
+    "compute": "MCF may reach10-20x throughput/memory advantage over Dense, to be tested"
+  },
+  "measurement_limits": "Existing exploratory source split; absolute torque units not recalibrated; model timing excludes preprocessing and hardware loop; this temporal probe does not establish slip recognition",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "parameters": 47590,
+  "script_sha256": "823906b7367ede75439553197007a29d92abfd167c3a73609589d82ebea6dcba"
+}

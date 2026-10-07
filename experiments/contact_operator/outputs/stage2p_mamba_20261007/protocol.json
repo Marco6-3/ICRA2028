@@ -1,0 +1,119 @@
+{
+  "task": "Nowcast current ATI [Fx,Fy,Mx,My]",
+  "histories": [
+    50,
+    100
+  ],
+  "representations": [
+    "Scalar",
+    "MCF"
+  ],
+  "seeds": [
+    7,
+    19,
+    31
+  ],
+  "split": {
+    "train": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "validation": [
+      23,
+      24,
+      25,
+      26
+    ],
+    "test": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ]
+  },
+  "parameters": {
+    "GRU": 47460,
+    "Mamba": 47978
+  },
+  "mamba_config": {
+    "d_model": 50,
+    "n_layers": 2,
+    "dt_rank": 4,
+    "d_state": 16,
+    "expand_factor": 2,
+    "d_conv": 4,
+    "dt_min": 0.001,
+    "dt_max": 0.1,
+    "dt_init": "random",
+    "dt_scale": 1.0,
+    "rms_norm_eps": 1e-05,
+    "base_std": 0.02,
+    "bias": false,
+    "conv_bias": true,
+    "inner_layernorms": false,
+    "mup": false,
+    "mup_base_width": 128,
+    "pscan": true,
+    "use_cuda": false,
+    "d_inner": 100
+  },
+  "backend": "mambapy 1.2.0 pure PyTorch parallel scan; eager recurrent step; no fused CUDA kernels",
+  "precision": "FP32, TF32 disabled, deterministic",
+  "optimization": {
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch": 64,
+    "max_epochs": 40,
+    "patience": 8,
+    "selection": "equal-source normalized validation MSE"
+  },
+  "data": "Inherited nowcast prepare; common subset requires 100-frame same-episode history plus predecessor for differences. Same inherited stride20/filter and end reserve30. Continuous histories; only anchor filtered.",
+  "primary": "lateral moment xy macro source RMSE; paired source bootstrap of seed-averaged MSE",
+  "secondary": "tangential force xy; batch1 streaming p50/p95/p99 latency; no guaranteed speed or accuracy gain",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "hashes": {
+    "run_stage2p_mamba.py": "41e6102781041da747bccd2a487ddf54f6821810738478d2aacd3b7d63e88a86",
+    "run_stage2p_nowcast.py": "41bbca5f610fcf3b12f6603e4fb4a0122b18ab7f49336753eee3236a54722dca",
+    "mamba.py": "a57947b3c555bbcce3c8c294e74e29f7725a670a90a455fe21b1c7c9116e4db8",
+    "pscan.py": "51cd34493a95aa08cdfa5d25465edda7df3e6fa5cec98eb32d22448da2427ebe"
+  }
+}

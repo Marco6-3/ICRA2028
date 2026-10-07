@@ -1,6 +1,6 @@
 # Stage 1 收尾：Minimalist Contact Flow
 
-状态：当前最高优先级离线验证。更新：2026-10-07。
+状态：2026-10-07 用户决定条件性通过（Conditional Pass），已封存，停止单帧局部微调。当前进入 [Stage 2P](STAGE2P.md)。下文保留原始实验假设与方案。
 
 ## 目标
 
@@ -41,14 +41,27 @@ MCF_t = [s_t, Δs_t]
 
 不再把平滑全轨迹的开环 Action MSE 作为 Stage 1 的主要验证指标。
 
-从现有数据中筛选：
+### 切片过滤（Filtering）
 
-- 接触突变；
-- 受力不均；
-- CoP 明显移动；
-- 接触面积变化；
-- 方向微调；
-- 其它明显 contact-active 时段。
+剔除完全未接触（`f_N ≈ 0`）的空载段，以及静态死锁且无外力扰动的平淡段（如 `ΔCoP ≈ 0` 且 `Δf_N ≈ 0`）。
+
+保留以下任一变化对应的片段：
+
+| 保留段 | 判据 |
+| --- | --- |
+| 接触瞬间与脱开瞬间 | `abs(Δf_N) > ε_f` |
+| 受力中心移动 / 倾覆阶段 | `norm(ΔCoP, 2) > ε_p` |
+| 接触面积收缩 / 膨胀 | `abs(ΔA) > ε_A` |
+
+三个保留条件采用逻辑 OR：
+
+```text
+active_t = (abs(Δf_N,t) > ε_f)
+        OR (norm(ΔCoP_t, 2) > ε_p)
+        OR (abs(ΔA_t) > ε_A)
+```
+
+保留事件优先于空载 / 平淡段剔除：脱开瞬间即使当前 `f_N ≈ 0`，仍按力变化保留；即使 `ΔCoP ≈ 0` 且 `Δf_N ≈ 0`，面积变化超过阈值的片段仍保留。先在原始连续序列上计算差分，再过滤切片，避免把删段后的相邻帧误当成原始相邻帧。
 
 目标是让 Stage 1 关注真正可能需要触觉信息的局部接触过程，而不是被大量平稳轨迹稀释。
 
@@ -56,24 +69,17 @@ MCF_t = [s_t, Δs_t]
 
 ## Stage 1 验证任务
 
-### Task A — Slip Onset / 接触微滑移前兆
+### Task A — TaF：预测外力矩变化量 Δτ_ext（Torque Delta）
 
-若现有数据能够构造或提供 slip onset 标签，则测试不同 tactile representations 对微滑移前兆的分类或预测能力。
+利用 TaF 同步 ATI 力/力矩信息，预测外力矩变化量：
 
-可观察指标包括：
+```text
+Δτ_ext,t = τ_ext,t - τ_ext,t-1
+```
 
-- classification accuracy；
-- AUROC / AUPRC；
-- event recall；
-- prediction lead time。
+对比组：**Scalar vs MCF vs Dense Raw Tokens**。
 
-若现有数据不足以可靠定义 slip onset，则记录这一限制，并优先完成 Task B。
-
-### Task B — Torque Delta
-
-测试不同 tactile representations 对倾覆力矩变化 / torque delta 的回归能力。
-
-TaF 中已有同步 ATI 力/力矩信息，可优先用于这一验证。
+**预期判定（保留原始实验假设，待实验验证）：Scalar 由于丢失空间偏心信息，预测力矩变化误差必然显著偏高；MCF 凭借 CoP 及其差分，能够以 8 维的极小体积捕捉到力矩偏置，误差显著低于 Scalar，且逼近 Dense Tokens。**
 
 可观察指标包括：
 
@@ -82,6 +88,21 @@ TaF 中已有同步 ATI 力/力矩信息，可优先用于这一验证。
 - 不同 contact-active 子集上的误差。
 
 具体标签定义和预测 horizon 在实验实现时根据数据内容确定并记录。
+
+### Task B — LeFlexiTac：接触状态跳变检测
+
+利用 LeFlexiTac 离线数据，检验 MCF 是否能准确识别接触状态的突然切换（微滑移或失稳前兆）。
+
+核心比较同样为 **Scalar vs MCF vs Dense Raw Tokens**。
+
+可观察指标包括：
+
+- classification accuracy；
+- AUROC / AUPRC；
+- event recall；
+- 微滑移或失稳前兆的 prediction lead time。
+
+具体事件标签、检测窗口和评估设置在实验实现时记录；实验结果出来后再修正判断。
 
 ## 比较对象
 

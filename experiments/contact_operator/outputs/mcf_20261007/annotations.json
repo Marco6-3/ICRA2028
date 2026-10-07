@@ -1,0 +1,1156 @@
+{
+  "annotator": "Codex visual inspection (AI, not human/expert annotation)",
+  "method": "Gripper-state candidates, then visual review of six time-indexed video frames per episode; tactile values and model results not used. Only candidate clips reviewed; not exhaustive full-video annotation.",
+  "scope": "Visible release transitions; no verified micro-slip or instability precursor labels.",
+  "timing": "30 fps metadata alignment; coarse 0.5-second event interval, not millisecond onset truth",
+  "annotations": [
+    {
+      "episode": 0,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        45.43,
+        45.93
+      ],
+      "event_interval_frames": [
+        1363,
+        1378
+      ],
+      "reviewed_interval_seconds": [
+        44.93333333333333,
+        47.93333333333333
+      ],
+      "evidence": "release_00.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 1,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        36.4,
+        39.4
+      ],
+      "evidence": "release_00.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 2,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        35.3,
+        35.8
+      ],
+      "event_interval_frames": [
+        1059,
+        1074
+      ],
+      "reviewed_interval_seconds": [
+        34.8,
+        37.8
+      ],
+      "evidence": "release_00.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 3,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        41.57,
+        42.07
+      ],
+      "event_interval_frames": [
+        1247,
+        1262
+      ],
+      "reviewed_interval_seconds": [
+        41.06666666666667,
+        44.06666666666667
+      ],
+      "evidence": "release_00.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 4,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        28.47,
+        28.97
+      ],
+      "event_interval_frames": [
+        854,
+        869
+      ],
+      "reviewed_interval_seconds": [
+        27.966666666666665,
+        30.966666666666665
+      ],
+      "evidence": "release_04.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 5,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        34.67,
+        35.17
+      ],
+      "event_interval_frames": [
+        1040,
+        1055
+      ],
+      "reviewed_interval_seconds": [
+        34.666666666666664,
+        37.666666666666664
+      ],
+      "evidence": "release_04.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 6,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        37.4,
+        37.9
+      ],
+      "event_interval_frames": [
+        1122,
+        1137
+      ],
+      "reviewed_interval_seconds": [
+        36.4,
+        39.4
+      ],
+      "evidence": "release_04.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 7,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        32.7,
+        33.2
+      ],
+      "event_interval_frames": [
+        981,
+        996
+      ],
+      "reviewed_interval_seconds": [
+        32.2,
+        35.2
+      ],
+      "evidence": "release_04.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 8,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        40.33,
+        40.83
+      ],
+      "event_interval_frames": [
+        1210,
+        1225
+      ],
+      "reviewed_interval_seconds": [
+        39.833333333333336,
+        42.833333333333336
+      ],
+      "evidence": "release_08.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 9,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        37.7,
+        38.2
+      ],
+      "event_interval_frames": [
+        1131,
+        1146
+      ],
+      "reviewed_interval_seconds": [
+        37.2,
+        40.2
+      ],
+      "evidence": "release_08.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 10,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        35.83,
+        36.33
+      ],
+      "event_interval_frames": [
+        1075,
+        1090
+      ],
+      "reviewed_interval_seconds": [
+        35.333333333333336,
+        38.333333333333336
+      ],
+      "evidence": "release_08.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 11,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        30.7,
+        31.2
+      ],
+      "event_interval_frames": [
+        921,
+        936
+      ],
+      "reviewed_interval_seconds": [
+        30.7,
+        33.7
+      ],
+      "evidence": "release_08.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 12,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        43.56666666666667,
+        46.56666666666667
+      ],
+      "evidence": "release_12.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 13,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        34.27,
+        34.77
+      ],
+      "event_interval_frames": [
+        1028,
+        1043
+      ],
+      "reviewed_interval_seconds": [
+        33.766666666666666,
+        36.766666666666666
+      ],
+      "evidence": "release_12.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 14,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        36.4,
+        36.9
+      ],
+      "event_interval_frames": [
+        1092,
+        1107
+      ],
+      "reviewed_interval_seconds": [
+        36.4,
+        39.4
+      ],
+      "evidence": "release_12.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 15,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        36.9,
+        37.4
+      ],
+      "event_interval_frames": [
+        1107,
+        1122
+      ],
+      "reviewed_interval_seconds": [
+        36.4,
+        39.4
+      ],
+      "evidence": "release_12.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 16,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        36.4,
+        39.4
+      ],
+      "evidence": "release_16.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 17,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        27.4,
+        27.9
+      ],
+      "event_interval_frames": [
+        822,
+        837
+      ],
+      "reviewed_interval_seconds": [
+        26.9,
+        29.9
+      ],
+      "evidence": "release_16.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 18,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        26.366666666666667,
+        29.366666666666667
+      ],
+      "evidence": "release_16.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 19,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        26.8,
+        27.3
+      ],
+      "event_interval_frames": [
+        804,
+        819
+      ],
+      "reviewed_interval_seconds": [
+        26.3,
+        29.3
+      ],
+      "evidence": "release_16.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 20,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        26.233333333333334,
+        29.233333333333334
+      ],
+      "evidence": "release_20.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 21,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        27.0,
+        27.5
+      ],
+      "event_interval_frames": [
+        810,
+        825
+      ],
+      "reviewed_interval_seconds": [
+        26.5,
+        29.5
+      ],
+      "evidence": "release_20.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 22,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        24.03,
+        24.53
+      ],
+      "event_interval_frames": [
+        721,
+        736
+      ],
+      "reviewed_interval_seconds": [
+        24.033333333333335,
+        27.033333333333335
+      ],
+      "evidence": "release_20.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 23,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        25.833333333333332,
+        28.833333333333332
+      ],
+      "evidence": "release_20.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 24,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        31.96666666666667,
+        34.96666666666667
+      ],
+      "evidence": "release_24.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 25,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        38.13,
+        38.63
+      ],
+      "event_interval_frames": [
+        1144,
+        1159
+      ],
+      "reviewed_interval_seconds": [
+        37.63333333333333,
+        40.63333333333333
+      ],
+      "evidence": "release_24.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 26,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        32.6,
+        35.6
+      ],
+      "evidence": "release_24.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 27,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        26.866666666666667,
+        29.866666666666667
+      ],
+      "evidence": "release_24.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 28,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        31.6,
+        34.6
+      ],
+      "evidence": "release_28.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 29,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        28.9,
+        31.9
+      ],
+      "evidence": "release_28.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 30,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        39.8,
+        40.3
+      ],
+      "event_interval_frames": [
+        1194,
+        1209
+      ],
+      "reviewed_interval_seconds": [
+        39.3,
+        42.3
+      ],
+      "evidence": "release_28.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 31,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        22.5,
+        23.0
+      ],
+      "event_interval_frames": [
+        675,
+        690
+      ],
+      "reviewed_interval_seconds": [
+        22.0,
+        25.0
+      ],
+      "evidence": "release_28.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 32,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        28.0,
+        31.0
+      ],
+      "evidence": "release_32.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 33,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        26.666666666666668,
+        29.666666666666668
+      ],
+      "evidence": "release_32.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 34,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        30.73,
+        31.23
+      ],
+      "event_interval_frames": [
+        922,
+        937
+      ],
+      "reviewed_interval_seconds": [
+        30.233333333333334,
+        33.233333333333334
+      ],
+      "evidence": "release_32.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 35,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        19.73,
+        20.23
+      ],
+      "event_interval_frames": [
+        592,
+        607
+      ],
+      "reviewed_interval_seconds": [
+        19.233333333333334,
+        22.233333333333334
+      ],
+      "evidence": "release_32.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 36,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        24.63,
+        25.13
+      ],
+      "event_interval_frames": [
+        739,
+        754
+      ],
+      "reviewed_interval_seconds": [
+        24.133333333333333,
+        27.133333333333333
+      ],
+      "evidence": "release_36.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 37,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        34.5,
+        35.0
+      ],
+      "event_interval_frames": [
+        1035,
+        1050
+      ],
+      "reviewed_interval_seconds": [
+        34.0,
+        37.0
+      ],
+      "evidence": "release_36.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 38,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        24.9,
+        27.9
+      ],
+      "evidence": "release_36.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 39,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        23.47,
+        23.97
+      ],
+      "event_interval_frames": [
+        704,
+        719
+      ],
+      "reviewed_interval_seconds": [
+        22.966666666666665,
+        25.966666666666665
+      ],
+      "evidence": "release_36.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 40,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        27.43,
+        27.93
+      ],
+      "event_interval_frames": [
+        823,
+        838
+      ],
+      "reviewed_interval_seconds": [
+        26.933333333333334,
+        29.933333333333334
+      ],
+      "evidence": "release_40.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 41,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        27.8,
+        28.3
+      ],
+      "event_interval_frames": [
+        834,
+        849
+      ],
+      "reviewed_interval_seconds": [
+        27.3,
+        30.3
+      ],
+      "evidence": "release_40.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 42,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        26.5,
+        27.0
+      ],
+      "event_interval_frames": [
+        795,
+        810
+      ],
+      "reviewed_interval_seconds": [
+        26.0,
+        29.0
+      ],
+      "evidence": "release_40.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 43,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        24.57,
+        25.07
+      ],
+      "event_interval_frames": [
+        737,
+        752
+      ],
+      "reviewed_interval_seconds": [
+        24.066666666666666,
+        27.066666666666666
+      ],
+      "evidence": "release_40.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 44,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        23.366666666666667,
+        26.366666666666667
+      ],
+      "evidence": "release_44.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 45,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        26.47,
+        26.97
+      ],
+      "event_interval_frames": [
+        794,
+        809
+      ],
+      "reviewed_interval_seconds": [
+        25.966666666666665,
+        28.966666666666665
+      ],
+      "evidence": "release_44.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 46,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        36.4,
+        39.4
+      ],
+      "evidence": "release_44.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 47,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        29.67,
+        30.17
+      ],
+      "event_interval_frames": [
+        890,
+        905
+      ],
+      "reviewed_interval_seconds": [
+        29.666666666666668,
+        32.66666666666667
+      ],
+      "evidence": "release_44.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 48,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        26.0,
+        26.5
+      ],
+      "event_interval_frames": [
+        780,
+        795
+      ],
+      "reviewed_interval_seconds": [
+        26.0,
+        29.0
+      ],
+      "evidence": "release_48.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 49,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        37.67,
+        38.17
+      ],
+      "event_interval_frames": [
+        1130,
+        1145
+      ],
+      "reviewed_interval_seconds": [
+        37.166666666666664,
+        40.166666666666664
+      ],
+      "evidence": "release_48.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 50,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        19.933333333333334,
+        22.933333333333334
+      ],
+      "evidence": "release_48.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 51,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        20.866666666666667,
+        23.866666666666667
+      ],
+      "evidence": "release_48.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 52,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        21.133333333333333,
+        24.133333333333333
+      ],
+      "evidence": "release_52.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 53,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        23.63,
+        24.13
+      ],
+      "event_interval_frames": [
+        709,
+        724
+      ],
+      "reviewed_interval_seconds": [
+        23.133333333333333,
+        26.133333333333333
+      ],
+      "evidence": "release_52.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 54,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        24.3,
+        24.8
+      ],
+      "event_interval_frames": [
+        729,
+        744
+      ],
+      "reviewed_interval_seconds": [
+        23.8,
+        26.8
+      ],
+      "evidence": "release_52.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 55,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        43.13,
+        43.63
+      ],
+      "event_interval_frames": [
+        1294,
+        1309
+      ],
+      "reviewed_interval_seconds": [
+        42.63333333333333,
+        45.63333333333333
+      ],
+      "evidence": "release_52.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 56,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        22.7,
+        23.2
+      ],
+      "event_interval_frames": [
+        681,
+        696
+      ],
+      "reviewed_interval_seconds": [
+        21.7,
+        24.7
+      ],
+      "evidence": "release_56.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 57,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        26.37,
+        26.87
+      ],
+      "event_interval_frames": [
+        791,
+        806
+      ],
+      "reviewed_interval_seconds": [
+        25.866666666666667,
+        28.866666666666667
+      ],
+      "evidence": "release_56.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 58,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        22.9,
+        25.9
+      ],
+      "evidence": "release_56.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 59,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        34.4,
+        34.9
+      ],
+      "event_interval_frames": [
+        1032,
+        1047
+      ],
+      "reviewed_interval_seconds": [
+        33.9,
+        36.9
+      ],
+      "evidence": "release_56.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 60,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        21.7,
+        24.7
+      ],
+      "evidence": "release_60.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 61,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        27.27,
+        27.77
+      ],
+      "event_interval_frames": [
+        818,
+        833
+      ],
+      "reviewed_interval_seconds": [
+        26.766666666666666,
+        29.766666666666666
+      ],
+      "evidence": "release_60.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 62,
+      "status": "visible_release_transition",
+      "event_interval_seconds": [
+        29.67,
+        30.17
+      ],
+      "event_interval_frames": [
+        890,
+        905
+      ],
+      "reviewed_interval_seconds": [
+        29.166666666666668,
+        32.16666666666667
+      ],
+      "evidence": "release_60.jpg",
+      "confidence": "medium; approximately 0.5-second transition interval",
+      "visual_basis": "Finger opens and tube changes support/tilts or remains in rack while finger separates",
+      "slip_or_instability_precursor": "not established"
+    },
+    {
+      "episode": 63,
+      "status": "unresolved_in_candidate_clip",
+      "event_interval_seconds": null,
+      "event_interval_frames": null,
+      "reviewed_interval_seconds": [
+        19.6,
+        22.6
+      ],
+      "evidence": "release_60.jpg",
+      "confidence": "not assigned",
+      "visual_basis": "No unambiguous closed-to-open release bracket; candidate may show regrasp, already-open fingers, or stationary state",
+      "slip_or_instability_precursor": "not established"
+    }
+  ]
+}

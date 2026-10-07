@@ -1,0 +1,110 @@
+{
+  "stage1_status": "Conditional Pass; frozen unchanged",
+  "task": "Now-cast contemporaneous ATI [Fx,Fy,Mx,My] at anchor t from tactile history ending at t",
+  "targets": [
+    "Fx",
+    "Fy",
+    "Mx",
+    "My"
+  ],
+  "metric_groups": [
+    "tangential_force_xy",
+    "lateral_moment_xy"
+  ],
+  "label_calibration": "Subtract each source first30 ATI median; inherited unloaded-prefix gate; stored force/moment units, not new physical calibration",
+  "histories": [
+    1,
+    20,
+    50
+  ],
+  "split": {
+    "train": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "validation": [
+      23,
+      24,
+      25,
+      26
+    ],
+    "test": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ]
+  },
+  "seeds": [
+    7,
+    19,
+    31
+  ],
+  "filter_epsilon_from_frozen_stage1": [
+    66.0,
+    0.024913746863603592,
+    0.04166668653488159
+  ],
+  "filtering": "Exact same anchors as prior forecast probe for target-only comparison. Whole continuous history; only t filtered. Inherited 30-frame end reserve retained; no future signal enters input or target.",
+  "backbone": "identical token MLP8-32-32, mean+max pool, Linear64-32, two-layer GRU hidden64, head4",
+  "representations": [
+    "Scalar",
+    "MCF"
+  ],
+  "input": "Scalar=[f,df] zero padded to8; MCF8; one token per frame. No ATI, actions, proprioception or future signals in inputs.",
+  "optimization": {
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch": 64,
+    "max_epochs": 40,
+    "patience": 8,
+    "selection": "equal-source normalized validation MSE, fixed hyperparameters, no test tuning"
+  },
+  "normalization": "Training source input statistics, training target mean/std; force and moment scored separately in original saved units",
+  "hypothesis": "History20/50 may improve current shear-force/lateral-moment reconstruction and amplify MCF relative to Scalar; to be tested",
+  "history_test": "Compare each representation T20/T50 against its own T1, then compare MCF versus Scalar at each T; paired source bootstrap",
+  "limits": "Current ATI reconstruction is measured, not direct identification of shear strain, friction coefficient, slip or viscoelastic mechanism. Existing exploratory source split. No full dense-token attention compute claim in this run.",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "precision": "FP32; cudnn and matmul TF32 disabled after failed initial CPU/GPU parity check; all models rerun, no tolerance relaxed",
+  "parameters": 47460,
+  "script_sha256": "41bbca5f610fcf3b12f6603e4fb4a0122b18ab7f49336753eee3236a54722dca"
+}
