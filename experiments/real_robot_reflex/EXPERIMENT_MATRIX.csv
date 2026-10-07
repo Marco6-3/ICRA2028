@@ -1,0 +1,11 @@
+phase,task,condition_id,controller,disturbance_level,offset,repeat,status,purpose
+3A0,bringup,BRINGUP_FIXED,Fixed,none,center,1,planned,verify_sensor_and_command_pipeline
+3A1,anti_tilt,AT_DEV_L,Fixed,medium,left,1,planned,passive_disturbance_acquisition
+3A1,anti_tilt,AT_DEV_C,Fixed,medium,center,1,planned,passive_disturbance_acquisition
+3A1,anti_tilt,AT_DEV_R,Fixed,medium,right,1,planned,passive_disturbance_acquisition
+3A1,anti_slip,AS_DEV_LOW,Fixed,low,center,1,planned,passive_disturbance_acquisition
+3A1,anti_slip,AS_DEV_MED,Fixed,medium,center,1,planned,passive_disturbance_acquisition
+3A2,controller_dev,SCALAR_DEV,Scalar,development,mixed,1,planned,matched_controller_development
+3A2,controller_dev,MCF_DEV,MCF,development,mixed,1,planned,matched_controller_development
+3A3,anti_tilt,AT_TEST,Fixed|Scalar|MCF,frozen,frozen,TBD,blocked_until_protocol_freeze,frozen_closed_loop_evaluation
+3A3,anti_slip,AS_TEST,Fixed|Scalar|MCF,frozen,center,TBD,blocked_until_protocol_freeze,frozen_closed_loop_evaluation
