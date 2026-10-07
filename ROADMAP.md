@@ -1,5 +1,18 @@
 # ICRA2028 研究路线
 
+## 当前最高优先级：Stage 3A 真机闭环
+
+离线 Stage 2P 已完成当前 GRU / Mamba 对照。下一步不并行联调 VLA，而是进入受控真机闭环：
+
+**Stage 3A-0 bring-up → Stage 3A-1 受控扰动采集 → Stage 3A-2 matched Scalar / MCF residual controller → Stage 3A-3 冻结闭环评测。**
+
+优先任务为 **Anti-Tilt / eccentric disturbance**，其次为 **Anti-Slip / pull disturbance**。主 baseline 为 Fixed、Scalar Reflex、MCF Reflex。第一轮 residual 只控制夹爪，不同时控制末端 XYZ / 姿态。
+
+现有 Stage 2P 模型用于时序诊断，不能直接当作已训练好的控制器。只有 Stage 3A 给出可信闭环增量后，才进入 Stage 3B，将同一 tactile reflex 接到 scripted / BC / Diffusion / VLA nominal policy 上做 plug-and-play 展示。
+
+详见 [research/STAGE3A_REAL_ROBOT.md](research/STAGE3A_REAL_ROBOT.md)。
+
+
 更新：2026-10-07。
 
 **最新用户指令：先完成 Mamba 离线验证。** 在当前 Now-casting 管线上进行两层 Mamba 与 GRU 的 T=50/100 对照，保留 Scalar / MCF、FP32和种子协议，验证侧向力矩RMSE与batch1延迟。见 [Mamba实验](research/STAGE2P_MAMBA.md)。
