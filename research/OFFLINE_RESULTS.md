@@ -92,3 +92,26 @@ RMSE 先在每源记录内计算，再等权平均源记录，最后平均 3 个
 5. 只有表示在目标任务上出现可重复增量或明确成本／保真优势，并完成必要硬件验证后，才进入时序记忆和实机闭环。
 
 本次归档保留正、负与不确定结果。它不证明方向无用，也不把“换一个任务一定会成功”当作证据。
+
+
+---
+
+## 2026-10-07 Stage 1 决策更新：停止死磕完整静态 11D
+
+基于以上已归档结果，项目不再把“完整 Physics11D（尤其二阶矩/主方向）显著优于 Scalar/低阶空间特征”作为 Stage 1 的通过条件。
+
+新的默认表示是 **Minimalist Contact Flow (MCF)**：
+
+```text
+z_t=[f_N, CoP_x, CoP_y, A]
+MCF_t=[z_t, z_t-z_{t-1}] ∈ R^8
+```
+
+理由不是事后删除负结果，而是负结果本身给出了合理的模型选择证据：在当前 TaF 稳态读出中，Scalar+centroid 已达到或超过完整 11D；高阶静态矩没有显示可靠额外收益。因此后续先检验“一阶空间位置 + 因果动态”是否足够。
+
+下一轮第一优先级不采新数据，复用现有 split，改用 contact-active target：
+- TaF 独立 ATI 的 torque-delta / eccentric-load-change；
+- 有独立真值时的 slip-onset；
+- 否则只称 contact-instability / redistribution event prediction。
+
+完整 11D 从“主方法候选”降为“历史 ablation / failure boundary”。新的 Stage 1 权威协议见 [MINIMALIST_CONTACT_FLOW.md](MINIMALIST_CONTACT_FLOW.md)。
