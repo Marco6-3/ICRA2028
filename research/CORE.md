@@ -1,5 +1,16 @@
 # 研究主线：从接触状态压缩到长时触觉记忆
 
+## 当前推进：从离线 probe 进入真机闭环
+
+截至 2026-10-07，项目下一步是 **Stage 3A Controlled Tactile Reflex**。研究主线不改写为“某个时序网络更优”，而是继续问：
+
+> compact spatial tactile state + causal temporal history 是否能在真实接触扰动下产生可测的闭环控制价值？
+
+第一轮使用 Fixed、Scalar Reflex、MCF Reflex 的 matched comparison，优先做偏心 Anti-Tilt，再做 Anti-Slip。GRU 仅作为当前较稳妥的工程 backbone 候选；现有 now-casting checkpoint 不直接等同于 controller。
+
+只有真实闭环结果支持后，才测试同一 reflex 是否能作为 plug-and-play layer 增强 scripted / learned / VLA nominal policy。详见 [STAGE3A_REAL_ROBOT.md](STAGE3A_REAL_ROBOT.md)。
+
+
 状态：研究路线，未形成已验证贡献。更新：2026-10-06。
 
 ## 长期问题
