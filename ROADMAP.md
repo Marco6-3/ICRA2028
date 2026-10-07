@@ -15,17 +15,17 @@
 
 更新：2026-10-07。
 
-**最新用户指令：先完成 Mamba 离线验证。** 在当前 Now-casting 管线上进行两层 Mamba 与 GRU 的 T=50/100 对照，保留 Scalar / MCF、FP32和种子协议，验证侧向力矩RMSE与batch1延迟。见 [Mamba实验](research/STAGE2P_MAMBA.md)。
+**已完成的 Stage 2P 记录：Mamba 离线验证。** 在当前 Now-casting 管线上进行两层 Mamba 与 GRU 的 T=50/100 对照，保留 Scalar / MCF、FP32和种子协议，验证侧向力矩RMSE与batch1延迟。见 [Mamba实验](research/STAGE2P_MAMBA.md)。
 
-**最新推进决定：Stage 1 Conditional Pass → 封存 → Stage 2P Now-casting。** 首轮未来预测实验保留；当前按用户纠偏，采用同参数量两层 GRU，以 T=1/20/50 触觉历史重构当前 ATI 剪切力和侧向力矩，比较 Scalar / MCF，并比较各自长历史与 T=1。详见 [当前重构实验](research/STAGE2P_NOWCAST.md)。不回调 Stage 1。下文保留原始阶段安排，以上最新决策优先。
+**历史推进记录：Stage 1 Conditional Pass → 封存 → Stage 2P Now-casting。** 首轮未来预测实验保留；当前按用户纠偏，采用同参数量两层 GRU，以 T=1/20/50 触觉历史重构当前 ATI 剪切力和侧向力矩，比较 Scalar / MCF，并比较各自长历史与 T=1。详见 [当前重构实验](research/STAGE2P_NOWCAST.md)。不回调 Stage 1。下文保留原始阶段安排，以上最新决策优先。
 
-## 当前路线
+## 已完成 / 归档阶段
 
-长期关注触觉表示、时序信息与接触丰富操作。
+长期关注触觉表示、时序信息与接触丰富操作。此前阶段顺序为：
 
-当前先完成 Stage 1：
+**Static 11D 收尾 → Minimalist Contact Flow → Contact-active validation → Stage 2P temporal probe**
 
-**Static 11D 收尾 → Minimalist Contact Flow → Contact-active validation → 根据实验结果决定下一步**
+这些阶段保留作为当前 Stage 3A 的离线依据与历史记录；不再作为当前执行入口。
 
 ## Stage 1：Minimalist Contact Flow
 
