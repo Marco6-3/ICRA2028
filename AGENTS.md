@@ -1,92 +1,52 @@
 # ICRA2028 research collaboration
 
-用户目标：围绕 compact tactile representation、streaming memory 与 contact-rich closed-loop recovery，在 2027 年形成可投稿 ICRA 2028 的证据链。用户后续明确指令优先。
+用户后续明确指令优先。
 
-## 当前主线（2026-10-07）
+## 当前 Stage 1
 
-**Dense tactile field → Minimalist Contact Flow → Streaming contact memory → Closed-loop recovery**
-
-Stage 1 已根据离线负结果 pivot。不要再把“证明完整静态 Physics11D 必要”当作当前目标。
-
-默认 Minimalist Contact Flow：
+当前不继续围绕完整静态 11D 反复优化。候选表示改为 Minimalist Contact Flow：
 
 ```text
-z_t = [f_N, CoP_x, CoP_y, A]
-MCF_t = [z_t, z_t-z_{t-1}] ∈ R^8
+s_t = [f_N, CoP_x, CoP_y, A]
+delta_s_t = s_t - s_(t-1)
+MCF_t = [s_t, delta_s_t]
 ```
 
-完整 11D（含二阶矩/主方向）保留为历史 ablation / negative boundary。除非新实验明确证明某个高阶项有独立增量，否则不得恢复“完整 11D 是核心方法”的叙事。
+四个状态量及其一阶差分全部保留时为 8D。
 
-## Stage 1 执行规则
+当前核心假设是：CoP + 差分能否在 Contact-active Subsets 上优于纯 Scalar，并与 Dense Raw tactile representation 表现相当。
 
-- 第一轮**不要求新采数据**；优先复用已有 LeFlexiTac / TaF 固定 split。
-- 不再以全轨迹平滑 action MSE 作为主要胜负指标。
-- 主分析聚焦 **contact-active windows**。
-- 优先任务：
-  1. TaF 独立 ATI 标签上的 torque-delta / eccentric-load-change prediction；
-  2. contact-instability / redistribution event prediction；
-  3. 只有存在独立 slip / object-motion / tangential-force 真值时才称 slip-onset prediction。
-- 禁止用 tactile feature 自己阈值生成标签，再把该标签作为“该 tactile feature 有预测力”的独立证据。
-- contact-active 筛选阈值、预测 horizon、filter、normalization 只能用 training/validation 冻结；test 不得参与。
-- 默认固定比较：
-  - Scalar = [f_N, Δf_N]
-  - Static first-order = [f_N, CoP_x, CoP_y, A]
-  - MCF 8D
-  - Dense Raw / matched tiny encoder
-  - Physics11D 仅作历史 ablation
-- 比较必须固定 split、标签、causal visibility、readout capacity、训练预算与统计单位。
-- 第一轮优先 linear / tiny MLP / matched tiny encoder；不要用大模型或 architecture search 把表示问题变成调参竞赛。
-- 与 Dense Raw “相当”必须在 test 前冻结 non-inferiority margin。没有冻结 margin 时只能报告差距，不能事后宣布 equivalent。
+该内容是待验证假设。最终结论由实验决定。
 
-## Stage 1 通过/失败判读
+## 当前实验
 
-Stage 1 通过需要：
-1. MCF 在至少一个独立标注 contact-active target 上可靠优于 Scalar；
-2. 消融支持收益来自 CoP / causal dynamics；
-3. 相对 Dense Raw 达到预注册 non-inferiority，或明确标注 dense equivalence unresolved；
-4. compactness / latency / compute 优势有实际测量。
+- 第一轮复用已有 LeFlexiTac / TaF 数据，不要求先采新数据。
+- 重新提取 MCF。
+- 不再主要使用平滑全轨迹 Action MSE。
+- 筛选 Contact-active Subsets，包括接触突变、受力不均、CoP 移动、面积变化和方向微调。
+- 验证 Slip Onset / 接触微滑移前兆与 Torque Delta / 倾覆力矩变化。
+- 若现有数据不足以定义 slip onset，则记录限制，并优先完成 TaF Torque Delta。
+- 核心比较为 Scalar、MCF、Dense Raw tactile representation。
+- Static CoP 与 Physics11D 可以作为额外消融。
+- 具体阈值、预测 horizon、模型和指标在实验实现时根据数据设计并完整记录。
 
-分支：
-- MCF ≈ Scalar → 停止在当前数据刷 descriptor，转真正 spatially ambiguous 的受控任务。
-- MCF > Scalar but < Dense Raw → hybrid compact flow + sparse/event-triggered rich tactile。
-- MCF ≈ Dense Raw and > Scalar → Stage 1 通过，进入 streaming memory。
-- Physics11D > MCF → 只恢复被消融证明有效的高阶项，不恢复完整 11D 故事。
+## 已有结果
 
-## Stage 2 规则
+此前完整 11D 的离线结果继续保留。它们用于说明为什么现在尝试更精简的动态表示，但不代表 MCF 已经得到验证。
 
-Stage 2 研究 current / short-window / streaming memory 的增量，而不是“证明 Mamba”。
+## 后续
 
-- 至少保留简单 causal memory baseline（如 GRU/TCN）与 TacMamba/Mamba-style streaming model 的公平比较。
-- 固定 history visibility、parameter/hidden budget、训练数据、decision rate 和 latency accounting。
-- 重点指标包括 early prediction / lead time、history-dependent ambiguity resolution、source/trial-level uncertainty。
-- 若 short window 已达到 streaming memory，接受结果并缩小论文 claim，不为了 Mamba 更换任务或无限调参。
+Stage 1 完成后，根据实际结果再决定是否以及如何进入 Mamba / streaming temporal memory。
 
-## Stage 3 规则
+当前顺序：
 
-若要声称 tactile-reactive manipulation 改善，必须进入真实闭环并报告 physical event → action effect 的端到端 P50/P95 latency，而不是只报 descriptor/network forward。
+**Static 11D 收尾 → Minimalist Contact Flow → Contact-active validation → 根据实验结果决定下一步。**
 
-优先闭环问题：eccentric-load/contact redistribution recovery、grasp disturbance recovery、history-dependent insertion/search。
+## 协作原则
 
-## 证据纪律
-
-- 论文事实、作者报告、项目推断、待验证假设和本项目结果分开记录。
-- 未运行不能声称复现；未确认不能声称 first/SOTA/必然录用。
-- CoP 漂移只能默认称 contact redistribution cue；没有独立真值不能直接称 slip。
-- 未绝对标定的 taxel sum 称 contact intensity / force proxy，不冒称 N/Pa。
-- preprocessing 必须严格因果；episode reset；不得使用 test future statistics。
-- 数据划分按完整 source/trial/episode，避免随机帧泄漏。
-- 负结果必须保留；不得追溯性修改原假设让实验看似“成功”。
-- 新实验必须记录：数据版本、split、标签来源、预测 horizon、filter/threshold、模型预算、seed、统计单位、代码提交、全部失败与排除。
-- 本仓库管理研究问题和证据，不扩张成通用 infra。
-
-## 核心文献角色
-
-- TacMamba：long tactile streaming memory baseline。
-- LeFlexiTac：dense FlexiTac representation / policy interface baseline。
-- RDP：fast tactile-reactive closed-loop baseline。
-- T-Rex：多速率 temporal/spatial tactile design reference。
-- TacForcing：execution-time tactile conditioning reference。
-
-不要把“FlexiTac + Mamba”或“physics + Mamba”本身当 novelty。真正的 novelty 必须由经过验证的 representation/memory/control gap 决定。
-
-当前 Stage 1 的权威协议为 [research/MINIMALIST_CONTACT_FLOW.md](research/MINIMALIST_CONTACT_FLOW.md)。若其它旧文档仍保留 11D-first 表述，以该文件与最新 README 为准，直到旧文档完成归档/同步。
+- 区分论文事实、已有结果、当前假设和未来想法。
+- 未运行的实验不写成结果。
+- 保留负结果。
+- 用户定义的核心研究目标优先。
+- 新的研究判断或额外限制先作为建议讨论，确认后再写成项目约束。
+- 本仓库管理研究问题与实验，不扩张成通用 infra。
