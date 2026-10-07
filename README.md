@@ -1,5 +1,8 @@
 # ICRA2028 · 触觉接触状态与时序记忆
 
+> **当前最高优先级（2026-10-07）：进入真机 Stage 3A Controlled Tactile Reflex。** 先不接 VLA。优先做 Anti-Tilt / eccentric disturbance，再做 Anti-Slip；主比较为 Fixed、Scalar Reflex、MCF Reflex。现有 Stage 2P checkpoint 是状态重构模型，不直接视为控制器。详见 [Stage 3A 真机方案](research/STAGE3A_REAL_ROBOT.md) 与 [真机执行协议](experiments/real_robot_reflex/PROTOCOL.md)。只有受控闭环实验出现可信增益后，才进入 Stage 3B 的 scripted / learned policy / VLA plug-and-play 展示。
+
+
 更新：2026-10-07。
 
 **当前新增实验：离线 Mamba / GRU 对照。** 按用户要求，沿用 TaF 当前状态重构流程，比较 Scalar / MCF、T=50/100、三种子与约48k参数，并测量 batch1 流式延迟。详见 [Mamba 架构实验](research/STAGE2P_MAMBA.md)。
