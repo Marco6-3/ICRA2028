@@ -1,5 +1,17 @@
 # ICRA2028 research collaboration
 
+## 2026-10-10 第一篇论文范围冻结（当前最高优先级）
+
+优先阅读 [research/ICRA2028_MINIMAL_PAPER_FREEZE.md](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)。它覆盖下方历史性的阶段优先级描述，但**不改写** Stage 1/2P 已保存的假设、实验结果和负结果。
+
+- 唯一主问题：**法向阵列的紧凑空间触觉状态能否相对 Scalar 改善偏心扰动闭环稳定性？** 首要任务 Anti-Tilt。
+- 按 **E1 物理可观测性（先仿真检查、后真机标定）→ E2 matched representation × memory → E3 仿真控制 pilot / 真机闭环** 推进。现有 Stage 3A 仍为真机执行协议，但在闭环前先补可观测性验证。
+- 保持 MCF 8D + GRU 为主要候选；Physics-Residual、Direct Policy vs Observer、GRU-Mamba 机制、Anti-Slip、VLA 均不是此阶段必须成立的主贡献，不擅自扩大 scope。
+- **不能**把 CoP 与剪切方向的映射、8D 充分性、亚毫秒物理闭环、六维真实力感知或多轴独立力矩补偿预先写成结论。除非用户明确要求，不自动把待证假设收缩或改写为负结论；所有结论由真实实验决定。
+- 第一轮夹爪 residual 仅 `Δg`；严格保持动作权限、频率、传感器信息、握力代价和数据划分公平。仿真不得硬编码期望的剪切/CoP 符号关系再验证自身假设。
+- 用户明确批准后才改变冻结范围；科学假设、模型优劣、任务细节仍可由实验推动修订，记录原因并保留完整历史。
+
+
 ## 当前最高优先级：Stage 3A 真机受控闭环
 
 2026-10-07 用户决定进入真机实验，并采用“先把小脑走深，再做 VLA 即插即用展示”的递进路线。
