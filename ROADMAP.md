@@ -1,5 +1,8 @@
 # ICRA2028 研究路线
 
+> **2026-10-10 当前范围冻结**：以 [最小论文方向冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md) 为最新执行准则。优先 **E1 仿真物理可观测性检查 / 正负切向与偏心加载 → FlexiTac 实测标定 → E2 Scalar/MCF/Dense 与历史消融 → E3 仿真 pilot 和 Stage 3A 真机抗倾覆闭环**。下文 2026-10-07 的“直接进入 Stage 3A”作为先前规划保留；现将仿真可观测性与真机标定设为受控闭环的前置验证。Anti-Slip、Physics-Residual、Mamba 机理和 VLA 暂不作为并行主线。
+
+
 ## 当前最高优先级：Stage 3A 真机闭环
 
 离线 Stage 2P 已完成当前 GRU / Mamba 对照。下一步不并行联调 VLA，而是进入受控真机闭环：
