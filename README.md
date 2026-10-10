@@ -1,5 +1,8 @@
 # ICRA2028 · 触觉接触状态与时序记忆
 
+> **当前研究范围冻结（2026-10-10）**：第一篇论文只研究“法向阵列的紧凑空间接触状态能否改善偏心扰动下的闭环控制”。当前入口为 **[最小论文方向冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)**，执行顺序 **E1 物理可观测性（仿真设计→真实 FlexiTac 标定）→ E2 表征与记忆对照 → E3 偏心闭环控制（仿真 pilot→真机）**。主方法 MCF 8D + GRU，主任务 Anti-Tilt；已有 Stage 1/2P 结果保留，阶段 3A 真机控制器仍待开发。本冻结仅锁定研究范围，不锁定实验结论；下方历史记录不代表最新优先级。
+
+
 > **当前最高优先级（2026-10-07）：进入真机 Stage 3A Controlled Tactile Reflex。** 先不接 VLA。优先做 Anti-Tilt / eccentric disturbance，再做 Anti-Slip；主比较为 Fixed、Scalar Reflex、MCF Reflex。现有 Stage 2P checkpoint 是状态重构模型，不直接视为控制器。详见 [Stage 3A 真机方案](research/STAGE3A_REAL_ROBOT.md) 与 [真机执行协议](experiments/real_robot_reflex/PROTOCOL.md)。只有受控闭环实验出现可信增益后，才进入 Stage 3B 的 scripted / learned policy / VLA plug-and-play 展示。
 
 
