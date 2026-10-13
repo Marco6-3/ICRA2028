@@ -1,0 +1,30 @@
+STREAM_TRAIN mcf 7 60 0.03914154693484306
+STREAM_TRAIN mcf 7 120 0.014347968623042107
+STREAM_TRAIN mcf 7 180 0.020084820687770844
+STREAM_TRAIN mcf 7 240 0.01080639474093914
+STREAM_FIT {'kind': 'mcf', 'seed': 7, 'best_epoch': 230, 'validation_rmse_rad': 0.00026665277303634835, 'parameters': 43841, 'train_trials': 30, 'train_frames': 5400, 'validation_trials': 4, 'wall_s': 54.259564300009515}
+STREAM_TRAIN mcf 11 60 0.02528492733836174
+STREAM_TRAIN mcf 11 120 0.022315258160233498
+STREAM_TRAIN mcf 11 180 0.010590411722660065
+STREAM_TRAIN mcf 11 240 0.007524366024881601
+STREAM_FIT {'kind': 'mcf', 'seed': 11, 'best_epoch': 240, 'validation_rmse_rad': 0.0002602293108470574, 'parameters': 43841, 'train_trials': 30, 'train_frames': 5400, 'validation_trials': 4, 'wall_s': 54.28220750001492}
+STREAM_TRAIN mcf 19 60 0.04495054483413696
+STREAM_TRAIN mcf 19 120 0.013384304940700531
+STREAM_TRAIN mcf 19 180 0.010598709806799889
+STREAM_TRAIN mcf 19 240 0.015296366065740585
+STREAM_FIT {'kind': 'mcf', 'seed': 19, 'best_epoch': 230, 'validation_rmse_rad': 0.0002788181971350804, 'parameters': 43841, 'train_trials': 30, 'train_frames': 5400, 'validation_trials': 4, 'wall_s': 49.63992320001125}
+STREAM_TRAIN scalar 7 60 0.0896497368812561
+STREAM_TRAIN scalar 7 120 0.02353830076754093
+STREAM_TRAIN scalar 7 180 0.010536029003560543
+STREAM_TRAIN scalar 7 240 0.01296934112906456
+STREAM_FIT {'kind': 'scalar', 'seed': 7, 'best_epoch': 180, 'validation_rmse_rad': 0.00030793548193094747, 'parameters': 39233, 'train_trials': 30, 'train_frames': 5400, 'validation_trials': 4, 'wall_s': 52.39695080000092}
+STREAM_TRAIN scalar 11 60 0.11253654956817627
+STREAM_TRAIN scalar 11 120 0.02502867393195629
+STREAM_TRAIN scalar 11 180 0.011173608712852001
+STREAM_TRAIN scalar 11 240 0.01047165971249342
+STREAM_FIT {'kind': 'scalar', 'seed': 11, 'best_epoch': 240, 'validation_rmse_rad': 0.0003069933833365807, 'parameters': 39233, 'train_trials': 30, 'train_frames': 5400, 'validation_trials': 4, 'wall_s': 54.77904739999212}
+STREAM_TRAIN scalar 19 60 0.09439224004745483
+STREAM_TRAIN scalar 19 120 0.017784757539629936
+STREAM_TRAIN scalar 19 180 0.02020522765815258
+STREAM_TRAIN scalar 19 240 0.0113715510815382
+STREAM_FIT {'kind': 'scalar', 'seed': 19, 'best_epoch': 240, 'validation_rmse_rad': 0.00031991242510075125, 'parameters': 39233, 'train_trials': 30, 'train_frames': 5400, 'validation_trials': 4, 'wall_s': 49.62900359998457}

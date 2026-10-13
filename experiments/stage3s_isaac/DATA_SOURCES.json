@@ -1,0 +1,11 @@
+{
+  "source_repository": "https://github.com/binghao-huang/FlexiTac-IsaacSim-Simulation",
+  "source_commit": "dc2e1c6607a1b1a0e4b196bb4e2d4ccdc1afdcb0",
+  "required_upstream_files": [
+    "Isaacsim_tactile_env/data/dataset_train.npz",
+    "Isaacsim_tactile_env/data/dataset_normalizer.npz"
+  ],
+  "generated_input_sha256": "9bfd43746d3599e9d8fe117254ded7710678ca66b90aebfc20db792bc471052c",
+  "included": "Independently authored adapters, recorded simulation observations, checkpoints, reports and summaries",
+  "external": "Original simulator, URDF/meshes, normalized source trajectories, real tactile datasets; obtain under upstream terms"
+}

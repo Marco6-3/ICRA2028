@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "boundary": "CPU software from already available Raw to exact bounded-window neural output. No sensor transport, actuator, simulation or energy. Dense per-frame encoder cached; numerical equivalence checked.",
+  "torch": "2.7.0+cpu",
+  "threads": 2,
+  "history_reset": "trial boundaries only; GRU bounded window reset matches training",
+  "runs": {
+    "dense_t17": [
+      {
+        "checkpoint": "dense_t17_seed11.pt",
+        "cached_window_equivalence_max_error": 2.6226043701171875e-06,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6384,
+        "full_raw_entry_p95_ms": 0.67939,
+        "descriptor_and_normalization_p95_ms": 0.013930000000000001,
+        "network_and_encoder_p95_ms": 0.66883
+      },
+      {
+        "checkpoint": "dense_t17_seed19.pt",
+        "cached_window_equivalence_max_error": 2.86102294921875e-06,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6387,
+        "full_raw_entry_p95_ms": 0.9188600000000002,
+        "descriptor_and_normalization_p95_ms": 0.0204,
+        "network_and_encoder_p95_ms": 0.9075700000000002
+      },
+      {
+        "checkpoint": "dense_t17_seed7.pt",
+        "cached_window_equivalence_max_error": 4.76837158203125e-07,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6387,
+        "full_raw_entry_p95_ms": 0.8686400000000001,
+        "descriptor_and_normalization_p95_ms": 0.019480000000000008,
+        "network_and_encoder_p95_ms": 0.85438
+      }
+    ]
+  },
+  "summaries": {
+    "dense_t17": {
+      "full_raw_entry_p50_ms": 0.6386,
+      "full_raw_entry_p95_ms": 0.8222966666666668,
+      "descriptor_and_normalization_p95_ms": 0.01793666666666667,
+      "network_and_encoder_p95_ms": 0.8102600000000001
+    }
+  }
+}

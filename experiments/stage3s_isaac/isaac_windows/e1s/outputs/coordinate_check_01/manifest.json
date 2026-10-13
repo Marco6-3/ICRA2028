@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "world_posx_r00",
+    "world_posx_r01",
+    "world_negx_r00",
+    "world_negx_r01",
+    "world_posy_r00",
+    "world_posy_r01",
+    "world_negy_r00",
+    "world_negy_r01",
+    "object_posx_r00",
+    "object_posx_r01",
+    "object_negx_r00",
+    "object_negx_r01",
+    "object_posy_r00",
+    "object_posy_r01",
+    "object_negy_r00",
+    "object_negy_r01",
+    "reference_posx_r00",
+    "reference_posx_r01",
+    "reference_negx_r00",
+    "reference_negx_r01",
+    "reference_posy_r00",
+    "reference_posy_r01",
+    "reference_negy_r00",
+    "reference_negy_r01"
+  ],
+  "errors": []
+}

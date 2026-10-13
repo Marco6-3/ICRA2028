@@ -1,0 +1,43 @@
+{
+  "status": "completed",
+  "runs": 3,
+  "summaries": {
+    "dense_t17": {
+      "parameters": 50093,
+      "hidden": 63,
+      "history": 17,
+      "fraction": 1.0,
+      "seed_accuracy": [
+        0.32161558109833976,
+        0.36392081736909326,
+        0.3637292464878672
+      ],
+      "mean_accuracy": 0.34975521498510004,
+      "mean_rmse_FxFyMxMy": [
+        0.19438213982355082,
+        0.16647061422199846,
+        0.0014769524466006119,
+        0.0018971554836607607
+      ],
+      "groups": {
+        "friction": 0.3138888888888889,
+        "preload": 0.2652777777777778,
+        "ramp": 0.4339080459770115,
+        "reverse": 0.4611111111111111,
+        "sdf_gain": 0.25,
+        "step_unseen_offset": 0.5944444444444444
+      }
+    }
+  },
+  "latency": {
+    "dense_t17": {
+      "full_window_p50_ms": 0.8447,
+      "full_window_p95_ms": 0.9299349999999998,
+      "streaming_one_frame_p95_ms": 0.216725,
+      "encoder_only_p95_ms": 0.11853499999999999,
+      "boundary": "CPU normalized-input software latency; excludes raw descriptor extraction, sensor, actuator and energy."
+    }
+  },
+  "interaction": null,
+  "limits": "Same simulated object/session; tests hold out conditions; no real E1, GRU optimality, minimal sufficiency or closed-loop evidence."
+}

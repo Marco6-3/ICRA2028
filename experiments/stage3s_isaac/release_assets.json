@@ -1,0 +1,55 @@
+{
+  "tag": "stage3s-reflex-20261013",
+  "release_url": "https://github.com/Marco6-3/ICRA2028/releases/tag/stage3s-reflex-20261013",
+  "assets": [
+    {
+      "name": "e1-pilot-20261013-part01.zip",
+      "size_bytes": 187327445,
+      "sha256": "a3f59f7cb0e282f4a5fcd52c2047f8bf9e78898f5d7703b01866ef8eee7d384b",
+      "npz_files": 117,
+      "url": "https://github.com/Marco6-3/ICRA2028/releases/download/stage3s-reflex-20261013/e1-pilot-20261013-part01.zip"
+    },
+    {
+      "name": "e1-pilot-20261013-part02.zip",
+      "size_bytes": 76501801,
+      "sha256": "d5e7a34c6b1ad8dcd62c71ccda6cf5998b28ae4815e7bffc04e1536aefc56492",
+      "npz_files": 50,
+      "url": "https://github.com/Marco6-3/ICRA2028/releases/download/stage3s-reflex-20261013/e1-pilot-20261013-part02.zip"
+    },
+    {
+      "name": "e1-contact-20261013-part01.zip",
+      "size_bytes": 188313864,
+      "sha256": "1db8b093eb46c4cbf7f682be07846ef94650c088fa680785e93b77804a1f5b76",
+      "npz_files": 124,
+      "url": "https://github.com/Marco6-3/ICRA2028/releases/download/stage3s-reflex-20261013/e1-contact-20261013-part01.zip"
+    },
+    {
+      "name": "e1-contact-20261013-part02.zip",
+      "size_bytes": 50201384,
+      "sha256": "41e59e6c779bafd6a286d432ad83d6b555716224d8e0b74331a8600d9509445b",
+      "npz_files": 31,
+      "url": "https://github.com/Marco6-3/ICRA2028/releases/download/stage3s-reflex-20261013/e1-contact-20261013-part02.zip"
+    },
+    {
+      "name": "reflex-development-20261013-part01.zip",
+      "size_bytes": 154085643,
+      "sha256": "2de66d81de0b417e50b120d36d5f523b414336a20b51c3b66faa9e258c0df9ce",
+      "npz_files": 54,
+      "url": "https://github.com/Marco6-3/ICRA2028/releases/download/stage3s-reflex-20261013/reflex-development-20261013-part01.zip"
+    },
+    {
+      "name": "reflex-closed-loop-20261013-part01.zip",
+      "size_bytes": 188715556,
+      "sha256": "5bf13f7c32a4c4ef9e196dc907d5be270347b16d277376937b823b4e0194c267",
+      "npz_files": 65,
+      "url": "https://github.com/Marco6-3/ICRA2028/releases/download/stage3s-reflex-20261013/reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "name": "reflex-closed-loop-20261013-part02.zip",
+      "size_bytes": 49638478,
+      "sha256": "c0fa0823226f5b423658bd42c76c91b63971181c09102eabafab89aa85b4836c",
+      "npz_files": 16,
+      "url": "https://github.com/Marco6-3/ICRA2028/releases/download/stage3s-reflex-20261013/reflex-closed-loop-20261013-part02.zip"
+    }
+  ]
+}

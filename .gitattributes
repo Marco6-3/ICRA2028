@@ -9,3 +9,10 @@
 
 # 完整实验归档按原始字节保存，使 manifest 与训练时源码哈希可核验。
 experiments/contact_operator/outputs/stage2p_mamba_20261007/** -text whitespace=cr-at-eol
+
+# Stage 3S 原始源码、权重、元数据按运行时字节归档。
+experiments/stage3s_isaac/** -text whitespace=cr-at-eol
+experiments/stage3s_isaac/**/*.log binary
+experiments/stage3s_isaac/**/*.svg binary
+experiments/stage3s_isaac/**/*.pdf binary
+experiments/stage3s_isaac/**/*.patch -diff -text

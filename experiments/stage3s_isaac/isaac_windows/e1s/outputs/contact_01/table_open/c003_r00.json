@@ -1,0 +1,54 @@
+{
+  "trial": {
+    "trial_id": "c003_r00",
+    "direction": "+Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.25,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "initial_gate_passed": true,
+  "closing_delta_rad": 0.0,
+  "initial_per_finger_sum": [
+    2.995431423187256,
+    10.715766906738281,
+    9.338580131530762,
+    7.742293357849121
+  ],
+  "max_environment_normal_contact_n": [
+    [
+      1.2244406938552856,
+      0.0,
+      0.0
+    ],
+    [
+      1.1546638011932373,
+      0.0,
+      0.0
+    ]
+  ],
+  "nonzero_frames_per_finger": [
+    90,
+    90,
+    90,
+    90
+  ],
+  "max_displacement_m": 0.0002396972558926791,
+  "max_orientation_change_rad": 0.011596053437109823,
+  "npz_sha256": "fe8639090343900e28fd1195ca67da2fa4e85ba92d65f63c0cc16e790b6cdf48"
+}

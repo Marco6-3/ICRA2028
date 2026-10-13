@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "original_experiment_files_exact_bytes": 1705,
+  "raw_npz_restored_and_sha256_verified": 457,
+  "replay_input_reconstructed_sha256": "9bfd43746d3599e9d8fe117254ded7710678ca66b90aebfc20db792bc471052c",
+  "unit_tests_passed": 6,
+  "experiment_verification": {
+    "status": "passed",
+    "old_unchanged_npz": 225,
+    "new_native_trials": 121,
+    "new_synchronized_frames": 21330,
+    "trained_models": 45,
+    "native": [
+      {
+        "directory": "reflex_dagger_01",
+        "trials": 9,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_dev_high_01",
+        "trials": 5,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_dev_oracle_01",
+        "trials": 5,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_dev_oracle_02",
+        "trials": 5,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_stream_high_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_stream_mcf_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_stream_nominal_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_stream_oracle_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_stream_scalar_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_teacher_01",
+        "trials": 25,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_test_high_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_test_mcf_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_test_nominal_01",
+        "trials": 8,
+        "force_calibration": true
+      },
+      {
+        "directory": "reflex_test_scalar_01",
+        "trials": 8,
+        "force_calibration": true
+      }
+    ],
+    "reports": [
+      {
+        "report": "reflex_report_01",
+        "paired_trials": 32
+      },
+      {
+        "report": "reflex_report_stream_01",
+        "paired_trials": 40
+      }
+    ],
+    "selected_by_validation": true,
+    "streaming_equivalence": true,
+    "utf8_readback": true,
+    "syntax": true
+  },
+  "core_manifest_files": 1260,
+  "archive_manifest_sha256": "ead898c7523ebc8742ce1fb452b530a1eb74907c712de5e7bdd0c9768f744cc6",
+  "full_simulation_repeated_for_publication": false,
+  "recorded_history": "Reports and old manifests preserve the run-time state; newer scripts have hash-matched historical snapshots.",
+  "git_staged_sha256_verified": 1262,
+  "git_payload_bytes": 32684654,
+  "existing_frozen_artifacts_changed": false
+}

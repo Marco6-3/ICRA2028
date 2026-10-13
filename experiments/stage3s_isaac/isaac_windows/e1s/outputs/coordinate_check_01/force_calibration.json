@@ -1,0 +1,89 @@
+{
+  "mass_kg": 0.07358209043741226,
+  "duration_s": 0.1,
+  "forces": {
+    "+Fx": {
+      "requested_n": [
+        0.2,
+        0.0,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        0.19999998807907104,
+        0.0,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    },
+    "-Fx": {
+      "requested_n": [
+        -0.2,
+        0.0,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        -0.19999998807907104,
+        0.0,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    },
+    "+Fy": {
+      "requested_n": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        0.0,
+        0.19999998807907104,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    },
+    "-Fy": {
+      "requested_n": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        0.0,
+        -0.19999998807907104,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    }
+  },
+  "max_absolute_error_n": 1.1920928966180355e-08,
+  "torques": {
+    "eccentric_Fx": {
+      "requested_nm": [
+        0.0,
+        0.003,
+        0.0
+      ],
+      "engine_delta_angular_momentum_over_dt_nm": [
+        6.744040137480803e-07,
+        0.0029925500978385845,
+        1.078307152538713e-06
+      ],
+      "absolute_error_nm": 7.557685446195782e-06
+    },
+    "eccentric_Fy": {
+      "requested_nm": [
+        -0.003,
+        0.0,
+        0.0
+      ],
+      "engine_delta_angular_momentum_over_dt_nm": [
+        -0.0029910631001980304,
+        7.307647676753187e-07,
+        3.5032881266245838e-06
+      ],
+      "absolute_error_nm": 9.626797126473052e-06
+    }
+  },
+  "max_absolute_error_nm": 9.626797126473052e-06,
+  "passed": true
+}

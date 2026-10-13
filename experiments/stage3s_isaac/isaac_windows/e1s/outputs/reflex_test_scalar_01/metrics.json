@@ -1,0 +1,322 @@
+[
+  {
+    "id": "test_00_0",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_00_0",
+      "direction": "+Fx",
+      "amplitude_n": 0.16,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 1.1590870897677346,
+    "max_tilt_deg": 0.8498088535986537,
+    "max_orientation_change_deg": 0.8641077424029326,
+    "effort_normal_n_s": 6.996595764160156,
+    "peak_normal_n": 5.065568923950195,
+    "post_normal_n": 4.671809673309326,
+    "saturation_fraction": 0.09444444444444444,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 1.06451,
+    "goal_slip_2mm": true,
+    "dropped": false
+  },
+  {
+    "id": "test_00_1",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_00_1",
+      "direction": "-Fx",
+      "amplitude_n": 0.16,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 0.2257995210423354,
+    "max_tilt_deg": 0.18828606714737478,
+    "max_orientation_change_deg": 0.18130816839308894,
+    "effort_normal_n_s": 7.182223510742188,
+    "peak_normal_n": 5.065568923950195,
+    "post_normal_n": 4.7976908683776855,
+    "saturation_fraction": 0.11666666666666667,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 1.023135,
+    "goal_slip_2mm": true,
+    "dropped": false
+  },
+  {
+    "id": "test_00_2",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_00_2",
+      "direction": "+Fy",
+      "amplitude_n": 0.16,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 0.032971363906005725,
+    "max_tilt_deg": 0.04812372276920036,
+    "max_orientation_change_deg": 0.06852804019207596,
+    "effort_normal_n_s": 7.22174072265625,
+    "peak_normal_n": 5.065568923950195,
+    "post_normal_n": 4.860137939453125,
+    "saturation_fraction": 0.12777777777777777,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 0.998625,
+    "goal_slip_2mm": true,
+    "dropped": false
+  },
+  {
+    "id": "test_00_3",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_00_3",
+      "direction": "-Fy",
+      "amplitude_n": 0.16,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 0.05087188146110021,
+    "max_tilt_deg": 0.06811971851328792,
+    "max_orientation_change_deg": 0.05595291023658669,
+    "effort_normal_n_s": 7.209470113118489,
+    "peak_normal_n": 5.066567420959473,
+    "post_normal_n": 4.844977378845215,
+    "saturation_fraction": 0.11666666666666667,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 1.04222,
+    "goal_slip_2mm": true,
+    "dropped": false
+  },
+  {
+    "id": "test_01_0",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_01_0",
+      "direction": "+Fx",
+      "amplitude_n": 0.2,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 1.991094337857885,
+    "max_tilt_deg": 1.4537837254923398,
+    "max_orientation_change_deg": 1.4909219660873414,
+    "effort_normal_n_s": 7.2159779866536455,
+    "peak_normal_n": 5.065568923950195,
+    "post_normal_n": 4.858467102050781,
+    "saturation_fraction": 0.08888888888888889,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 1.016335,
+    "goal_slip_2mm": true,
+    "dropped": false
+  },
+  {
+    "id": "test_01_1",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_01_1",
+      "direction": "-Fx",
+      "amplitude_n": 0.2,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 0.595671552432115,
+    "max_tilt_deg": 0.4791360494095399,
+    "max_orientation_change_deg": 0.4731251179839319,
+    "effort_normal_n_s": 7.200425211588541,
+    "peak_normal_n": 5.065568923950195,
+    "post_normal_n": 4.835163116455078,
+    "saturation_fraction": 0.12222222222222222,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 0.995795,
+    "goal_slip_2mm": true,
+    "dropped": false
+  },
+  {
+    "id": "test_01_2",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_01_2",
+      "direction": "+Fy",
+      "amplitude_n": 0.2,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 0.03507056832354885,
+    "max_tilt_deg": 0.05225023298611685,
+    "max_orientation_change_deg": 0.06852804019207596,
+    "effort_normal_n_s": 7.1997736612955725,
+    "peak_normal_n": 5.065954208374023,
+    "post_normal_n": 4.829164028167725,
+    "saturation_fraction": 0.12777777777777777,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 1.0217549999999997,
+    "goal_slip_2mm": true,
+    "dropped": false
+  },
+  {
+    "id": "test_01_3",
+    "controller": "scalar",
+    "trial": {
+      "trial_id": "test_01_3",
+      "direction": "-Fy",
+      "amplitude_n": 0.2,
+      "point_m": [
+        0,
+        0,
+        0.015
+      ],
+      "frame": "reference",
+      "waveform": "step",
+      "repeat": 0,
+      "preload_delta_rad": 0.0,
+      "friction_scale": 1.0,
+      "sdf_gain_scale": 1.0,
+      "onset_s": 0.35,
+      "duration_s": 0.25,
+      "torque_nm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "max_slip_mm": 0.05672722809790773,
+    "max_tilt_deg": 0.07539708274140605,
+    "max_orientation_change_deg": 0.05595291023658669,
+    "effort_normal_n_s": 7.202527872721354,
+    "peak_normal_n": 5.065568923950195,
+    "post_normal_n": 4.832245826721191,
+    "saturation_fraction": 0.12777777777777777,
+    "max_delta_rad": 0.0029931812882423403,
+    "contact_fraction": 1.0,
+    "environment_max_normal_n": 0.0,
+    "control_p95_ms": 1.05018,
+    "goal_slip_2mm": true,
+    "dropped": false
+  }
+]

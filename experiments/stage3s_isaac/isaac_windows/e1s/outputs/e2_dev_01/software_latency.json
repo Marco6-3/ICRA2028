@@ -1,0 +1,396 @@
+{
+  "status": "completed",
+  "boundary": "CPU software from already available Raw to exact bounded-window neural output. No sensor transport, actuator, simulation or energy. Dense per-frame encoder cached; numerical equivalence checked.",
+  "torch": "2.7.0+cpu",
+  "threads": 2,
+  "history_reset": "trial boundaries only; GRU bounded window reset matches training",
+  "runs": {
+    "dense_half": [
+      {
+        "checkpoint": "dense_half_seed11.pt",
+        "cached_window_equivalence_max_error": 5.960464477539062e-07,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6069,
+        "full_raw_entry_p95_ms": 0.8882300000000002,
+        "descriptor_and_normalization_p95_ms": 0.0196,
+        "network_and_encoder_p95_ms": 0.87261
+      },
+      {
+        "checkpoint": "dense_half_seed19.pt",
+        "cached_window_equivalence_max_error": 4.76837158203125e-07,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.611,
+        "full_raw_entry_p95_ms": 0.6616700000000001,
+        "descriptor_and_normalization_p95_ms": 0.015290000000000003,
+        "network_and_encoder_p95_ms": 0.64612
+      },
+      {
+        "checkpoint": "dense_half_seed7.pt",
+        "cached_window_equivalence_max_error": 3.337860107421875e-06,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6072,
+        "full_raw_entry_p95_ms": 0.66588,
+        "descriptor_and_normalization_p95_ms": 0.01584000000000002,
+        "network_and_encoder_p95_ms": 0.65399
+      }
+    ],
+    "dense_t16": [
+      {
+        "checkpoint": "dense_t16_seed11.pt",
+        "cached_window_equivalence_max_error": 4.76837158203125e-07,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6078,
+        "full_raw_entry_p95_ms": 0.66072,
+        "descriptor_and_normalization_p95_ms": 0.012790000000000003,
+        "network_and_encoder_p95_ms": 0.64866
+      },
+      {
+        "checkpoint": "dense_t16_seed19.pt",
+        "cached_window_equivalence_max_error": 1.2516975402832031e-06,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6084,
+        "full_raw_entry_p95_ms": 0.64852,
+        "descriptor_and_normalization_p95_ms": 0.0131,
+        "network_and_encoder_p95_ms": 0.63483
+      },
+      {
+        "checkpoint": "dense_t16_seed7.pt",
+        "cached_window_equivalence_max_error": 9.5367431640625e-07,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.6092,
+        "full_raw_entry_p95_ms": 0.66669,
+        "descriptor_and_normalization_p95_ms": 0.015060000000000002,
+        "network_and_encoder_p95_ms": 0.65402
+      }
+    ],
+    "mcf_half": [
+      {
+        "checkpoint": "mcf_half_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7039,
+        "full_raw_entry_p95_ms": 0.7655500000000001,
+        "descriptor_and_normalization_p95_ms": 0.19528,
+        "network_and_encoder_p95_ms": 0.5694800000000001
+      },
+      {
+        "checkpoint": "mcf_half_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7069,
+        "full_raw_entry_p95_ms": 0.8232,
+        "descriptor_and_normalization_p95_ms": 0.22249000000000005,
+        "network_and_encoder_p95_ms": 0.58825
+      },
+      {
+        "checkpoint": "mcf_half_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.716,
+        "full_raw_entry_p95_ms": 0.8523300000000001,
+        "descriptor_and_normalization_p95_ms": 0.23950000000000007,
+        "network_and_encoder_p95_ms": 0.6279300000000001
+      }
+    ],
+    "mcf_no_area_t16": [
+      {
+        "checkpoint": "mcf_no_area_t16_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7193,
+        "full_raw_entry_p95_ms": 0.9527100000000001,
+        "descriptor_and_normalization_p95_ms": 0.2660700000000001,
+        "network_and_encoder_p95_ms": 0.6947400000000002
+      },
+      {
+        "checkpoint": "mcf_no_area_t16_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7165,
+        "full_raw_entry_p95_ms": 1.03518,
+        "descriptor_and_normalization_p95_ms": 0.30505,
+        "network_and_encoder_p95_ms": 0.7837200000000002
+      },
+      {
+        "checkpoint": "mcf_no_area_t16_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7159,
+        "full_raw_entry_p95_ms": 1.05848,
+        "descriptor_and_normalization_p95_ms": 0.31112999999999996,
+        "network_and_encoder_p95_ms": 0.8076300000000001
+      }
+    ],
+    "mcf_no_cop_t16": [
+      {
+        "checkpoint": "mcf_no_cop_t16_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7206,
+        "full_raw_entry_p95_ms": 1.0578800000000002,
+        "descriptor_and_normalization_p95_ms": 0.30514,
+        "network_and_encoder_p95_ms": 0.82148
+      },
+      {
+        "checkpoint": "mcf_no_cop_t16_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7266,
+        "full_raw_entry_p95_ms": 0.8422900000000001,
+        "descriptor_and_normalization_p95_ms": 0.23268000000000003,
+        "network_and_encoder_p95_ms": 0.6331000000000001
+      },
+      {
+        "checkpoint": "mcf_no_cop_t16_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7231,
+        "full_raw_entry_p95_ms": 0.8352600000000001,
+        "descriptor_and_normalization_p95_ms": 0.23450000000000013,
+        "network_and_encoder_p95_ms": 0.64019
+      }
+    ],
+    "mcf_t16": [
+      {
+        "checkpoint": "mcf_t16_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7009,
+        "full_raw_entry_p95_ms": 0.7452,
+        "descriptor_and_normalization_p95_ms": 0.19333,
+        "network_and_encoder_p95_ms": 0.55728
+      },
+      {
+        "checkpoint": "mcf_t16_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7022,
+        "full_raw_entry_p95_ms": 0.76777,
+        "descriptor_and_normalization_p95_ms": 0.20235,
+        "network_and_encoder_p95_ms": 0.56917
+      },
+      {
+        "checkpoint": "mcf_t16_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7032,
+        "full_raw_entry_p95_ms": 0.77156,
+        "descriptor_and_normalization_p95_ms": 0.20226000000000002,
+        "network_and_encoder_p95_ms": 0.58445
+      }
+    ],
+    "mcf_t1": [
+      {
+        "checkpoint": "mcf_t1_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.263,
+        "full_raw_entry_p95_ms": 0.28712000000000004,
+        "descriptor_and_normalization_p95_ms": 0.1735,
+        "network_and_encoder_p95_ms": 0.11670000000000001
+      },
+      {
+        "checkpoint": "mcf_t1_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.2667,
+        "full_raw_entry_p95_ms": 0.30189,
+        "descriptor_and_normalization_p95_ms": 0.18198000000000003,
+        "network_and_encoder_p95_ms": 0.12219000000000001
+      },
+      {
+        "checkpoint": "mcf_t1_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.2663,
+        "full_raw_entry_p95_ms": 0.2889,
+        "descriptor_and_normalization_p95_ms": 0.17131000000000002,
+        "network_and_encoder_p95_ms": 0.11896000000000001
+      }
+    ],
+    "s4_t16": [
+      {
+        "checkpoint": "s4_t16_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7073,
+        "full_raw_entry_p95_ms": 0.75129,
+        "descriptor_and_normalization_p95_ms": 0.19337000000000001,
+        "network_and_encoder_p95_ms": 0.55789
+      },
+      {
+        "checkpoint": "s4_t16_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7059,
+        "full_raw_entry_p95_ms": 0.7644,
+        "descriptor_and_normalization_p95_ms": 0.19969,
+        "network_and_encoder_p95_ms": 0.5780900000000001
+      },
+      {
+        "checkpoint": "s4_t16_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.7141,
+        "full_raw_entry_p95_ms": 0.7958,
+        "descriptor_and_normalization_p95_ms": 0.20691,
+        "network_and_encoder_p95_ms": 0.60604
+      }
+    ],
+    "scalar_t16": [
+      {
+        "checkpoint": "scalar_t16_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.5588,
+        "full_raw_entry_p95_ms": 0.6349400000000001,
+        "descriptor_and_normalization_p95_ms": 0.042510000000000006,
+        "network_and_encoder_p95_ms": 0.60326
+      },
+      {
+        "checkpoint": "scalar_t16_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.5558,
+        "full_raw_entry_p95_ms": 0.63989,
+        "descriptor_and_normalization_p95_ms": 0.04299000000000001,
+        "network_and_encoder_p95_ms": 0.59935
+      },
+      {
+        "checkpoint": "scalar_t16_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.556,
+        "full_raw_entry_p95_ms": 0.64735,
+        "descriptor_and_normalization_p95_ms": 0.04315,
+        "network_and_encoder_p95_ms": 0.6098800000000001
+      }
+    ],
+    "scalar_t1": [
+      {
+        "checkpoint": "scalar_t1_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1206,
+        "full_raw_entry_p95_ms": 0.15878,
+        "descriptor_and_normalization_p95_ms": 0.04003,
+        "network_and_encoder_p95_ms": 0.11906
+      },
+      {
+        "checkpoint": "scalar_t1_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1184,
+        "full_raw_entry_p95_ms": 0.13203,
+        "descriptor_and_normalization_p95_ms": 0.03166000000000001,
+        "network_and_encoder_p95_ms": 0.10273
+      },
+      {
+        "checkpoint": "scalar_t1_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1185,
+        "full_raw_entry_p95_ms": 0.13053,
+        "descriptor_and_normalization_p95_ms": 0.0295,
+        "network_and_encoder_p95_ms": 0.10122
+      }
+    ],
+    "static_s4": [
+      {
+        "checkpoint": "static_s4_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1864,
+        "full_raw_entry_p95_ms": 0.22720000000000012,
+        "descriptor_and_normalization_p95_ms": 0.16798000000000002,
+        "network_and_encoder_p95_ms": 0.05792000000000002
+      },
+      {
+        "checkpoint": "static_s4_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1839,
+        "full_raw_entry_p95_ms": 0.20274000000000003,
+        "descriptor_and_normalization_p95_ms": 0.15338000000000002,
+        "network_and_encoder_p95_ms": 0.052070000000000005
+      },
+      {
+        "checkpoint": "static_s4_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1829,
+        "full_raw_entry_p95_ms": 0.19827,
+        "descriptor_and_normalization_p95_ms": 0.15103,
+        "network_and_encoder_p95_ms": 0.04999000000000001
+      }
+    ]
+  },
+  "summaries": {
+    "dense_half": {
+      "full_raw_entry_p50_ms": 0.6083666666666666,
+      "full_raw_entry_p95_ms": 0.7385933333333335,
+      "descriptor_and_normalization_p95_ms": 0.01691000000000001,
+      "network_and_encoder_p95_ms": 0.72424
+    },
+    "dense_t16": {
+      "full_raw_entry_p50_ms": 0.6084666666666667,
+      "full_raw_entry_p95_ms": 0.6586433333333334,
+      "descriptor_and_normalization_p95_ms": 0.013650000000000002,
+      "network_and_encoder_p95_ms": 0.6458366666666667
+    },
+    "mcf_half": {
+      "full_raw_entry_p50_ms": 0.7089333333333334,
+      "full_raw_entry_p95_ms": 0.8136933333333335,
+      "descriptor_and_normalization_p95_ms": 0.21909000000000003,
+      "network_and_encoder_p95_ms": 0.5952200000000001
+    },
+    "mcf_no_area_t16": {
+      "full_raw_entry_p50_ms": 0.7172333333333333,
+      "full_raw_entry_p95_ms": 1.015456666666667,
+      "descriptor_and_normalization_p95_ms": 0.2940833333333333,
+      "network_and_encoder_p95_ms": 0.7620300000000002
+    },
+    "mcf_no_cop_t16": {
+      "full_raw_entry_p50_ms": 0.7234333333333334,
+      "full_raw_entry_p95_ms": 0.91181,
+      "descriptor_and_normalization_p95_ms": 0.25744000000000006,
+      "network_and_encoder_p95_ms": 0.6982566666666666
+    },
+    "mcf_t16": {
+      "full_raw_entry_p50_ms": 0.7021000000000001,
+      "full_raw_entry_p95_ms": 0.76151,
+      "descriptor_and_normalization_p95_ms": 0.19931333333333334,
+      "network_and_encoder_p95_ms": 0.5703
+    },
+    "mcf_t1": {
+      "full_raw_entry_p50_ms": 0.26533333333333337,
+      "full_raw_entry_p95_ms": 0.29263666666666666,
+      "descriptor_and_normalization_p95_ms": 0.1755966666666667,
+      "network_and_encoder_p95_ms": 0.11928333333333334
+    },
+    "s4_t16": {
+      "full_raw_entry_p50_ms": 0.7091,
+      "full_raw_entry_p95_ms": 0.7704966666666667,
+      "descriptor_and_normalization_p95_ms": 0.19999,
+      "network_and_encoder_p95_ms": 0.5806733333333334
+    },
+    "scalar_t16": {
+      "full_raw_entry_p50_ms": 0.5568666666666666,
+      "full_raw_entry_p95_ms": 0.6407266666666667,
+      "descriptor_and_normalization_p95_ms": 0.042883333333333336,
+      "network_and_encoder_p95_ms": 0.6041633333333333
+    },
+    "scalar_t1": {
+      "full_raw_entry_p50_ms": 0.11916666666666666,
+      "full_raw_entry_p95_ms": 0.1404466666666667,
+      "descriptor_and_normalization_p95_ms": 0.03373,
+      "network_and_encoder_p95_ms": 0.10767
+    },
+    "static_s4": {
+      "full_raw_entry_p50_ms": 0.1844,
+      "full_raw_entry_p95_ms": 0.20940333333333339,
+      "descriptor_and_normalization_p95_ms": 0.15746333333333334,
+      "network_and_encoder_p95_ms": 0.05332666666666668
+    }
+  }
+}

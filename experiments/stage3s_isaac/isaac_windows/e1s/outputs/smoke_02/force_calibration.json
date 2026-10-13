@@ -1,0 +1,60 @@
+{
+  "mass_kg": 0.07358209043741226,
+  "duration_s": 0.1,
+  "forces": {
+    "+Fx": {
+      "requested_n": [
+        0.2,
+        0.0,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        0.19999998807907104,
+        0.0,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    },
+    "-Fx": {
+      "requested_n": [
+        -0.2,
+        0.0,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        -0.19999998807907104,
+        0.0,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    },
+    "+Fy": {
+      "requested_n": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        0.0,
+        0.19999998807907104,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    },
+    "-Fy": {
+      "requested_n": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "engine_m_delta_v_over_dt_n": [
+        0.0,
+        -0.19999998807907104,
+        0.0
+      ],
+      "absolute_error_n": 1.1920928966180355e-08
+    }
+  },
+  "max_absolute_error_n": 1.1920928966180355e-08,
+  "passed": true
+}

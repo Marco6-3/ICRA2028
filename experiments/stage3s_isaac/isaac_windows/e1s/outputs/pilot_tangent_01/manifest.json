@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "completed_trials": [],
+  "errors": [
+    "ValueError('Invalid reference rotation')"
+  ]
+}

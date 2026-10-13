@@ -1,0 +1,52 @@
+{
+  "train": [
+    "c001_r00",
+    "c002_r00",
+    "c003_r00",
+    "c004_r00"
+  ],
+  "test": [
+    "c005_r00",
+    "c006_r00",
+    "c007_r00",
+    "c008_r00"
+  ],
+  "seeds": [
+    7,
+    11,
+    19
+  ],
+  "epochs": 80,
+  "split": "Nominal preload training; unseen +0.001 rad looser preload test; identical repeats excluded",
+  "methods": [
+    "legacy_zscore",
+    "robust_floor_clip8"
+  ],
+  "profiles": [
+    "static_mcf",
+    "mcf",
+    "scalar",
+    "raw"
+  ],
+  "scale_floors_mcf_per_finger": [
+    1.0,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.05000000074505806,
+    0.0020000000949949026,
+    0.0020000000949949026,
+    0.0020000000949949026
+  ],
+  "input_clip": [
+    -8,
+    8
+  ],
+  "target_scale": [
+    0.2,
+    0.2,
+    0.003,
+    0.003
+  ],
+  "output_clipping": false
+}

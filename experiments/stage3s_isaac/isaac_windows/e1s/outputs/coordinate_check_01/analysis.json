@@ -1,0 +1,1774 @@
+{
+  "status": "validated",
+  "trials": 24,
+  "frames": 2160,
+  "validation": {
+    "shape": true,
+    "finite": true,
+    "causal_features": true,
+    "synchronized_time": true,
+    "external_wrench_math": true,
+    "hashes": true
+  },
+  "max_feature_error": 0.0,
+  "max_force_math_error_n": 0.0,
+  "max_torque_math_error_nm": 0.0,
+  "force_calibration": {
+    "mass_kg": 0.07358209043741226,
+    "duration_s": 0.1,
+    "forces": {
+      "+Fx": {
+        "requested_n": [
+          0.2,
+          0.0,
+          0.0
+        ],
+        "engine_m_delta_v_over_dt_n": [
+          0.19999998807907104,
+          0.0,
+          0.0
+        ],
+        "absolute_error_n": 1.1920928966180355e-08
+      },
+      "-Fx": {
+        "requested_n": [
+          -0.2,
+          0.0,
+          0.0
+        ],
+        "engine_m_delta_v_over_dt_n": [
+          -0.19999998807907104,
+          0.0,
+          0.0
+        ],
+        "absolute_error_n": 1.1920928966180355e-08
+      },
+      "+Fy": {
+        "requested_n": [
+          0.0,
+          0.2,
+          0.0
+        ],
+        "engine_m_delta_v_over_dt_n": [
+          0.0,
+          0.19999998807907104,
+          0.0
+        ],
+        "absolute_error_n": 1.1920928966180355e-08
+      },
+      "-Fy": {
+        "requested_n": [
+          0.0,
+          -0.2,
+          0.0
+        ],
+        "engine_m_delta_v_over_dt_n": [
+          0.0,
+          -0.19999998807907104,
+          0.0
+        ],
+        "absolute_error_n": 1.1920928966180355e-08
+      }
+    },
+    "max_absolute_error_n": 1.1920928966180355e-08,
+    "torques": {
+      "eccentric_Fx": {
+        "requested_nm": [
+          0.0,
+          0.003,
+          0.0
+        ],
+        "engine_delta_angular_momentum_over_dt_nm": [
+          6.744040137480803e-07,
+          0.0029925500978385845,
+          1.078307152538713e-06
+        ],
+        "absolute_error_nm": 7.557685446195782e-06
+      },
+      "eccentric_Fy": {
+        "requested_nm": [
+          -0.003,
+          0.0,
+          0.0
+        ],
+        "engine_delta_angular_momentum_over_dt_nm": [
+          -0.0029910631001980304,
+          7.307647676753187e-07,
+          3.5032881266245838e-06
+        ],
+        "absolute_error_nm": 9.626797126473052e-06
+      }
+    },
+    "max_absolute_error_nm": 9.626797126473052e-06,
+    "passed": true
+  },
+  "split": "development repeat 0,1; diagnostic repeat 2. Same simulator session, not independent sessions.",
+  "classifier": "training-only standardized nearest class centroid; fixed whole loaded interval minus pre-onset mean",
+  "statistical_boundary": "Exploratory trial bootstrap only. Deterministic state restores do not establish real-world repeatability or E2 interaction.",
+  "scores": {},
+  "excitation_reconstruction": {},
+  "held_out_factor_diagnostics": {},
+  "reversal_segment_diagnostics": {},
+  "matched_zero_diagnostics": [],
+  "repeat_diagnostics": [
+    {
+      "condition": "world_posx",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "world_negx",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "world_posy",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "world_negy",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "object_posx",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "object_negx",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "object_posy",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "object_negy",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "reference_posx",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "reference_negx",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "reference_posy",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    },
+    {
+      "condition": "reference_negy",
+      "repeats": 2,
+      "max_force_difference_n": 0.0,
+      "max_torque_difference_nm": 0.0,
+      "max_object_position_difference_m": 0.0,
+      "raw_map_rmse": 0.0
+    }
+  ],
+  "failure_cases": [],
+  "trial_metrics": [
+    {
+      "id": "world_posx_r00",
+      "trial": {
+        "trial_id": "world_posx_r00",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852856397628784,
+        10.46986198425293,
+        9.5315580368042,
+        8.354918479919434
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.723736047744751,
+        1.077871561050415,
+        0.4437236785888672,
+        0.2674277126789093
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.691372225118141e-05,
+        8.688312722337736e-05,
+        0.0004895818656980391,
+        0.0005250525891390735
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00687639393201003,
+        0.006876328755691098,
+        0.006656947747892446,
+        0.006656724938404248
+      ],
+      "max_displacement_m": 8.89025250216946e-05,
+      "max_orientation_change_rad": 0.00690534308994879,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 10.635019999999999
+    },
+    {
+      "id": "world_posx_r01",
+      "trial": {
+        "trial_id": "world_posx_r01",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852856397628784,
+        10.46986198425293,
+        9.5315580368042,
+        8.354918479919434
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.723736047744751,
+        1.077871561050415,
+        0.4437236785888672,
+        0.2674277126789093
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.691372225118141e-05,
+        8.688312722337736e-05,
+        0.0004895818656980391,
+        0.0005250525891390735
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00687639393201003,
+        0.006876328755691098,
+        0.006656947747892446,
+        0.006656724938404248
+      ],
+      "max_displacement_m": 8.89025250216946e-05,
+      "max_orientation_change_rad": 0.00690534308994879,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 12.12232
+    },
+    {
+      "id": "world_negx_r00",
+      "trial": {
+        "trial_id": "world_negx_r00",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852821111679077,
+        10.470219612121582,
+        9.57440185546875,
+        8.21285629272461
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237765789031982,
+        1.077837586402893,
+        0.39458614587783813,
+        0.31186556816101074
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.00017652872369907475,
+        0.00017651316946662053,
+        0.0005036425267681822,
+        0.000535309603491055
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00767432031800371,
+        0.007674169935010905,
+        0.007853694364054453,
+        0.007853400211448557
+      ],
+      "max_displacement_m": 0.0001805584761314094,
+      "max_orientation_change_rad": 0.007751229395237088,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 12.912405
+    },
+    {
+      "id": "world_negx_r01",
+      "trial": {
+        "trial_id": "world_negx_r01",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852821111679077,
+        10.470219612121582,
+        9.57440185546875,
+        8.21285629272461
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237765789031982,
+        1.077837586402893,
+        0.39458614587783813,
+        0.31186556816101074
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.00017652872369907475,
+        0.00017651316946662053,
+        0.0005036425267681822,
+        0.000535309603491055
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00767432031800371,
+        0.007674169935010905,
+        0.007853694364054453,
+        0.007853400211448557
+      ],
+      "max_displacement_m": 0.0001805584761314094,
+      "max_orientation_change_rad": 0.007751229395237088,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 14.640695
+    },
+    {
+      "id": "world_posy_r00",
+      "trial": {
+        "trial_id": "world_posy_r00",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.85304594039917,
+        10.469564437866211,
+        9.521276473999023,
+        8.258169174194336
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237545251846313,
+        1.0778555870056152,
+        0.42110827565193176,
+        0.2888198494911194
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.876541610228274e-05,
+        8.871885681652233e-05,
+        0.00047161791436951117,
+        0.0004914824819381922
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.005523329345341604,
+        0.005523223501401507,
+        0.005394265081071895,
+        0.005393979235551034
+      ],
+      "max_displacement_m": 9.297666838392615e-05,
+      "max_orientation_change_rad": 0.0056099262985879715,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 16.24409
+    },
+    {
+      "id": "world_posy_r01",
+      "trial": {
+        "trial_id": "world_posy_r01",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.85304594039917,
+        10.469564437866211,
+        9.521276473999023,
+        8.258169174194336
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237545251846313,
+        1.0778555870056152,
+        0.42110827565193176,
+        0.2888198494911194
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.876541610228274e-05,
+        8.871885681652233e-05,
+        0.00047161791436951117,
+        0.0004914824819381922
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.005523329345341604,
+        0.005523223501401507,
+        0.005394265081071895,
+        0.005393979235551034
+      ],
+      "max_displacement_m": 9.297666838392615e-05,
+      "max_orientation_change_rad": 0.0056099262985879715,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 13.670444999999999
+    },
+    {
+      "id": "world_negy_r00",
+      "trial": {
+        "trial_id": "world_negy_r00",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852802038192749,
+        10.46967601776123,
+        9.818971633911133,
+        8.658294677734375
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237472534179688,
+        1.0778615474700928,
+        0.4221956431865692,
+        0.281332403421402
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.000178448771249223,
+        0.0001783737202750902,
+        0.0005445903850381698,
+        0.0005959115524240971
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.02246849143159299,
+        0.02246832720808899,
+        0.023146870843863177,
+        0.023146692712258568
+      ],
+      "max_displacement_m": 0.0001797190197976306,
+      "max_orientation_change_rad": 0.022524655360354487,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 13.77746
+    },
+    {
+      "id": "world_negy_r01",
+      "trial": {
+        "trial_id": "world_negy_r01",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "world",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852802038192749,
+        10.46967601776123,
+        9.818971633911133,
+        8.658294677734375
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237472534179688,
+        1.0778615474700928,
+        0.4221956431865692,
+        0.281332403421402
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.000178448771249223,
+        0.0001783737202750902,
+        0.0005445903850381698,
+        0.0005959115524240971
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.02246849143159299,
+        0.02246832720808899,
+        0.023146870843863177,
+        0.023146692712258568
+      ],
+      "max_displacement_m": 0.0001797190197976306,
+      "max_orientation_change_rad": 0.022524655360354487,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 13.717175
+    },
+    {
+      "id": "object_posx_r00",
+      "trial": {
+        "trial_id": "object_posx_r00",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.8528506755828857,
+        10.469879150390625,
+        9.57433032989502,
+        8.22734546661377
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237941026687622,
+        1.0778772830963135,
+        0.39360424876213074,
+        0.3095839321613312
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.00020265973273672164,
+        0.00020265368310140962,
+        0.0005072644683464346,
+        0.000549871327527298
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.009907112470620698,
+        0.009906924139233301,
+        0.01003480124023167,
+        0.010034703585723509
+      ],
+      "max_displacement_m": 0.00020617253903765231,
+      "max_orientation_change_rad": 0.009982944103816373,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 12.336564999999998
+    },
+    {
+      "id": "object_posx_r01",
+      "trial": {
+        "trial_id": "object_posx_r01",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.8528506755828857,
+        10.469879150390625,
+        9.57433032989502,
+        8.22734546661377
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237941026687622,
+        1.0778772830963135,
+        0.39360424876213074,
+        0.3095839321613312
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.00020265973273672164,
+        0.00020265368310140962,
+        0.0005072644683464346,
+        0.000549871327527298
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.009907112470620698,
+        0.009906924139233301,
+        0.01003480124023167,
+        0.010034703585723509
+      ],
+      "max_displacement_m": 0.00020617253903765231,
+      "max_orientation_change_rad": 0.009982944103816373,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 13.888274999999998
+    },
+    {
+      "id": "object_negx_r00",
+      "trial": {
+        "trial_id": "object_negx_r00",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.8526620864868164,
+        10.469715118408203,
+        9.527568817138672,
+        8.350872039794922
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7238715887069702,
+        1.0778203010559082,
+        0.44317102432250977,
+        0.26759594678878784
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.395110561784514e-05,
+        8.397911760767089e-05,
+        0.000495649368274927,
+        0.0005242174463992792
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00699293311882269,
+        0.006992859673969846,
+        0.006761433934496778,
+        0.006761314371366583
+      ],
+      "max_displacement_m": 8.55387988849543e-05,
+      "max_orientation_change_rad": 0.007008157928394834,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 13.04713
+    },
+    {
+      "id": "object_negx_r01",
+      "trial": {
+        "trial_id": "object_negx_r01",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.8526620864868164,
+        10.469715118408203,
+        9.527568817138672,
+        8.350872039794922
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7238715887069702,
+        1.0778203010559082,
+        0.44317102432250977,
+        0.26759594678878784
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.395110561784514e-05,
+        8.397911760767089e-05,
+        0.000495649368274927,
+        0.0005242174463992792
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00699293311882269,
+        0.006992859673969846,
+        0.006761433934496778,
+        0.006761314371366583
+      ],
+      "max_displacement_m": 8.55387988849543e-05,
+      "max_orientation_change_rad": 0.007008157928394834,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 12.473754999999999
+    },
+    {
+      "id": "object_posy_r00",
+      "trial": {
+        "trial_id": "object_posy_r00",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.8527956008911133,
+        10.469603538513184,
+        9.815078735351562,
+        8.660099029541016
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237454056739807,
+        1.077851414680481,
+        0.42433908581733704,
+        0.27939727902412415
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.0001761216184483414,
+        0.00017603336272538215,
+        0.0005470298137779829,
+        0.000598749723232547
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.02325086889892153,
+        0.02325070458823485,
+        0.02393423184343661,
+        0.023933966940739532
+      ],
+      "max_displacement_m": 0.0001770717353792861,
+      "max_orientation_change_rad": 0.023315242151978086,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 14.25729
+    },
+    {
+      "id": "object_posy_r01",
+      "trial": {
+        "trial_id": "object_posy_r01",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.8527956008911133,
+        10.469603538513184,
+        9.815078735351562,
+        8.660099029541016
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237454056739807,
+        1.077851414680481,
+        0.42433908581733704,
+        0.27939727902412415
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.0001761216184483414,
+        0.00017603336272538215,
+        0.0005470298137779829,
+        0.000598749723232547
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.02325086889892153,
+        0.02325070458823485,
+        0.02393423184343661,
+        0.023933966940739532
+      ],
+      "max_displacement_m": 0.0001770717353792861,
+      "max_orientation_change_rad": 0.023315242151978086,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 12.430945
+    },
+    {
+      "id": "object_negy_r00",
+      "trial": {
+        "trial_id": "object_negy_r00",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.85302734375,
+        10.469544410705566,
+        9.485686302185059,
+        8.223502159118652
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237765789031982,
+        1.0779002904891968,
+        0.42175546288490295,
+        0.28993937373161316
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.074448891999866e-05,
+        8.073750605690684e-05,
+        0.0005023497353697716,
+        0.0005191912512495774
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.004973988817107653,
+        0.004973966761826701,
+        0.004986716851353696,
+        0.004986537798485367
+      ],
+      "max_displacement_m": 8.504759171046317e-05,
+      "max_orientation_change_rad": 0.005027164478199793,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 12.580905
+    },
+    {
+      "id": "object_negy_r01",
+      "trial": {
+        "trial_id": "object_negy_r01",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "object",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.85302734375,
+        10.469544410705566,
+        9.485686302185059,
+        8.223502159118652
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237765789031982,
+        1.0779002904891968,
+        0.42175546288490295,
+        0.28993937373161316
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.074448891999866e-05,
+        8.073750605690684e-05,
+        0.0005023497353697716,
+        0.0005191912512495774
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.004973988817107653,
+        0.004973966761826701,
+        0.004986716851353696,
+        0.004986537798485367
+      ],
+      "max_displacement_m": 8.504759171046317e-05,
+      "max_orientation_change_rad": 0.005027164478199793,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 10.912205
+    },
+    {
+      "id": "reference_posx_r00",
+      "trial": {
+        "trial_id": "reference_posx_r00",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.85304594039917,
+        10.469564437866211,
+        9.521276473999023,
+        8.258169174194336
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237545251846313,
+        1.0778555870056152,
+        0.42110827565193176,
+        0.2888198494911194
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.876541610228274e-05,
+        8.871885681652233e-05,
+        0.00047161791436951117,
+        0.0004914824819381922
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.005523329345341604,
+        0.005523223501401507,
+        0.005394265081071895,
+        0.005393979235551034
+      ],
+      "max_displacement_m": 9.297666838392615e-05,
+      "max_orientation_change_rad": 0.0056099262985879715,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 11.803045
+    },
+    {
+      "id": "reference_posx_r01",
+      "trial": {
+        "trial_id": "reference_posx_r01",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.85304594039917,
+        10.469564437866211,
+        9.521276473999023,
+        8.258169174194336
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237545251846313,
+        1.0778555870056152,
+        0.42110827565193176,
+        0.2888198494911194
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.876541610228274e-05,
+        8.871885681652233e-05,
+        0.00047161791436951117,
+        0.0004914824819381922
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.005523329345341604,
+        0.005523223501401507,
+        0.005394265081071895,
+        0.005393979235551034
+      ],
+      "max_displacement_m": 9.297666838392615e-05,
+      "max_orientation_change_rad": 0.0056099262985879715,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 11.19738
+    },
+    {
+      "id": "reference_negx_r00",
+      "trial": {
+        "trial_id": "reference_negx_r00",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852802038192749,
+        10.46967601776123,
+        9.818971633911133,
+        8.658294677734375
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237472534179688,
+        1.0778615474700928,
+        0.4221956431865692,
+        0.281332403421402
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.000178448771249223,
+        0.0001783737202750902,
+        0.0005445903850381698,
+        0.0005959115524240971
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.02246849143159299,
+        0.02246832720808899,
+        0.023146870843863177,
+        0.023146692712258568
+      ],
+      "max_displacement_m": 0.0001797190197976306,
+      "max_orientation_change_rad": 0.022524655360354487,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 11.398175
+    },
+    {
+      "id": "reference_negx_r01",
+      "trial": {
+        "trial_id": "reference_negx_r01",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852802038192749,
+        10.46967601776123,
+        9.818971633911133,
+        8.658294677734375
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237472534179688,
+        1.0778615474700928,
+        0.4221956431865692,
+        0.281332403421402
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.000178448771249223,
+        0.0001783737202750902,
+        0.0005445903850381698,
+        0.0005959115524240971
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.02246849143159299,
+        0.02246832720808899,
+        0.023146870843863177,
+        0.023146692712258568
+      ],
+      "max_displacement_m": 0.0001797190197976306,
+      "max_orientation_change_rad": 0.022524655360354487,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 12.46056
+    },
+    {
+      "id": "reference_posy_r00",
+      "trial": {
+        "trial_id": "reference_posy_r00",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852821111679077,
+        10.470219612121582,
+        9.57440185546875,
+        8.21285629272461
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237765789031982,
+        1.077837586402893,
+        0.39458614587783813,
+        0.31186556816101074
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.00017652872369907475,
+        0.00017651316946662053,
+        0.0005036425267681822,
+        0.000535309603491055
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00767432031800371,
+        0.007674169935010905,
+        0.007853694364054453,
+        0.007853400211448557
+      ],
+      "max_displacement_m": 0.0001805584761314094,
+      "max_orientation_change_rad": 0.007751229395237088,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 11.14614
+    },
+    {
+      "id": "reference_posy_r01",
+      "trial": {
+        "trial_id": "reference_posy_r01",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852821111679077,
+        10.470219612121582,
+        9.57440185546875,
+        8.21285629272461
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.7237765789031982,
+        1.077837586402893,
+        0.39458614587783813,
+        0.31186556816101074
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        0.00017652872369907475,
+        0.00017651316946662053,
+        0.0005036425267681822,
+        0.000535309603491055
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00767432031800371,
+        0.007674169935010905,
+        0.007853694364054453,
+        0.007853400211448557
+      ],
+      "max_displacement_m": 0.0001805584761314094,
+      "max_orientation_change_rad": 0.007751229395237088,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 11.73733
+    },
+    {
+      "id": "reference_negy_r00",
+      "trial": {
+        "trial_id": "reference_negy_r00",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852856397628784,
+        10.46986198425293,
+        9.5315580368042,
+        8.354918479919434
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.723736047744751,
+        1.077871561050415,
+        0.4437236785888672,
+        0.2674277126789093
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.691372225118141e-05,
+        8.688312722337736e-05,
+        0.0004895818656980391,
+        0.0005250525891390735
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00687639393201003,
+        0.006876328755691098,
+        0.006656947747892446,
+        0.006656724938404248
+      ],
+      "max_displacement_m": 8.89025250216946e-05,
+      "max_orientation_change_rad": 0.00690534308994879,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 13.693224999999998
+    },
+    {
+      "id": "reference_negy_r01",
+      "trial": {
+        "trial_id": "reference_negy_r01",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.25,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "baseline_proxy_sum": [
+        2.85298228263855,
+        10.469815254211426,
+        9.686059951782227,
+        8.392170906066895
+      ],
+      "loaded_proxy_sum": [
+        2.852856397628784,
+        10.46986198425293,
+        9.5315580368042,
+        8.354918479919434
+      ],
+      "contact_normal_projection_abs_mean_n": [
+        0.723736047744751,
+        1.077871561050415,
+        0.4437236785888672,
+        0.2674277126789093
+      ],
+      "max_object_link_relative_displacement_per_finger_m": [
+        8.691372225118141e-05,
+        8.688312722337736e-05,
+        0.0004895818656980391,
+        0.0005250525891390735
+      ],
+      "max_object_link_relative_orientation_change_per_finger_rad": [
+        0.00687639393201003,
+        0.006876328755691098,
+        0.006656947747892446,
+        0.006656724938404248
+      ],
+      "max_displacement_m": 8.89025250216946e-05,
+      "max_orientation_change_rad": 0.00690534308994879,
+      "contact_fraction_per_finger": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "physics_plus_sensor_host_ms_p95": 13.465264999999999
+    }
+  ]
+}

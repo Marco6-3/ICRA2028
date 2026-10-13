@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "completed_trials": [],
+  "rejected_initializations": [],
+  "errors": [
+    "Exception('Failed to get rigid body masses from backend')"
+  ]
+}

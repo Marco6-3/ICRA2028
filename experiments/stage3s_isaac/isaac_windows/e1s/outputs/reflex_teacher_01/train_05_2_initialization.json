@@ -1,0 +1,31 @@
+{
+  "trial_id": "train_05_2",
+  "mode": "open",
+  "gate_passed": true,
+  "initial_configuration": {
+    "target_z_offset_m": 0.0,
+    "initial_close_rad": 0.003
+  },
+  "feedback_target_reached": null,
+  "final_closing_delta_rad": 0.0,
+  "history": [
+    {
+      "step": 0,
+      "proxy": [
+        4.35388708114624,
+        11.078604698181152,
+        7.021478652954102,
+        6.87843656539917
+      ],
+      "normal_n": [
+        0.8214747905731201,
+        0.8103975653648376,
+        1.407294750213623,
+        1.4417507648468018
+      ],
+      "closing_delta_rad": 0.0,
+      "gate": true
+    }
+  ],
+  "scope": "Target two fingers gate; four channels observe two separate objects."
+}

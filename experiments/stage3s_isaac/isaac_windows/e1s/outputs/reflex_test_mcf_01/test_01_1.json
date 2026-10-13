@@ -1,0 +1,59 @@
+{
+  "controller": "mcf",
+  "trial": {
+    "trial_id": "test_01_1",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.35,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "initial_configuration": {
+    "target_z_offset_m": 0.0,
+    "initial_close_rad": 0.003
+  },
+  "initial_gate_passed": true,
+  "closing_delta_rad": 0.0,
+  "initial_per_finger_sum": [
+    5.44235897064209,
+    13.84825611114502,
+    8.776848793029785,
+    8.59804630279541
+  ],
+  "max_environment_normal_contact_n": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "nonzero_frames_per_finger": [
+    180,
+    180,
+    180,
+    180
+  ],
+  "max_displacement_m": 0.0007421145564876497,
+  "max_orientation_change_rad": 0.007075871242208012,
+  "npz_sha256": "93378cda6c9de2027acb98281bf91fc861f52c9a2d81f0c89b68cb4f7b55f41e"
+}

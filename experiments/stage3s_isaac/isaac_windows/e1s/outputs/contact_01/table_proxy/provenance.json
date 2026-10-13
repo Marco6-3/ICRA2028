@@ -1,0 +1,115 @@
+{
+  "upstream_commit": "dc2e1c6607a1b1a0e4b196bb4e2d4ccdc1afdcb0",
+  "source_file_sha256": {
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\contact_pilot.py": "d05dac02be31844bd2df2fd0ee9a25a8a6b16add282518119dfd426a536d2469",
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+    "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+    "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+  },
+  "dataset_sha256": "9bfd43746d3599e9d8fe117254ded7710678ca66b90aebfc20db792bc471052c",
+  "device": "cpu",
+  "physics_dt": 0.008333333333333333,
+  "target": "plug",
+  "episode": 3,
+  "hold_step": 219,
+  "settle_steps": 30,
+  "plug_scale": 1.06,
+  "normal_offset": 0.0036,
+  "reference_wxyz": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "threshold": 0.0,
+  "sensor_slots": [
+    {
+      "slot": 0,
+      "link": "/World/Robot/left_arm_elastomer_left"
+    },
+    {
+      "slot": 1,
+      "link": "/World/Robot/left_arm_elastomer_right"
+    },
+    {
+      "slot": 2,
+      "link": "/World/Robot/right_arm_elastomer_left"
+    },
+    {
+      "slot": 3,
+      "link": "/World/Robot/right_arm_elastomer_right"
+    }
+  ],
+  "units": {
+    "tactile": "normalized SDF penetration proxy",
+    "mcf_fN": "sum of thresholded proxy responses",
+    "mcf_CoP": "grid coordinates [-1,1], NOT world x/y",
+    "mcf_A": "active cell fraction",
+    "force": "N, known external excitation submitted to PhysX",
+    "torque": "Nm about current COM, excludes contact reactions and gravity"
+  },
+  "boundary": "Development contact intervention; table / removed both have fixed robot base. No real force calibration or deformable layer.",
+  "initial_hold_per_finger_sum": [
+    2.9854283332824707,
+    10.674560546875,
+    11.235883712768555,
+    10.31492805480957
+  ],
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "torch": "2.7.0+cpu",
+  "support": "table",
+  "preload_mode": "proxy",
+  "preload_target_proxy": 8.0,
+  "normal_target_n": 0.6,
+  "gate_proxy_min": 2.0,
+  "gate_normal_min_n": 0.05,
+  "fixed_robot_base": true,
+  "catch_floor_center_z": -0.35,
+  "object_contact_audit_paths": [
+    {
+      "object": "/World/Plug/a_0186_plug",
+      "filters": [
+        "/World/Robot/table",
+        "/World/defaultGroundPlane",
+        "/World/Socket/a_0186_socket"
+      ]
+    },
+    {
+      "object": "/World/Socket/a_0186_socket",
+      "filters": [
+        "/World/Robot/table",
+        "/World/defaultGroundPlane",
+        "/World/Plug/a_0186_plug"
+      ]
+    }
+  ],
+  "physics_material_properties": [
+    [
+      [
+        0.5,
+        0.5,
+        0.0
+      ]
+    ]
+  ],
+  "preload_max_steps": 120,
+  "preload_max_close_rad": 0.004,
+  "reference_rotation_world_from_load": [
+    [
+      0.04029988707719922,
+      -0.08081591263736025,
+      0.995914006009633
+    ],
+    [
+      0.9071721723426348,
+      -0.41483308603417884,
+      -0.07037158843243796
+    ],
+    [
+      0.4188252246805461,
+      0.906301439365485,
+      0.05659622050402322
+    ]
+  ],
+  "reference_from_finger": 2
+}

@@ -1,0 +1,27 @@
+{
+  "trial_id": "c002_r01",
+  "mode": "open",
+  "gate_passed": true,
+  "feedback_target_reached": null,
+  "final_closing_delta_rad": 0.0,
+  "history": [
+    {
+      "step": 0,
+      "proxy": [
+        2.992689609527588,
+        10.773508071899414,
+        8.640438079833984,
+        6.678851127624512
+      ],
+      "normal_n": [
+        0.6916601061820984,
+        1.1255303621292114,
+        0.4550592303276062,
+        0.3138292729854584
+      ],
+      "closing_delta_rad": 0.0,
+      "gate": true
+    }
+  ],
+  "scope": "Target two fingers gate; four channels observe two separate objects."
+}

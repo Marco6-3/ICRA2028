@@ -1,0 +1,59 @@
+{
+  "controller": "oracle",
+  "trial": {
+    "trial_id": "train_04_2",
+    "direction": "+Fy",
+    "amplitude_n": 0.28,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 0.8,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.25,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "initial_configuration": {
+    "target_z_offset_m": 0.0,
+    "initial_close_rad": 0.003
+  },
+  "initial_gate_passed": true,
+  "closing_delta_rad": 0.0,
+  "initial_per_finger_sum": [
+    5.44235897064209,
+    13.84825611114502,
+    8.719693183898926,
+    8.596500396728516
+  ],
+  "max_environment_normal_contact_n": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "nonzero_frames_per_finger": [
+    180,
+    180,
+    180,
+    180
+  ],
+  "max_displacement_m": 0.0007013139547780156,
+  "max_orientation_change_rad": 0.002071601990615296,
+  "npz_sha256": "7fb8a9029f891df287efae3b2b891aa6514a8518bcc39bf57afa793d2e55b5a3"
+}

@@ -1,0 +1,3069 @@
+{
+  "status": "completed",
+  "results": [
+    {
+      "name": "removed_normal-force",
+      "support": "removed",
+      "preload_mode": "normal-force",
+      "loaded": 0,
+      "rejected_initializations": 18,
+      "feasible_trial_count": 0,
+      "rows": [],
+      "initializations": [
+        {
+          "id": "c000_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c000_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c001_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c001_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c002_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c002_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c003_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c003_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c004_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c004_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c005_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c005_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "source_sha256": {
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\contact_pilot.py": "efef6483b7433d5ec117ee75e19c06a0ec75fa5b9150a3874b596c83af81bad4",
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+      },
+      "fixture_sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+      "collision_paths": [
+        {
+          "path": "/World/Robot/table/collisions/mesh_0/box",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "name": "removed_open",
+      "support": "removed",
+      "preload_mode": "open",
+      "loaded": 18,
+      "rejected_initializations": 0,
+      "feasible_trial_count": 0,
+      "rows": [
+        {
+          "id": "c000_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.7791453003883362,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0009267748708356475,
+          "max_world_displacement_m": 0.001129045500420034,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c001_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.3894975185394287,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.07078432189099561,
+          "max_world_displacement_m": 0.07114920020103455,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c002_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.4090267419815063,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.08712304330022431,
+          "max_world_displacement_m": 0.0867280662059784,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c003_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.8049066662788391,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.001453103810641871,
+          "max_world_displacement_m": 0.0017596599645912647,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c004_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.9107802510261536,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0009267748708356475,
+          "max_world_displacement_m": 0.001129045500420034,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c005_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.3894975185394287,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.07084740687683658,
+          "max_world_displacement_m": 0.07114920020103455,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c006_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.4090267419815063,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.08716777070621681,
+          "max_world_displacement_m": 0.0867280662059784,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c007_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.8049066662788391,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0015036058123669368,
+          "max_world_displacement_m": 0.0017596599645912647,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c008_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.9107802510261536,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.000941558024680734,
+          "max_world_displacement_m": 0.001129045500420034,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c000_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.7791453003883362,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0009267748708356475,
+          "max_world_displacement_m": 0.001129045500420034,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c001_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.3894975185394287,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.07078432189099561,
+          "max_world_displacement_m": 0.07114920020103455,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c002_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.4090267419815063,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.08712304330022431,
+          "max_world_displacement_m": 0.0867280662059784,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c003_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.8049066662788391,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.001453103810641871,
+          "max_world_displacement_m": 0.0017596599645912647,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c004_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.9107802510261536,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0009267748708356475,
+          "max_world_displacement_m": 0.001129045500420034,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c005_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.3894975185394287,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.07084740687683658,
+          "max_world_displacement_m": 0.07114920020103455,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c006_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            1.4090267419815063,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.08716777070621681,
+          "max_world_displacement_m": 0.0867280662059784,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c007_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.8049066662788391,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0015036058123669368,
+          "max_world_displacement_m": 0.0017596599645912647,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c008_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.0,
+            0.9107802510261536,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.000941558024680734,
+          "max_world_displacement_m": 0.001129045500420034,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        }
+      ],
+      "initializations": [
+        {
+          "id": "c000_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c000_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c001_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c001_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c002_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c002_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c003_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c003_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c004_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c004_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c005_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c005_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            5.4476518630981445,
+            13.836797714233398,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8214656710624695,
+            0.8106426000595093,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "source_sha256": {
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\contact_pilot.py": "efef6483b7433d5ec117ee75e19c06a0ec75fa5b9150a3874b596c83af81bad4",
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+      },
+      "fixture_sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+      "collision_paths": [
+        {
+          "path": "/World/Robot/table/collisions/mesh_0/box",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "name": "removed_proxy",
+      "support": "removed",
+      "preload_mode": "proxy",
+      "loaded": 0,
+      "rejected_initializations": 18,
+      "feasible_trial_count": 0,
+      "rows": [],
+      "initializations": [
+        {
+          "id": "c000_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c000_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c001_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c001_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c002_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c002_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c003_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c003_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c004_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c004_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c005_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c005_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r00",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r01",
+          "rejected": true,
+          "ever_contact_gate": false,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            5.4474382400512695,
+            13.836999893188477,
+            0.0,
+            0.0
+          ],
+          "final_normal_n": [
+            0.8213829398155212,
+            0.8105345964431763,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "source_sha256": {
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\contact_pilot.py": "efef6483b7433d5ec117ee75e19c06a0ec75fa5b9150a3874b596c83af81bad4",
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+      },
+      "fixture_sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+      "collision_paths": [
+        {
+          "path": "/World/Robot/table/collisions/mesh_0/box",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "name": "table_normal-force",
+      "support": "table",
+      "preload_mode": "normal-force",
+      "loaded": 18,
+      "rejected_initializations": 0,
+      "feasible_trial_count": 0,
+      "rows": [
+        {
+          "id": "c000_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00013435475757108455,
+          "max_world_displacement_m": 0.00017306729569099844,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5388373732566833
+        },
+        {
+          "id": "c001_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00013324054784173153,
+          "max_world_displacement_m": 0.00021430288325063884,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5466604232788086
+        },
+        {
+          "id": "c002_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00023178850297240862,
+          "max_world_displacement_m": 0.00012441597937140614,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5300465226173401
+        },
+        {
+          "id": "c003_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00019301040705779852,
+          "max_world_displacement_m": 0.0001265267637791112,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5501328110694885
+        },
+        {
+          "id": "c004_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.761440634727478,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0003411309999247165,
+          "max_world_displacement_m": 0.0003162040957249701,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5216362476348877
+        },
+        {
+          "id": "c005_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5118509531021118,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0005381433019602471,
+          "max_world_displacement_m": 0.00040507930680178106,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5279367566108704
+        },
+        {
+          "id": "c006_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5118509531021118,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00033622094712262173,
+          "max_world_displacement_m": 0.00013499373744707555,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5248836278915405
+        },
+        {
+          "id": "c007_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5450339317321777,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0002919080065135259,
+          "max_world_displacement_m": 0.00015242728113662452,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5419064164161682
+        },
+        {
+          "id": "c008_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.7588790655136108,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0005138501389939251,
+          "max_world_displacement_m": 0.00031747546745464206,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5113666653633118
+        },
+        {
+          "id": "c000_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00013435475757108455,
+          "max_world_displacement_m": 0.00017306729569099844,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5388373732566833
+        },
+        {
+          "id": "c001_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00013324054784173153,
+          "max_world_displacement_m": 0.00021430288325063884,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5466604232788086
+        },
+        {
+          "id": "c002_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00023178850297240862,
+          "max_world_displacement_m": 0.00012441597937140614,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5300465226173401
+        },
+        {
+          "id": "c003_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5342553853988647,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00019301040705779852,
+          "max_world_displacement_m": 0.0001265267637791112,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5501328110694885
+        },
+        {
+          "id": "c004_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.761440634727478,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0003411309999247165,
+          "max_world_displacement_m": 0.0003162040957249701,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5216362476348877
+        },
+        {
+          "id": "c005_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5118509531021118,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0005381433019602471,
+          "max_world_displacement_m": 0.00040507930680178106,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5279367566108704
+        },
+        {
+          "id": "c006_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5118509531021118,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00033622094712262173,
+          "max_world_displacement_m": 0.00013499373744707555,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5248836278915405
+        },
+        {
+          "id": "c007_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.5450339317321777,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0002919080065135259,
+          "max_world_displacement_m": 0.00015242728113662452,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5419064164161682
+        },
+        {
+          "id": "c008_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.7588790655136108,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0005138501389939251,
+          "max_world_displacement_m": 0.00031747546745464206,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.5113666653633118
+        }
+      ],
+      "initializations": [
+        {
+          "id": "c000_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c000_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c001_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c001_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c002_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c002_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c003_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c003_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c004_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c004_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0007000000000000002,
+          "final_proxy": [
+            2.993372917175293,
+            10.774848937988281,
+            8.574664115905762,
+            6.53226375579834
+          ],
+          "final_normal_n": [
+            0.692595362663269,
+            1.1216771602630615,
+            0.7174403667449951,
+            0.5696666836738586
+          ]
+        },
+        {
+          "id": "c005_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        },
+        {
+          "id": "c005_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        },
+        {
+          "id": "c006_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        },
+        {
+          "id": "c006_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        },
+        {
+          "id": "c007_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        },
+        {
+          "id": "c007_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        },
+        {
+          "id": "c008_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        },
+        {
+          "id": "c008_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": true,
+          "final_close_rad": 0.0016499999999999991,
+          "final_proxy": [
+            2.9943883419036865,
+            10.77386474609375,
+            8.73417854309082,
+            6.660084247589111
+          ],
+          "final_normal_n": [
+            0.720105767250061,
+            1.1031270027160645,
+            0.7121956944465637,
+            0.5606865882873535
+          ]
+        }
+      ],
+      "source_sha256": {
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\contact_pilot.py": "efef6483b7433d5ec117ee75e19c06a0ec75fa5b9150a3874b596c83af81bad4",
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+      },
+      "fixture_sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+      "collision_paths": [
+        {
+          "path": "/World/Robot/table/collisions/mesh_0/box",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "table_open",
+      "support": "table",
+      "preload_mode": "open",
+      "loaded": 18,
+      "rejected_initializations": 0,
+      "feasible_trial_count": 0,
+      "rows": [
+        {
+          "id": "c000_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00019158031373954317,
+          "max_world_displacement_m": 9.773482452146709e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.2994498014450073
+        },
+        {
+          "id": "c001_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00016443652462821046,
+          "max_world_displacement_m": 0.00014177081175148487,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.3039548993110657
+        },
+        {
+          "id": "c002_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0002460449875425423,
+          "max_world_displacement_m": 3.981859117629938e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.2958943545818329
+        },
+        {
+          "id": "c003_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0003469362855071316,
+          "max_world_displacement_m": 5.977618639008142e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.31613096594810486
+        },
+        {
+          "id": "c004_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.4097455739974976,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0002334385844165799,
+          "max_world_displacement_m": 5.678664456354454e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.2855913043022156
+        },
+        {
+          "id": "c005_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.9202340245246887,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.003044233361689129,
+          "max_world_displacement_m": 0.003050629049539566,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c006_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.8956832885742188,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00030494655129206474,
+          "max_world_displacement_m": 0.00010923973604803905,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c007_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.022222222222222223,
+          "support_max_n_table_floor_other": [
+            0.786644697189331,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00039241510013242315,
+          "max_world_displacement_m": 0.00018422170251142234,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.007744649890810251
+        },
+        {
+          "id": "c008_r00",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.9715844988822937,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00031354173579683413,
+          "max_world_displacement_m": 2.642183972056955e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c000_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00019158031373954317,
+          "max_world_displacement_m": 9.773482452146709e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.2994498014450073
+        },
+        {
+          "id": "c001_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00016443652462821046,
+          "max_world_displacement_m": 0.00014177081175148487,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.3039548993110657
+        },
+        {
+          "id": "c002_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0002460449875425423,
+          "max_world_displacement_m": 3.981859117629938e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.2958943545818329
+        },
+        {
+          "id": "c003_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.1640875339508057,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0003469362855071316,
+          "max_world_displacement_m": 5.977618639008142e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.31613096594810486
+        },
+        {
+          "id": "c004_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 1.0,
+          "support_max_n_table_floor_other": [
+            1.4097455739974976,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.0002334385844165799,
+          "max_world_displacement_m": 5.678664456354454e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": true,
+          "normal_min_mean_n": 0.2855913043022156
+        },
+        {
+          "id": "c005_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.9202340245246887,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.003044233361689129,
+          "max_world_displacement_m": 0.003050629049539566,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c006_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.8956832885742188,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00030494655129206474,
+          "max_world_displacement_m": 0.00010923973604803905,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        },
+        {
+          "id": "c007_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.022222222222222223,
+          "support_max_n_table_floor_other": [
+            0.786644697189331,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00039241510013242315,
+          "max_world_displacement_m": 0.00018422170251142234,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.007744649890810251
+        },
+        {
+          "id": "c008_r01",
+          "initial": null,
+          "hash_verified": true,
+          "valid_target_contact_fraction": 0.0,
+          "support_max_n_table_floor_other": [
+            0.9715844988822937,
+            0.0,
+            0.0
+          ],
+          "max_object_link_relative_displacement_m": 0.00031354173579683413,
+          "max_world_displacement_m": 2.642183972056955e-05,
+          "zero_load_feasible": false,
+          "initial_gate_passed": false,
+          "normal_min_mean_n": 0.0
+        }
+      ],
+      "initializations": [
+        {
+          "id": "c000_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c000_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c001_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c001_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c002_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c002_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c003_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c003_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c004_r00",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c004_r01",
+          "rejected": false,
+          "ever_contact_gate": true,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.640438079833984,
+            6.678851127624512
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.4550592303276062,
+            0.3138292729854584
+          ]
+        },
+        {
+          "id": "c005_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        },
+        {
+          "id": "c005_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        },
+        {
+          "id": "c006_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        },
+        {
+          "id": "c007_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r00",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        },
+        {
+          "id": "c008_r01",
+          "rejected": false,
+          "ever_contact_gate": false,
+          "feedback_target_reached": null,
+          "final_close_rad": 0.0,
+          "final_proxy": [
+            2.992689609527588,
+            10.773508071899414,
+            8.708223342895508,
+            5.9522504806518555
+          ],
+          "final_normal_n": [
+            0.6916601061820984,
+            1.1255303621292114,
+            0.12504082918167114,
+            0.0
+          ]
+        }
+      ],
+      "source_sha256": {
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\contact_pilot.py": "efef6483b7433d5ec117ee75e19c06a0ec75fa5b9150a3874b596c83af81bad4",
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+      },
+      "fixture_sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+      "collision_paths": [
+        {
+          "path": "/World/Robot/table/collisions/mesh_0/box",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "table_proxy",
+      "support": "table",
+      "preload_mode": "proxy",
+      "loaded": 0,
+      "rejected_initializations": 18,
+      "feasible_trial_count": 0,
+      "rows": [],
+      "initializations": [
+        {
+          "id": "c000_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c000_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c001_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c001_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c002_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c002_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c003_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c003_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c004_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c004_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.250150680541992,
+            6.885993003845215
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.878711223602295,
+            1.7924739122390747
+          ]
+        },
+        {
+          "id": "c005_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        },
+        {
+          "id": "c005_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        },
+        {
+          "id": "c006_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        },
+        {
+          "id": "c006_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        },
+        {
+          "id": "c007_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        },
+        {
+          "id": "c007_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        },
+        {
+          "id": "c008_r00",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        },
+        {
+          "id": "c008_r01",
+          "rejected": true,
+          "ever_contact_gate": true,
+          "feedback_target_reached": false,
+          "final_close_rad": 0.004,
+          "final_proxy": [
+            2.978855609893799,
+            10.739920616149902,
+            8.423224449157715,
+            7.043445110321045
+          ],
+          "final_normal_n": [
+            0.712168276309967,
+            1.1100016832351685,
+            1.5505739450454712,
+            1.410187840461731
+          ]
+        }
+      ],
+      "source_sha256": {
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\contact_pilot.py": "efef6483b7433d5ec117ee75e19c06a0ec75fa5b9150a3874b596c83af81bad4",
+        "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+        "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+      },
+      "fixture_sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+      "collision_paths": [
+        {
+          "path": "/World/Robot/table/collisions/mesh_0/box",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "criteria": "contact_fraction>=.95, max table/floor/other normal contact<.0001 N, max link relative displacement<=.005 m; no formal E1/E3 success claim"
+}

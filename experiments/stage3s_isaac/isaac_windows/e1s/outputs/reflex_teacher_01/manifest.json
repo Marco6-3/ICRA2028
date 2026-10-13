@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "train_00_0",
+    "train_00_1",
+    "train_00_2",
+    "train_00_3",
+    "train_01_0",
+    "train_01_1",
+    "train_01_2",
+    "train_01_3",
+    "train_02_0",
+    "train_02_1",
+    "train_02_2",
+    "train_02_3",
+    "val_03_0",
+    "val_03_1",
+    "val_03_2",
+    "val_03_3",
+    "train_04_0",
+    "train_04_1",
+    "train_04_2",
+    "train_04_3",
+    "train_05_0",
+    "train_05_1",
+    "train_05_2",
+    "train_05_3",
+    "train_zero"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

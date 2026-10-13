@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "initial00_r00",
+    "initial00_r01",
+    "initial01_r00",
+    "initial01_r01",
+    "initial02_r00",
+    "initial02_r01",
+    "initial03_r00",
+    "initial03_r01",
+    "initial04_r00",
+    "initial04_r01",
+    "initial05_r00",
+    "initial05_r01",
+    "initial06_r00",
+    "initial06_r01",
+    "initial07_r00",
+    "initial07_r01",
+    "initial08_r00",
+    "initial08_r01"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

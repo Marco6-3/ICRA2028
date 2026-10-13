@@ -1,0 +1,109 @@
+{
+  "status": "completed",
+  "runs": 9,
+  "summaries": {
+    "static_s4": {
+      "parameters": 50015,
+      "hidden": 211,
+      "history": 1,
+      "fraction": 1.0,
+      "seed_accuracy": [
+        0.36369731800766286,
+        0.36085568326947637,
+        0.3553639846743295
+      ],
+      "mean_accuracy": 0.3599723286504896,
+      "mean_rmse_FxFyMxMy": [
+        0.9503316816804184,
+        1.2847938427682026,
+        0.014131221031544756,
+        0.012572624002793275
+      ],
+      "groups": {
+        "friction": 0.25277777777777777,
+        "preload": 0.37222222222222223,
+        "ramp": 0.44252873563218387,
+        "reverse": 0.39444444444444443,
+        "sdf_gain": 0.26805555555555555,
+        "step_unseen_offset": 0.6166666666666667
+      }
+    },
+    "mcf_t16": {
+      "parameters": 49512,
+      "hidden": 68,
+      "history": 16,
+      "fraction": 1.0,
+      "seed_accuracy": [
+        0.3766602809706258,
+        0.37024265644955295,
+        0.34029374201788
+      ],
+      "mean_accuracy": 0.3623988931460196,
+      "mean_rmse_FxFyMxMy": [
+        0.17930054768552608,
+        0.16115955346532326,
+        0.0016478508358399866,
+        0.0016351677624985529
+      ],
+      "groups": {
+        "friction": 0.3125,
+        "preload": 0.35694444444444445,
+        "ramp": 0.4310344827586207,
+        "reverse": 0.3805555555555556,
+        "sdf_gain": 0.25,
+        "step_unseen_offset": 0.6111111111111112
+      }
+    },
+    "static_mcf": {
+      "parameters": 50192,
+      "hidden": 204,
+      "history": 1,
+      "fraction": 1.0,
+      "seed_accuracy": [
+        0.37560664112388253,
+        0.38026819923371646,
+        0.3802362707535122
+      ],
+      "mean_accuracy": 0.3787037037037037,
+      "mean_rmse_FxFyMxMy": [
+        0.9970265682257722,
+        1.3392683565871222,
+        0.01311642070020901,
+        0.009868307574883056
+      ],
+      "groups": {
+        "friction": 0.2763888888888889,
+        "preload": 0.3625,
+        "ramp": 0.4166666666666667,
+        "reverse": 0.5194444444444445,
+        "sdf_gain": 0.25,
+        "step_unseen_offset": 0.6944444444444443
+      }
+    }
+  },
+  "latency": {
+    "static_s4": {
+      "full_window_p50_ms": 0.0524,
+      "full_window_p95_ms": 0.06929999999999996,
+      "streaming_one_frame_p95_ms": null,
+      "encoder_only_p95_ms": null,
+      "boundary": "CPU normalized-input software latency; excludes raw descriptor extraction, sensor, actuator and energy."
+    },
+    "mcf_t16": {
+      "full_window_p50_ms": 0.97315,
+      "full_window_p95_ms": 1.1742899999999998,
+      "streaming_one_frame_p95_ms": 0.17515,
+      "encoder_only_p95_ms": 0.0011,
+      "boundary": "CPU normalized-input software latency; excludes raw descriptor extraction, sensor, actuator and energy."
+    },
+    "static_mcf": {
+      "full_window_p50_ms": 0.0513,
+      "full_window_p95_ms": 0.05872999999999999,
+      "streaming_one_frame_p95_ms": null,
+      "encoder_only_p95_ms": null,
+      "boundary": "CPU normalized-input software latency; excludes raw descriptor extraction, sensor, actuator and energy."
+    }
+  },
+  "interaction": null,
+  "limits": "Same simulated object/session; tests hold out conditions; no real E1, GRU optimality, minimal sufficiency or closed-loop evidence."
+}

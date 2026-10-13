@@ -1,0 +1,78 @@
+{
+  "upstream_commit": "dc2e1c6607a1b1a0e4b196bb4e2d4ccdc1afdcb0",
+  "source_file_sha256": {
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\run_pilot.py": "82d68a6c50065ccee3227a97aa866df35d92b5a3bf3d375efaca09a5730ff8c7",
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+    "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+    "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4"
+  },
+  "dataset_sha256": "9bfd43746d3599e9d8fe117254ded7710678ca66b90aebfc20db792bc471052c",
+  "device": "cpu",
+  "physics_dt": 0.008333333333333333,
+  "target": "plug",
+  "episode": 3,
+  "hold_step": 219,
+  "settle_steps": 30,
+  "plug_scale": 1.06,
+  "normal_offset": 0.0036,
+  "reference_wxyz": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "threshold": 0.0,
+  "sensor_slots": [
+    {
+      "slot": 0,
+      "link": "/World/Robot/left_arm_elastomer_left"
+    },
+    {
+      "slot": 1,
+      "link": "/World/Robot/left_arm_elastomer_right"
+    },
+    {
+      "slot": 2,
+      "link": "/World/Robot/right_arm_elastomer_left"
+    },
+    {
+      "slot": 3,
+      "link": "/World/Robot/right_arm_elastomer_right"
+    }
+  ],
+  "units": {
+    "tactile": "normalized SDF penetration proxy",
+    "mcf_fN": "sum of thresholded proxy responses",
+    "mcf_CoP": "grid coordinates [-1,1], NOT world x/y",
+    "mcf_A": "active cell fraction",
+    "force": "N, known external excitation submitted to PhysX",
+    "torque": "Nm about current COM, excludes contact reactions and gravity"
+  },
+  "boundary": "Rigid contact physics plus SDF readout. No deformable elastomer or calibrated six-axis F/T. SDF gain sweep is not physical stiffness.",
+  "initial_hold_per_finger_sum": [
+    2.8480007648468018,
+    10.4567289352417,
+    11.002389907836914,
+    9.923651695251465
+  ],
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "torch": "2.7.0+cpu",
+  "reference_rotation_world_from_load": [
+    [
+      0.04461581990566617,
+      -0.08270015593799601,
+      0.9955752672811714
+    ],
+    [
+      0.9080610374213762,
+      -0.4120818490043249,
+      -0.07492464239748256
+    ],
+    [
+      0.41645477657407054,
+      0.9073859343901071,
+      0.056711419834395364
+    ]
+  ],
+  "reference_from_finger": 2
+}

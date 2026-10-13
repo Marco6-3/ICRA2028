@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "completed_trials": [],
+  "errors": [
+    "AttributeError(\"'WarpSdfTactileSensorData' object has no attribute 'pos_w'\")"
+  ]
+}

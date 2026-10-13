@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "dev_zero",
+    "dev_pFx",
+    "dev_nFx",
+    "dev_pFy",
+    "dev_nFy"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

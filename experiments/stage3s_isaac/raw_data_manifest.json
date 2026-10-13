@@ -1,0 +1,3203 @@
+{
+  "files": [
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c000_r00.npz",
+      "sha256": "c44ec14835030e288660c9c6285138fe704408d00c9222d29ebe9c12844938e4",
+      "size_bytes": 1658828,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c000_r01.npz",
+      "sha256": "da0b873496d633477fd762db6199d3825c40ab46dd69e4309534ee1a51d21aa9",
+      "size_bytes": 1658818,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c001_r00.npz",
+      "sha256": "8c872cc3c8f3d70657ddbf0ce4b186ee5930df9f30c6173016b2bba271157010",
+      "size_bytes": 1660786,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c001_r01.npz",
+      "sha256": "bfc13029299a9efd8ee95c4d91735d8c164dd79347cb5573a49484fc42435584",
+      "size_bytes": 1660801,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c002_r00.npz",
+      "sha256": "891e69a80ee2f5501f8e136942895ba51f14f0ffcb1d993d468da967b8d63209",
+      "size_bytes": 1660025,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c002_r01.npz",
+      "sha256": "17a62ada4d59f2ea6efd7d12d14863b7558550bb1b39aeb2cb7e50d2349559a4",
+      "size_bytes": 1660011,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c003_r00.npz",
+      "sha256": "2b8f4601fe30c9201d43bae214745cbf67d092d4a5a0cb558d4dd5ec10304291",
+      "size_bytes": 1660178,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c003_r01.npz",
+      "sha256": "83f843b614405dc27de48b9bd9cd042167e1b9b23c3352b640b54e1de1f2eaf2",
+      "size_bytes": 1660181,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c004_r00.npz",
+      "sha256": "df306e097ac4a6765fa7a2e6011c9cd054b1604109f051b02967ad6bd31b315c",
+      "size_bytes": 1660781,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c004_r01.npz",
+      "sha256": "fd2e20df7e99a9dd5ee90e24a2c76bd3ffb44cc69ea932d380a0a7be43d7dfb6",
+      "size_bytes": 1660778,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c005_r00.npz",
+      "sha256": "d1437a16fd7b5bc1980b4e220dd3dae9f61d605a59f2324c594404166cc7a65c",
+      "size_bytes": 1662241,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c005_r01.npz",
+      "sha256": "38e6699d9ee7268b3c4237f3e3e4c10a74fe242b85e41c61b8dff2273660b73a",
+      "size_bytes": 1662243,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c006_r00.npz",
+      "sha256": "0bde12ff6959ad87c6940f7fc3c2cd260be6572807e1da63e5dbc7fd9339a2a8",
+      "size_bytes": 1662863,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c006_r01.npz",
+      "sha256": "35c1a042c4bfc38f4383906af26b3fba5e9fd71574be44c4c7966e26d5e8a7b8",
+      "size_bytes": 1662857,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c007_r00.npz",
+      "sha256": "b6ac0422d043f7bce37303c83a7d8d9155f8e7f8f9f55e752ad9ab97f8f30890",
+      "size_bytes": 1662877,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c007_r01.npz",
+      "sha256": "dabd7bc007720ad511b0f84bc73f0a5e48b3b7db5e938525c06b6dc943869e98",
+      "size_bytes": 1662880,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c008_r00.npz",
+      "sha256": "3d21ac3fba80df1e312d0230be86725d89da668ff14616bfc4e8200a80505def",
+      "size_bytes": 1662525,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/c008_r01.npz",
+      "sha256": "be98e6b4271d357d3f935302b51b82c2e169ac6169cbe4a45cb0a4ed6554e9c5",
+      "size_bytes": 1662531,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_normal-force/force_calibration.npz",
+      "sha256": "a1a055f2a69da3cf29e93e53f58cdb89732440fb1e1e9a62fca58b12c4c7a99c",
+      "size_bytes": 2379,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c000_r00.npz",
+      "sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+      "size_bytes": 1657742,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c000_r01.npz",
+      "sha256": "2908302e5cf5fbd04c2531476e84f5cde95fd17ca464e942e223d81adb9d1e4b",
+      "size_bytes": 1658174,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c001_r00.npz",
+      "sha256": "9fc5933dc64e149a30e9519846a5818599e8d5b4dcd9107b55e6347c80c1a4c7",
+      "size_bytes": 1660073,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c001_r01.npz",
+      "sha256": "fefec888eb3c69d0c74d6dfa008af36d87602b47e611232aac49f15b0814c1f0",
+      "size_bytes": 1659720,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c002_r00.npz",
+      "sha256": "bfa1be0bdfed476e3b91f833d260372167e7ed4e863e03c351fba29f1aeed068",
+      "size_bytes": 1659597,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c002_r01.npz",
+      "sha256": "6eb3ea957a8778a0c366d93fab7fe60af67668510152b2b2488f7d545b1362df",
+      "size_bytes": 1659688,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c003_r00.npz",
+      "sha256": "fe8639090343900e28fd1195ca67da2fa4e85ba92d65f63c0cc16e790b6cdf48",
+      "size_bytes": 1659326,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c003_r01.npz",
+      "sha256": "a828879d5225f0ca1c0e2dcbc289055770e2f27bfad401e2e1a52f7ed46b516a",
+      "size_bytes": 1659078,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c004_r00.npz",
+      "sha256": "9b91380dd2e10d225c7c6d6c25f9cf7e53e8a872e40f1e9fcfa11cae1dfd1684",
+      "size_bytes": 1659803,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c004_r01.npz",
+      "sha256": "d2771534859fb7f782595348254654f8b7c180b75c20601aa584d627c42beeee",
+      "size_bytes": 1659841,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c005_r00.npz",
+      "sha256": "e421fe22e3b44311264540a849f676b80d2bb4ffccb512fece170e6f030a9c5a",
+      "size_bytes": 1647867,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c005_r01.npz",
+      "sha256": "99c475a359f2b555500fbb07bb7d38d719f983ed90fb91d689f03625f074aef3",
+      "size_bytes": 1647833,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c006_r00.npz",
+      "sha256": "c1d399854c1733b89f218a0a788f7fef46c659ca932d4a9d53d1e774589972d1",
+      "size_bytes": 1657963,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c006_r01.npz",
+      "sha256": "fbaa8a19d225404c33e75372a6b5e382aac7482196308ac865b9b3fe1b12c3d5",
+      "size_bytes": 1657977,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c007_r00.npz",
+      "sha256": "64a72d4c2f3022cfd30fc3b2976cd6814b96216857abe0570b631c5a1f306d6c",
+      "size_bytes": 1658168,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c007_r01.npz",
+      "sha256": "8155ff5e82a58406cdc38c6c0122d904c0c9d8390e872fa78ddf3b64c0c3a1f3",
+      "size_bytes": 1658160,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c008_r00.npz",
+      "sha256": "076ea69ee4dba9d7e03e721c23c9afa48f9ad5ce58ea1f316bc9381c9b1c5e1a",
+      "size_bytes": 1658158,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/c008_r01.npz",
+      "sha256": "4bb26b9553e361fd029b0f90bdea1a88227edcbf59a0170034a9ac2621da7a94",
+      "size_bytes": 1658170,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_open/force_calibration.npz",
+      "sha256": "a1a055f2a69da3cf29e93e53f58cdb89732440fb1e1e9a62fca58b12c4c7a99c",
+      "size_bytes": 2379,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c000_r00.npz",
+      "sha256": "e88701c8c2380c7a9e2fc021fde9eaad295fd6cde9ef1b5dde5ec269df8bc9f6",
+      "size_bytes": 1658552,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c000_r01.npz",
+      "sha256": "e3c151f204c6c20dceb75f0264a439902a54d1c9b67e24a124460cb0491f44c4",
+      "size_bytes": 1658543,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c001_r00.npz",
+      "sha256": "8e96f10916e66af630b66580316f5633d388d2f76e8dfb48a2a4669746aa4479",
+      "size_bytes": 1660735,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c001_r01.npz",
+      "sha256": "ef99fd7c714e2762b43a13aef8830a9959ba6542b36fd522948c38a78209a40b",
+      "size_bytes": 1660739,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c002_r00.npz",
+      "sha256": "6c6df8668ee2e8507bff0b34328adac7787c58afa9561884a0c852f82cb4896f",
+      "size_bytes": 1659872,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c002_r01.npz",
+      "sha256": "03b95d0a24f9178e9f9b78a8d287385ebdb109005c6d2f304930e55c0d1dc383",
+      "size_bytes": 1659873,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c003_r00.npz",
+      "sha256": "ac6296cb32b19883a4feeb25a4a91c9b71023de0ea4851cdaf7a20aa57cd71aa",
+      "size_bytes": 1659939,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c003_r01.npz",
+      "sha256": "087257c3db52ab88146324bd6fc13f1f1772d3b48cd392b4d82de2e2b1db4fd4",
+      "size_bytes": 1659939,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c004_r00.npz",
+      "sha256": "957678f3fbefe413018272d2b952e766a282ddaaac94f74de117ead1e37d5842",
+      "size_bytes": 1660013,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c004_r01.npz",
+      "sha256": "40d06fba8732d3e1dc3e421f51e9f446024e10d36dc6309dcdb8e5a66696f778",
+      "size_bytes": 1660018,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c005_r00.npz",
+      "sha256": "1447d2c88e8637da47a816435065c8b362a17a3364b8ae748794b73afcaffcbe",
+      "size_bytes": 1660163,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c005_r01.npz",
+      "sha256": "7059902407d57eb231f83bdc578526da9ca4f4f42564942ad2ccc44ce089a7db",
+      "size_bytes": 1660163,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c006_r00.npz",
+      "sha256": "191bd70335bcfcf23110e36867c752291b3e66174bcabd2fb2a938b98d46ea05",
+      "size_bytes": 1659751,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c006_r01.npz",
+      "sha256": "7469f62d193572c38a2e20a5adf32778a92fda48dd016a6041402d596ddb9839",
+      "size_bytes": 1659755,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c007_r00.npz",
+      "sha256": "b7ea070e2a005e8060a4ec6a114541401e6fb4a8b6875fc07a4278dceb4b881c",
+      "size_bytes": 1658451,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c007_r01.npz",
+      "sha256": "732b59fd26312913141ba531733f9c5c915e772ef24be6fac51ada0161477b27",
+      "size_bytes": 1658449,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c008_r00.npz",
+      "sha256": "fa98f10cb063e8b32156c732d46a47dbe776c10b3486e8dcde0f79871f2c59d4",
+      "size_bytes": 1659449,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/c008_r01.npz",
+      "sha256": "f6ebfde4409ee4a8ecb0dbf6ed016ba0fc16bcd062c995f4da70751b4630a53c",
+      "size_bytes": 1659440,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_01/table_proxy/force_calibration.npz",
+      "sha256": "a1a055f2a69da3cf29e93e53f58cdb89732440fb1e1e9a62fca58b12c4c7a99c",
+      "size_bytes": 2379,
+      "group": "contact_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_normal-force/force_calibration.npz",
+      "sha256": "9ad0d4b2003502f09e887aaa192de3e5594d56fb4e7876a969f10ef72e9ad657",
+      "size_bytes": 2920,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c000_r00.npz",
+      "sha256": "71d6d15c4f7e73a0b25d2ae1abb7d757e3f931af67155d4bf460e044f6e51c3e",
+      "size_bytes": 1620563,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c000_r01.npz",
+      "sha256": "af99d41e398f3140743a0f0c68943cf8cd4491910bdcb9ccb10bddef29c5ffeb",
+      "size_bytes": 1620551,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c001_r00.npz",
+      "sha256": "e658e81c2aed53bfa9656dd32c86021a390eca972e9bad952df69eaa5ccb8631",
+      "size_bytes": 1625444,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c001_r01.npz",
+      "sha256": "73eee81379548bd60861a042555b8256f2452a80026c80c4583a43743be8a355",
+      "size_bytes": 1625450,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c002_r00.npz",
+      "sha256": "93d370f2b4ef7c42644ba793f47f3a738c31d083e0bbf36086ca928eb1c12b13",
+      "size_bytes": 1625538,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c002_r01.npz",
+      "sha256": "7ec6fba3588ccabece048de9da4e784a7f8fea4cf1f38a12e6cf806eb0ae877d",
+      "size_bytes": 1625540,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c003_r00.npz",
+      "sha256": "93cc9d5ef80fbe71fad088ee9c792a60be7c65ff90df05dc97b09a7c2bc8a9ad",
+      "size_bytes": 1624895,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c003_r01.npz",
+      "sha256": "9b8950d2c3e97c70fefbb7f783614c5558947c9dae2094155d265093a01ac2eb",
+      "size_bytes": 1624880,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c004_r00.npz",
+      "sha256": "bdfadec310159d1199a9947ba896523db080dca242ded16407de6e09e5bfbc83",
+      "size_bytes": 1622042,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c004_r01.npz",
+      "sha256": "fbd18eaeb0086d7d472226c26b05fccd03637c3e6a2007fdf159aeaa63dbabe5",
+      "size_bytes": 1622049,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c005_r00.npz",
+      "sha256": "11b2042db17fda8975b9641eae0c09ba2a0665620e9289515db8c6ee75eab9b4",
+      "size_bytes": 1626784,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c005_r01.npz",
+      "sha256": "9e8c3271bf7c33142d0196b383cc4ba45960e384cc9382e126dd1e7d66f08736",
+      "size_bytes": 1626764,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c006_r00.npz",
+      "sha256": "42ead82e70d65a7f93d6238bf824c20996e4ed30e767198c71f032314dc84376",
+      "size_bytes": 1626848,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c006_r01.npz",
+      "sha256": "015fd4e15b04dcafd0e7a19402816e199a5e6ac22b9a83fa53e867caf055a0cb",
+      "size_bytes": 1626862,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c007_r00.npz",
+      "sha256": "e841317adc77625d390ff68a8c2454a53c72b5a1fb9babdac0e0a03e73d79faa",
+      "size_bytes": 1626218,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c007_r01.npz",
+      "sha256": "3bcdc22c37f727140fd90db21b2266a15c158ed74f4a780f1f4b5017d01172b4",
+      "size_bytes": 1626207,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c008_r00.npz",
+      "sha256": "a31bffc0e6ad69d0fe50ba523cff4ff47293b7f3377ff898cb4ac7d79465f5e2",
+      "size_bytes": 1623344,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/c008_r01.npz",
+      "sha256": "7fd0ff4fd2dca7099411601ad32e1585f1cd485bee37abadc39811c472d4de46",
+      "size_bytes": 1623367,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_open/force_calibration.npz",
+      "sha256": "9ad0d4b2003502f09e887aaa192de3e5594d56fb4e7876a969f10ef72e9ad657",
+      "size_bytes": 2920,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/removed_proxy/force_calibration.npz",
+      "sha256": "9ad0d4b2003502f09e887aaa192de3e5594d56fb4e7876a969f10ef72e9ad657",
+      "size_bytes": 2920,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c000_r00.npz",
+      "sha256": "609c5de41d1fb69be0106a42d46a05f93b977596ad5b05021287831e6b20146f",
+      "size_bytes": 1652443,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c000_r01.npz",
+      "sha256": "6357d558572415c61c116e1b81f3c754e8eee498bdefec9ab582a2d9571c851f",
+      "size_bytes": 1652443,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c001_r00.npz",
+      "sha256": "320c81435bce35e02d16edc95c97f55093065ea0e43d8092b4537dc33aca1cd2",
+      "size_bytes": 1656028,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c001_r01.npz",
+      "sha256": "83ae6304b90354a6be04b98593a8a951120e44ddee999ff37bafc7dc8b014e98",
+      "size_bytes": 1656022,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c002_r00.npz",
+      "sha256": "6e1b193e9625e2c0aea503d0e39cc897c217490390fa9aa33366e24f82e853dd",
+      "size_bytes": 1655552,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c002_r01.npz",
+      "sha256": "b9f488da5a7a05a6b1bb911853467abf5ebf85454cb6d8a4cf4a33b14792d04f",
+      "size_bytes": 1655551,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c003_r00.npz",
+      "sha256": "bc800b1fe97e6230589ad7ee6c674d009730c0f0f68c94e58d0200e4aaa49fa3",
+      "size_bytes": 1655734,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c003_r01.npz",
+      "sha256": "ea5e8e0456be4323e0e529973b24f7dc9a3b68b28f0b378d1840f9a5c106b2ef",
+      "size_bytes": 1655727,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c004_r00.npz",
+      "sha256": "19fa3d5dedd27f6bb7594f922c73dc9b7edbeef8d4e116a146477a3d0464966a",
+      "size_bytes": 1658669,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c004_r01.npz",
+      "sha256": "a18034f8cad1accd4e93c527f756020b21f604d9054e1962a0a83cf0cd213fdb",
+      "size_bytes": 1658667,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c005_r00.npz",
+      "sha256": "77d8f53a11bccdbda10aeda06aa510e01512a98ce7898eaad3ab7cd5b5da0511",
+      "size_bytes": 1654894,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c005_r01.npz",
+      "sha256": "84af7ec27681ba54df34d5ac6a9a6e4bc97859328cb9af03fa5e8f2544b0fed3",
+      "size_bytes": 1654899,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c006_r00.npz",
+      "sha256": "dea9f0c2f33b152cc786270138056e57ff856e2060d04282742bd351b9706b24",
+      "size_bytes": 1652922,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c006_r01.npz",
+      "sha256": "72f5130de9bc8f00bcdb2cce604d9538145d868d85f8d96df1577db7dbcee127",
+      "size_bytes": 1652918,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c007_r00.npz",
+      "sha256": "e287d42285427928f86a8d83fec94dc9281007f5df968816d4af94a25df050c4",
+      "size_bytes": 1654451,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c007_r01.npz",
+      "sha256": "9cc51fa10e2c684aa71b101c2d90a27d073f3515c3d5ca5db343ad8dc12fd216",
+      "size_bytes": 1654454,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c008_r00.npz",
+      "sha256": "0b1ff7f3e550126a2bb895b181aad59b2a41bf34a63783ffc621358ab420ec3a",
+      "size_bytes": 1654979,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/c008_r01.npz",
+      "sha256": "ea41ec1aa1aaf7b533e41f54226d2e963e418de967a18b1997253742404c8368",
+      "size_bytes": 1654985,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_normal-force/force_calibration.npz",
+      "sha256": "63da10c0837e5d6961ec62dbb47a70784827b38686fa9be3492c6e238fec19f5",
+      "size_bytes": 2377,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c000_r00.npz",
+      "sha256": "93c2d3a08f9020cdca919b937ae36df3bd720039f1a19e348d52f49bae775c11",
+      "size_bytes": 1649212,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c000_r01.npz",
+      "sha256": "622300d096950f447818896ed18bdc6465a1a527279ae90eb06f4395dacb2e93",
+      "size_bytes": 1649213,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c001_r00.npz",
+      "sha256": "ee7cd6e23400838d1006bc51f6455a4ae87417025bd2dc53f26aa7b4d0855d95",
+      "size_bytes": 1652618,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c001_r01.npz",
+      "sha256": "9dab10421079e354fe06f096cba154c7238a4a7549cbd2f62dc7305bc481a078",
+      "size_bytes": 1652615,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c002_r00.npz",
+      "sha256": "619553f044ba02c03def2a9a50dcd4cf0242119238d2b679a74918832e85981c",
+      "size_bytes": 1654466,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c002_r01.npz",
+      "sha256": "ec64ba0a4f72721307f6c57836056540af6857dec826129ef1a3ceb9b6ae73b5",
+      "size_bytes": 1654471,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c003_r00.npz",
+      "sha256": "45234da759ec71936bf50327554eba8ee0551606c6cc615c528fd097d2919ada",
+      "size_bytes": 1653105,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c003_r01.npz",
+      "sha256": "bbbc13fc642edfb4526d14c7ccbdbd7ecc7d66ad36b261baa2a6e3868f16ff81",
+      "size_bytes": 1653098,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c004_r00.npz",
+      "sha256": "49c3e3a2d0cd5d804380081aec5d5e5b5f1bf8b6beda9931055dbb85c7e7bbf9",
+      "size_bytes": 1655053,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c004_r01.npz",
+      "sha256": "bb190ed6971c3ef080dc7129cb26600bc8e9f0fd2cce8dc7bd65d546cb1fe74a",
+      "size_bytes": 1655051,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c005_r00.npz",
+      "sha256": "d93c20b5ab756e0fd0b41342dc1df2a09642d19ab01f9b34196f3b38e1c43754",
+      "size_bytes": 1647559,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c005_r01.npz",
+      "sha256": "86a07ced1e7191bfd0425cf9678231091a42e93942c5cb7b6b9f85093e97c9fc",
+      "size_bytes": 1647547,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c006_r00.npz",
+      "sha256": "48ea85d60f268351fdd853680d6a9671b5d9e407bdf7ce3d963a002bd4729cea",
+      "size_bytes": 1655225,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c006_r01.npz",
+      "sha256": "ab7c2708e1f8f5c0b84627ea019150ccef2f77cf8e93320b19ef1305f4fc87b0",
+      "size_bytes": 1655247,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c007_r00.npz",
+      "sha256": "7e6e3652ebb1d251adbc8bf072b1f19c3eb2dd696537617cf0957dbd7af44cfa",
+      "size_bytes": 1655183,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c007_r01.npz",
+      "sha256": "f7f4e99cb39798294850bb347918c7a30ff9b73918fb174d6e705f0c257c6b7c",
+      "size_bytes": 1655168,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c008_r00.npz",
+      "sha256": "801e2a26d3782960ed5f659bf373f20d0cbf705d7e68193344ee9463893e9b85",
+      "size_bytes": 1652526,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/c008_r01.npz",
+      "sha256": "7271e075e69aec988e83829a4ffafd4f1d041f7175acfe7c7cef8d4858cdc642",
+      "size_bytes": 1652541,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_open/force_calibration.npz",
+      "sha256": "63da10c0837e5d6961ec62dbb47a70784827b38686fa9be3492c6e238fec19f5",
+      "size_bytes": 2377,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_02/table_proxy/force_calibration.npz",
+      "sha256": "63da10c0837e5d6961ec62dbb47a70784827b38686fa9be3492c6e238fec19f5",
+      "size_bytes": 2377,
+      "group": "contact_02",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial00_r00.npz",
+      "sha256": "73dfa8e72b47a5768782e22914fad3ce6ada8f20a49ab39685a70ec9ebbe6704",
+      "size_bytes": 1631269,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial00_r01.npz",
+      "sha256": "4240b752c0a0d71bf20295c0662a5ce85ef23fa75ddf8b5e4ed4055002320072",
+      "size_bytes": 1631255,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial01_r00.npz",
+      "sha256": "b316b84c16767b014e0dd67dc65992dc81040f82e30ae910782261efc787d5fa",
+      "size_bytes": 1641946,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial01_r01.npz",
+      "sha256": "00905fc691dd125e5c0ca49446dbbc1239d585867ccc0677ce9e01d77af2607e",
+      "size_bytes": 1642581,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial02_r00.npz",
+      "sha256": "bcd422b4897cb6de21d0066f9af7bb0828ff55ab8407592f48f733b917ad5ae9",
+      "size_bytes": 1659068,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial02_r01.npz",
+      "sha256": "47073a89b4a67e73e93562b8f1eb0f093176a348b1ba05a295f2e61879f49363",
+      "size_bytes": 1659097,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial03_r00.npz",
+      "sha256": "bcf272becef9ecda7a431ef37a4fe626f3b1578e2970abe5a8791fb6ceb91779",
+      "size_bytes": 1634764,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial03_r01.npz",
+      "sha256": "af01e3291dd2ac3b34a6374a85d14a6efe8826ff69555966c04223e8ed759472",
+      "size_bytes": 1633042,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial04_r00.npz",
+      "sha256": "112d2c8384dd23a8d72c68f04d9b8aea991856b7986c0a5c77d3d7b9b40b8de5",
+      "size_bytes": 1693663,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial04_r01.npz",
+      "sha256": "1ffe6d12860c76ea0f027f508a7ad2b42118ccc59add292baf7d69d2c41d09b4",
+      "size_bytes": 1693684,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial05_r00.npz",
+      "sha256": "626e13d5aff3bc2096e6f4e0fedf3238ca3e75eff0729453d7ae23c9bc71bc5c",
+      "size_bytes": 1715140,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial05_r01.npz",
+      "sha256": "e7130bf8d034d769a727fd22f151dab993d190088b46ce37c681e8b4f175c732",
+      "size_bytes": 1715173,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial06_r00.npz",
+      "sha256": "aa477785ab59ad6f68b3e043cce6839853ca51e448e2d3892bedb849792b27ee",
+      "size_bytes": 1632075,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial06_r01.npz",
+      "sha256": "c83ef4bdf476d90cc4f49bb10561dff92e5f488049574fbc9fbe210d8527ad23",
+      "size_bytes": 1635857,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial07_r00.npz",
+      "sha256": "0af95c41c8358cb002c22b89a5e14930c9a9ddb16977eda01bec43314358c045",
+      "size_bytes": 1720332,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial07_r01.npz",
+      "sha256": "67ec7080135a82d3bd6c9f32512baed120379201f1cc3c7a79289d2bfd7df1df",
+      "size_bytes": 1720339,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial08_r00.npz",
+      "sha256": "4bc5ee74c24d8db6a710d2e69f458777f788a4a4058bdfb69c342c3b4b124820",
+      "size_bytes": 1707533,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/contact_bringup_01/initial08_r01.npz",
+      "sha256": "aec748d4d4ce727c1756d9da9dc11a0effab2683147354acbfb3a37a2314e733",
+      "size_bytes": 1707550,
+      "group": "contact_bringup_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/force_calibration.npz",
+      "sha256": "2e3d5476008badff2362df1737ad2335799b258606fae918cefef216647d746e",
+      "size_bytes": 2378,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_negx_r00.npz",
+      "sha256": "0d4a6176c77ede89b2bd4bc403626d3d0a20f8663bd9fd19593322c91b395fa6",
+      "size_bytes": 1628492,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_negx_r01.npz",
+      "sha256": "b24616c97fb4dca9c7146caa86e6e62a496ebd109bf95c518e4a75a5db781cea",
+      "size_bytes": 1628511,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_negy_r00.npz",
+      "sha256": "4896c96917a0e8268958599e3650ce77fd9070842bcade66df75c1b372764b83",
+      "size_bytes": 1627331,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_negy_r01.npz",
+      "sha256": "90254f044bbb8a584b7d998d5f0ac1ed0546c403b42a4fd446b9203f21a90214",
+      "size_bytes": 1627327,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_posx_r00.npz",
+      "sha256": "e3ade97021e7f81fc40a2a56b065a28e3a82b9c46bbe3ae749bc7c7b910114f5",
+      "size_bytes": 1631481,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_posx_r01.npz",
+      "sha256": "ca762fd6ccd647808d41e222032de92f7f912d1c2b8ac61b62704d1eb59bad89",
+      "size_bytes": 1631526,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_posy_r00.npz",
+      "sha256": "cf63752f4eb1756c482fffc9460129bab0597667477e94777a8110644e457ca1",
+      "size_bytes": 1627686,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/object_posy_r01.npz",
+      "sha256": "7382ddc3a8ebb1f791d24d93cfad44d1ffdcab050df13a955755ea44ae8e6bc6",
+      "size_bytes": 1627690,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_negx_r00.npz",
+      "sha256": "d6dc3cd7246884f5fdd95a4f62be0d3ecea5e880c3e73bcbf64ae9f9560d4aac",
+      "size_bytes": 1624439,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_negx_r01.npz",
+      "sha256": "79db5042d0c9e074df5e8c92c09c36cdb569b3cdd8046256a8235af4e6cb905d",
+      "size_bytes": 1624459,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_negy_r00.npz",
+      "sha256": "d3ac9764bac37a28029cdb7d5aee69b61d27609eda79914bd0d2388596299867",
+      "size_bytes": 1632637,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_negy_r01.npz",
+      "sha256": "e87e502167209a1d092a1864126fa1732ded605f69bb2705d79757ed90b2b2de",
+      "size_bytes": 1632617,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_posx_r00.npz",
+      "sha256": "f12662548e815a9b4a07899c29a4876f8cda85d614e490a6593748207b4f8477",
+      "size_bytes": 1629570,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_posx_r01.npz",
+      "sha256": "d3cbdba28116177e15dd7c17097e4da0d157f6187b249a99b6b565e42e957022",
+      "size_bytes": 1629570,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_posy_r00.npz",
+      "sha256": "f394c63561845d72e27439561de8613eff6064dc227ca343ed95d831d1f76249",
+      "size_bytes": 1633877,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/reference_posy_r01.npz",
+      "sha256": "00ddae6c0b20c656725caaff942128146d9451fab5561605d6b229c2c8746b35",
+      "size_bytes": 1633865,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_negx_r00.npz",
+      "sha256": "e61725f56e484a93569dfd77192fdbed8e3241343ac5497a63c3e914694272f2",
+      "size_bytes": 1633866,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_negx_r01.npz",
+      "sha256": "1990e84181526db155acec389d0458edf14a57bdaa3c1d897de545498d3f24c2",
+      "size_bytes": 1633885,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_negy_r00.npz",
+      "sha256": "adc6d9730e0cd0c7abc4e514c6c81e0f7870c658006b06979c29e01aa2dfce45",
+      "size_bytes": 1624446,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_negy_r01.npz",
+      "sha256": "144f501ad895cd889ee80cc7980b8ca23da105b46baf5e70b19cb79dff972876",
+      "size_bytes": 1624460,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_posx_r00.npz",
+      "sha256": "9123b17ffd05396be32dd42d7497f56b6ce4e56353eef7848b9e0a91f4c77660",
+      "size_bytes": 1632605,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_posx_r01.npz",
+      "sha256": "86e2c78db41633b56a60d9dc9a0a1b994b3c6ab0f31c1adeec0209b63aa4331f",
+      "size_bytes": 1632601,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_posy_r00.npz",
+      "sha256": "707070b54ece621b3325a899ea56be3976435c6ecc597389011d23d007bf7e1a",
+      "size_bytes": 1629552,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/coordinate_check_01/world_posy_r01.npz",
+      "sha256": "58c7209fddc4e652370b160bddb309d3bf3d955343efdd687138ddad934baccd",
+      "size_bytes": 1629570,
+      "group": "coordinate_check_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_01/force_calibration.npz",
+      "sha256": "2e3d5476008badff2362df1737ad2335799b258606fae918cefef216647d746e",
+      "size_bytes": 2378,
+      "group": "pilot_tangent_01",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c000_r00.npz",
+      "sha256": "7c9ba84a0ec98fd8b191d584ecf6e754b449192b726734b75998d052107671de",
+      "size_bytes": 1626334,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c000_r01.npz",
+      "sha256": "b23c99315e026802fedef26178193ffe037b836df641e6aa4246a5ae2f7906fa",
+      "size_bytes": 1626310,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c000_r02.npz",
+      "sha256": "ca3f32d710e5eee1649f676d1e2ae877b1e81cda4eeb67506b1e2c32214f933b",
+      "size_bytes": 1626319,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c001_r00.npz",
+      "sha256": "d891feb30420dac1498b38166223127cadcea3bdb6ddff433ab9b04a40cd753e",
+      "size_bytes": 1625481,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c001_r01.npz",
+      "sha256": "1dfa6a4a611550d70cc4c0298941d0033ea094eeb799d23730f0d544539d7804",
+      "size_bytes": 1625472,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c001_r02.npz",
+      "sha256": "cc2ec58f31695b6e3ae170249abb3cd12aa9a52c276e143ba3eba8877b103c8e",
+      "size_bytes": 1625450,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c002_r00.npz",
+      "sha256": "370e93271e61296931f3dcc957ea75a09caf8208d3f4112426a164c625f2c20a",
+      "size_bytes": 1627849,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c002_r01.npz",
+      "sha256": "294a130a06365e0f03eb16af188aa80461a9ac917dc87c64d2f406e887fc36ae",
+      "size_bytes": 1627856,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c002_r02.npz",
+      "sha256": "2d185838a424ab4fa072eafa3daa1bb9e902eeedb8b89cffb188920ea4c0bb13",
+      "size_bytes": 1627827,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c003_r00.npz",
+      "sha256": "61a02fddfae2403708962279597ca763b16ed1cb464e3ecdb0b7923840d8fb3d",
+      "size_bytes": 1629044,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c003_r01.npz",
+      "sha256": "51cf7fa4e346630b81f0edc290e10ed911333402dd5ece83853d7a7d18b81552",
+      "size_bytes": 1629032,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c003_r02.npz",
+      "sha256": "90ac1f78db9d5817380a27957e5b53a58e841f8352d9e6aebe0f29a37d480c9f",
+      "size_bytes": 1629016,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c004_r00.npz",
+      "sha256": "207711116af2618e924bd8355c842742bb91a14c14ecfb572679ba41509436c8",
+      "size_bytes": 1632533,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c004_r01.npz",
+      "sha256": "d7f833e29a141f9c629aede85696d0304d70e8b1d7fb50e27fcf64b5d6dddda4",
+      "size_bytes": 1632574,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c004_r02.npz",
+      "sha256": "23ceb38562b37ffce2073eff86ee94d548e9927b50a1e22fe1c4509d7d32bd90",
+      "size_bytes": 1632540,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c005_r00.npz",
+      "sha256": "07e5f7ca47acb802e249d0cf1b0d755c0a2728117b4a544c5bb4700929bb82e9",
+      "size_bytes": 1633771,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c005_r01.npz",
+      "sha256": "2010087139c03602cf29d238f83777c1d367756099c01fc913fad5ad90743489",
+      "size_bytes": 1633788,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c005_r02.npz",
+      "sha256": "8afa6545bdd1f75cd75adc35da7373759c5359a58e36c7519fccb1eea24369bb",
+      "size_bytes": 1633762,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c006_r00.npz",
+      "sha256": "a814f00980b805d983417c8d080946476e90394b45352ab24a2ba8fec1caf79b",
+      "size_bytes": 1629130,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c006_r01.npz",
+      "sha256": "523fee96861cd31665e6a9205dd207e42e25d516e4da31a76d09a2608398230f",
+      "size_bytes": 1629162,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c006_r02.npz",
+      "sha256": "38d822f77be458c1b596ab753cc31fa2683347ca2a4fa0769f3fc7f0d38d2c74",
+      "size_bytes": 1629149,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c007_r00.npz",
+      "sha256": "2ada6582ff7982bbfe3d5b2426ca61a1657642ce5c873b1ec8254b0608485097",
+      "size_bytes": 1628755,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c007_r01.npz",
+      "sha256": "a45f98926eeeaaf325ff92d2dbdc96508fb591ad225076f3ee3d453666c5cd4f",
+      "size_bytes": 1628787,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c007_r02.npz",
+      "sha256": "d8bd4e1b851e00a71ac35dfe40787c36af4d58628d0885479aace806914d6883",
+      "size_bytes": 1628749,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c008_r00.npz",
+      "sha256": "39b786c4b9efddbc5b56aab8ce0b06cab3e6516743a4681ebaa338b941c3946b",
+      "size_bytes": 1623097,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c008_r01.npz",
+      "sha256": "7e8b2e6bf3ed651fdc3e9c710acf1cd152dc75729593258a56e2582d1487543b",
+      "size_bytes": 1623085,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c008_r02.npz",
+      "sha256": "a48426f41c4306de554412431341e17e4d9bf2a559b5db7f7fec0d601ef18fda",
+      "size_bytes": 1623060,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c009_r00.npz",
+      "sha256": "130d29ad6c570f8b7557e16606e048349a12107896c2bb227ec34777d8b51731",
+      "size_bytes": 1629332,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c009_r01.npz",
+      "sha256": "aff611ec4af6b80dc14402d80ddec8684763ec739979a3b9a0bacde1611f287e",
+      "size_bytes": 1629363,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c009_r02.npz",
+      "sha256": "a8fddf632408b51c3cdda8c82afaa08c8fc9093fd2bc6f0d00a742a540fbd147",
+      "size_bytes": 1629359,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c010_r00.npz",
+      "sha256": "71acc90c724785fbcf9cf754b1d5fc2c7329e422a322a8399becc0a876d223c7",
+      "size_bytes": 1627442,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c010_r01.npz",
+      "sha256": "45b5c1951f9c05f4048c2d5fcb796081c04bdd5c233eaac3e985406708c110cd",
+      "size_bytes": 1627479,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c010_r02.npz",
+      "sha256": "4f2159124c7bb7e0db24cadb8f48c4085dbc7b37cc7fadfaac0526cff144356f",
+      "size_bytes": 1627466,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c011_r00.npz",
+      "sha256": "119c0c2312d832909faf7867c42f36b6c77f24cb9ffa16fd902f664d013c255c",
+      "size_bytes": 1626694,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c011_r01.npz",
+      "sha256": "21b0b2bcd2c433b5ffa1652c922df9a791b2238ad7189885a758e204e5a09caf",
+      "size_bytes": 1626711,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c011_r02.npz",
+      "sha256": "aee45130eac4479001d7d5d7fc30b1075d304d2152a8a17e82d6d2629758a505",
+      "size_bytes": 1626711,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c012_r00.npz",
+      "sha256": "9ee3e28e591b5c5c1c126feae351b9c11fe581c2b8b94604b887411bb1a877ba",
+      "size_bytes": 1628280,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c012_r01.npz",
+      "sha256": "88fd1c75149f4008f478f377f43573ada2c0a1c16574df4d29d07ee1065084ef",
+      "size_bytes": 1628284,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c012_r02.npz",
+      "sha256": "691d8140c2a3c8c61d8680d107832b979b5e900e621bd648136003461e08a0b8",
+      "size_bytes": 1628298,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c013_r00.npz",
+      "sha256": "fcd655fb6e2a4612e4f6fccf24a91107d9454c85c947f6d589ff575cb73e13ce",
+      "size_bytes": 1630167,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c013_r01.npz",
+      "sha256": "2c9d4072535be496d308e763744b2eaa733b3e927c8b3889e5d5910ea3adbb3d",
+      "size_bytes": 1630157,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c013_r02.npz",
+      "sha256": "2b2f5d3aa7299fc0f604ea0b59523e80207e3a4eaeda60a8dad4e8f771f09c66",
+      "size_bytes": 1630151,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c014_r00.npz",
+      "sha256": "35c3d9b77b516dff334ebb3d7a4e3456d80c34c1b58ac1d047f052be05e648c0",
+      "size_bytes": 1630380,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c014_r01.npz",
+      "sha256": "e082c76adcc0f06262ef2062df324db7f345d2a60727e05a45553c53e66a30ad",
+      "size_bytes": 1630386,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c014_r02.npz",
+      "sha256": "c48cce25c6790b757b1a0cb6b402aafd1b5de4b63030439fcfdb31295296165b",
+      "size_bytes": 1630373,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c015_r00.npz",
+      "sha256": "df8610749880e7e1a1f97e52cebebd5d4848f3c9d3a0bb2ed13bac24870fb5e6",
+      "size_bytes": 1629243,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c015_r01.npz",
+      "sha256": "8e8aac36a086b70a105774d055f4f0295c1c9b12eb9589a4667d2545e37e735e",
+      "size_bytes": 1629248,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c015_r02.npz",
+      "sha256": "6792ef06dd2aaabc7bf9f8c80f5fa7e7eea883f793b890c307fced24aa8becdf",
+      "size_bytes": 1629266,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c016_r00.npz",
+      "sha256": "1dbf13afb3f89babb5248f4cfb64d79b92dadc339dfc9d4b8bf491d4046f2025",
+      "size_bytes": 1626241,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c016_r01.npz",
+      "sha256": "d8ccc5d5369b036f1ca76376f5f7b3b49c620df8fce06954f83e6a8fe282566c",
+      "size_bytes": 1626225,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c016_r02.npz",
+      "sha256": "7d37236d02a6e41cc5478711faa82c3a373ec0b1c3510becd16d1f92d83c870d",
+      "size_bytes": 1626232,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c017_r00.npz",
+      "sha256": "25051f02ebf2df208fb9f91385a68943f3a890fe6259be68012ff6b280e433e3",
+      "size_bytes": 1628492,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c017_r01.npz",
+      "sha256": "51d3f8f703bfc57debcad46afd1b2aa53bee67bb07faecff3b942676a528a8ff",
+      "size_bytes": 1628501,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c017_r02.npz",
+      "sha256": "53172570e05140475123f4745126f302472772498b5e8705f0a24d2c107dc7a7",
+      "size_bytes": 1628498,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c018_r00.npz",
+      "sha256": "95c36d78b6153af8d954a590c4144725c33796733cce2a1995f42fc7463edecf",
+      "size_bytes": 1624491,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c018_r01.npz",
+      "sha256": "44b5afc45caabd9880a866802d4696854eb7d80232f265288def6e05bf44da9c",
+      "size_bytes": 1624477,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c018_r02.npz",
+      "sha256": "5e472897b095e065ea81ae0b8ef9d3d7050372e9a1d696c5b9ecc77a0deefff6",
+      "size_bytes": 1624451,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c019_r00.npz",
+      "sha256": "a7433502ac51053ce8fb253570e18e2ffa70d295e5f508f837b8f93a306658a0",
+      "size_bytes": 1636495,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c019_r01.npz",
+      "sha256": "85c92c8831d985f20cc8d1e977dc6d4d67961aca492bc5f877ad2d710552cd15",
+      "size_bytes": 1636490,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c019_r02.npz",
+      "sha256": "8d70d7583cca858eab5c95376544a2dc41ccd30323000b3e945a372406e20bd1",
+      "size_bytes": 1636507,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c020_r00.npz",
+      "sha256": "5e27148e5994a6d4b2e5eda335af9d0f35518d30d3383ed8076adf06c057547a",
+      "size_bytes": 1625919,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c020_r01.npz",
+      "sha256": "c590bcc1e58d650ad489b2aeb415c4b48e5f6821fda60a9eda6e93f91c2cf468",
+      "size_bytes": 1625920,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c020_r02.npz",
+      "sha256": "ab1e17e9475da1b83883414f5c4bd3abca90924622739d2ae64ffaf265d67521",
+      "size_bytes": 1625899,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c021_r00.npz",
+      "sha256": "0176335ddede306be60ffa8cf92877e4dd18bdf76b4c4bf4937f8f38f461d78c",
+      "size_bytes": 1636431,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c021_r01.npz",
+      "sha256": "379ef1b80cb0a05220be7e1a185c68a448b359b4d5b203fc2067d77163685a2f",
+      "size_bytes": 1636442,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c021_r02.npz",
+      "sha256": "d716db004e54c42a47ecc653900435d0ecbb6892e031388ae086a72aa948bad2",
+      "size_bytes": 1636450,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c022_r00.npz",
+      "sha256": "0db8344e3d915b2d5ec1c1d23006d3c8bfd66cc3e108250a336e262ad577b112",
+      "size_bytes": 1625185,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c022_r01.npz",
+      "sha256": "c2f9799958797b0ad50885ba31c51aefacd8523926d68e0a8ef196b711aab468",
+      "size_bytes": 1625204,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c022_r02.npz",
+      "sha256": "715b76dbb1afc67272764b6aa7672dd7ca4ace72e0b76e4bd97636c10ec2139d",
+      "size_bytes": 1625199,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c023_r00.npz",
+      "sha256": "16b6ce4c44deff27bd40a432ead365d237abaaf88bcf5d89f135444e29b67ca5",
+      "size_bytes": 1628913,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c023_r01.npz",
+      "sha256": "c7a54fc467cae90f0b7fa88708530d557b02820475fde1079bfd053187b54896",
+      "size_bytes": 1628928,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c023_r02.npz",
+      "sha256": "389be83ee38f7832887d413266cb9f955480df0dcfaed0aa3915ed4b4541f653",
+      "size_bytes": 1628934,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c024_r00.npz",
+      "sha256": "4d326fffb3df77415ba8d69fa991970534aeb336294095ca66a6207c68a0f84f",
+      "size_bytes": 1625472,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c024_r01.npz",
+      "sha256": "6454adc38658612d15dd4f7c6da993c18d7aed4981e7ed8c04436aa14b65f9de",
+      "size_bytes": 1625479,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c024_r02.npz",
+      "sha256": "0986992dec81702c77a16483c9e83970db5b6107703bee19549134a993e5a184",
+      "size_bytes": 1625477,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c025_r00.npz",
+      "sha256": "cf0e207335173ff6b70a444badf1444b08d5826f04eaa1ffe9783e034b9e832d",
+      "size_bytes": 1628316,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c025_r01.npz",
+      "sha256": "239c586d3c3469d342928a7b4785ebd108e79892419255bcd3ef559b5e543bbe",
+      "size_bytes": 1628340,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c025_r02.npz",
+      "sha256": "c2ac1228215a7a598432bae3e0b31dd32a103cc95419221db3a2e28eb12e642b",
+      "size_bytes": 1628348,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c026_r00.npz",
+      "sha256": "8ff109d678b42f514eca0f1f4cdd035ebf26b2266ea2873f1f74552f3dddbcea",
+      "size_bytes": 1628451,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c026_r01.npz",
+      "sha256": "8241a5429b6bafda7abcf1cad72e66714e53dc31f358bf5932448f84bee4565f",
+      "size_bytes": 1628457,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c026_r02.npz",
+      "sha256": "55d90808501fa6bbcb55e8d5c383d49511a3d430288b273604a94387d19a149e",
+      "size_bytes": 1628457,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c027_r00.npz",
+      "sha256": "67d178534aaa918fff97a724c0a3d51892ac72871ff32be232c9700cd3afe2eb",
+      "size_bytes": 1636882,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c027_r01.npz",
+      "sha256": "55086d748e96b13a473ab661785a79b6bc12c8aafc699d87938a5aaa901d6e98",
+      "size_bytes": 1636907,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c027_r02.npz",
+      "sha256": "7faacec734afc0ce21b31b8c9b155be7a439520e4f02600f5a449aa2a72d826e",
+      "size_bytes": 1636884,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c028_r00.npz",
+      "sha256": "60b34ec851c10b70f526d6d4a9e3c3161fe1b3b34cc5ac7113baac2351fac759",
+      "size_bytes": 1623943,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c028_r01.npz",
+      "sha256": "0b7a42dd8a78a4d145ce96e860509613ed4726f9d915348710247895afecbadf",
+      "size_bytes": 1623950,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c028_r02.npz",
+      "sha256": "4949cb45d911ccde97254cfbd12bb69bdb082f7ea2eff4cee7e1ea1ae8b5bd55",
+      "size_bytes": 1623950,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c029_r00.npz",
+      "sha256": "be0a7dd8d28479037809fcf1aaf60193c9c6542391dc07ec59a07fda9c9fc3de",
+      "size_bytes": 1621807,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c029_r01.npz",
+      "sha256": "942db37899ddd82093fa2559473ff4c442a3c95d30c6a06919f6368a90eee83b",
+      "size_bytes": 1621801,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c029_r02.npz",
+      "sha256": "a7e85ba8821ba692798b436bb9885948c731f7b7ccbf46a07519cafa218c7061",
+      "size_bytes": 1621804,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c030_r00.npz",
+      "sha256": "82513c2226360fa6947af3586c9cc59e7b2213820b932869cd5245ee2364029a",
+      "size_bytes": 1624317,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c030_r01.npz",
+      "sha256": "191a49e51e6c8b306ca56ac24a8dacd345658a992c4c992f790a05df5e1dac26",
+      "size_bytes": 1624305,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c030_r02.npz",
+      "sha256": "6c4899f4f94c67da5feaeead864eeb3a7855822fa359492f4ab84d9bf6b28fde",
+      "size_bytes": 1624309,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c031_r00.npz",
+      "sha256": "22157ba1f653ab7668f0a2d8ce761d6ff9e297d1b215d5f53c206ae8265f8642",
+      "size_bytes": 1629280,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c031_r01.npz",
+      "sha256": "39658db2b4a156dd7d40877e8f3aaf04d44748ab19028822f5f35aaf2c5f634f",
+      "size_bytes": 1629245,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c031_r02.npz",
+      "sha256": "c19bd3d109f6a2a2547bdc60cedbdafa5a1b33021618de3831d6041f94854142",
+      "size_bytes": 1629248,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c032_r00.npz",
+      "sha256": "9657a8c26597dd10157b4ac6ce6d822357f57419554a208a43b2ccbfff297759",
+      "size_bytes": 1629330,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c032_r01.npz",
+      "sha256": "08f09d5435f769ca20c66f383a52da76b6762a77ca72305adec0b67ba3ec9c98",
+      "size_bytes": 1629313,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c032_r02.npz",
+      "sha256": "3dc7eaf6a308752d06a100eb5c9de23946f2e603a69c6bd3e3d905f3d9b34f76",
+      "size_bytes": 1629319,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c033_r00.npz",
+      "sha256": "cde71e6be8556000a9c91a4adc388862ecb4a34ae71587788489a35bfa4597ef",
+      "size_bytes": 1632224,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c033_r01.npz",
+      "sha256": "766837e36eedddcb0645686d03ca677d8ea2dd527c2d84ed9e940f809e746dc5",
+      "size_bytes": 1632219,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c033_r02.npz",
+      "sha256": "5f85ebc8cf35eca956c97edc3d5403ec3edf26c2950913e7a5ba693217ad1585",
+      "size_bytes": 1632203,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c034_r00.npz",
+      "sha256": "495ce074e6d1420de042d40ef11b0476dcaf5a2970a3a0a212b7bd36ed1b23fc",
+      "size_bytes": 1626993,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c034_r01.npz",
+      "sha256": "0098fdb76de8893f369203222dcb73c45acca714d0140c245e76d43732768500",
+      "size_bytes": 1627013,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c034_r02.npz",
+      "sha256": "3bdc328e5eb0bdb5cb4e6163b5450c874b5dfa0076630873081d5f102825234a",
+      "size_bytes": 1627016,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c035_r00.npz",
+      "sha256": "2dfa3b57216c68cf29cc73fb6125eb13ec5f6a612ff9e9fcc79c681bd816832a",
+      "size_bytes": 1619046,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c035_r01.npz",
+      "sha256": "2ee37f0b89238161f5283f0e37e7fa1729365e601ed2c190daf5b71c2e743d3b",
+      "size_bytes": 1619022,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c035_r02.npz",
+      "sha256": "4563e222b3340857c2728be423ce4cdc281e88108f29f82389cf65eb510f20c1",
+      "size_bytes": 1619006,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c036_r00.npz",
+      "sha256": "036d92f218d4efe89f7aa850dc1d7f553ef3308d90b0e2c1af5d2ef491e0ab5a",
+      "size_bytes": 1625008,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c036_r01.npz",
+      "sha256": "af912ad0870589959bdea3779f6691ec71af4d6267c04b85f3497e3e375fde75",
+      "size_bytes": 1625007,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c036_r02.npz",
+      "sha256": "7543406f3c71e5b1be8df471db4a452479f9dccafb858a6be6a5d5e7b16a8208",
+      "size_bytes": 1625014,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c037_r00.npz",
+      "sha256": "188bb499ecb34eed4888501bd1bc6b8eff895a462b88a30196058d320e3f86d6",
+      "size_bytes": 1628819,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c037_r01.npz",
+      "sha256": "88304b22792c9786896aa9856bb15ecb8582fb61d0fe4552cf0a76dd7a9a5736",
+      "size_bytes": 1628817,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c037_r02.npz",
+      "sha256": "2a2efa3031a03411441a6a3b5277364f4c476ac60ccd325ac02b77d07b29ed17",
+      "size_bytes": 1628805,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c038_r00.npz",
+      "sha256": "e43b1d4a02f550edf67f435b4db27ce8328aee9632c8e1e35b4d86618e2fa220",
+      "size_bytes": 1628995,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c038_r01.npz",
+      "sha256": "519567a6a16fc78a0a75971fd7de9f6975774f8b568abe808c73846528ccfa6c",
+      "size_bytes": 1628987,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c038_r02.npz",
+      "sha256": "f1140eb188cc4a019fb99557d476a3e296cf6e80c12752b78d501e0ad7e2b7b6",
+      "size_bytes": 1628996,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c039_r00.npz",
+      "sha256": "399ec76fd3ccea7090e23d1446dcf0ecef11ba8f1008778521f3e2e66d19341f",
+      "size_bytes": 1637626,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c039_r01.npz",
+      "sha256": "32e94da81bfc5747e1ec5f84476f284b747cea83f44ed1dcbe62734a66ae5bd5",
+      "size_bytes": 1637613,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c039_r02.npz",
+      "sha256": "99f5a9482736244a2f5a13c746c61f132fde682c712c267643613d102729281c",
+      "size_bytes": 1637613,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c040_r00.npz",
+      "sha256": "f7cc5fb24adb7a15461aed37e00cc9dc533e87c52cfeb0add92c298f1defbd38",
+      "size_bytes": 1622898,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c040_r01.npz",
+      "sha256": "2260d8a6afc75d5a7d5c8574881f90a2528571f7a6faae480e83e1bd79fed707",
+      "size_bytes": 1622916,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c040_r02.npz",
+      "sha256": "70d70ca23af125f08097f305441b4c4b831abb8f3701a856782fdcb56190c54d",
+      "size_bytes": 1622912,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c041_r00.npz",
+      "sha256": "95f50385b73851c6cf9b35d69d61da9d7eb205904bd95adb14b23d6d0910a179",
+      "size_bytes": 1624654,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c041_r01.npz",
+      "sha256": "86f05e6dd1f202d557181a0dd6d61213f736e70ad8b62a6ef28e0cd661536c97",
+      "size_bytes": 1624656,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c041_r02.npz",
+      "sha256": "b876f3c1b09012a7c6360c6982110b43ab9146fd6afb7af1a72fe5480991e143",
+      "size_bytes": 1624651,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c042_r00.npz",
+      "sha256": "60b8c6ea23aab503e04a46ce3e048b0d74afbd02d73ad8b103bd2ceaa3fb6a0e",
+      "size_bytes": 1630996,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c042_r01.npz",
+      "sha256": "855eed7d19025b1e3616fa40ae1028843b23d0644b7c6cd17f43bb54b9d1a32b",
+      "size_bytes": 1630995,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c042_r02.npz",
+      "sha256": "437bfa4e82fe7c28f5797ea7cc7549aee8a95a59aeae728e89810194011e7aff",
+      "size_bytes": 1630998,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c043_r00.npz",
+      "sha256": "ac049ec0e10f78cb87a1411a00974449c9f859b8aa5ee90909306194ecacf7ce",
+      "size_bytes": 1629008,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c043_r01.npz",
+      "sha256": "2481cf8518b9d76fb70258274fb1a6d85789d41bfa04dcdd35f1c9df738f5f11",
+      "size_bytes": 1629021,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c043_r02.npz",
+      "sha256": "d4cf9068a4677ec00fa7773f83537778245e79911b82047c9dedcd70b2f896a8",
+      "size_bytes": 1629003,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c044_r00.npz",
+      "sha256": "cc9aa93f6c673662d3eec0870bd3af5dc83c3ea08097306d69308d5b4f4fbc9a",
+      "size_bytes": 1629158,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c044_r01.npz",
+      "sha256": "a6412ab8fb5712e7ca8ac9fabd988a97c3b1a8383388313e25eeb77baabb9e42",
+      "size_bytes": 1629143,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/c044_r02.npz",
+      "sha256": "9d65a2e05a5c4af071a8b566cbbb037e05e1abb56dc808cf97aecd83c7b052e1",
+      "size_bytes": 1629146,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_tangent_02/force_calibration.npz",
+      "sha256": "2e3d5476008badff2362df1737ad2335799b258606fae918cefef216647d746e",
+      "size_bytes": 2378,
+      "group": "pilot_tangent_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pilot_world_01/force_calibration.npz",
+      "sha256": "46efdd4577201658d719ee9f6c6646a23e8df180be6b1d1b121737b1c770fdff",
+      "size_bytes": 2916,
+      "group": "pilot_world_01",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c000_r00.npz",
+      "sha256": "c80ef5e89a58b5c060c08f6e9940c518318e49cc8c07558e8e388a7786e36f90",
+      "size_bytes": 1654863,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c000_r01.npz",
+      "sha256": "2c09719660a6e1daa186d4f83a47bcefe33b8b14f1ef3f30968f0ba7a299802c",
+      "size_bytes": 1654853,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c001_r00.npz",
+      "sha256": "468bf59facfbd2a3bfd51c1d51192c7dd4113214288a244ced408d6040fb624a",
+      "size_bytes": 1667423,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c001_r01.npz",
+      "sha256": "7a6fa2cb67da9e7c29d188ef75a95f8e10669798683dc3d95d9e8c588c8b95ad",
+      "size_bytes": 1667400,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c002_r00.npz",
+      "sha256": "96baab0e9eec1fe4e7234e19374092d0f2b530a0be79391564089f75304a92b9",
+      "size_bytes": 1667950,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c002_r01.npz",
+      "sha256": "7bfd0b03ee00dc9706f8d534395ddd97db0318b9ffb22cffa7c9c865fb2e26df",
+      "size_bytes": 1667960,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c003_r00.npz",
+      "sha256": "a23bae948a4ec3b0f9aafb880ba267e2b63dbf9dc746e60294ecec51b85f7b4f",
+      "size_bytes": 1667869,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c003_r01.npz",
+      "sha256": "d4cac89c757c09bbb26f482b77a31bc1e73884685c5f717a5a73f3119d194459",
+      "size_bytes": 1667850,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c004_r00.npz",
+      "sha256": "0923d2136eb2c83d2e27a6222219828b9402fb3f19d150b95a9e01da02f36d0b",
+      "size_bytes": 1668795,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c004_r01.npz",
+      "sha256": "e1f2f5c73e7eabe1085c9d66933dec4ddeae4b333161b4a85980288510a78183",
+      "size_bytes": 1668807,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c005_r00.npz",
+      "sha256": "88cc6ea6db12fe802d2e1e628de9abeff5cc5f130abd3ff6ca30ba70225cc300",
+      "size_bytes": 1665167,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c005_r01.npz",
+      "sha256": "746e55e96315665565335827060ce1737c651415d32fc17c2c95b8c60e229783",
+      "size_bytes": 1665157,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c006_r00.npz",
+      "sha256": "281a919c2b10df91e403d1cc0c04b94c137fed0bdf38ef3a5e2ef57767769eb8",
+      "size_bytes": 1664187,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c006_r01.npz",
+      "sha256": "378cd14cc8c138e0998c6ee2b3096549c67671ea9bc55356e2ce0283ae21bcdf",
+      "size_bytes": 1664193,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c007_r00.npz",
+      "sha256": "270e44b53be746caa63c56f7d837d0485ddb312ef4b387bde08c33a1558345f4",
+      "size_bytes": 1668851,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c007_r01.npz",
+      "sha256": "be758cdafff7fcade2524dfc45701a10f38b9abe3513021ba19fe802c7810c99",
+      "size_bytes": 1668824,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c008_r00.npz",
+      "sha256": "ddcc84667e4cd448e4a02d270aa8f77ad4e2e716258cd81f2e667e66e5dcef52",
+      "size_bytes": 1666875,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/c008_r01.npz",
+      "sha256": "4b7c69707f093251a3b88928a7537437161b1454a6c9dfa7b16f10faf29be4ad",
+      "size_bytes": 1666894,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/pure_loading_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "pure_loading_01",
+      "asset": "e1-contact-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_0.npz",
+      "sha256": "bb29aaf258f236afc8fa5dce5a107479b6c8a90edc8042f404f83d5e56d308ee",
+      "size_bytes": 3313927,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_1.npz",
+      "sha256": "983641b8f518d3c53e1bdbf49f0c03c8de1667d87890c2f2ec057e1cae7fecc3",
+      "size_bytes": 3316624,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_2.npz",
+      "sha256": "4a21b06a7a62e4dea97f3968d6f4029e1cd284107f123bdaf7077204c1c90db0",
+      "size_bytes": 3318460,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_3.npz",
+      "sha256": "03e90daa4f44e767c18c3c885ed0ca77c0ce62a3856e22504026ec044c6cbee2",
+      "size_bytes": 3318748,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_4.npz",
+      "sha256": "d2956fb830a2c7c62bea0cfe884b44133ea660622ed1268126423d744ad22865",
+      "size_bytes": 3317313,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_5.npz",
+      "sha256": "5662fbd9c9426ec86ec94b624837e8d115e2130801a1e88ab7bb2df151672006",
+      "size_bytes": 3312412,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_6.npz",
+      "sha256": "7a56fa0303405fb0ba8bbc6e6a90f34c016782eca4a34c1f99b2f1097cca0a06",
+      "size_bytes": 3316913,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_7.npz",
+      "sha256": "75d392a416ed7e5799100106be0cef1165a769cbedcbbe8399753fe0fab17014",
+      "size_bytes": 3318171,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/dagger_zero.npz",
+      "sha256": "ca480b848e9cfc1b1e7101bf4dd1789aa2a10b77c106fd309ffcb3a429b02fd9",
+      "size_bytes": 3306703,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dagger_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_dagger_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_high_01/dev_nFx.npz",
+      "sha256": "d17975a330120f6f68af45fa269a7f683edc9488da42f1e69a551c1125740c5c",
+      "size_bytes": 2759221,
+      "group": "reflex_dev_high_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_high_01/dev_nFy.npz",
+      "sha256": "d04937bfa18688927930b53360bbaf2c2c679b828722fb0cc44fc64c3a73b69e",
+      "size_bytes": 2766458,
+      "group": "reflex_dev_high_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_high_01/dev_pFx.npz",
+      "sha256": "3db377c7ccbbcba4ddbb8e9ad1f07be7bf35da5e797badc7f08be573e575677d",
+      "size_bytes": 2764938,
+      "group": "reflex_dev_high_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_high_01/dev_pFy.npz",
+      "sha256": "7fd61d4ac968f768d892356299b6555351ad1807321fd204092e3998d63731f8",
+      "size_bytes": 2767062,
+      "group": "reflex_dev_high_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_high_01/dev_zero.npz",
+      "sha256": "11da54739085e960f6b0a54e039d6edd4de3e3558cc35de0b9d4bf69d3a02087",
+      "size_bytes": 2749381,
+      "group": "reflex_dev_high_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_high_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_dev_high_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_01/dev_nFx.npz",
+      "sha256": "0368db75437e784a56bc823b0c4ec26d21613c695cdadd213f82690a14153f3d",
+      "size_bytes": 2759225,
+      "group": "reflex_dev_oracle_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_01/dev_nFy.npz",
+      "sha256": "193e48dbf1196ad1e63de65382cd8302cc5dd97db921d1b86d5c7808cb5cf690",
+      "size_bytes": 2766406,
+      "group": "reflex_dev_oracle_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_01/dev_pFx.npz",
+      "sha256": "f7168a21ec005c6ce20cb74e98bcdb124fab1408b17ac44557ce6766d87c9b39",
+      "size_bytes": 2764908,
+      "group": "reflex_dev_oracle_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_01/dev_pFy.npz",
+      "sha256": "7e596c1f7e0e1c80aaca1b5b98efc54e5bf98da424a8adff44f6b75bcaf31f62",
+      "size_bytes": 2766931,
+      "group": "reflex_dev_oracle_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_01/dev_zero.npz",
+      "sha256": "6e55c13dc54f850782366e07e1bf4710977c251e1a94cd1551be437d8455b225",
+      "size_bytes": 2749357,
+      "group": "reflex_dev_oracle_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_dev_oracle_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_02/dev_nFx.npz",
+      "sha256": "1124ad9ae4befb33be78042ec53abb84c115dd3b1827f9d1f488ca6ef9f74c14",
+      "size_bytes": 2771114,
+      "group": "reflex_dev_oracle_02",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_02/dev_nFy.npz",
+      "sha256": "5edf3f30b07c2c4e53d336bce646e5a251359a4e71e10fd6226b79bb0bc19a56",
+      "size_bytes": 2772526,
+      "group": "reflex_dev_oracle_02",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_02/dev_pFx.npz",
+      "sha256": "30fbd28596616e15eb7a63099009d5823a52924a6240b35af50f439355b21db2",
+      "size_bytes": 2773678,
+      "group": "reflex_dev_oracle_02",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_02/dev_pFy.npz",
+      "sha256": "e4eb0e439a1c2c39436c54aab4e35e3ac0e1115434fce5fd8446cb0f687a811f",
+      "size_bytes": 2776622,
+      "group": "reflex_dev_oracle_02",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_02/dev_zero.npz",
+      "sha256": "6f132ea5579b7857d93af06302f18184d63c9ccf4b565432e51e926082af3436",
+      "size_bytes": 2752175,
+      "group": "reflex_dev_oracle_02",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_dev_oracle_02/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_dev_oracle_02",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_00_0.npz",
+      "sha256": "02dbfc45ab4543922d4d6c22fbc9d77daa39e44fcf252637bf6073529f588ea6",
+      "size_bytes": 3298007,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_00_1.npz",
+      "sha256": "e16ac485dee0642673407b14dfa4ebcb61fbbbd115ed75712079a8dbccb7daf8",
+      "size_bytes": 3301361,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_00_2.npz",
+      "sha256": "95460e7aa96a733ace092c70a7a36f167d0b28d2a0a9c1b4f79ec1901c9a6459",
+      "size_bytes": 3310940,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_00_3.npz",
+      "sha256": "d02510d0e017b4bc7e3d6191d60039011f37721f9870703b9d1f75332e0acf23",
+      "size_bytes": 3310849,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_01_0.npz",
+      "sha256": "827eadfc18bc8785f2f9c3047ad7cce2b20e196d73ca1c9681325edd611b0d1d",
+      "size_bytes": 3301002,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_01_1.npz",
+      "sha256": "98dfb295e60147f45650c0f705874f8329150bd7c730c2f8ed2a5005f5c333b4",
+      "size_bytes": 3300817,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_01_2.npz",
+      "sha256": "df98b6e0c3c8006970a9e21a06b47f479230acdcd6c1c8c7ffb26f30ff6af35d",
+      "size_bytes": 3310210,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_high_01/test_01_3.npz",
+      "sha256": "461c485c798dc4f7ec074cd4e886c3b4ff1896edd4be019ed0a4fe189d9d089d",
+      "size_bytes": 3308845,
+      "group": "reflex_stream_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_00_0.npz",
+      "sha256": "c70cb28bcb2a6da8a7e68e8e05cdb7b97d4388cb6ac2905994d42e06c2da337a",
+      "size_bytes": 3313141,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_00_1.npz",
+      "sha256": "7ba2e31adf9d2f66616461bf812446471834b1a768df5311537f5729053ef455",
+      "size_bytes": 3310510,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_00_2.npz",
+      "sha256": "18f21de2ba2f7a2fd32a7bde723393e992763e4cc7ba0518bf4f8ef87cbc9f0d",
+      "size_bytes": 3313812,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_00_3.npz",
+      "sha256": "cd952cd8cd37d5db24570b3cbd4a81e3c262bb8da742ac5e5e5104b2e2d6eb3b",
+      "size_bytes": 3309906,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_01_0.npz",
+      "sha256": "1006da7eec4dcefe2e4c453e91bbdecbedee5a00d1f0724b9398063d051de527",
+      "size_bytes": 3313210,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_01_1.npz",
+      "sha256": "af6a1858d6d763fb10543613ace1a82716456ce5bc79784c0177a449e5400c15",
+      "size_bytes": 3310883,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_01_2.npz",
+      "sha256": "1f2bc783fe41637e5b9be4b3f612859922b085d9e143b40d9b33929203a91537",
+      "size_bytes": 3312205,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_mcf_01/test_01_3.npz",
+      "sha256": "61b1cc90cfd7616a68f198290723148b6efa08210c74555416bd9b885cd331a7",
+      "size_bytes": 3312223,
+      "group": "reflex_stream_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_00_0.npz",
+      "sha256": "496a9e6fd422fac568afe6da5942407640d65bf8734e14c181326b7dbc95632d",
+      "size_bytes": 3302435,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_00_1.npz",
+      "sha256": "a477e0ec2fddd8b69a069e1cdd8a2c4bae4d01d5330beaedb0f56392f3e26eeb",
+      "size_bytes": 3302747,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_00_2.npz",
+      "sha256": "517a32317573ae85351119f5ccf49dcb0ba040fdcfd7350c78fed40e2bbfc90a",
+      "size_bytes": 3304371,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_00_3.npz",
+      "sha256": "ab0aaeccffcfa179d51c4db84b5013ec1f7685b335688e7d778eb1d77bc48814",
+      "size_bytes": 3312319,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_01_0.npz",
+      "sha256": "f94f6fd6a486204a0c1bbbaecfe482730e197afee28803b339a193895c77ca5e",
+      "size_bytes": 3302831,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_01_1.npz",
+      "sha256": "fe075eb5e4619483dd630ea1e1ab593f35381f23e6abaa294179d50a261327ca",
+      "size_bytes": 3311509,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_01_2.npz",
+      "sha256": "a0c84ff89f8a0fccf3f22c44ea0cd3697f187ecaca81b1e1849c013ea7be2cd8",
+      "size_bytes": 3307780,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_nominal_01/test_01_3.npz",
+      "sha256": "8afa7b93698d180b6c2e5449e5be551a08696b8087acf8b483dd89c7d9634ff7",
+      "size_bytes": 3311880,
+      "group": "reflex_stream_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_00_0.npz",
+      "sha256": "a83a212e973e75ef12ed85ad0e9b73d43f7b511f92857a3743435dde1c002737",
+      "size_bytes": 3312432,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_00_1.npz",
+      "sha256": "2e799e377da83c09c40d39bfb25a3ab82c1324538e69b5cca836be1ff644f6ab",
+      "size_bytes": 3309331,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_00_2.npz",
+      "sha256": "63ecf128f67d190c1af9faf0a6c104181b6f98b598bf81f0b2c4807701333df6",
+      "size_bytes": 3317868,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_00_3.npz",
+      "sha256": "3d05014adbe6b38dfe537e76da66be4385bbc02236eafbddbd001a85a85a08db",
+      "size_bytes": 3314756,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_01_0.npz",
+      "sha256": "1d6029d08e9bd32c40cbe0392fdd5639575e2579c16ce1ab3adfc1d4e031d52e",
+      "size_bytes": 3313081,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_01_1.npz",
+      "sha256": "0560376cecb84f7b7b039b4d6d1d590bc0139c5855bd92f518a88b080d4dfb97",
+      "size_bytes": 3314959,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_01_2.npz",
+      "sha256": "f63081bbc0f70a1702d79b9948e6f17519aea94a2e0b2278062b3b76663586d0",
+      "size_bytes": 3316366,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_oracle_01/test_01_3.npz",
+      "sha256": "0178b8ff256984c78e0fdc4ff02606ee5f76a0ea8815385a14e41bf303d46cae",
+      "size_bytes": 3315130,
+      "group": "reflex_stream_oracle_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_00_0.npz",
+      "sha256": "13865cab6e8d64044940f1bc36f640286c33b3cb9c9bd0127c789cff5f2e968d",
+      "size_bytes": 3313050,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_00_1.npz",
+      "sha256": "f2b4e9afd21db8fd326c4bec18adf53360db26ee195efec89e648e4dba2bb887",
+      "size_bytes": 3306366,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_00_2.npz",
+      "sha256": "5515bcc1ddeef1c73cc357df4b1b971555e714b6f5885c3ba808027822bc201a",
+      "size_bytes": 3314930,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_00_3.npz",
+      "sha256": "44d4964b90d68a2f5d3d160f2a3aee86add9573e34de1991228576e846ab9bce",
+      "size_bytes": 3311538,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_01_0.npz",
+      "sha256": "2cc849ff3f1e9174b09bc2fdb98e419a1334094a82661931160b458c6b348df6",
+      "size_bytes": 3317468,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_01_1.npz",
+      "sha256": "ac98fb2f9321a673ec008a545e8d279ed0b36476c0ce1cad0469198697fcb3a0",
+      "size_bytes": 3310069,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_01_2.npz",
+      "sha256": "9bf77edf27a872f8c84d5c5d02d4eacb282ffb3119349e932a5ebdafa54c2b61",
+      "size_bytes": 3314432,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_stream_scalar_01/test_01_3.npz",
+      "sha256": "124ee5a9168619359784c793de07b8471ffe4026bb1573275ea4ec3b240686a7",
+      "size_bytes": 3314577,
+      "group": "reflex_stream_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_00_0.npz",
+      "sha256": "afbad6c1b3967a1a07cd6c4a820ca37c35030573ced72dfe6830581e575202f8",
+      "size_bytes": 3304577,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_00_1.npz",
+      "sha256": "fbe36424b71f561e6aa287fb351fd2ecca3f0a686afd0c613cab7179fbf01c63",
+      "size_bytes": 3310883,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_00_2.npz",
+      "sha256": "53425e5921c435d567845aa69d3f46a699eaa7ca7e7f246304e7d937c51db6ba",
+      "size_bytes": 3313557,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_00_3.npz",
+      "sha256": "ab171b3c00588e4e9f322382ed07cdd8fabb5f30b09ff91d1901cef49b454d86",
+      "size_bytes": 3306952,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_01_0.npz",
+      "sha256": "ac84ad9e665b984abcfd222f10ffa81b2e3481214bebd1fb9bdc280eac354fe2",
+      "size_bytes": 3312420,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_01_1.npz",
+      "sha256": "02cdbf1563d660cb069b676d24f9ead56500ea8b917adc165bf2f7bf38517ed4",
+      "size_bytes": 3310472,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_01_2.npz",
+      "sha256": "36fae724257347c3926794b29842684fe774433fdb920b78d00b277ab01864de",
+      "size_bytes": 3308546,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_01_3.npz",
+      "sha256": "489ae7cb68cb40ab328b580057644ba3f77ad8eb91d45779b72633d75d2bd93d",
+      "size_bytes": 3310210,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_02_0.npz",
+      "sha256": "cd9b77e8c120bc7ff8350eca92a45f32cf1b5cf1af1347137271d2ac921fcfbb",
+      "size_bytes": 3304457,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_02_1.npz",
+      "sha256": "378a10903a1aa9b13f7d43ab7032dc979573b69dd60ae7b16ed16acf9f034659",
+      "size_bytes": 3310163,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_02_2.npz",
+      "sha256": "369e89fe4d49719ac1687f4ef56e7d76a0b85e0a91c66fc48f734f3be6c67d3c",
+      "size_bytes": 3315853,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_02_3.npz",
+      "sha256": "e3e09b51cafcd29468d13fd3ae8e5bc74737378c5f1cb84e86ee9783077edd98",
+      "size_bytes": 3311550,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_04_0.npz",
+      "sha256": "8db1cd71ab30e11d0108b9f815dd518833b4d6de6a6b896eed73cc8f0a611cd5",
+      "size_bytes": 3316419,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_04_1.npz",
+      "sha256": "24356b88629a9d76bd17c9482348a0128786bf74575d02c013dfc535ac0dee83",
+      "size_bytes": 3310050,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_04_2.npz",
+      "sha256": "7fb8a9029f891df287efae3b2b891aa6514a8518bcc39bf57afa793d2e55b5a3",
+      "size_bytes": 3310378,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_04_3.npz",
+      "sha256": "ad3a9d7e26d1a1937e2b07b29da386b8976a6b7894ee1a5ccfb835e897d6ce83",
+      "size_bytes": 3312841,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_05_0.npz",
+      "sha256": "a5fa444755dea89d9e7c78b529e438b45f9b44d02b5c440737c1711c6c9945dc",
+      "size_bytes": 3312472,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_05_1.npz",
+      "sha256": "ea1eb9db6e16aef4f7b647916c99dc77c90963e2839142a47dd3714452680084",
+      "size_bytes": 3319008,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_05_2.npz",
+      "sha256": "6f7bffb85e7d084000fd47d0e969b785f9235083af1c9b92e6e46c9f4e67dbf7",
+      "size_bytes": 3317356,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_05_3.npz",
+      "sha256": "437501d9ad884e93157987e3d55755aa508ae86911b19d6101b51863bfbb6301",
+      "size_bytes": 3309938,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/train_zero.npz",
+      "sha256": "156b6ff63f1fcd59b83e7a454874e0e22f2aa5bf34c6d3c3b8f8b645796251aa",
+      "size_bytes": 3286970,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/val_03_0.npz",
+      "sha256": "21fc485b6ee88e5818fffea7119825c413c38cadca4debdef769478872469106",
+      "size_bytes": 3307303,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/val_03_1.npz",
+      "sha256": "3ad312de875e83b1349b481594d529c38adc9c1bbee6067b442341bad8da126a",
+      "size_bytes": 3316723,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/val_03_2.npz",
+      "sha256": "03a9d08697804d121dbf7af8a15ab946f401d2f0c5dd03045819076e78a8e15d",
+      "size_bytes": 3314870,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_teacher_01/val_03_3.npz",
+      "sha256": "8fec98e4f524174915a29393ac8b434d5091b6bf134b65d37c54ec194ad11c12",
+      "size_bytes": 3310118,
+      "group": "reflex_teacher_01",
+      "asset": "reflex-development-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_00_0.npz",
+      "sha256": "67f4874330c417e8d56b19e0a5944fdcde6a2d579725136ec92a1794d34f427e",
+      "size_bytes": 3302327,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_00_1.npz",
+      "sha256": "877d70f6f5dc5ad39c1bb939b4fa6abc1f561c69b42be0f0a38a83f6cd38700d",
+      "size_bytes": 3301956,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_00_2.npz",
+      "sha256": "aed51e8eab2b017e416904e152ecfb386c9fd42c3ffe9545cfe8796d72d92a0a",
+      "size_bytes": 3305089,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_00_3.npz",
+      "sha256": "7de87d6798163ac9b91366a233e1661e8fb8c49503b04b10eb6548a928fa75e6",
+      "size_bytes": 3304123,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_01_0.npz",
+      "sha256": "1a0265466483c3602a2a8e49442b50d7b54abc8d80806088b82f89d73a4ec609",
+      "size_bytes": 3303139,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_01_1.npz",
+      "sha256": "81eacca3904e0417896a5eeb3b2c74b2e1d648fc8788865e075a99f955d650d9",
+      "size_bytes": 3300446,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_01_2.npz",
+      "sha256": "a72568a752794bbd90be2f9b699b0996871681c0fbe56fdb90255b91096fb17e",
+      "size_bytes": 3309859,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_high_01/test_01_3.npz",
+      "sha256": "96a97cc1b9d3b2c22802bbfda35a36a2eb5b0b94a98b3dfb011795c40f656837",
+      "size_bytes": 3305331,
+      "group": "reflex_test_high_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_00_0.npz",
+      "sha256": "f6d853ae36b469fed004263dea312422f098fa76a08c0894b41c3f54adcea75c",
+      "size_bytes": 3316090,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_00_1.npz",
+      "sha256": "8b4970c92624c2a8101a172af4623b121e4275e2e50b8de50eb93ecb4af20d22",
+      "size_bytes": 3315992,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_00_2.npz",
+      "sha256": "47306df23056bef37425928ca2018d53e650c2e2a7f4dd57e1e689f8d282cd5b",
+      "size_bytes": 3319112,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_00_3.npz",
+      "sha256": "3e6a568d8f952d4a60d2a0aec5fcfdf1431698ac6a622fd7ecce988ad95ceabd",
+      "size_bytes": 3318305,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_01_0.npz",
+      "sha256": "a6abaa00f34d44eb23ecfa1cdb275687edc3e3afb7c20a5ed9f0193ed32c987a",
+      "size_bytes": 3318194,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_01_1.npz",
+      "sha256": "93378cda6c9de2027acb98281bf91fc861f52c9a2d81f0c89b68cb4f7b55f41e",
+      "size_bytes": 3313198,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_01_2.npz",
+      "sha256": "b97f855f8c5ca3290c238b2dfd11158e0243dd78a3409f5af9e2037089b39a81",
+      "size_bytes": 3319597,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_mcf_01/test_01_3.npz",
+      "sha256": "1dde69ba0db6ce2b96f82f46bf05c843496134c609285828d6412774816a847c",
+      "size_bytes": 3320036,
+      "group": "reflex_test_mcf_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_00_0.npz",
+      "sha256": "e4e803981a253056df06c03b98f7e088311532d01f6443ed36d67700977340f2",
+      "size_bytes": 3300550,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part01.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_00_1.npz",
+      "sha256": "b835a89b789529ca556b71ea9256fa24dc9ab0ae78097463e6da46e40948ebaa",
+      "size_bytes": 3304858,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_00_2.npz",
+      "sha256": "b83ff31d63eac1e210151221b294594fb6bd09be8cfa688ec063447983d556aa",
+      "size_bytes": 3307209,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_00_3.npz",
+      "sha256": "54e93f604a7ab0d2743fb3c80b271298fafd29319ee9d7c9dcb32b2b2365afe9",
+      "size_bytes": 3309710,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_01_0.npz",
+      "sha256": "5fc8f9e77d70675849bf2ffbb8461fcfc8ed0a1d2ac01f0fa584ea23025131ab",
+      "size_bytes": 3299155,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_01_1.npz",
+      "sha256": "05f1f10ef642a7dcfa15a4cf09ec60832c80643b57406fa0141f7df4307814d9",
+      "size_bytes": 3299236,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_01_2.npz",
+      "sha256": "2b854dd97ae557abc09b83639396e07e2a196b2a5bd2c5ce1b00aeeb8b6b79cd",
+      "size_bytes": 3305254,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_nominal_01/test_01_3.npz",
+      "sha256": "874710ee1b9d357ef1916e6d0ae697f8d597d965cf5541c9e56ca27cdb728300",
+      "size_bytes": 3306160,
+      "group": "reflex_test_nominal_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/force_calibration.npz",
+      "sha256": "a5bf093307f30c620a6611e4d00d6df70d5da75eb608e2d1104fbb524d12f7c2",
+      "size_bytes": 2378,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_00_0.npz",
+      "sha256": "843da9095f6e5ca11901b2755343906d01b91160b1cf7b5d9f0f7dfe3a035c27",
+      "size_bytes": 3315247,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_00_1.npz",
+      "sha256": "716ca4dbca670879ba0ab5c4f4761366084516230b5dc2db2e57b67e2f4b9c38",
+      "size_bytes": 3307618,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_00_2.npz",
+      "sha256": "9d4de8c92320518fba8aa692c255dd1c7e9eab30eef1a2ef8f39f853c72dbf9e",
+      "size_bytes": 3309387,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_00_3.npz",
+      "sha256": "165f82e87de5da249d89075b103c0587c08952aa99be648c0ff805359d6d79f4",
+      "size_bytes": 3314688,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_01_0.npz",
+      "sha256": "e7546d8c6284908f86b8608ac5e75087fdabab9626307390adf3bfb92ebf2da3",
+      "size_bytes": 3311515,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_01_1.npz",
+      "sha256": "8901f6ca7468832a9bd3f0f8a8764e6a9e2b19ebfbd63ac45082676b70eb5916",
+      "size_bytes": 3310863,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_01_2.npz",
+      "sha256": "e54d35872f3e1d1311f9a89da5d3bd8671938f8ac95f293431029729e2839291",
+      "size_bytes": 3316151,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/reflex_test_scalar_01/test_01_3.npz",
+      "sha256": "ec0b3e6c128dcb726fbae5ab468bb7fd8658ed8c4e5fdb88570035e0c83ba0ad",
+      "size_bytes": 3315829,
+      "group": "reflex_test_scalar_01",
+      "asset": "reflex-closed-loop-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/smoke_02/c000_r00.npz",
+      "sha256": "66320515bc8e84852fd681674d80744f7279c7cb8948f4320d5c271a0b0bcc03",
+      "size_bytes": 1619388,
+      "group": "smoke_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/smoke_02/c001_r00.npz",
+      "sha256": "a7f45c8deeafeb712588285cf369511109594be4c4395dc69cc00a1b380b2b0e",
+      "size_bytes": 1619242,
+      "group": "smoke_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/smoke_02/c002_r00.npz",
+      "sha256": "d994ceea0c71d8b70a5ebc6f830585720edff15af866db12ed414915bb2d7a1a",
+      "size_bytes": 1616558,
+      "group": "smoke_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    },
+    {
+      "path": "isaac_windows/e1s/outputs/smoke_02/force_calibration.npz",
+      "sha256": "9a8b3cc124e21f357f8977fb8366585d723d2164316704a83e2314ebf65b6668",
+      "size_bytes": 1465,
+      "group": "smoke_02",
+      "asset": "e1-pilot-20261013-part02.zip"
+    }
+  ]
+}

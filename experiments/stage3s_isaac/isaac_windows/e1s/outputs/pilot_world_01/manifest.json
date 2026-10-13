@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "completed_trials": [],
+  "errors": [
+    "RuntimeError('External force engine calibration failed')"
+  ]
+}

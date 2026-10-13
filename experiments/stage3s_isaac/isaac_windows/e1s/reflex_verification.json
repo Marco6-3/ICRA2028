@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "old_unchanged_npz": 225,
+  "new_native_trials": 121,
+  "new_synchronized_frames": 21330,
+  "trained_models": 45,
+  "native": [
+    {
+      "directory": "reflex_dagger_01",
+      "trials": 9,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_dev_high_01",
+      "trials": 5,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_dev_oracle_01",
+      "trials": 5,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_dev_oracle_02",
+      "trials": 5,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_stream_high_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_stream_mcf_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_stream_nominal_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_stream_oracle_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_stream_scalar_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_teacher_01",
+      "trials": 25,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_test_high_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_test_mcf_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_test_nominal_01",
+      "trials": 8,
+      "force_calibration": true
+    },
+    {
+      "directory": "reflex_test_scalar_01",
+      "trials": 8,
+      "force_calibration": true
+    }
+  ],
+  "reports": [
+    {
+      "report": "reflex_report_01",
+      "paired_trials": 32
+    },
+    {
+      "report": "reflex_report_stream_01",
+      "paired_trials": 40
+    }
+  ],
+  "selected_by_validation": true,
+  "streaming_equivalence": true,
+  "utf8_readback": true,
+  "syntax": true
+}

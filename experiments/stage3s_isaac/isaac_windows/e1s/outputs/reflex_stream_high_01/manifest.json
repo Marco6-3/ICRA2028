@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "test_00_0",
+    "test_00_1",
+    "test_00_2",
+    "test_00_3",
+    "test_01_0",
+    "test_01_1",
+    "test_01_2",
+    "test_01_3"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

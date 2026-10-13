@@ -1,0 +1,337 @@
+{
+  "status": "passed",
+  "trials_checked": 32,
+  "checks": [
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_00_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_00_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_00_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_01_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_01_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "high",
+      "id": "test_01_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_1",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_2",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_3",
+      "finite": true,
+      "causal_previous_mcf_exact": true,
+      "timestamps": true,
+      "command_authority": true,
+      "npz_hash": true
+    }
+  ],
+  "paired_initial_conditions_and_loads": true,
+  "data_hashes": {
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_00_0.npz": "e4e803981a253056df06c03b98f7e088311532d01f6443ed36d67700977340f2",
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_00_1.npz": "b835a89b789529ca556b71ea9256fa24dc9ab0ae78097463e6da46e40948ebaa",
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_00_2.npz": "b83ff31d63eac1e210151221b294594fb6bd09be8cfa688ec063447983d556aa",
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_00_3.npz": "54e93f604a7ab0d2743fb3c80b271298fafd29319ee9d7c9dcb32b2b2365afe9",
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_01_0.npz": "5fc8f9e77d70675849bf2ffbb8461fcfc8ed0a1d2ac01f0fa584ea23025131ab",
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_01_1.npz": "05f1f10ef642a7dcfa15a4cf09ec60832c80643b57406fa0141f7df4307814d9",
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_01_2.npz": "2b854dd97ae557abc09b83639396e07e2a196b2a5bd2c5ce1b00aeeb8b6b79cd",
+    "isaac_windows\\e1s\\outputs\\reflex_test_nominal_01\\test_01_3.npz": "874710ee1b9d357ef1916e6d0ae697f8d597d965cf5541c9e56ca27cdb728300",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_00_0.npz": "67f4874330c417e8d56b19e0a5944fdcde6a2d579725136ec92a1794d34f427e",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_00_1.npz": "877d70f6f5dc5ad39c1bb939b4fa6abc1f561c69b42be0f0a38a83f6cd38700d",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_00_2.npz": "aed51e8eab2b017e416904e152ecfb386c9fd42c3ffe9545cfe8796d72d92a0a",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_00_3.npz": "7de87d6798163ac9b91366a233e1661e8fb8c49503b04b10eb6548a928fa75e6",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_01_0.npz": "1a0265466483c3602a2a8e49442b50d7b54abc8d80806088b82f89d73a4ec609",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_01_1.npz": "81eacca3904e0417896a5eeb3b2c74b2e1d648fc8788865e075a99f955d650d9",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_01_2.npz": "a72568a752794bbd90be2f9b699b0996871681c0fbe56fdb90255b91096fb17e",
+    "isaac_windows\\e1s\\outputs\\reflex_test_high_01\\test_01_3.npz": "96a97cc1b9d3b2c22802bbfda35a36a2eb5b0b94a98b3dfb011795c40f656837",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_00_0.npz": "f6d853ae36b469fed004263dea312422f098fa76a08c0894b41c3f54adcea75c",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_00_1.npz": "8b4970c92624c2a8101a172af4623b121e4275e2e50b8de50eb93ecb4af20d22",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_00_2.npz": "47306df23056bef37425928ca2018d53e650c2e2a7f4dd57e1e689f8d282cd5b",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_00_3.npz": "3e6a568d8f952d4a60d2a0aec5fcfdf1431698ac6a622fd7ecce988ad95ceabd",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_01_0.npz": "a6abaa00f34d44eb23ecfa1cdb275687edc3e3afb7c20a5ed9f0193ed32c987a",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_01_1.npz": "93378cda6c9de2027acb98281bf91fc861f52c9a2d81f0c89b68cb4f7b55f41e",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_01_2.npz": "b97f855f8c5ca3290c238b2dfd11158e0243dd78a3409f5af9e2037089b39a81",
+    "isaac_windows\\e1s\\outputs\\reflex_test_mcf_01\\test_01_3.npz": "1dde69ba0db6ce2b96f82f46bf05c843496134c609285828d6412774816a847c",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_00_0.npz": "843da9095f6e5ca11901b2755343906d01b91160b1cf7b5d9f0f7dfe3a035c27",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_00_1.npz": "716ca4dbca670879ba0ab5c4f4761366084516230b5dc2db2e57b67e2f4b9c38",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_00_2.npz": "9d4de8c92320518fba8aa692c255dd1c7e9eab30eef1a2ef8f39f853c72dbf9e",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_00_3.npz": "165f82e87de5da249d89075b103c0587c08952aa99be648c0ff805359d6d79f4",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_01_0.npz": "e7546d8c6284908f86b8608ac5e75087fdabab9626307390adf3bfb92ebf2da3",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_01_1.npz": "8901f6ca7468832a9bd3f0f8a8764e6a9e2b19ebfbd63ac45082676b70eb5916",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_01_2.npz": "e54d35872f3e1d1311f9a89da5d3bd8671938f8ac95f293431029729e2839291",
+    "isaac_windows\\e1s\\outputs\\reflex_test_scalar_01\\test_01_3.npz": "ec0b3e6c128dcb726fbae5ab468bb7fd8658ed8c4e5fdb88570035e0c83ba0ad",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\mcf_seed11.pt": "dd66c6dd98bbf88853aae567b5e2fb61c837874679e26e2a2341bc3f431df1df",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\mcf_seed19.pt": "a7dbb034b209cb0a3070f460ce2d93f9602b961613009f42edabd85a5f3e7bb2",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\mcf_seed7.pt": "cd9bc6f60679d35348e4d461bbfba10b3f6503a3f3faba9228ff6a016e863f22",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\mcf_selected.pt": "dd66c6dd98bbf88853aae567b5e2fb61c837874679e26e2a2341bc3f431df1df",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\scalar_seed11.pt": "7ccc1dface7393d32c9a2037d4bff6375697c3dcba7366a8dc09b55e76f1bc38",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\scalar_seed19.pt": "0728caf40b584f65677c0d58a8cf9c94d605967f6c836edeb848e2249f526daf",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\scalar_seed7.pt": "688567d49ebaa74b8e0ae38bfa383e023a08f52fa15eafb42af53c2b7424a3d6",
+    "isaac_windows\\e1s\\outputs\\reflex_students_01\\scalar_selected.pt": "0728caf40b584f65677c0d58a8cf9c94d605967f6c836edeb848e2249f526daf"
+  }
+}

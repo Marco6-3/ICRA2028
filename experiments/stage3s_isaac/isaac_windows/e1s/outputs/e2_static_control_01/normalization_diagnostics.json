@@ -1,0 +1,6 @@
+{
+  "train_max_absolute_normalized_value": 10.523663520812988,
+  "gain_holdout_max_absolute_normalized_value": 7930.77294921875,
+  "minimum_train_standard_deviation": 9.999999974752427e-07,
+  "boundary": "Diagnostic of input distribution amplification, not a causal proof that normalization explains all failures."
+}

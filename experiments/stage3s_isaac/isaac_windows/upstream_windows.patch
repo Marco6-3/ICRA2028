@@ -1,0 +1,42 @@
+diff --git a/source/isaaclab/isaaclab/sim/converters/urdf_converter.py b/source/isaaclab/isaaclab/sim/converters/urdf_converter.py
+index ba80f52..89f8335 100644
+--- a/source/isaaclab/isaaclab/sim/converters/urdf_converter.py
++++ b/source/isaaclab/isaaclab/sim/converters/urdf_converter.py
+@@ -64,7 +64,9 @@ class UrdfConverter(AssetConverterBase):
+         # switch to older version of the URDF importer extension
+         if get_isaac_sim_version() >= Version("5.1"):
+             manager = omni.kit.app.get_app().get_extension_manager()
+-            if not manager.is_extension_enabled("isaacsim.asset.importer.urdf-2.4.31"):
++            # Keep the importer shipped with the installed Isaac Sim when it is
++            # already active; loading a second ABI/version fails in Sim 5.1.
++            if not manager.is_extension_enabled("isaacsim.asset.importer.urdf"):
+                 manager.set_extension_enabled_immediate("isaacsim.asset.importer.urdf-2.4.31", True)
+ 
+         # acquire the URDF interface
+@@ -140,7 +142,10 @@ class UrdfConverter(AssetConverterBase):
+         import_config.set_collision_from_visuals(self.cfg.collision_from_visuals)
+         # consolidating links that are connected by fixed joints
+         import_config.set_merge_fixed_joints(self.cfg.merge_fixed_joints)
+-        import_config.set_merge_fixed_ignore_inertia(self.cfg.merge_fixed_joints)
++        # Older 5.1 importer builds use the legacy merge behavior documented
++        # above and do not expose the newer ignore-inertia setter.
++        if hasattr(import_config, "set_merge_fixed_ignore_inertia"):
++            import_config.set_merge_fixed_ignore_inertia(self.cfg.merge_fixed_joints)
+         # -- physics settings
+         # create fix joint for base link
+         import_config.set_fix_base(self.cfg.fix_base)
+diff --git a/source/isaaclab/setup.py b/source/isaaclab/setup.py
+index 369bf5b..94187a8 100644
+--- a/source/isaaclab/setup.py
++++ b/source/isaaclab/setup.py
+@@ -37,7 +37,9 @@ INSTALL_REQUIRES = [
+     # make sure this is consistent with isaac sim version
+     "pillow==11.3.0",
+     # livestream
+-    "starlette==0.49.1",
++    # Windows deployment with Isaac Sim 5.1: retain its FastAPI-compatible pin.
++    "starlette==0.45.3 ; platform_system == 'Windows'",
++    "starlette==0.49.1 ; platform_system != 'Windows'",
+     # testing
+     "pytest",
+     "pytest-mock",

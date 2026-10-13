@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "boundary": "CPU software from already available Raw to exact bounded-window neural output. No sensor transport, actuator, simulation or energy. Dense per-frame encoder cached; numerical equivalence checked.",
+  "torch": "2.7.0+cpu",
+  "threads": 2,
+  "history_reset": "trial boundaries only; GRU bounded window reset matches training",
+  "runs": {
+    "static_mcf": [
+      {
+        "checkpoint": "static_mcf_seed11.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1855,
+        "full_raw_entry_p95_ms": 0.20759,
+        "descriptor_and_normalization_p95_ms": 0.1585,
+        "network_and_encoder_p95_ms": 0.05111000000000001
+      },
+      {
+        "checkpoint": "static_mcf_seed19.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1844,
+        "full_raw_entry_p95_ms": 0.22038000000000002,
+        "descriptor_and_normalization_p95_ms": 0.16572000000000006,
+        "network_and_encoder_p95_ms": 0.05513000000000005
+      },
+      {
+        "checkpoint": "static_mcf_seed7.pt",
+        "cached_window_equivalence_max_error": 0.0,
+        "samples": 295,
+        "full_raw_entry_p50_ms": 0.1863,
+        "full_raw_entry_p95_ms": 0.3293500000000001,
+        "descriptor_and_normalization_p95_ms": 0.2475400000000001,
+        "network_and_encoder_p95_ms": 0.0723
+      }
+    ]
+  },
+  "summaries": {
+    "static_mcf": {
+      "full_raw_entry_p50_ms": 0.1854,
+      "full_raw_entry_p95_ms": 0.25244000000000005,
+      "descriptor_and_normalization_p95_ms": 0.1905866666666667,
+      "network_and_encoder_p95_ms": 0.059513333333333356
+    }
+  }
+}

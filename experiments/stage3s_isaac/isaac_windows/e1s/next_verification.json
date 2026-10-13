@@ -1,0 +1,37 @@
+{
+  "temporal_01": {
+    "status": "completed",
+    "source_snapshot": "temporal_probe.py"
+  },
+  "e2_dev_01": {
+    "runs": 33,
+    "models": 33,
+    "finite_predictions": true,
+    "source_snapshot": "e2_dev_fixed_v1.py"
+  },
+  "e2_history_control_01": {
+    "runs": 3,
+    "models": 3,
+    "finite_predictions": true,
+    "source_snapshot": "e2_dev_history_v2.py"
+  },
+  "e2_static_control_01": {
+    "runs": 3,
+    "models": 3,
+    "finite_predictions": true,
+    "source_snapshot": "e2_dev.py"
+  },
+  "old_pilot": {
+    "unchanged_npz_hashes": 135
+  },
+  "contact_02": {
+    "loaded_trials_hash_verified": 54
+  },
+  "contact_bringup_01": {
+    "loaded_trials_hash_verified": 18
+  },
+  "pure_loading_01": {
+    "loaded_trials_hash_verified": 18
+  },
+  "utf8_readback": "passed"
+}

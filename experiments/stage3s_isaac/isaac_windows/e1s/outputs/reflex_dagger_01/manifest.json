@@ -1,0 +1,16 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "dagger_0",
+    "dagger_1",
+    "dagger_2",
+    "dagger_3",
+    "dagger_4",
+    "dagger_5",
+    "dagger_6",
+    "dagger_7",
+    "dagger_zero"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}
