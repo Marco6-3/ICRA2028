@@ -1,0 +1,140 @@
+[
+  {
+    "trial_id": "pulse_p0_r0",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "pulse_p0_r1",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "pulse_p1_r0",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "pulse_p1_r1",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "pulse_p2_r0",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "pulse_p2_r1",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+]

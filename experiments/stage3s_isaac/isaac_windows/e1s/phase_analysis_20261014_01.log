@@ -1,0 +1,4 @@
+PHASE_RESULT +Fx {'nominal': 10, 'high': 29, 'scalar': 18, 'mcf': 19} {'mcf_minus_scalar': -0.125, 'relative_change_percent': -20.000000000000007}
+PHASE_RESULT -Fx {'nominal': 16, 'high': 35, 'scalar': 28, 'mcf': 30} {'mcf_minus_scalar': 0.25, 'relative_change_percent': 22.222222222222232}
+PHASE_RESULT +Fy {'nominal': 35, 'high': 35, 'scalar': 35, 'mcf': 35} {'mcf_minus_scalar': 0.0, 'relative_change_percent': 0.0}
+PHASE_RESULT -Fy {'nominal': 25, 'high': 35, 'scalar': 35, 'mcf': 35} {'mcf_minus_scalar': 0.0, 'relative_change_percent': 0.0}

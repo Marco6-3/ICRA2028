@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "mech_zero_r0",
+    "mech_force_d0_r0",
+    "mech_torque_d0_r0",
+    "mech_combined_d0_r0",
+    "mech_force_d1_r0",
+    "mech_torque_d1_r0",
+    "mech_combined_d1_r0",
+    "mech_force_d2_r0",
+    "mech_torque_d2_r0",
+    "mech_combined_d2_r0",
+    "mech_force_d3_r0",
+    "mech_torque_d3_r0",
+    "mech_combined_d3_r0",
+    "mech_zero_r1",
+    "mech_force_d0_r1",
+    "mech_torque_d0_r1",
+    "mech_combined_d0_r1",
+    "mech_force_d1_r1",
+    "mech_torque_d1_r1",
+    "mech_combined_d1_r1",
+    "mech_force_d2_r1",
+    "mech_torque_d2_r1",
+    "mech_combined_d2_r1",
+    "mech_force_d3_r1",
+    "mech_torque_d3_r1",
+    "mech_combined_d3_r1"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

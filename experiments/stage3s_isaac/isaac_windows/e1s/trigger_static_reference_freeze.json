@@ -1,0 +1,7 @@
+{
+  "TRIGGER_STATIC_REFERENCE_PROTOCOL.md": "f64f1181fb8bf662111ffa63217926d05d411b0ea037e87d98d54b35c42b3b95",
+  "run_trigger_static_reference.py": "7430b139096eab978e39bc7841ee2ffd77fafdf6c72f48deb5a85e6cfa0efc03",
+  "alignment_matrices/trigger.json": "6c6f119970dd8343c220d4796dc975a3ecb7ed2a25125ad342f4baa53f608917",
+  "aligned_sim.py": "bb5f4e3bfac3dee951c45253bdce2b0f54beaee106f87dc559fbf3860b920ec3",
+  "aligned_policy.py": "098b78de52208f9672177dcae83aded9fcf230be2c7f9d16396b798c1a8d3080"
+}

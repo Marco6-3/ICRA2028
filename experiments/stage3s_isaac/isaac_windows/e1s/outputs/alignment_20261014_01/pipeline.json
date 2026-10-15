@@ -1,0 +1,111 @@
+{
+  "status": "completed",
+  "stages": [
+    {
+      "name": "low_fixed",
+      "controller": "fixed",
+      "preload_n": 3.06,
+      "trigger": "none",
+      "matrix": "alignment"
+    },
+    {
+      "name": "low_scalar",
+      "controller": "scalar",
+      "preload_n": 3.06,
+      "trigger": "none",
+      "matrix": "alignment"
+    },
+    {
+      "name": "low_mcf",
+      "controller": "mcf",
+      "preload_n": 3.06,
+      "trigger": "none",
+      "matrix": "alignment"
+    },
+    {
+      "name": "high_fixed",
+      "controller": "fixed",
+      "preload_n": 4.42,
+      "trigger": "none",
+      "matrix": "alignment"
+    },
+    {
+      "name": "high_scalar",
+      "controller": "scalar",
+      "preload_n": 4.42,
+      "trigger": "none",
+      "matrix": "alignment"
+    },
+    {
+      "name": "high_mcf",
+      "controller": "mcf",
+      "preload_n": 4.42,
+      "trigger": "none",
+      "matrix": "alignment"
+    },
+    {
+      "name": "max_fixed",
+      "controller": "fixed",
+      "preload_n": 5.07,
+      "trigger": "none",
+      "matrix": "alignment"
+    },
+    {
+      "name": "trigger_low_none",
+      "controller": "mcf",
+      "preload_n": 3.06,
+      "trigger": "none",
+      "matrix": "trigger"
+    },
+    {
+      "name": "trigger_low_pulse",
+      "controller": "mcf",
+      "preload_n": 3.06,
+      "trigger": "pulse",
+      "matrix": "trigger"
+    },
+    {
+      "name": "trigger_low_latch",
+      "controller": "mcf",
+      "preload_n": 3.06,
+      "trigger": "latch",
+      "matrix": "trigger"
+    },
+    {
+      "name": "trigger_high_none",
+      "controller": "mcf",
+      "preload_n": 4.42,
+      "trigger": "none",
+      "matrix": "trigger"
+    },
+    {
+      "name": "trigger_high_pulse",
+      "controller": "mcf",
+      "preload_n": 4.42,
+      "trigger": "pulse",
+      "matrix": "trigger"
+    },
+    {
+      "name": "trigger_high_latch",
+      "controller": "mcf",
+      "preload_n": 4.42,
+      "trigger": "latch",
+      "matrix": "trigger"
+    }
+  ],
+  "completed": [
+    "low_fixed",
+    "low_scalar",
+    "low_mcf",
+    "high_fixed",
+    "high_scalar",
+    "high_mcf",
+    "max_fixed",
+    "trigger_low_none",
+    "trigger_low_pulse",
+    "trigger_low_latch",
+    "trigger_high_none",
+    "trigger_high_pulse",
+    "trigger_high_latch"
+  ]
+}

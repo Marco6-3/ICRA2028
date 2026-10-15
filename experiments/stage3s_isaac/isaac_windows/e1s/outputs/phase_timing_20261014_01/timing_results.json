@@ -1,0 +1,2376 @@
+{
+  "rows": [
+    {
+      "id": "test_00_0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "test_00_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.18,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 15.728113642174357,
+      "max_tilt_deg": 11.310304365302503,
+      "max_orientation_change_deg": 11.775057584328684,
+      "effort_normal_n_s": 4.160902150472005,
+      "peak_normal_n": 2.864086151123047,
+      "post_normal_n": 2.738327741622925,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12114999999999994,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5166666666666666,
+        "area": 0.5166666666666666,
+        "proxy": 0.55,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5416666666666666,
+        "command": null,
+        "actual_closure": 0.575,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_01_0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "test_01_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 22.452859898793207,
+      "max_tilt_deg": 16.536807414712356,
+      "max_orientation_change_deg": 16.929281414848607,
+      "effort_normal_n_s": 4.153502655029297,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.7372238636016846,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.13033499999999995,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5083333333333333,
+        "area": 0.5,
+        "proxy": 0.5083333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5083333333333333,
+        "command": null,
+        "actual_closure": 0.5333333333333333,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 58.33333333333329,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_00_0",
+      "controller": "high",
+      "trial": {
+        "trial_id": "test_00_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.18,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 1.6170630578964353,
+      "max_tilt_deg": 1.1768488063666687,
+      "max_orientation_change_deg": 1.207862907429717,
+      "effort_normal_n_s": 7.605979919433594,
+      "peak_normal_n": 5.07679557800293,
+      "post_normal_n": 5.071335315704346,
+      "saturation_fraction": 1.0,
+      "max_delta_rad": 0.003,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12312999999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.6,
+        "area": 0.6083333333333333,
+        "proxy": 0.6083333333333333,
+        "raw": 0.475,
+        "slip": 0.4666666666666667,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 149.99999999999997,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 5.072449207305908,
+      "baseline_delta_rad": 0.003,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_01_0",
+      "controller": "high",
+      "trial": {
+        "trial_id": "test_01_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 1.6243878215911214,
+      "max_tilt_deg": 1.1932430066471698,
+      "max_orientation_change_deg": 1.2233160854845913,
+      "effort_normal_n_s": 7.600075276692708,
+      "peak_normal_n": 5.075286865234375,
+      "post_normal_n": 5.064866542816162,
+      "saturation_fraction": 1.0,
+      "max_delta_rad": 0.003,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.13304999999999984,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.6583333333333333,
+        "area": 0.65,
+        "proxy": 0.6916666666666667,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 208.33333333333331,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 5.072449207305908,
+      "baseline_delta_rad": 0.003,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_00_0",
+      "controller": "mcf",
+      "trial": {
+        "trial_id": "test_00_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.18,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 1.0131066366583594,
+      "max_tilt_deg": 0.7401834166556152,
+      "max_orientation_change_deg": 0.7517303033216083,
+      "effort_normal_n_s": 5.372900390625,
+      "peak_normal_n": 5.014463424682617,
+      "post_normal_n": 3.2750840187072754,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.002921209394931793,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.5666349999999998,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5166666666666666,
+        "area": 0.5166666666666666,
+        "proxy": 0.5166666666666666,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": null,
+        "command": 0.4666666666666667,
+        "actual_closure": null,
+        "normal_force": 0.48333333333333334,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 3.0612621307373047,
+      "baseline_delta_rad": 0.00028739038109779357,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_01_0",
+      "controller": "mcf",
+      "trial": {
+        "trial_id": "test_01_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 2.8225258551673873,
+      "max_tilt_deg": 2.0714564918837817,
+      "max_orientation_change_deg": 2.1387207705170765,
+      "effort_normal_n_s": 5.469607543945313,
+      "peak_normal_n": 5.020905494689941,
+      "post_normal_n": 3.324110507965088,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0029378398060798646,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.5198499999999999,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5166666666666666,
+        "area": 0.5166666666666666,
+        "proxy": 0.6,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.6166666666666667,
+        "command": 0.4666666666666667,
+        "actual_closure": null,
+        "normal_force": 0.48333333333333334,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 3.0612621307373047,
+      "baseline_delta_rad": 0.00028739038109779357,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_00_0",
+      "controller": "scalar",
+      "trial": {
+        "trial_id": "test_00_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.18,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 1.1918824262829406,
+      "max_tilt_deg": 0.8717098274470991,
+      "max_orientation_change_deg": 0.8838102361389337,
+      "effort_normal_n_s": 5.876099650065104,
+      "peak_normal_n": 4.823171138763428,
+      "post_normal_n": 3.3610761165618896,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0026642548441886903,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.502525,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.55,
+        "area": 0.5583333333333333,
+        "proxy": 0.5416666666666666,
+        "raw": 0.48333333333333334,
+        "slip": 0.4666666666666667,
+        "slip_2mm": null,
+        "command": 0.55,
+        "actual_closure": null,
+        "normal_force": 0.5583333333333333,
+        "any_tactile": 0.48333333333333334
+      },
+      "event_delay_ms": {
+        "cop": 100.00000000000003,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.005220472480775788
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 4.424594879150391,
+      "baseline_delta_rad": 0.002125173032283783,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_01_0",
+      "controller": "scalar",
+      "trial": {
+        "trial_id": "test_01_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 2.0598697205011356,
+      "max_tilt_deg": 1.5081263192118617,
+      "max_orientation_change_deg": 1.5511290349588833,
+      "effort_normal_n_s": 5.920032755533854,
+      "peak_normal_n": 4.875293731689453,
+      "post_normal_n": 3.3891544342041016,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0027330145239830017,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.49268,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5333333333333333,
+        "area": 0.5416666666666666,
+        "proxy": 0.5333333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.725,
+        "command": 0.5333333333333333,
+        "actual_closure": null,
+        "normal_force": 0.5416666666666666,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 83.33333333333331,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.005220472480775788
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 4.424594879150391,
+      "baseline_delta_rad": 0.002125173032283783,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_00_0",
+      "controller": "oracle",
+      "trial": {
+        "trial_id": "test_00_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.18,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 1.1619313013625159,
+      "max_tilt_deg": 0.844730137934577,
+      "max_orientation_change_deg": 0.8641077424029326,
+      "effort_normal_n_s": 5.42022705078125,
+      "peak_normal_n": 5.074431419372559,
+      "post_normal_n": 3.2990684509277344,
+      "saturation_fraction": 0.07777777777777778,
+      "max_delta_rad": 0.003,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.126545,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5833333333333334,
+        "area": 0.5916666666666667,
+        "proxy": 0.48333333333333334,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": null,
+        "command": 0.4583333333333333,
+        "actual_closure": null,
+        "normal_force": 0.4666666666666667,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 133.33333333333337,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.955518960952759,
+      "baseline_delta_rad": 0.00014315300046471234,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    },
+    {
+      "id": "test_01_0",
+      "controller": "oracle",
+      "trial": {
+        "trial_id": "test_01_0",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 2.4304250168900885,
+      "max_tilt_deg": 1.7849879087691858,
+      "max_orientation_change_deg": 1.8324239246888636,
+      "effort_normal_n_s": 5.565370686848958,
+      "peak_normal_n": 5.076731204986572,
+      "post_normal_n": 3.373189687728882,
+      "saturation_fraction": 0.14444444444444443,
+      "max_delta_rad": 0.003,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.1169,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5833333333333334,
+        "area": 0.575,
+        "proxy": 0.48333333333333334,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.6833333333333333,
+        "command": 0.4583333333333333,
+        "actual_closure": null,
+        "normal_force": 0.4666666666666667,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 133.33333333333337,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.955518960952759,
+      "baseline_delta_rad": 0.00014315300046471234,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1
+    }
+  ],
+  "sensitivity": [
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 108.33333333333334,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 108.33333333333334,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 108.33333333333334,
+        "area": 66.6666666666666,
+        "proxy": 100.00000000000003,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 91.66666666666661,
+        "command": null,
+        "actual_closure": 124.99999999999994,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 49.999999999999986,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 49.999999999999986,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 49.999999999999986,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 75.00000000000001,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 75.00000000000001,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "nominal",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 75.00000000000001,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 124.99999999999994,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 124.99999999999994,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 124.99999999999994,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 58.33333333333329,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 149.99999999999997,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 149.99999999999997,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 149.99999999999997,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 58.33333333333329,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": null,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": null,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": null,
+        "area": 158.33333333333326,
+        "proxy": 158.33333333333326,
+        "raw": 24.999999999999968,
+        "slip": 58.33333333333329,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 158.33333333333326,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 158.33333333333326,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 158.33333333333326,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 33.33333333333333,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 208.33333333333331,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 208.33333333333331,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 208.33333333333331,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 33.33333333333333,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": null,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": null,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "high",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": null,
+        "area": 200.0,
+        "proxy": 241.66666666666663,
+        "raw": 24.999999999999968,
+        "slip": 33.33333333333333,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": null,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": null,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": null,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 58.33333333333329,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 216.66666666666663,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 216.66666666666663,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "mcf",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 216.66666666666663,
+        "area": 66.6666666666666,
+        "proxy": 149.99999999999997,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 166.66666666666669,
+        "command": 16.666666666666664,
+        "actual_closure": null,
+        "normal_force": 33.33333333333333,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 83.33333333333331,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 83.33333333333331,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 83.33333333333331,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 33.33333333333333,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 100.00000000000003,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 100.00000000000003,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 100.00000000000003,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 33.33333333333333,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": null,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": null,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": null,
+        "area": 108.33333333333334,
+        "proxy": 91.66666666666661,
+        "raw": 33.33333333333333,
+        "slip": 33.33333333333333,
+        "slip_2mm": null,
+        "command": 100.00000000000003,
+        "actual_closure": null,
+        "normal_force": 108.33333333333334,
+        "any_tactile": 33.33333333333333
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 75.00000000000001,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 75.00000000000001,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 75.00000000000001,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 83.33333333333331,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 83.33333333333331,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 83.33333333333331,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": null,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": null,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "scalar",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": null,
+        "area": 91.66666666666661,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 274.99999999999994,
+        "command": 83.33333333333331,
+        "actual_closure": null,
+        "normal_force": 91.66666666666661,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 108.33333333333334,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 108.33333333333334,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 108.33333333333334,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 133.33333333333337,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 133.33333333333337,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 133.33333333333337,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": null,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": null,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_00_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": null,
+        "area": 141.66666666666666,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": null,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 91.66666666666661,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 91.66666666666661,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.001,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 91.66666666666661,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 133.33333333333337,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 133.33333333333337,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 133.33333333333337,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.05,
+      "delays": {
+        "cop": 308.3333333333333,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.1,
+      "delays": {
+        "cop": 308.3333333333333,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    },
+    {
+      "controller": "oracle",
+      "id": "test_01_0",
+      "cop_floor": 0.004,
+      "slip_floor_mm": 0.2,
+      "delays": {
+        "cop": 308.3333333333333,
+        "area": 124.99999999999994,
+        "proxy": 33.33333333333333,
+        "raw": 24.999999999999968,
+        "slip": 16.666666666666664,
+        "slip_2mm": 233.33333333333334,
+        "command": 8.333333333333304,
+        "actual_closure": null,
+        "normal_force": 16.666666666666664,
+        "any_tactile": 24.999999999999968
+      }
+    }
+  ]
+}

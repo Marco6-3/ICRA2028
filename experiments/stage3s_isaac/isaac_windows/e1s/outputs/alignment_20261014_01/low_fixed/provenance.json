@@ -1,0 +1,175 @@
+{
+  "upstream_commit": "dc2e1c6607a1b1a0e4b196bb4e2d4ccdc1afdcb0",
+  "source_file_sha256": {
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\ICRA2028_publication\\experiments\\stage3s_isaac\\isaac_windows\\e1s\\aligned_sim.py": "bb5f4e3bfac3dee951c45253bdce2b0f54beaee106f87dc559fbf3860b920ec3",
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\ICRA2028_publication\\experiments\\stage3s_isaac\\isaac_windows\\e1s\\disturbance.py": "cc41645214cff11d734322bee26ea226f1885cbe67b26901e5c69b6573ae807a",
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\ICRA2028_publication\\experiments\\stage3s_isaac\\isaac_windows\\e1s\\reflex_policy.py": "f42c1078fc4d068f1493b918698529c078fe1c5d682f3e5878e4b076bdda8dff",
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\ICRA2028_publication\\experiments\\stage3s_isaac\\isaac_windows\\e1s\\bounded_scaler.py": "b3dacabf0be0774e3d6573ac87f2a71312833fb1fff1fae04b698ac18b2645c6",
+    "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\Isaacsim_tactile_env\\aloha_tactile_env.py": "ff331b5ffe60245ea40caadf8cf4db5ca1f7a26f2fb7b363fa2ad70917654dfa",
+    "C:\\isaac_ws\\FlexiTac-IsaacSim-Simulation\\source\\isaaclab\\isaaclab\\sensors\\warp_sdf_tactile\\warp_sdf_tactile_sensor.py": "92314d9340b4ac73d8d449d21621ef740d0f6ec9c8b87847eee83bfd03dc26e4",
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\ICRA2028_publication\\experiments\\stage3s_isaac\\isaac_windows\\e1s\\aligned_policy.py": "098b78de52208f9672177dcae83aded9fcf230be2c7f9d16396b798c1a8d3080",
+    "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\ICRA2028_publication\\experiments\\stage3s_isaac\\isaac_windows\\e1s\\prepare_alignment_driver.py": "90154508591e70975380f64ab4c0a517660bb43044708a905ca9b7f8de6a4ca6"
+  },
+  "dataset_sha256": "9bfd43746d3599e9d8fe117254ded7710678ca66b90aebfc20db792bc471052c",
+  "device": "cpu",
+  "physics_dt": 0.008333333333333333,
+  "target": "plug",
+  "episode": 3,
+  "hold_step": 219,
+  "settle_steps": 30,
+  "plug_scale": 1.06,
+  "normal_offset": 0.0036,
+  "reference_wxyz": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "threshold": 0.0,
+  "robot_body_names": [
+    "table",
+    "left_vx300s_base_link",
+    "right_vx300s_base_link",
+    "left_vx300s_shoulder_link",
+    "right_vx300s_shoulder_link",
+    "left_vx300s_upper_arm_link",
+    "right_vx300s_upper_arm_link",
+    "left_vx300s_upper_forearm_link",
+    "right_vx300s_upper_forearm_link",
+    "left_vx300s_lower_forearm_link",
+    "right_vx300s_lower_forearm_link",
+    "left_vx300s_wrist_link",
+    "right_vx300s_wrist_link",
+    "left_vx300s_gripper_link",
+    "right_vx300s_gripper_link",
+    "left_vx300s_ee_arm_link",
+    "right_vx300s_ee_arm_link",
+    "left_vx300s_gripper_prop_link",
+    "left_vx300s_gripper_bar_link",
+    "right_vx300s_gripper_prop_link",
+    "right_vx300s_gripper_bar_link",
+    "left_vx300s_fingers_link",
+    "right_vx300s_fingers_link",
+    "left_vx300s_ee_gripper_link",
+    "left_vx300s_left_finger_link",
+    "left_vx300s_right_finger_link",
+    "right_vx300s_ee_gripper_link",
+    "right_vx300s_left_finger_link",
+    "right_vx300s_right_finger_link",
+    "left_arm_elastomer_left",
+    "left_arm_elastomer_right",
+    "right_arm_elastomer_left",
+    "right_arm_elastomer_right"
+  ],
+  "sensor_slots": [
+    {
+      "slot": 0,
+      "link": "/World/Robot/left_arm_elastomer_left"
+    },
+    {
+      "slot": 1,
+      "link": "/World/Robot/left_arm_elastomer_right"
+    },
+    {
+      "slot": 2,
+      "link": "/World/Robot/right_arm_elastomer_left"
+    },
+    {
+      "slot": 3,
+      "link": "/World/Robot/right_arm_elastomer_right"
+    }
+  ],
+  "units": {
+    "tactile": "normalized SDF penetration proxy",
+    "mcf_fN": "sum of thresholded proxy responses",
+    "mcf_CoP": "grid coordinates [-1,1], NOT world x/y",
+    "mcf_A": "active cell fraction",
+    "force": "N, known external excitation submitted to PhysX",
+    "torque": "Nm about current COM, excludes contact reactions and gravity"
+  },
+  "boundary": "Development contact intervention; table / removed both have fixed robot base. No real force calibration or deformable layer.",
+  "initial_hold_per_finger_sum": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "torch": "2.7.0+cpu",
+  "support": "removed",
+  "preload_mode": "open",
+  "preload_target_proxy": 8.0,
+  "normal_target_n": 0.6,
+  "gate_proxy_min": 2.0,
+  "gate_normal_min_n": 0.05,
+  "fixed_robot_base": true,
+  "catch_floor_center_z": -0.35,
+  "object_contact_audit_paths": [
+    {
+      "object": "/World/Plug/a_0186_plug",
+      "filters": [
+        "/World/Robot/table",
+        "/World/defaultGroundPlane",
+        "/World/Socket/a_0186_socket"
+      ]
+    },
+    {
+      "object": "/World/Socket/a_0186_socket",
+      "filters": [
+        "/World/Robot/table",
+        "/World/defaultGroundPlane",
+        "/World/Plug/a_0186_plug"
+      ]
+    }
+  ],
+  "support_collision_paths": [
+    {
+      "path": "/World/Robot/table/collisions/mesh_0/box",
+      "enabled": false
+    }
+  ],
+  "fixture_npz": "C:\\Users\\mingzhe Liu\\OneDrive\\Desktop\\ws\\ICRA2028_publication\\experiments\\stage3s_isaac\\isaac_windows\\e1s\\outputs\\contact_01\\table_open\\c000_r00.npz",
+  "fixture_sha256": "0ce9a02a8f97e1ff8a9bf964f07168c39ad168311a4d7b3bfe0738467c3280cb",
+  "controller": "fixed",
+  "checkpoint": null,
+  "checkpoint_sha256": null,
+  "initial_close_rad": 0.003,
+  "initial_target_offset_z_m": 0.0,
+  "bringup_grid": false,
+  "physics_material_properties": [
+    [
+      [
+        0.5,
+        0.5,
+        0.0
+      ]
+    ]
+  ],
+  "preload_max_steps": 120,
+  "preload_max_close_rad": 0.004,
+  "reference_rotation_world_from_load": [
+    [
+      0.04438593285915981,
+      -0.08159331990647978,
+      0.9956768648064798
+    ],
+    [
+      0.9075884544595397,
+      -0.41323043423144645,
+      -0.07432230860673114
+    ],
+    [
+      0.41750818710052395,
+      0.9069636918705892,
+      0.05571153679898634
+    ]
+  ],
+  "reference_from_finger": null,
+  "aligned_total_n": 3.06,
+  "trigger": "none",
+  "release_s": 0.45,
+  "absolute_extra_close_limits_rad": [
+    0.0,
+    0.003
+  ]
+}

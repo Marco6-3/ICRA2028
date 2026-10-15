@@ -1,0 +1,3320 @@
+{
+  "mechanism": [
+    {
+      "id": "mech_zero_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_zero_r0",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.004843788828758196,
+      "max_tilt_deg": 0.0037014785103056526,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.273049926757812,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.8487133979797363,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.1153099999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "zero",
+      "signed_axis": null,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d0_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d0_r0",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 17.917053034083153,
+      "max_tilt_deg": 12.969537638909427,
+      "max_orientation_change_deg": 13.343006080798313,
+      "effort_normal_n_s": 4.164319610595703,
+      "peak_normal_n": 2.8546037673950195,
+      "post_normal_n": 2.7386107444763184,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.13180499999999976,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5166666666666666,
+        "area": 0.5166666666666666,
+        "proxy": 0.5166666666666666,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5166666666666666,
+        "command": null,
+        "actual_closure": 0.5916666666666667,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 66.6666666666666,
+        "command": null,
+        "actual_closure": 141.66666666666666,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 0,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 58.33333333333329,
+            "area": 66.6666666666666,
+            "proxy": 66.6666666666666,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 66.6666666666666,
+            "command": null,
+            "actual_closure": 141.66666666666666,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 75.00000000000001,
+            "area": 66.6666666666666,
+            "proxy": 66.6666666666666,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 66.6666666666666,
+            "command": null,
+            "actual_closure": 141.66666666666666,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d0_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d0_r0",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.003,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.054764399028885,
+      "max_tilt_deg": 0.04310021033579153,
+      "max_orientation_change_deg": 0.06852804019207596,
+      "effort_normal_n_s": 4.272228495279948,
+      "peak_normal_n": 2.854114532470703,
+      "post_normal_n": 2.848719596862793,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12572999999999998,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 0,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d0_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d0_r0",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 22.452859898793207,
+      "max_tilt_deg": 16.536807414712356,
+      "max_orientation_change_deg": 16.929281414848607,
+      "effort_normal_n_s": 4.153502655029297,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.7372238636016846,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.14085499999999998,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5083333333333333,
+        "area": 0.5,
+        "proxy": 0.5083333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5083333333333333,
+        "command": null,
+        "actual_closure": 0.5333333333333333,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 58.33333333333329,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 0,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 49.999999999999986,
+            "area": 49.999999999999986,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 83.33333333333331,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 75.00000000000001,
+            "area": 49.999999999999986,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 83.33333333333331,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d1_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d1_r0",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 11.131698250256797,
+      "max_tilt_deg": 8.746723118583132,
+      "max_orientation_change_deg": 8.988278567794778,
+      "effort_normal_n_s": 4.154487101236979,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.738238573074341,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11802999999999993,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.48333333333333334,
+        "area": 0.48333333333333334,
+        "proxy": 0.5333333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5,
+        "command": null,
+        "actual_closure": 0.5083333333333333,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 33.33333333333333,
+        "area": 33.33333333333333,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 49.999999999999986,
+        "command": null,
+        "actual_closure": 58.33333333333329,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 1,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 33.33333333333333,
+            "area": 33.33333333333333,
+            "proxy": 83.33333333333331,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 49.999999999999986,
+            "command": null,
+            "actual_closure": 58.33333333333329,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 41.66666666666663,
+            "area": 33.33333333333333,
+            "proxy": 83.33333333333331,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 49.999999999999986,
+            "command": null,
+            "actual_closure": 58.33333333333329,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d1_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d1_r0",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          -0.003,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.016905674584140964,
+      "max_tilt_deg": 0.011720144871790645,
+      "max_orientation_change_deg": 0.06852804019207596,
+      "effort_normal_n_s": 4.272918701171875,
+      "peak_normal_n": 2.850268602371216,
+      "post_normal_n": 2.84873366355896,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11504999999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 1,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d1_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d1_r0",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 9.200961579988437,
+      "max_tilt_deg": 7.303981268124194,
+      "max_orientation_change_deg": 7.486170131985775,
+      "effort_normal_n_s": 4.1698455810546875,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.7398324012756348,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12716499999999997,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.48333333333333334,
+        "area": 0.48333333333333334,
+        "proxy": 0.5083333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5083333333333333,
+        "command": null,
+        "actual_closure": 0.55,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 33.33333333333333,
+        "area": 33.33333333333333,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 100.00000000000003,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 1,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 33.33333333333333,
+            "area": 33.33333333333333,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 100.00000000000003,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 49.999999999999986,
+            "area": 33.33333333333333,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 100.00000000000003,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d2_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d2_r0",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 0.07818885727069622,
+      "max_tilt_deg": 0.09691917128148518,
+      "max_orientation_change_deg": 0.11190582380822714,
+      "effort_normal_n_s": 4.273362223307291,
+      "peak_normal_n": 2.8507914543151855,
+      "post_normal_n": 2.8487355709075928,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.16783,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 2,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d2_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d2_r0",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          -0.003,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.00741508368282025,
+      "max_tilt_deg": 0.00685963521295997,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.2729441324869795,
+      "peak_normal_n": 2.85133695602417,
+      "post_normal_n": 2.8487203121185303,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11532999999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 2,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d2_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d2_r0",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 0.03673610891473412,
+      "max_tilt_deg": 0.05723281067328576,
+      "max_orientation_change_deg": 0.08846932034957805,
+      "effort_normal_n_s": 4.273556009928385,
+      "peak_normal_n": 2.850571393966675,
+      "post_normal_n": 2.8489387035369873,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12061,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 2,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d3_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d3_r0",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 0.26185090085030793,
+      "max_tilt_deg": 0.2352366816775837,
+      "max_orientation_change_deg": 0.23069979563490706,
+      "effort_normal_n_s": 4.27193603515625,
+      "peak_normal_n": 2.8605997562408447,
+      "post_normal_n": 2.848360776901245,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12201,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": 0.5666666666666667,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": 116.66666666666664,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 3,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": 116.66666666666664,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": 116.66666666666664,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d3_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d3_r0",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.003,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.010652894206076065,
+      "max_tilt_deg": 0.006617728685540054,
+      "max_orientation_change_deg": 0.06852804019207596,
+      "effort_normal_n_s": 4.273201497395833,
+      "peak_normal_n": 2.8507869243621826,
+      "post_normal_n": 2.8487210273742676,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11592999999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 3,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d3_r0",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d3_r0",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 2.083821409759976,
+      "max_tilt_deg": 1.4806577287444158,
+      "max_orientation_change_deg": 1.6356199381905103,
+      "effort_normal_n_s": 4.253652954101563,
+      "peak_normal_n": 2.87772274017334,
+      "post_normal_n": 2.830422878265381,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11126999999999997,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.575,
+        "area": 0.575,
+        "proxy": 0.575,
+        "raw": 0.475,
+        "slip": 0.5083333333333333,
+        "slip_2mm": 0.7,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 124.99999999999994,
+        "area": 124.99999999999994,
+        "proxy": 124.99999999999994,
+        "raw": 24.999999999999968,
+        "slip": 58.33333333333329,
+        "slip_2mm": 249.99999999999994,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 3,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 100.00000000000003,
+            "area": 124.99999999999994,
+            "proxy": 124.99999999999994,
+            "raw": 24.999999999999968,
+            "slip": 58.33333333333329,
+            "slip_2mm": 249.99999999999994,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 158.33333333333326,
+            "area": 124.99999999999994,
+            "proxy": 124.99999999999994,
+            "raw": 24.999999999999968,
+            "slip": 58.33333333333329,
+            "slip_2mm": 249.99999999999994,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_zero_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_zero_r1",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.004843788828758196,
+      "max_tilt_deg": 0.0037014785103056526,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.273049926757812,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.8487133979797363,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.13128999999999993,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "zero",
+      "signed_axis": null,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d0_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d0_r1",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 17.917053034083153,
+      "max_tilt_deg": 12.969537638909427,
+      "max_orientation_change_deg": 13.343006080798313,
+      "effort_normal_n_s": 4.164319610595703,
+      "peak_normal_n": 2.8546037673950195,
+      "post_normal_n": 2.7386107444763184,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.13924499999999998,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5166666666666666,
+        "area": 0.5166666666666666,
+        "proxy": 0.5166666666666666,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5166666666666666,
+        "command": null,
+        "actual_closure": 0.5916666666666667,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 66.6666666666666,
+        "area": 66.6666666666666,
+        "proxy": 66.6666666666666,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 66.6666666666666,
+        "command": null,
+        "actual_closure": 141.66666666666666,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 0,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 58.33333333333329,
+            "area": 66.6666666666666,
+            "proxy": 66.6666666666666,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 66.6666666666666,
+            "command": null,
+            "actual_closure": 141.66666666666666,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 75.00000000000001,
+            "area": 66.6666666666666,
+            "proxy": 66.6666666666666,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 66.6666666666666,
+            "command": null,
+            "actual_closure": 141.66666666666666,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d0_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d0_r1",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.003,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.054764399028885,
+      "max_tilt_deg": 0.04310021033579153,
+      "max_orientation_change_deg": 0.06852804019207596,
+      "effort_normal_n_s": 4.272228495279948,
+      "peak_normal_n": 2.854114532470703,
+      "post_normal_n": 2.848719596862793,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12094999999999992,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 0,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d0_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d0_r1",
+        "direction": "+Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 22.452859898793207,
+      "max_tilt_deg": 16.536807414712356,
+      "max_orientation_change_deg": 16.929281414848607,
+      "effort_normal_n_s": 4.153502655029297,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.7372238636016846,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12911999999999996,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.5083333333333333,
+        "area": 0.5,
+        "proxy": 0.5083333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5083333333333333,
+        "command": null,
+        "actual_closure": 0.5333333333333333,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 58.33333333333329,
+        "area": 49.999999999999986,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 83.33333333333331,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 0,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 49.999999999999986,
+            "area": 49.999999999999986,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 83.33333333333331,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 75.00000000000001,
+            "area": 49.999999999999986,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 83.33333333333331,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d1_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d1_r1",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 11.131698250256797,
+      "max_tilt_deg": 8.746723118583132,
+      "max_orientation_change_deg": 8.988278567794778,
+      "effort_normal_n_s": 4.154487101236979,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.738238573074341,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12143999999999991,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.48333333333333334,
+        "area": 0.48333333333333334,
+        "proxy": 0.5333333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5,
+        "command": null,
+        "actual_closure": 0.5083333333333333,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 33.33333333333333,
+        "area": 33.33333333333333,
+        "proxy": 83.33333333333331,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 49.999999999999986,
+        "command": null,
+        "actual_closure": 58.33333333333329,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 1,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 33.33333333333333,
+            "area": 33.33333333333333,
+            "proxy": 83.33333333333331,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 49.999999999999986,
+            "command": null,
+            "actual_closure": 58.33333333333329,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 41.66666666666663,
+            "area": 33.33333333333333,
+            "proxy": 83.33333333333331,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 49.999999999999986,
+            "command": null,
+            "actual_closure": 58.33333333333329,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d1_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d1_r1",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          -0.003,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.016905674584140964,
+      "max_tilt_deg": 0.011720144871790645,
+      "max_orientation_change_deg": 0.06852804019207596,
+      "effort_normal_n_s": 4.272918701171875,
+      "peak_normal_n": 2.850268602371216,
+      "post_normal_n": 2.84873366355896,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.13400999999999993,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 1,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d1_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d1_r1",
+        "direction": "-Fx",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 9.200961579988437,
+      "max_tilt_deg": 7.303981268124194,
+      "max_orientation_change_deg": 7.486170131985775,
+      "effort_normal_n_s": 4.1698455810546875,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.7398324012756348,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.14118499999999998,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.48333333333333334,
+        "area": 0.48333333333333334,
+        "proxy": 0.5083333333333333,
+        "raw": 0.475,
+        "slip": 0.4583333333333333,
+        "slip_2mm": 0.5083333333333333,
+        "command": null,
+        "actual_closure": 0.55,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 33.33333333333333,
+        "area": 33.33333333333333,
+        "proxy": 58.33333333333329,
+        "raw": 24.999999999999968,
+        "slip": 8.333333333333304,
+        "slip_2mm": 58.33333333333329,
+        "command": null,
+        "actual_closure": 100.00000000000003,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 1,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 33.33333333333333,
+            "area": 33.33333333333333,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 100.00000000000003,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 49.999999999999986,
+            "area": 33.33333333333333,
+            "proxy": 58.33333333333329,
+            "raw": 24.999999999999968,
+            "slip": 8.333333333333304,
+            "slip_2mm": 58.33333333333329,
+            "command": null,
+            "actual_closure": 100.00000000000003,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d2_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d2_r1",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 0.07818885727069622,
+      "max_tilt_deg": 0.09691917128148518,
+      "max_orientation_change_deg": 0.11190582380822714,
+      "effort_normal_n_s": 4.273362223307291,
+      "peak_normal_n": 2.8507914543151855,
+      "post_normal_n": 2.8487355709075928,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11997999999999986,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 2,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d2_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d2_r1",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          -0.003,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.00741508368282025,
+      "max_tilt_deg": 0.00685963521295997,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.2729441324869795,
+      "peak_normal_n": 2.85133695602417,
+      "post_normal_n": 2.8487203121185303,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.12033499999999991,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 2,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d2_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d2_r1",
+        "direction": "+Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 0.03673610891473412,
+      "max_tilt_deg": 0.05723281067328576,
+      "max_orientation_change_deg": 0.08846932034957805,
+      "effort_normal_n_s": 4.273556009928385,
+      "peak_normal_n": 2.850571393966675,
+      "post_normal_n": 2.8489387035369873,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11521,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 2,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_force_d3_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_force_d3_r1",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 0.26185090085030793,
+      "max_tilt_deg": 0.2352366816775837,
+      "max_orientation_change_deg": 0.23069979563490706,
+      "effort_normal_n_s": 4.27193603515625,
+      "peak_normal_n": 2.8605997562408447,
+      "post_normal_n": 2.848360776901245,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.11622999999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": 0.5666666666666667,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": 116.66666666666664,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "force",
+      "signed_axis": 3,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": 116.66666666666664,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": 24.999999999999968,
+            "slip": 116.66666666666664,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_torque_d3_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_torque_d3_r1",
+        "direction": "zero",
+        "amplitude_n": 0.0,
+        "point_m": [
+          0,
+          0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.003,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.010652894206076065,
+      "max_tilt_deg": 0.006617728685540054,
+      "max_orientation_change_deg": 0.06852804019207596,
+      "effort_normal_n_s": 4.273201497395833,
+      "peak_normal_n": 2.8507869243621826,
+      "post_normal_n": 2.8487210273742676,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.13634999999999992,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "torque",
+      "signed_axis": 3,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": null,
+            "area": null,
+            "proxy": null,
+            "raw": null,
+            "slip": null,
+            "slip_2mm": null,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mech_combined_d3_r1",
+      "controller": "nominal",
+      "trial": {
+        "trial_id": "mech_combined_d3_r1",
+        "direction": "-Fy",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0,
+          0,
+          0.015
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0,
+          0,
+          0
+        ]
+      },
+      "max_slip_mm": 2.083821409759976,
+      "max_tilt_deg": 1.4806577287444158,
+      "max_orientation_change_deg": 1.6356199381905103,
+      "effort_normal_n_s": 4.253652954101563,
+      "peak_normal_n": 2.87772274017334,
+      "post_normal_n": 2.830422878265381,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.15789999999999993,
+      "goal_slip_2mm": false,
+      "dropped": false,
+      "events_s": {
+        "cop": 0.575,
+        "area": 0.575,
+        "proxy": 0.575,
+        "raw": 0.475,
+        "slip": 0.5083333333333333,
+        "slip_2mm": 0.7,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": 124.99999999999994,
+        "area": 124.99999999999994,
+        "proxy": 124.99999999999994,
+        "raw": 24.999999999999968,
+        "slip": 58.33333333333329,
+        "slip_2mm": 249.99999999999994,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "mode": "combined",
+      "signed_axis": 3,
+      "sensitivity": [
+        {
+          "cop_floor": 0.001,
+          "delays": {
+            "cop": 100.00000000000003,
+            "area": 124.99999999999994,
+            "proxy": 124.99999999999994,
+            "raw": 24.999999999999968,
+            "slip": 58.33333333333329,
+            "slip_2mm": 249.99999999999994,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        },
+        {
+          "cop_floor": 0.004,
+          "delays": {
+            "cop": 158.33333333333326,
+            "area": 124.99999999999994,
+            "proxy": 124.99999999999994,
+            "raw": 24.999999999999968,
+            "slip": 58.33333333333329,
+            "slip_2mm": 249.99999999999994,
+            "command": null,
+            "actual_closure": null,
+            "normal_force": null,
+            "any_tactile": 24.999999999999968
+          }
+        }
+      ]
+    }
+  ],
+  "actuator": [
+    {
+      "id": "pulse_p0_r0",
+      "controller": "pulse",
+      "trial": {
+        "trial_id": "pulse_p0_r0",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.004843788828758196,
+      "max_tilt_deg": 0.0037014785103056526,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.273049926757812,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.8487133979797363,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.15208499999999983,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "normal_step_n": -4.0531158447265625e-06,
+      "normal_10pct_s": null,
+      "normal_90pct_s": null,
+      "normal_10_90_ms": null,
+      "plateau_closure_mrad": -8.381903171539307e-06
+    },
+    {
+      "id": "pulse_p0_r1",
+      "controller": "pulse",
+      "trial": {
+        "trial_id": "pulse_p0_r1",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.004843788828758196,
+      "max_tilt_deg": 0.0037014785103056526,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.273049926757812,
+      "peak_normal_n": 2.849273681640625,
+      "post_normal_n": 2.8487133979797363,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.0,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.14338499999999998,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": null,
+        "slip": null,
+        "slip_2mm": null,
+        "command": null,
+        "actual_closure": null,
+        "normal_force": null,
+        "any_tactile": null
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "normal_step_n": -4.0531158447265625e-06,
+      "normal_10pct_s": null,
+      "normal_90pct_s": null,
+      "normal_10_90_ms": null,
+      "plateau_closure_mrad": -8.381903171539307e-06
+    },
+    {
+      "id": "pulse_p1_r0",
+      "controller": "pulse",
+      "trial": {
+        "trial_id": "pulse_p1_r0",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.029181686947433512,
+      "max_tilt_deg": 0.01959034567086719,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.464719136555989,
+      "peak_normal_n": 3.5916032791137695,
+      "post_normal_n": 2.848722457885742,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.001,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.18039999999999995,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.45,
+        "actual_closure": null,
+        "normal_force": 0.4583333333333333,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.0,
+        "actual_closure": null,
+        "normal_force": 8.333333333333304,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "normal_step_n": 0.7417759895324707,
+      "normal_10pct_s": 0.4583333333333333,
+      "normal_90pct_s": 0.4583333333333333,
+      "normal_10_90_ms": 0.0,
+      "plateau_closure_mrad": 0.0036731362342834473
+    },
+    {
+      "id": "pulse_p1_r1",
+      "controller": "pulse",
+      "trial": {
+        "trial_id": "pulse_p1_r1",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.029181686947433512,
+      "max_tilt_deg": 0.01959034567086719,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.464719136555989,
+      "peak_normal_n": 3.5916032791137695,
+      "post_normal_n": 2.848722457885742,
+      "saturation_fraction": 0.0,
+      "max_delta_rad": 0.001,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.14781499999999997,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.45,
+        "actual_closure": null,
+        "normal_force": 0.4583333333333333,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": null,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.0,
+        "actual_closure": null,
+        "normal_force": 8.333333333333304,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "normal_step_n": 0.7417759895324707,
+      "normal_10pct_s": 0.4583333333333333,
+      "normal_90pct_s": 0.4583333333333333,
+      "normal_10_90_ms": 0.0,
+      "plateau_closure_mrad": 0.0036731362342834473
+    },
+    {
+      "id": "pulse_p2_r0",
+      "controller": "pulse",
+      "trial": {
+        "trial_id": "pulse_p2_r0",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 0,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.03038182311614645,
+      "max_tilt_deg": 0.044777958416344334,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.847685750325521,
+      "peak_normal_n": 5.073816776275635,
+      "post_normal_n": 2.8487298488616943,
+      "saturation_fraction": 0.17222222222222222,
+      "max_delta_rad": 0.003,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.1449749999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": 0.475,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.45,
+        "actual_closure": null,
+        "normal_force": 0.4583333333333333,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": 24.999999999999968,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.0,
+        "actual_closure": null,
+        "normal_force": 8.333333333333304,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "normal_step_n": 2.2244396209716797,
+      "normal_10pct_s": 0.4583333333333333,
+      "normal_90pct_s": 0.4583333333333333,
+      "normal_10_90_ms": 0.0,
+      "plateau_closure_mrad": 0.01048017293214798
+    },
+    {
+      "id": "pulse_p2_r1",
+      "controller": "pulse",
+      "trial": {
+        "trial_id": "pulse_p2_r1",
+        "direction": "zero",
+        "amplitude_n": 0.2,
+        "point_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frame": "reference",
+        "waveform": "step",
+        "repeat": 1,
+        "preload_delta_rad": 0.0,
+        "friction_scale": 1.0,
+        "sdf_gain_scale": 1.0,
+        "onset_s": 0.45,
+        "duration_s": 0.25,
+        "torque_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "max_slip_mm": 0.03038182311614645,
+      "max_tilt_deg": 0.044777958416344334,
+      "max_orientation_change_deg": 0.07912936529690494,
+      "effort_normal_n_s": 4.847685750325521,
+      "peak_normal_n": 5.073816776275635,
+      "post_normal_n": 2.8487298488616943,
+      "saturation_fraction": 0.17222222222222222,
+      "max_delta_rad": 0.003,
+      "contact_fraction": 1.0,
+      "environment_max_normal_n": 0.0,
+      "control_p95_ms": 0.1393599999999999,
+      "goal_slip_2mm": true,
+      "dropped": false,
+      "events_s": {
+        "cop": null,
+        "area": null,
+        "proxy": 0.475,
+        "raw": 0.475,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.45,
+        "actual_closure": null,
+        "normal_force": 0.4583333333333333,
+        "any_tactile": 0.475
+      },
+      "event_delay_ms": {
+        "cop": null,
+        "area": null,
+        "proxy": 24.999999999999968,
+        "raw": 24.999999999999968,
+        "slip": null,
+        "slip_2mm": null,
+        "command": 0.0,
+        "actual_closure": null,
+        "normal_force": 8.333333333333304,
+        "any_tactile": 24.999999999999968
+      },
+      "thresholds": {
+        "cop": 0.002,
+        "area": 0.0026041666666666665,
+        "proxy": 0.05,
+        "raw": 0.002
+      },
+      "controller_output": "delta_g_only",
+      "baseline_normal_n": 2.8486905097961426,
+      "baseline_delta_rad": 0.0,
+      "cop_floor": 0.002,
+      "slip_floor_mm": 0.1,
+      "normal_step_n": 2.2244396209716797,
+      "normal_10pct_s": 0.4583333333333333,
+      "normal_90pct_s": 0.4583333333333333,
+      "normal_10_90_ms": 0.0,
+      "plateau_closure_mrad": 0.01048017293214798
+    }
+  ]
+}

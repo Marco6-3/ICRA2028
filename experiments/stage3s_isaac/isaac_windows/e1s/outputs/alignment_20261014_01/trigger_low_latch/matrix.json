@@ -1,0 +1,623 @@
+[
+  {
+    "trial_id": "trigger_zero",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.180_e0.010",
+    "direction": "+Fx",
+    "amplitude_n": 0.18,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.180_e0.015",
+    "direction": "+Fx",
+    "amplitude_n": 0.18,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.180_e0.020",
+    "direction": "+Fx",
+    "amplitude_n": 0.18,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.200_e0.010",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.200_e0.015",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.200_e0.020",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.225_e0.010",
+    "direction": "+Fx",
+    "amplitude_n": 0.225,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.225_e0.015",
+    "direction": "+Fx",
+    "amplitude_n": 0.225,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.225_e0.020",
+    "direction": "+Fx",
+    "amplitude_n": 0.225,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.250_e0.010",
+    "direction": "+Fx",
+    "amplitude_n": 0.25,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.250_e0.015",
+    "direction": "+Fx",
+    "amplitude_n": 0.25,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.250_e0.020",
+    "direction": "+Fx",
+    "amplitude_n": 0.25,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.180_e0.010",
+    "direction": "-Fx",
+    "amplitude_n": 0.18,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.180_e0.015",
+    "direction": "-Fx",
+    "amplitude_n": 0.18,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.180_e0.020",
+    "direction": "-Fx",
+    "amplitude_n": 0.18,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.200_e0.010",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.200_e0.015",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.200_e0.020",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.225_e0.010",
+    "direction": "-Fx",
+    "amplitude_n": 0.225,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.225_e0.015",
+    "direction": "-Fx",
+    "amplitude_n": 0.225,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.225_e0.020",
+    "direction": "-Fx",
+    "amplitude_n": 0.225,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.250_e0.010",
+    "direction": "-Fx",
+    "amplitude_n": 0.25,
+    "point_m": [
+      0.0,
+      0.0,
+      0.01
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.250_e0.015",
+    "direction": "-Fx",
+    "amplitude_n": 0.25,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.250_e0.020",
+    "direction": "-Fx",
+    "amplitude_n": 0.25,
+    "point_m": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_pFx_f0.200_e0.015_repeat1",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "trigger_nFx_f0.200_e0.015_repeat1",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.55,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+]

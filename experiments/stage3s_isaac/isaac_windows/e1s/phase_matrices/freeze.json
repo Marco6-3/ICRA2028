@@ -1,0 +1,35 @@
+{
+  "forces_n": [
+    0.1,
+    0.125,
+    0.15,
+    0.175,
+    0.2,
+    0.225,
+    0.25
+  ],
+  "offsets_m": [
+    0.0,
+    0.005,
+    0.01,
+    0.015,
+    0.02
+  ],
+  "directions": [
+    "+Fx",
+    "-Fx",
+    "+Fy",
+    "-Fy"
+  ],
+  "frozen_models": {
+    "mcf": "3c1afe7eb30aacee2e4b7175cfd734f85841e1d8a3c5589817a17d6bc79050bd",
+    "scalar": "0798295336679452eb8abcbd0ff70db4d0768571e173cbace754af4231e7fa86"
+  },
+  "matrix_sha256": {
+    "mechanism.json": "41b1a3eb3c5bc20ae4421328821cc294dd9803ee74b47e0bd2995841f50c37c0",
+    "phase_all.json": "8df6895d68bd9629cf74d8200b8ecf1c258d3d6928465324d9e5c2a46d5e27fb",
+    "phase_oracle_fx.json": "f182abeee765c71118441aa2c08f830f1d3a1d95d8c962ed5548b99649e41d7c",
+    "pulse.json": "66f27f7e3182830711e9aaa5468b009d616bdf49d97c5169f08eaa8bb4f7590c"
+  },
+  "protocol_sha256": "a1482246e3eea5b40d57bfc9e0890247c3dd43e9f74de5898197aaefba063e9f"
+}

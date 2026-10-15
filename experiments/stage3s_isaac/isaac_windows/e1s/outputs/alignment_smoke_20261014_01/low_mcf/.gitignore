@@ -1,0 +1,7 @@
+*.npz
+/phase_d0_f4_e3.json
+/phase_d0_f4_e3_initialization.json
+/phase_d1_f4_e3.json
+/phase_d1_f4_e3_initialization.json
+/phase_zero.json
+/phase_zero_initialization.json
