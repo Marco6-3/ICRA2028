@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "stages": [
+    {
+      "name": "low_mcf",
+      "controller": "mcf",
+      "preload_n": 3.06,
+      "trigger": "none",
+      "matrix": "smoke"
+    },
+    {
+      "name": "high_scalar",
+      "controller": "scalar",
+      "preload_n": 4.42,
+      "trigger": "none",
+      "matrix": "smoke"
+    },
+    {
+      "name": "max_fixed",
+      "controller": "fixed",
+      "preload_n": 5.07,
+      "trigger": "none",
+      "matrix": "smoke"
+    }
+  ],
+  "completed": [
+    "low_mcf",
+    "high_scalar",
+    "max_fixed"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "phase_zero",
+    "phase_d0_f4_e3",
+    "phase_d1_f4_e3"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

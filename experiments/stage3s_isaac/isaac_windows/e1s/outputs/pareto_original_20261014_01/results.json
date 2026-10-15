@@ -1,0 +1,42 @@
+{
+  "points": {
+    "nominal": {
+      "safe_cells": 86,
+      "total_cells": 140,
+      "safe_percent": 61.42857142857143,
+      "pre_normal_n": 2.8486905097961426,
+      "mean_effort_n_s": 4.236735907055082
+    },
+    "high": {
+      "safe_cells": 134,
+      "total_cells": 140,
+      "safe_percent": 95.71428571428571,
+      "pre_normal_n": 5.072449207305908,
+      "mean_effort_n_s": 7.606201055617558
+    },
+    "scalar": {
+      "safe_cells": 116,
+      "total_cells": 140,
+      "safe_percent": 82.85714285714286,
+      "pre_normal_n": 4.424594879150391,
+      "mean_effort_n_s": 5.380344670613606
+    },
+    "mcf": {
+      "safe_cells": 119,
+      "total_cells": 140,
+      "safe_percent": 85.0,
+      "pre_normal_n": 3.0612621307373047,
+      "mean_effort_n_s": 5.113586952572777
+    }
+  },
+  "common_safe_cells": 112,
+  "common_safe_effort": {
+    "scalar": 5.310657319568453,
+    "mcf": 5.004921168372745
+  },
+  "mcf_initial_force_reduction_vs_scalar_percent": 30.81260060299289,
+  "sources": {
+    "findings.json": "6efda0bd397d8a1779d505d894c50bbb59c1cc2d1e611c9a40ef47a12dc0605c",
+    "phase_results.json": "5a46615dc5604bf3f03999ace77733eed0474b06467dc06e36365ea7d47448ce"
+  }
+}

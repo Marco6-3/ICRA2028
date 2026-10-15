@@ -1,0 +1,600 @@
+[
+  {
+    "trial_id": "mech_zero_r0",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d0_r0",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d0_r0",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.003,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d0_r0",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d1_r0",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d1_r0",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      -0.003,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d1_r0",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d2_r0",
+    "direction": "+Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d2_r0",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      -0.003,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d2_r0",
+    "direction": "+Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d3_r0",
+    "direction": "-Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d3_r0",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.003,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d3_r0",
+    "direction": "-Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_zero_r1",
+    "direction": "zero",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d0_r1",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d0_r1",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      0.003,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d0_r1",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d1_r1",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d1_r1",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.0,
+      -0.003,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d1_r1",
+    "direction": "-Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d2_r1",
+    "direction": "+Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d2_r1",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      -0.003,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d2_r1",
+    "direction": "+Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_force_d3_r1",
+    "direction": "-Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "trial_id": "mech_torque_d3_r1",
+    "direction": "zero",
+    "amplitude_n": 0.0,
+    "point_m": [
+      0,
+      0,
+      0.0
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0.003,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "trial_id": "mech_combined_d3_r1",
+    "direction": "-Fy",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0,
+      0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "step",
+    "repeat": 1,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.0,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.45,
+    "duration_s": 0.25,
+    "torque_nm": [
+      0,
+      0,
+      0
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "ALIGNMENT_PROTOCOL.md": "af0880f7cfdc6c2d75b5a260c9bcd3e6833561762f57d88bfe76cf9ae6297f04",
+  "aligned_sim.py": "bb5f4e3bfac3dee951c45253bdce2b0f54beaee106f87dc559fbf3860b920ec3",
+  "aligned_policy.py": "098b78de52208f9672177dcae83aded9fcf230be2c7f9d16396b798c1a8d3080",
+  "run_alignment_suite.py": "fd49c8a039733e99bae6e2c24b6c2398a94a9c4b839b1fd07374179d1be0938a",
+  "prepare_alignment_driver.py": "90154508591e70975380f64ab4c0a517660bb43044708a905ca9b7f8de6a4ca6",
+  "prepare_alignment_matrix.py": "6ca0bf722e2d02931881f3face40442328b3deb6b3909337ddea93604f6955bf",
+  "reflex_policy.py": "f42c1078fc4d068f1493b918698529c078fe1c5d682f3e5878e4b076bdda8dff",
+  "alignment_matrices\\alignment.json": "52dbe70f69f46c0eeed9b3d6871561ce14042436e62bb14d1e143d05f1d02361",
+  "alignment_matrices\\smoke.json": "ca997ce4400ac8ac4cc2c68ce0e042c5050e86936034ee0b1e7f0affc4f867e4",
+  "alignment_matrices\\trigger.json": "6c6f119970dd8343c220d4796dc975a3ecb7ed2a25125ad342f4baa53f608917",
+  "outputs\\reflex_students_stream_01\\scalar_selected.pt": "0798295336679452eb8abcbd0ff70db4d0768571e173cbace754af4231e7fa86",
+  "outputs\\reflex_students_stream_01\\mcf_selected.pt": "3c1afe7eb30aacee2e4b7175cfd734f85841e1d8a3c5589817a17d6bc79050bd"
+}

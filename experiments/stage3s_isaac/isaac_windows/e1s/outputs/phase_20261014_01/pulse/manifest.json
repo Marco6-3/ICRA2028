@@ -1,0 +1,13 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "pulse_p0_r0",
+    "pulse_p0_r1",
+    "pulse_p1_r0",
+    "pulse_p1_r1",
+    "pulse_p2_r0",
+    "pulse_p2_r1"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

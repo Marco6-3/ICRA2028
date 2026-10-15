@@ -1,0 +1,71 @@
+{
+  "total_grid_conditions_per_controller": 140,
+  "safe_cells": {
+    "nominal": 86,
+    "high": 134,
+    "scalar": 116,
+    "mcf": 119
+  },
+  "mean_effort": {
+    "nominal": 4.236735907055082,
+    "high": 7.606201055617558,
+    "scalar": 5.380344670613606,
+    "mcf": 5.113586952572777
+  },
+  "common_safe_cells": 112,
+  "common_safe_effort": {
+    "scalar": 5.310657319568453,
+    "mcf": 5.004921168372745
+  },
+  "common_safe_effort_reduction_mcf_vs_scalar": 0.05757030303370303,
+  "overall_effort_reduction_mcf_vs_high": 0.3277081534945572,
+  "pooled_high_e_area": {
+    "scalar_n_mm": 4.75,
+    "mcf_n_mm": 4.875,
+    "relative_change_percent": 2.6315789473684292
+  },
+  "controller_contrast": {
+    "+Fx": {
+      "both_fail": 12,
+      "scalar_only": 4,
+      "mcf_only": 5,
+      "both_safe": 14
+    },
+    "-Fx": {
+      "both_fail": 5,
+      "scalar_only": 0,
+      "mcf_only": 2,
+      "both_safe": 28
+    },
+    "+Fy": {
+      "both_fail": 0,
+      "scalar_only": 0,
+      "mcf_only": 0,
+      "both_safe": 35
+    },
+    "-Fy": {
+      "both_fail": 0,
+      "scalar_only": 0,
+      "mcf_only": 0,
+      "both_safe": 35
+    }
+  },
+  "predisturbance_grip": {
+    "nominal": {
+      "physical_normal_n": 2.8486905097961426,
+      "delta_mrad": 0.0
+    },
+    "high": {
+      "physical_normal_n": 5.072449207305908,
+      "delta_mrad": 3.0
+    },
+    "scalar": {
+      "physical_normal_n": 4.424594879150391,
+      "delta_mrad": 2.125173032283783
+    },
+    "mcf": {
+      "physical_normal_n": 3.0612621307373047,
+      "delta_mrad": 0.2873903810977936
+    }
+  }
+}

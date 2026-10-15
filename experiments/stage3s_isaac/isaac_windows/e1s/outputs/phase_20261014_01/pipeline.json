@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "completed": [
+    "mechanism",
+    "pulse",
+    "nominal",
+    "high",
+    "mcf",
+    "scalar",
+    "oracle_fx"
+  ]
+}

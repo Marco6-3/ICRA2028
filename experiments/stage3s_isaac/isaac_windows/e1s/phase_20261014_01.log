@@ -1,0 +1,14 @@
+PHASE_START mechanism
+PHASE_DONE mechanism 26
+PHASE_START pulse
+PHASE_DONE pulse 6
+PHASE_START nominal
+PHASE_DONE nominal 141
+PHASE_START high
+PHASE_DONE high 141
+PHASE_START mcf
+PHASE_DONE mcf 141
+PHASE_START scalar
+PHASE_DONE scalar 141
+PHASE_START oracle_fx
+PHASE_DONE oracle_fx 36

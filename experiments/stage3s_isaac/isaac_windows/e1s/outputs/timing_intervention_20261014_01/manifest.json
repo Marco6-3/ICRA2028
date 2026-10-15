@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "delay_d0_r0",
+    "delay_d0_r1",
+    "delay_d1_r0",
+    "delay_d1_r1",
+    "delay_d2_r0",
+    "delay_d2_r1",
+    "delay_d3_r0",
+    "delay_d3_r1",
+    "delay_d4_r0",
+    "delay_d4_r1",
+    "delay_d5_r0",
+    "delay_d5_r1"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

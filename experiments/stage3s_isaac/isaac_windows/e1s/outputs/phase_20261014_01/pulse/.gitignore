@@ -1,0 +1,13 @@
+*.npz
+/pulse_p0_r0.json
+/pulse_p0_r0_initialization.json
+/pulse_p0_r1.json
+/pulse_p0_r1_initialization.json
+/pulse_p1_r0.json
+/pulse_p1_r0_initialization.json
+/pulse_p1_r1.json
+/pulse_p1_r1_initialization.json
+/pulse_p2_r0.json
+/pulse_p2_r0_initialization.json
+/pulse_p2_r1.json
+/pulse_p2_r1_initialization.json
