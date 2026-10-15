@@ -133,7 +133,7 @@ def plot_anchor(source,static_reference,out,summaries):
         axes[2,col].plot(d['step_start_s'],d['absolute_extra_close_rad']*1000,color=COLORS['fixed'],linestyle='--')
         for ax in axes[:,col]: ax.axvspan(.55,.80,color='#e2edf2',alpha=.6); ax.grid(alpha=.15); ax.set_xlim(.35,1.5)
         axes[0,col].axhline(2,color='#b45343',linestyle='--')
-        axes[0,col].set_title(f"Aligned preload: {summaries[f'trigger_{level}_none']['pre_normal_n']:.3f} N")
+        axes[0,col].set_title(f"Calibrated preload: {summaries[f'trigger_{level}_none']['pre_normal_n']:.3f} N")
         axes[0,col].legend(frameon=False,fontsize=9)
         axes[2,col].set_xlabel('Simulation time (s)')
     for row in range(3):

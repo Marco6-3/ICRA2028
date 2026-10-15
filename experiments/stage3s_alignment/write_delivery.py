@@ -37,11 +37,13 @@ case={name:next(r for r in results['rows'] if r['group']==name and r['id']==anch
 base,pulse,latch,high=[case[name] for name in ('trigger_low_none','trigger_low_pulse','trigger_low_latch','trigger_max_fixed')]
 reduction=100*(1-pulse['effort_normal_n_s']/high['effort_normal_n_s'])
 false_alarms=[r for r in results['zero_load_controls'] if r.get('trigger') in ('pulse','latch') and r['trigger_time_s'] is not None]
+pre_load={level:sum(r['normal_immediately_before_load_n'] for r in results['rows'] if r['group']==f'trigger_{level}_none' and r['trial']['direction']!='zero' and r['repeat']==0)/24 for level in ('low','high')}
+timing_note=f"C 的 3.06/4.42 N 指校准静息目标。为检查未知加载起点，GRU 在 0.45 s 释放、外扰在 0.55 s 加载；加载前 75 ms 窗口的实测中位力分别约 {pre_load['low']:.3f}/{pre_load['high']:.3f} N。同级三个变体在真实触发前共享这段轨迹。A 的加载与释放则均为 0.45 s，维持其严格等预紧比较。"
 zero_note='低预紧脉冲与锁存的零载对照均未触发。'
 if false_alarms:
     zero_note+='高预紧存在零载误触发：'+ '、'.join(f"{r['group']} 于 {r['trigger_time_s']:.4f} s" for r in false_alarms)+'；现有门限尚不能可靠区分外部扰动与闭环自身变化。高预紧触发结果不能据此称为稳健扰动检测。'
 lines+=['',f"重点条件 +Fx / 0.20 N / e15 mm：低预紧 GRU 原型 {base['max_slip_mm']:.3f} mm；早期脉冲 {pulse['max_slip_mm']:.3f} mm（加载后 {pulse['trigger_delay_ms']:.2f} ms 触发）；三帧确认锁存 {latch['max_slip_mm']:.3f} mm。脉冲相对同载荷 High-Grip 的法向力积分降低 {reduction:.2f}%，绝对最大闭合指令保持 {pulse['saturation_seconds']:.3f} s，High-Grip 为 {high['saturation_seconds']:.3f} s。",
-    '', '这说明早期短脉冲在该重点条件中守住了 2 mm，并保留了回落的握力曲线。剩余失败格与锁存未达标条件完整保留，不将这个成功推广为整个矩阵全部达标。', '',zero_note]
+    '', '这说明早期短脉冲在该重点条件中守住了 2 mm，并保留了回落的握力曲线。剩余失败格与锁存未达标条件完整保留，不将这个成功推广为整个矩阵全部达标。', '',zero_note,'',timing_note]
 lines+=['', '独立矩阵覆盖 ±Fx、0.18–0.25 N、10/15/20 mm 偏心。触发只使用上一帧触觉与静息噪声统计；门限为 6×稳健噪声尺度（坐标尺度 1.4826 MAD，合成二维范数，另设 1e-6 读出下限），保留零载误触发检查。单帧脉冲保持 25 ms，三帧确认锁存保持 250 ms 后衰减；每试次最多触发一次。',
     '', '![困难格点的位移、握力与指令](../stage3s_isaac/isaac_windows/e1s/outputs/alignment_report_20261014_01/trigger_anchor.png)',
     '', '## 报告与数据', '',
@@ -65,7 +67,7 @@ lines+=['', '独立矩阵覆盖 ±Fx、0.18–0.25 N、10/15/20 mm 偏心。触�
 (here/'README.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
 finding_path=report/'FINDINGS.md'
 finding=finding_path.read_text(encoding='utf-8').split('\n## 直接结论与零载检查')[0]
-finding+=f"\n## 直接结论与零载检查\n\n同预紧 MCF 相对 Scalar 分别增加 {gaps[0]} / {gaps[1]} 个安全格，平均全程力积分增加 {costs[0]:.2f}% / {costs[1]:.2f}%。\n\n重点 +Fx / 0.20 N / e15 mm 的早期脉冲为 {pulse['max_slip_mm']:.3f} mm，相对同载荷 High-Grip 力积分低 {reduction:.2f}%；三帧确认锁存为 {latch['max_slip_mm']:.3f} mm。\n\n{zero_note}\n"
+finding+=f"\n## 直接结论与零载检查\n\n同预紧 MCF 相对 Scalar 分别增加 {gaps[0]} / {gaps[1]} 个安全格，平均全程力积分增加 {costs[0]:.2f}% / {costs[1]:.2f}%。\n\n重点 +Fx / 0.20 N / e15 mm 的早期脉冲为 {pulse['max_slip_mm']:.3f} mm，相对同载荷 High-Grip 力积分低 {reduction:.2f}%；三帧确认锁存为 {latch['max_slip_mm']:.3f} mm。\n\n{zero_note}\n\n{timing_note}\n"
 finding_path.write_text(finding,encoding='utf-8')
 ws=here.parents[2]
 body=['原相图中 Scalar 与 MCF 的静息握力不同。本次增加实测 3.06/4.42 N 等预紧对照、三组固定握持参照，以及因果 CoP 早期脉冲/锁存，保持原冻结模型和全部负结果。', '',
