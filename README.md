@@ -99,6 +99,7 @@ Static CoP、Physics11D 等可以继续作为消融和历史结果保留。
 | [Stage 3S–V2.1 实验归档](experiments/v2_1_bpi_mcf_3dof_reflex/README.md) | **最新（2026-11-03）**：`BPI-MCF` 8 阶段消融、多模态防坍缩自监督、Isaac Lab 7 控制器 3-DoF 闭环与 3 阶段长时序基准 |
 | [2026-11-03 V2.1 进展记录](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md) | 三大创新点数学定义、审计问题清零与 2×A100/DGX Spark/真机推进方案 |
 | [研究方向修订与冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md) | 2026-11-03 范围升级说明与 2026-10-10 历史冻结稿 |
+| [MCF 物理可观测性边界辨析](research/MCF_OBSERVABILITY_LIMITS_DISCUSSION.md) | 单指零阶/一阶矩的旋转不可辨识反例与双指偶极扩展的理论背景 |
 | [Stage 3S 等预紧与触发归档](experiments/stage3s_alignment/README.md) | 2026-10-15 等预紧握持、成本—安全关系与弱触觉脉冲触发归档 |
 | [Stage 3S 1D 闭环归档](experiments/stage3s_isaac/README.md) | 2026-10-13 无支撑加载与 1D $\Delta g$ 闭环实验归档 |
 | [Minimalist Contact Flow](research/MINIMALIST_CONTACT_FLOW.md) | 早期 Stage 1 实验方案 |
