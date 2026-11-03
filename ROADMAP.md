@@ -1,6 +1,16 @@
 # ICRA2028 研究路线
 
-> **2026-10-10 当前范围冻结**：以 [最小论文方向冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md) 为最新执行准则。优先 **E1 仿真物理可观测性检查 / 正负切向与偏心加载 → FlexiTac 实测标定 → E2 Scalar/MCF/Dense 与历史消融 → E3 仿真 pilot 和 Stage 3A 真机抗倾覆闭环**。下文 2026-10-07 的“直接进入 Stage 3A”作为先前规划保留；现将仿真可观测性与真机标定设为受控闭环的前置验证。Anti-Slip、Physics-Residual、Mamba 机理和 VLA 暂不作为并行主线。
+> **2026-11-03 最新研究范围升级与路线（Stage 3S–V2.1）**：
+> 基于 [Stage 3S–V2.1 实验归档](experiments/v2_1_bpi_mcf_3dof_reflex/README.md) 与 [2026-11-03 进展记录](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md)，底层三项核心机制（**32D 参考帧锁定 `BPI-MCF` 算子 + 跨模态力螺旋防坍缩自监督 + 因果偶极新息门控 3-DoF 空间反射控制**）已在离线 8 阶段消融与 Isaac Lab 无混杂闭环/3 阶段长时序基准中完成验证。
+>
+> **当前最新三步推进顺序**：
+> 1. **Step 1（Isaac Lab 长时序残差强化学习 Residual PPO/SAC）**：冻结 32D `BPI-MCF` 与预训练 `B5` 编码器作为 Warm-Start，训练受限残差策略并挂载在线物理自监督损失，进一步压低 `+Fx` 阶段 3 最终插孔对齐误差（`< 2.0 mm`）。
+> 2. **Step 2（2×A100 慢频 VLM 微调 + DGX Spark 128GB 快慢双频推理部署）**：在 2×A100 上微调 `Qwen2.5-VL-7B-Instruct` 生成阶段切换与顺应模式原语（2–5 Hz 慢环），与 100–200 Hz 的 18K 参数 V2.1 3-DoF 触觉反射网络（快环）协同。
+> 3. **Step 3（真机 Sim-to-Real 轻量标定与受控闭环验证）**：利用 `BPI-MCF` 的初始接触参考帧锁定（$k_{\text{base}}=5$）与单指预紧归一化（$f_{i,0}$），在真实双指触觉机械臂上完成空间极性对齐、预紧窗口设定与闭环抗扰/插孔对齐测试。
+>
+> 详见更新后的 **[研究方向修订与冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)**。下文保留 2026-10-10 及更早期的阶段规划作为历史记录。
+
+> **2026-10-10 历史范围冻结记录（已于 2026-11-03 升级）**：早期以 [最小论文方向冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md) 为准则，优先 **E1 仿真物理可观测性检查 / 正负切向与偏心加载 → FlexiTac 实测标定 → E2 Scalar/MCF/Dense 与历史消融 → E3 仿真 pilot 和 Stage 3A 真机抗倾覆闭环**。下文 2026-10-07 的“直接进入 Stage 3A”作为先前规划保留。
 
 
 ## 当前最高优先级：Stage 3A 真机闭环

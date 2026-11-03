@@ -1,6 +1,17 @@
 # ICRA2028 research collaboration
 
-## 2026-10-10 第一篇论文范围冻结（当前最高优先级）
+## 2026-11-03 研究范围升级与最新执行准则（Stage 3S–V2.1，当前最高优先级）
+
+优先阅读 [research/ICRA2028_MINIMAL_PAPER_FREEZE.md](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)、[research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md) 与 [experiments/v2_1_bpi_mcf_3dof_reflex/README.md](experiments/v2_1_bpi_mcf_3dof_reflex/README.md)。旧版 Stage 1、Stage 2P、Stage 3S（`stage3s_isaac` 与 `stage3s_alignment`）的全部数据、源码、哈希与负结果原样保留，严禁覆写。
+
+- **主表征升级**：由滑动窗口 8D `MCF` 升级为 **32D 参考帧锁定双指预紧不变流形接触场（`BPI-MCF`）**（初始接触帧锁定 $k_{\text{base}}=5$ + 单指预紧归一化 $f_{i,0}$ + 双指对称/反对称正交分解 + 空间偏心力矩偶极），保持 `extract_bpi_mcf` 特征算子冻结。
+- **多模态防坍缩自监督**：允许引入视觉位姿/场景输入，但必须配备 **跨模态接触力螺旋与剪切方向自监督（`aux_dir_head + aux_wrench_head + vis_wrench_head`）+ 计划性视觉模态丢弃**，并通过单步反向传播梯度审计（`all_positive = True`）与公平冻结隐空间线性探针（`FrozenProbeDirAcc`）核验。
+- **动作权限与因果门控升级**：解除早期“仅允许 1D $\Delta g$”限制，升级为 **因果偶极新息能量门控 3-DoF 空间反射策略（$[\Delta x_{\text{wrist}}, \Delta y_{\text{wrist}}, \Delta g_{\text{grip}}]$）**。闭环评估必须严格区分 **0% `Stage 3S` 混杂的纯 V2.1 策略** 与混合策略，并同时报告受载滑移、倾角与预紧静默段抖动（`PreloadJitter`）。
+- **后续系统推进顺序**：**Step 1 Isaac Lab Warm-Start 残差强化学习（Residual PPO/SAC）$\to$ Step 2 2×A100 慢频 VLM（`Qwen2.5-VL`）微调与 DGX Spark 128GB 双频推理部署 $\to$ Step 3 真机 Sim-to-Real 轻量标定与受控闭环验证**。
+
+---
+
+## 历史记录：2026-10-10 第一篇论文范围冻结（已于 2026-11-03 修订升级）
 
 优先阅读 [research/ICRA2028_MINIMAL_PAPER_FREEZE.md](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)。它覆盖下方历史性的阶段优先级描述，但**不改写** Stage 1/2P 已保存的假设、实验结果和负结果。
 

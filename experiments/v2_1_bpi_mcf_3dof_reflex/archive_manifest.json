@@ -1,0 +1,151 @@
+{
+  "archive": "v2_1_bpi_mcf_3dof_reflex",
+  "date": "2026-11-03",
+  "file_count": 36,
+  "files": {
+    "outputs/v2_1_clean_study/checkpoints/pt02_A0_Vis_Only.pt": {
+      "size_bytes": 73936,
+      "sha256": "1c9d6d9a6445178a6221a04c23bc0aba0fb7778420acbf0bac888a5c4df04816"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_A1_Tac_Scalar_GRU.pt": {
+      "size_bytes": 75585,
+      "sha256": "a63ac9a2208bf62cd920f093c504dcddb3944c119ccb9240c36be4bfb854ed87"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_A2_Tac_Standard_MCF_GRU.pt": {
+      "size_bytes": 80615,
+      "sha256": "6a8eb6df0a18780b37e9a260a4a1158b6bdfb86a4c18672a4eb6ddc758e4a50c"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_A3_Tac_BPI_MCF_GRU.pt": {
+      "size_bytes": 80530,
+      "sha256": "0a09b9ac6e7a3a67b553f995c761aff09190bab9f0d1e286542ed35fb7d9cfae"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_B1_Naive_Vis_BPI_MCF.pt": {
+      "size_bytes": 150207,
+      "sha256": "558bfe08a77c7ec724d7fc15d84920fafa0873a831992dae0f1ef94755ee8e25"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_B2_Vis_BPI_MCF_ModDrop_Only.pt": {
+      "size_bytes": 150361,
+      "sha256": "dac1a417c98737b47d9dc7b205a84dc91c5a7515fb61d644050547b6c20ea6f1"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_B3_Vis_BPI_MCF_Aux_Only.pt": {
+      "size_bytes": 150273,
+      "sha256": "08ee1f1b436d66842cc36cf2ffd699db8945638cd6d1a61d350a43a2f14523b5"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_B4_Vis_BPI_MCF_ModDrop_Aux.pt": {
+      "size_bytes": 150339,
+      "sha256": "43ef091e186db52a20b392d24151e062a9742cd8826ea19f717fdffcf18a042b"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_B5_Proposed_Full_Vis_BPI_MCF_Aux_Gate.pt": {
+      "size_bytes": 152117,
+      "sha256": "16d2e118d7a4fab509f802d4218aae804a003cb07e1bbeeea8755d7719224a93"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pt02_B5_Scalar_Vis_Scalar_Aux_Gate.pt": {
+      "size_bytes": 147045,
+      "sha256": "552fd8d2216fb5240154fed7569ca8ddf9dc761c9381273c920fc9a44e6ec654"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_A0_Vis_Only.pt": {
+      "size_bytes": 73966,
+      "sha256": "20e2e1963a59849f032558a4a18c32a2964f754279947f756eed1697d7586758"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_A1_Tac_Scalar_GRU.pt": {
+      "size_bytes": 75619,
+      "sha256": "4443a9c58470137b8761c69715b6885f52ef4719f114908ff2800549ddef8efe"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_A2_Tac_Standard_MCF_GRU.pt": {
+      "size_bytes": 80649,
+      "sha256": "f8b687d6f992c37f356c60b468bb82c39e752e132c1f4cfe444eefea06dcb703"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_A3_Tac_BPI_MCF_GRU.pt": {
+      "size_bytes": 80564,
+      "sha256": "f49e3aeb46c18603f4f463053c35be3c8fae1eab88bf2332e65056b4049600e7"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_B1_Naive_Vis_BPI_MCF.pt": {
+      "size_bytes": 150251,
+      "sha256": "08c17499f5ac8d8a491577dd3afd44138b073d442133b56263129008a34c6b0b"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_B2_Vis_BPI_MCF_ModDrop_Only.pt": {
+      "size_bytes": 150405,
+      "sha256": "fcb267cb5186eeed04cd81ed3c292a99d346a1f09079d91ff2f67a20be05b01e"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_B3_Vis_BPI_MCF_Aux_Only.pt": {
+      "size_bytes": 150317,
+      "sha256": "a0b7292034d07803e18990961a9867f08227c236517fe6bb6108cf431d7d9e16"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_B4_Vis_BPI_MCF_ModDrop_Aux.pt": {
+      "size_bytes": 150383,
+      "sha256": "62a7154c8b0e8a6a977c0a6092ad124b9d200489ff2d66464765dc0f6e325c77"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_B5_Proposed_Full_Vis_BPI_MCF_Aux_Gate.pt": {
+      "size_bytes": 152169,
+      "sha256": "51700f911e1456914552cac6d3b9d01d47c9e309ad7068ac4bc97cd64066d26e"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_B5_Scalar_Vis_Scalar_Aux_Gate.pt": {
+      "size_bytes": 147097,
+      "sha256": "c9e42df914f433a54ad534dcb6a20958d9a9ea7e1ac5f90d299a475f2b774162"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_Inno2_3DoF_bpi_mcf.pt": {
+      "size_bytes": 80564,
+      "sha256": "f486816f0f99e376a99b14e62c3722e87632235a3efbf25f661dc37367594683"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_Inno2_3DoF_mcf.pt": {
+      "size_bytes": 80432,
+      "sha256": "153b0a626f6800d2af16defd9d2172535e7be3b884a6c0578b512c943c80645d"
+    },
+    "outputs/v2_1_clean_study/checkpoints/pure01_Inno2_3DoF_scalar.pt": {
+      "size_bytes": 75619,
+      "sha256": "3624058b88dd0597fb8eaa76c061bd7802fa6b0be7e0c6a3189cab82dc062bb1"
+    },
+    "outputs/v2_1_clean_study/figures/fig1_bpi_mcf_8stage_ablation.pdf": {
+      "size_bytes": 36025,
+      "sha256": "aaddbbfa4ab9dac2785af8c5e0f56d0e21e400743d4a5f3dda43b82b644b1b97"
+    },
+    "outputs/v2_1_clean_study/figures/fig1_bpi_mcf_8stage_ablation.png": {
+      "size_bytes": 224312,
+      "sha256": "9ad3ec8ffb2466d63c8ee5ae39d6045ba459679576a85e760127cdc0286ebde8"
+    },
+    "outputs/v2_1_clean_study/figures/fig2_isaac_closedloop_7controllers.pdf": {
+      "size_bytes": 35308,
+      "sha256": "558fed9da9b86b789789cc879016158a7a9cb33808f1af994957258740bdf639"
+    },
+    "outputs/v2_1_clean_study/figures/fig2_isaac_closedloop_7controllers.png": {
+      "size_bytes": 165030,
+      "sha256": "c5f3fa71637af906a3e434a3a4f5edf7c0d85f37a2932334d19660a4515b5fcf"
+    },
+    "outputs/v2_1_clean_study/figures/fig3_isaac_longhorizon_3stage.pdf": {
+      "size_bytes": 32221,
+      "sha256": "a5f1a349e11cb4aa84c9d37b865cfa3a32a03b0fd55d1b76f696a883fe372ccb"
+    },
+    "outputs/v2_1_clean_study/figures/fig3_isaac_longhorizon_3stage.png": {
+      "size_bytes": 149667,
+      "sha256": "c03d37951720d7c2e4ff6ee066dc52a2c8edee3dd12b48ae0bb77d29b88fd41d"
+    },
+    "outputs/v2_1_clean_study/isaac_closedloop_v2_1_and_longhorizon_report.json": {
+      "size_bytes": 57523,
+      "sha256": "1ca7fc06abe66b94ff2543ed2f9c8851ce12760b1569555af9e37c701b6b2e85"
+    },
+    "outputs/v2_1_clean_study/V2_1_Bug\u4fee\u590d_\u95ed\u73af\u957f\u65f6\u5e8f\u9a8c\u8bc1\u4e0e\u771f\u673a\u5927\u6a21\u578b\u63a8\u8fdb\u65b9\u6848.md": {
+      "size_bytes": 20240,
+      "sha256": "28e1b7aa505ede251c4067029cf77cec356645b62c221efe7b217818f5c85a68"
+    },
+    "outputs/v2_1_clean_study/v2_1_verification_report.json": {
+      "size_bytes": 87210,
+      "sha256": "d6254fe1f12c4ee04dadd60bec0d1b72cc803e63b0d1102b8d26b67c97fdba94"
+    },
+    "plot_v2_1_figures.py": {
+      "size_bytes": 8289,
+      "sha256": "0d386600891aa7f01d26bd976c31d5403654fd26b41a38d876edcf4f425f2bf9"
+    },
+    "README.md": {
+      "size_bytes": 12217,
+      "sha256": "57f8676854735c7e1db780753f5023fc113119a46750b438b069725161dd316c"
+    },
+    "verify_isaac_closedloop_v2_1_and_longhorizon.py": {
+      "size_bytes": 41234,
+      "sha256": "c4d6e375008f4f0611a24c899d9106165c169ca34cdd6f1f348ff88eb73c430b"
+    },
+    "verify_three_innovations_v2_1_clean.py": {
+      "size_bytes": 59020,
+      "sha256": "fb46316da3f7053780e42bb0679943dad50b7cd8ff5669276f6a32948da04490"
+    }
+  }
+}
