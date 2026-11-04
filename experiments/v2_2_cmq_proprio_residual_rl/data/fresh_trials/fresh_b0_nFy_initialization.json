@@ -1,0 +1,36 @@
+{
+  "trial_id": "fresh_b0_nFy",
+  "mode": "open",
+  "gate_passed": true,
+  "initial_configuration": {
+    "target_z_offset_m": 0.0,
+    "initial_close_rad": 0.0030700361796352103,
+    "pose_translation_jitter_m": [
+      5.212415204239718e-05,
+      6.642226197816412e-05,
+      4.169501394587541e-05
+    ]
+  },
+  "feedback_target_reached": null,
+  "final_closing_delta_rad": 0.0,
+  "history": [
+    {
+      "step": 0,
+      "proxy": [
+        5.44235897064209,
+        13.84825611114502,
+        8.803820610046387,
+        8.606786727905273
+      ],
+      "normal_n": [
+        0.8214747905731201,
+        0.8103975653648376,
+        1.4358410835266113,
+        1.4687141180038452
+      ],
+      "closing_delta_rad": 0.0,
+      "gate": true
+    }
+  ],
+  "scope": "Target two fingers gate; four channels observe two separate objects."
+}

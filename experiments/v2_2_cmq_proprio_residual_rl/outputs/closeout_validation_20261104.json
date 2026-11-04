@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-04",
+  "offline_exit_code": 0,
+  "isaac_exit_code": 0,
+  "isaac_part_a_trials": 30,
+  "isaac_part_b_trials": 24,
+  "png_pdf_pairs": 4,
+  "pdf_render_visual_review": "All four pages inspected; fig4 annotation/legend overlap repaired and re-inspected.",
+  "json_finite_check": true,
+  "documentation_hash_tables_verified": true,
+  "freeze_historical_suffix_preserved": true,
+  "tracked_changes_restricted_to_authorized_scope": true,
+  "acceptance_status": "partial: onset magnitude 20/28 and Part B alignment criteria not fully met"
+}

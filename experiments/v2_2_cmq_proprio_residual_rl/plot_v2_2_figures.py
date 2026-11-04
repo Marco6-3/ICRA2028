@@ -33,7 +33,7 @@ def plot_fig1_10stage_ablation(v22_report: dict) -> None:
     ]
     keys = list(stages.keys())
     dev_acc = [stages[k]["dev_pure_c005_c008_centroid_acc"] * 100.0 for k in keys]
-    fresh_trial = [stages[k]["blind_fresh12_trial_label_centroid_acc"] * 100.0 for k in keys]
+    fresh_inst = [stages[k]["blind_fresh12_instantaneous_centroid_acc"] * 100.0 for k in keys]
     fresh_b0b1 = [stages[k]["blind_fresh_b0_b1_step_ramp_centroid_acc"] * 100.0 for k in keys]
     pt02_acc = [stages[k]["pt02_36ood_centroid_acc"] * 100.0 for k in keys]
 
@@ -42,8 +42,8 @@ def plot_fig1_10stage_ablation(v22_report: dict) -> None:
 
     fig, ax = plt.subplots(figsize=(13.0, 5.0), dpi=220)
     b1 = ax.bar(x - 1.5 * width, dev_acc, width, label="Dev: pure_loading_01 (c005-c008)", color="#2b5c8f")
-    b2 = ax.bar(x - 0.5 * width, fresh_trial, width, label="Blind Held-out: Fresh12 (All 12 Trials)", color="#d95f02")
-    b3 = ax.bar(x + 0.5 * width, fresh_b0b1, width, label="Blind Held-out: Fresh (b0+b1 Step+Ramp)", color="#7570b3")
+    b2 = ax.bar(x - 0.5 * width, fresh_inst, width, label="Held-out (previously evaluated): Fresh12 (Instantaneous Dir, All 12 Trials)", color="#d95f02")
+    b3 = ax.bar(x + 0.5 * width, fresh_b0b1, width, label="Held-out (previously evaluated): Fresh (b0+b1 Step+Ramp)", color="#7570b3")
     b4 = ax.bar(x + 1.5 * width, pt02_acc, width, label="OOD: pilot_tangent_02 (36 Table-Supported Conds)", color="#1b9e77")
 
     ax.axhline(25.0, color="gray", linestyle="--", linewidth=1.0, label="4-Class Chance (25%)")
@@ -54,7 +54,7 @@ def plot_fig1_10stage_ablation(v22_report: dict) -> None:
     ax.set_xticklabels(short_labels, rotation=18, ha="right", fontsize=9.2)
     ax.set_ylim(0, 109)
     ax.grid(axis="y", linestyle=":", alpha=0.6)
-    ax.legend(loc="upper left", ncol=2, fontsize=8.6, framealpha=0.92)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.08), ncol=2, fontsize=8.6, frameon=False)
 
     for bars in (b1, b2, b3, b4):
         for idx, bar in enumerate(bars):
@@ -101,7 +101,7 @@ def plot_fig2_pt02_7category_ood(v22_report: dict) -> None:
     ax.set_xticklabels(cats, fontsize=9.8, fontweight="bold")
     ax.set_ylim(0, 105)
     ax.grid(axis="y", linestyle=":", alpha=0.6)
-    ax.legend(loc="upper left", ncol=2, fontsize=8.8, framealpha=0.92)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.08), ncol=2, fontsize=8.8, frameon=False)
 
     for bars in (b2, b3, b4):
         for bar in bars:
@@ -122,160 +122,103 @@ def plot_fig2_pt02_7category_ood(v22_report: dict) -> None:
     plt.close(fig)
 
 
-def plot_fig3_online_rl_anticollapse(v22_report: dict) -> None:
-    rl_res = v22_report["innovations_2_and_3_architecture_and_online_rl"]
-    fresh_m = rl_res["blind_fresh_b0_b1"]
-    curves = rl_res["rl_training_curves"]
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.4, 4.7), dpi=220)
-
-    # Panel A: Online RL Training Curves (Action MSE & Wrench R2)
-    it_no = [pt["iter"] for pt in curves["Online_RL_No_Aux"]]
-    mse_no = [pt["dev_clean_action_mse"] for pt in curves["Online_RL_No_Aux"]]
-    mse_with = [pt["dev_clean_action_mse"] for pt in curves["Online_RL_With_Aux_Proposed"]]
-    r2_no = [pt["dev_wrench_r2"] for pt in curves["Online_RL_No_Aux"]]
-    r2_with = [pt["dev_wrench_r2"] for pt in curves["Online_RL_With_Aux_Proposed"]]
-
-    ax1.plot(it_no, mse_no, "o--", color="#d73027", linewidth=2.2, label="Online RL w/o Aux (Collapses: MSE -> 0.274)")
-    ax1.plot(it_no, mse_with, "s-", color="#1a9850", linewidth=2.4, label="Online RL + Aux Self-Sup (Ours: MSE -> 0.0045)")
-    ax1.set_yscale("log")
-    ax1.set_xlabel("Online Residual RL Policy Gradient Iterations", fontsize=10.5, fontweight="bold")
-    ax1.set_ylabel("Dev Active Action MSE (Log Scale, Lower is Better)", fontsize=10.0, fontweight="bold")
-    ax1.set_title("(a) Online RL Representation Collapse vs Anti-Collapse Self-Sup", fontsize=10.5, fontweight="bold")
-    ax1.grid(True, linestyle=":", alpha=0.6)
-    ax1.legend(loc="center right", fontsize=8.5, framealpha=0.92)
-
-    # Panel B: Blind Held-Out Fresh (b0+b1) Comparison
-    models = [
-        ("1_V21_SingleHead_NoProprio", "1. V2.1\nSingle-Head"),
-        ("2_V22_DualHead_NoAux_Supervised", "2. V2.2\nNo-Aux Sup"),
-        ("3_V22_DualHead_WarmStart_BC", "3. V2.2\nWarmStart BC"),
-        ("4_V22_Online_Residual_RL_No_Aux_Collapse", "4. Online RL\nNo-Aux"),
-        ("5_V22_Online_Residual_RL_With_Aux_Proposed", "5. Online RL\n+Aux (Ours)"),
-    ]
-    m_labels = [lbl for _, lbl in models]
-    probe_acc = [fresh_m[k]["latent_probe_dir_acc"] * 100.0 for k, _ in models]
-    wrn_r2 = [max(-20.0, fresh_m[k]["wrench_r2"] * 100.0) for k, _ in models]
-
-    x = np.arange(len(m_labels))
-    width = 0.34
-    b1 = ax2.bar(x - 0.5 * width, probe_acc, width, label="Blind Fresh Latent Probe Acc (%)", color="#2b5c8f")
-    b2 = ax2.bar(x + 0.5 * width, wrn_r2, width, label="Blind Fresh Wrench R2 (x100, Clipped at -20)", color="#e66101")
-    ax2.axhline(0.0, color="black", linewidth=0.9)
-    ax2.set_xticks(x)
-    ax2.set_xticklabels(m_labels, fontsize=8.8, fontweight="bold")
-    ax2.set_ylim(-28, 114)
-    ax2.set_ylabel("Score (% / R2 x 100)", fontsize=10.5, fontweight="bold")
-    ax2.set_title("(b) Blind Held-Out Fresh (b0+b1) Latent Probe & Wrench R2", fontsize=10.5, fontweight="bold")
-    ax2.grid(axis="y", linestyle=":", alpha=0.6)
-    ax2.legend(loc="upper left", fontsize=8.4, framealpha=0.92)
-
-    for bar in b1:
-        h = bar.get_height()
-        ax2.annotate(f"{h:.1f}%", xy=(bar.get_x() + bar.get_width() / 2, h), xytext=(0, 2),
-                     textcoords="offset points", ha="center", va="bottom", fontsize=7.6, fontweight="bold")
-    for bar in b2:
-        h = bar.get_height()
-        val_y = h + 2 if h >= 0 else h - 9
-        ax2.annotate(f"{h:.1f}", xy=(bar.get_x() + bar.get_width() / 2, val_y),
-                     ha="center", va="bottom", fontsize=7.3)
-
-    fig.tight_layout()
-    fig.savefig(FIG_DIR / "fig3_online_rl_anticollapse.png", dpi=220)
-    fig.savefig(FIG_DIR / "fig3_online_rl_anticollapse.pdf")
+def save_figure(fig, name):
+    fig.savefig(FIG_DIR / f"{name}.png", dpi=240, bbox_inches="tight")
+    fig.savefig(FIG_DIR / f"{name}.pdf", bbox_inches="tight")
     plt.close(fig)
 
 
-def plot_fig4_isaac_closedloop_and_longhorizon(cl_report: dict) -> None:
-    part_a = cl_report["part_a_6controller_closedloop"]
-    part_b = cl_report["part_b_3stage_long_horizon_benchmark"]
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.6, 5.0), dpi=220)
-
-    # Panel A: 6-Controller Closed-Loop Benchmark
-    order_a = [
-        ("1_nominal_open_loop", "1. Open-Loop\n(0D)"),
-        ("2_stage3s_1d_grip_only", "2. Stage 3S\n(1D Grip)"),
-        ("4_v2_2_online_rl_no_aux_collapse", "4. Online RL\nNo-Aux"),
-        ("3_v2_1_pure_bpi_3dof_singlehead", "3. V2.1 BPI\nSingle-Head"),
-        ("5_v2_2_warmstart_bc_dualhead", "5. V2.2\nWarmStart BC"),
-        ("6_v2_2_online_residual_rl_proposed", "6. V2.2 RL\n+DualHead (Ours)"),
-    ]
-    labels_a = [lbl for _, lbl in order_a]
-    mean_slip = [part_a[k]["loaded_mean_inhand_slip_mm"] for k, _ in order_a]
-    worst_slip = [part_a[k]["loaded_worst_inhand_slip_mm"] for k, _ in order_a]
-    jitter = [part_a[k]["preload_mean_jitter_mm"] for k, _ in order_a]
-
-    x_a = np.arange(len(labels_a))
-    w_a = 0.26
-    ba1 = ax1.bar(x_a - w_a, mean_slip, w_a, label="Loaded 4-Dir Mean Slip (mm)", color="#1f78b4")
-    ba2 = ax1.bar(x_a, worst_slip, w_a, label="Worst-Direction (+Fx) Slip (mm)", color="#e31a1c")
-    ba3 = ax1.bar(x_a + w_a, jitter, w_a, label="Preload Jitter (mm)", color="#33a02c")
-    ax1.axhline(2.0, color="#555555", linestyle="--", linewidth=1.0, label="2.0 mm Safety Limit")
-    ax1.set_xticks(x_a)
-    ax1.set_xticklabels(labels_a, fontsize=8.4, fontweight="bold")
-    ax1.set_ylim(0, 24.0)
-    ax1.set_ylabel("Displacement / Slip (mm)", fontsize=10.5, fontweight="bold")
-    ax1.set_title("(a) Live Isaac Lab 6-DoF Closed-Loop Benchmark (0.20 N @ 15 mm)", fontsize=10.5, fontweight="bold")
-    ax1.grid(axis="y", linestyle=":", alpha=0.6)
-    ax1.legend(loc="upper right", fontsize=8.2, framealpha=0.92)
-
-    for bars in (ba1, ba2, ba3):
-        for bar in bars:
-            h = bar.get_height()
-            ax1.annotate(f"{h:.2f}", xy=(bar.get_x() + bar.get_width() / 2, h), xytext=(0, 2),
-                         textcoords="offset points", ha="center", va="bottom", fontsize=7.0)
-
-    # Panel B: 3-Stage Long-Horizon Peg-in-Socket Benchmark
-    order_b = [
-        ("1_nominal_open_loop", "1. Open-Loop\n(25% Ready)"),
-        ("2_stage3s_1d_grip_only", "2. Stage 3S 1D\n(75% Ready)"),
-        ("3_v2_1_pure_bpi_3dof_singlehead", "3. V2.1 BPI-MCF\n(75% Ready)"),
-        ("6_v2_2_online_residual_rl_proposed", "6. V2.2 Online RL\n(100% 4/4 Ready)"),
-    ]
-    labels_b = [lbl for _, lbl in order_b]
-    s2_slip = [part_b[k]["stage2_mean_transport_slip_mm"] for k, _ in order_b]
-    s3_slip = [part_b[k]["stage3_mean_align_slip_mm"] for k, _ in order_b]
-    tip_err = [part_b[k]["stage3_mean_final_tip_error_mm"] for k, _ in order_b]
-    p_fx_tip = [part_b[k]["per_direction"]["+Fx"]["stage3_final_tip_error_mm"] for k, _ in order_b]
-
-    x_b = np.arange(len(labels_b))
-    w_b = 0.20
-    bb1 = ax2.bar(x_b - 1.5 * w_b, s2_slip, w_b, label="Stage 2: Transport Mean Slip (mm)", color="#ff7f00")
-    bb2 = ax2.bar(x_b - 0.5 * w_b, s3_slip, w_b, label="Stage 3: Reversed-Shear Mean Slip (mm)", color="#1f78b4")
-    bb3 = ax2.bar(x_b + 0.5 * w_b, tip_err, w_b, label="Stage 3: 4-Dir Mean Tip Error (mm)", color="#6a3d9a")
-    bb4 = ax2.bar(x_b + 1.5 * w_b, p_fx_tip, w_b, label="Stage 3: Worst (+Fx) Tip Error (mm)", color="#e31a1c")
-    ax2.axhline(2.60, color="#555555", linestyle="--", linewidth=1.0, label="2.60 mm Socket Chamfer Tolerance")
-    ax2.set_xticks(x_b)
-    ax2.set_xticklabels(labels_b, fontsize=8.8, fontweight="bold")
-    ax2.set_ylim(0, 12.0)
-    ax2.set_ylabel("Slip / Tip Alignment Error (mm)", fontsize=10.5, fontweight="bold")
-    ax2.set_title("(b) Live Isaac Lab 3-Stage Long-Horizon Peg-in-Socket Benchmark", fontsize=10.5, fontweight="bold")
-    ax2.grid(axis="y", linestyle=":", alpha=0.6)
-    ax2.legend(loc="upper right", fontsize=8.2, framealpha=0.92)
-
-    for bars in (bb1, bb2, bb3, bb4):
-        for bar in bars:
-            h = bar.get_height()
-            ax2.annotate(f"{h:.2f}", xy=(bar.get_x() + bar.get_width() / 2, min(h, 11.2)), xytext=(0, 2),
-                         textcoords="offset points", ha="center", va="bottom", fontsize=7.2)
-
-    fig.tight_layout()
-    fig.savefig(FIG_DIR / "fig4_isaac_closedloop_and_longhorizon.png", dpi=220)
-    fig.savefig(FIG_DIR / "fig4_isaac_closedloop_and_longhorizon.pdf")
-    plt.close(fig)
+def decorate(ax, title, ylabel):
+    ax.set_title(title, loc="left", fontsize=11, fontweight="bold", pad=14)
+    ax.set_ylabel(ylabel)
+    ax.grid(axis="y", linestyle=":", alpha=.4)
+    ax.set_axisbelow(True)
+    ax.spines[["top", "right"]].set_visible(False)
 
 
-def main() -> None:
-    v22_report = json.loads((OUT_DIR / "v2_2_verification_results.json").read_text(encoding="utf-8"))
-    plot_fig1_10stage_ablation(v22_report)
-    plot_fig2_pt02_7category_ood(v22_report)
-    plot_fig3_online_rl_anticollapse(v22_report)
-    cl_path = OUT_DIR / "isaac_closedloop_v2_2_residual_rl_report.json"
-    if cl_path.exists():
-        cl_report = json.loads(cl_path.read_text(encoding="utf-8"))
-        plot_fig4_isaac_closedloop_and_longhorizon(cl_report)
-    print(f"[OK] Saved Stage 4 (V2.2) figures to {FIG_DIR}")
+def plot_fig3_online_rl_anticollapse(report):
+    res = report["innovations_2_and_3_architecture_and_online_rl"]
+    fresh, curves = res["blind_fresh_b0_b1"], res["rl_training_curves"]
+    fig, axs = plt.subplots(2, 2, figsize=(13, 9), layout="constrained")
+    for key, label, color in [("Surrogate_Residual_RL_No_Aux", "No-Aux", "#bb4430"),
+                              ("Surrogate_Residual_RL_With_Aux_Proposed", "With-Aux", "#237a57")]:
+        c = curves[key]
+        axs[0, 0].plot([r["iter"] for r in c], [r["dev_wrench_r2"] for r in c], "o-", color=color, label=label)
+    decorate(axs[0, 0], "(a) Dev wrench reconstruction during refinement", "Wrench R²")
+    axs[0, 0].set_xlabel("Surrogate policy-gradient iteration")
+    axs[0, 0].legend()
+    selected = [("3_V22_DualHead_WarmStart_BC", "WarmStart BC"),
+                ("4_V22_Surrogate_Residual_RL_No_Aux", "No-Aux"),
+                ("5_V22_Surrogate_Residual_RL_With_Aux_Proposed", "With-Aux")]
+    x = np.arange(3)
+    colors = ["#537a9c", "#bb4430", "#237a57"]
+    for offset, metric, label, color in [(-.18, "clean_action_mse", "Clean", "#537a9c"),
+                                       (.18, "occluded_action_mse", "Occluded", "#b89e55")]:
+        bars = axs[0, 1].bar(x + offset, [fresh[k][metric] for k, _ in selected], .34, label=label, color=color)
+        axs[0, 1].bar_label(bars, fmt="%.5f", padding=3, fontsize=8)
+    decorate(axs[0, 1], "(b) Fresh b0+b1: action error", "Action MSE (dimensionless)")
+    axs[0, 1].legend(loc="upper right")
+    axs[0, 1].set_ylim(0, max(fresh[k]["occluded_action_mse"] for k, _ in selected) * 1.3)
+    for ax, metric, title, ylabel, factor, fmt in [
+        (axs[1, 0], "latent_probe_dir_acc", "(c) Fresh b0+b1: frozen linear probe", "Direction accuracy (%)", 100, "%.2f"),
+        (axs[1, 1], "wrench_r2", "(d) Fresh b0+b1: wrench reconstruction", "Wrench R² (unclipped)", 1, "%.3f")]:
+        bars = ax.bar(x, [fresh[k][metric] * factor for k, _ in selected], color=colors, width=.6)
+        ax.bar_label(bars, fmt=fmt, padding=4, fontsize=9)
+        decorate(ax, title, ylabel)
+        ax.axhline(0, color="#777777", lw=.7)
+        ax.margins(y=.25)
+    axs[1, 0].set_ylim(0, 100)
+    for ax in [axs[0, 1], axs[1, 0], axs[1, 1]]:
+        ax.set_xticks(x, [label for _, label in selected])
+    fig.suptitle("Matched residual refinement in a controlled contact surrogate | seed 42", fontsize=14, fontweight="bold")
+    save_figure(fig, "fig3_online_rl_anticollapse")
+
+
+def plot_fig4_isaac_closedloop_and_longhorizon(report):
+    a, b = report["part_a_6controller_closedloop"], report["part_b_3stage_long_horizon_benchmark"]
+    keys = list(a)
+    labels = ["Open-loop", "Stage 3S\n1D grip", "V2.1\n3DoF", "V2.2\nNo-Aux", "V2.2\nBC", "V2.2\nWith-Aux"]
+    colors = ["#888888", "#a68b62", "#74669c", "#bb4430", "#537a9c", "#237a57"]
+    x = np.arange(len(keys))
+    fig, axs = plt.subplots(2, 2, figsize=(14, 9), layout="constrained")
+    for offset, metric, label, color in [(-.18, "loaded_mean_inhand_slip_mm", "Mean of 4 direction peaks", "#537a9c"),
+                                       (.18, "loaded_worst_inhand_slip_mm", "Worst direction peak", "#bb4430")]:
+        bars = axs[0, 0].bar(x + offset, [a[k][metric] for k in keys], .34, color=color, label=label)
+        axs[0, 0].bar_label(bars, fmt="%.2f", padding=3, fontsize=8)
+    decorate(axs[0, 0], "(a) Part A: in-hand slip, 0.20 N at 15 mm", "Peak slip (mm)")
+    axs[0, 0].margins(y=.2)
+    axs[0, 0].legend(fontsize=8)
+    for offset, metric, label, color in [(-.18, "stage3_mean_socket_radial_error_mm", "Root radial error", "#537a9c"),
+                                       (.18, "stage3_mean_socket_tip_lateral_error_mm", "Mesh-tip lateral error", "#237a57")]:
+        bars = axs[0, 1].bar(x + offset, [b[k][metric] for k in keys], .34, color=color, label=label)
+        axs[0, 1].bar_label(bars, fmt="%.2f", padding=3, fontsize=8, rotation=90)
+    decorate(axs[0, 1], "(b) Part B: absolute socket-axis alignment", "Error (mm), final 10-frame mean")
+    axs[0, 1].margins(y=.40)
+    axs[0, 1].legend(fontsize=8)
+    bars = axs[1, 0].bar(x, [a[k]["zero_disturbance_jitter_deg"] for k in keys], color=colors, width=.6)
+    axs[1, 0].bar_label(bars, fmt="%.4f", padding=4, fontsize=8)
+    axs[1, 0].axhline(.16, ls="--", color="#555555", label="Requested 0.16° criterion")
+    decorate(axs[1, 0], "(c) Part A: physical rotation in zero-force trial", "Peak quaternion rotation (degrees)")
+    axs[1, 0].set_ylim(0, max(.2, max(a[k]["zero_disturbance_jitter_deg"] for k in keys) * 1.25))
+    axs[1, 0].legend(fontsize=8)
+    bars = axs[1, 1].bar(x, [b[k]["stage3_mean_socket_axis_tilt_deg"] for k in keys], color=colors, width=.6)
+    axs[1, 1].bar_label(bars, fmt="%.2f", padding=4, fontsize=8)
+    decorate(axs[1, 1], "(d) Part B: absolute plug/socket axis angle", "Axis angle (degrees), final 10-frame mean")
+    axs[1, 1].margins(y=.2)
+    for ax in axs.flat:
+        ax.set_xticks(x, labels, fontsize=8)
+    fig.suptitle("Isaac Lab / PhysX | one fixed scene, four loaded directions | no hardware claim", fontsize=14, fontweight="bold")
+    save_figure(fig, "fig4_isaac_closedloop_and_longhorizon")
+
+
+def main():
+    report = json.loads((OUT_DIR / "v2_2_verification_results.json").read_text(encoding="utf-8"))
+    cl = json.loads((OUT_DIR / "isaac_closedloop_v2_2_residual_rl_report.json").read_text(encoding="utf-8"))
+    plot_fig1_10stage_ablation(report)
+    plot_fig2_pt02_7category_ood(report)
+    plot_fig3_online_rl_anticollapse(report)
+    plot_fig4_isaac_closedloop_and_longhorizon(cl)
+    print(f"[OK] Saved four PNG/PDF pairs to {FIG_DIR}")
 
 
 if __name__ == "__main__":

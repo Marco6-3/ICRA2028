@@ -1,0 +1,63 @@
+{
+  "onset_passed": 20,
+  "onset_sign_only_passed": 28,
+  "onset_total": 28,
+  "missing_visual_exact_damping": true,
+  "frozen_bc_unchanged_and_no_grad": true,
+  "residual_correction_max_abs": 0.3499999940395355,
+  "residual_correction_bounded": true,
+  "absolute_socket_geometry_test": true,
+  "offline_metric_comparisons": {
+    "dev_pure_c005_c008": {
+      "3_V22_DualHead_WarmStart_BC": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      },
+      "4_V22_Surrogate_Residual_RL_No_Aux": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      }
+    },
+    "blind_fresh_b0_b1": {
+      "3_V22_DualHead_WarmStart_BC": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      },
+      "4_V22_Surrogate_Residual_RL_No_Aux": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      }
+    }
+  },
+  "normalized_quaternion_small_angle_test": true,
+  "physical_run_inputs_match_current_files": true,
+  "physical_acceptance": {
+    "matched_external_controls": true,
+    "part_a_proposed_beats_baselines": {
+      "3_v2_1_pure_bpi_3dof_singlehead": true,
+      "4_v2_2_online_rl_no_aux_collapse": true,
+      "5_v2_2_warmstart_bc_dualhead": true
+    },
+    "zero_jitter_le_016deg": true,
+    "part_b_proposed_best_by_metric": {
+      "stage3_mean_socket_radial_error_mm": false,
+      "stage3_mean_socket_axis_tilt_deg": false,
+      "stage3_mean_socket_tip_lateral_error_mm": true
+    }
+  },
+  "fresh_data_self_contained": true,
+  "fresh_completed_trials_including_zero": 15,
+  "unit_audits_five_passed": true
+}

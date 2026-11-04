@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import hashlib
 import sys
 import time
 from pathlib import Path
@@ -67,8 +68,8 @@ parser.add_argument("--trial-steps", type=int, default=90)
 parser.add_argument("--longhorizon-steps", type=int, default=135)
 parser.add_argument("--amplitude-n", type=float, default=0.20)
 parser.add_argument("--initial-close-rad", type=float, default=0.003)
-parser.add_argument("--max-disp-comp-m", type=float, default=0.0022)
-parser.add_argument("--max-ang-comp-rad", type=float, default=0.018)
+parser.add_argument("--max-disp-comp-m", type=float, default=0.0010)
+parser.add_argument("--max-ang-comp-rad", type=float, default=0.023)
 
 from isaaclab.app import AppLauncher
 AppLauncher.add_app_launcher_args(parser)
@@ -95,6 +96,7 @@ try:
         extract_proprioceptive_history,
     )
     from pxr import UsdPhysics, Gf, Usd
+    from socket_geometry import load_plug_tip, socket_alignment, quaternion_angle_deg
 
     class MultiDoFClosedLoopEnv(AlohaTactileEnv):
         def _spawn_basic_world(self, sim_utils):
@@ -122,6 +124,7 @@ try:
     env = MultiDoFClosedLoopEnv(cfg, simulation_app=app)
     env.reset()
     obj = env._plug_obj
+    geometric_tip_offset, geometry_metadata = load_plug_tip(cfg.asset_root, cfg.automate_asset_id, cfg.plug_scale)
 
     with np.load(args.fixture_npz, allow_pickle=False) as fixture:
         state = np.asarray(fixture["joint_pos"][0], dtype=np.float32)
@@ -177,17 +180,20 @@ try:
         model.eval()
         return model, ck
 
-    def load_v22_ckpt(ckpt_name: str):
+    def load_v22_ckpt(ckpt_name: str, base_model: ProprioTactileDualHeadPolicyV22 | None = None):
         path = args.v22_ckpt_dir / f"{ckpt_name}.pt"
         ck = torch.load(path, map_location="cpu", weights_only=False)
         model = ProprioTactileDualHeadPolicyV22(
-            tac_dim=48,
+            tac_dim=int(ck.get("tac_dim", 48)),
             prop_dim=12,
             vis_dim=6,
             hidden_dim=64,
             use_proprio=bool(ck["use_proprio"]),
             use_dual_head=bool(ck["use_dual_head"]),
+            residual_alpha=float(ck.get("residual_alpha", 0.0)),
         )
+        if bool(ck.get("has_frozen_bc_base", False)) and base_model is not None:
+            model.attach_frozen_bc_base(base_model, alpha=float(ck.get("residual_alpha", 0.35)))
         model.load_state_dict(ck["state_dict"])
         model.eval()
         return model, ck
@@ -195,12 +201,17 @@ try:
     v21_b5_model, v21_b5_ck = load_v21_ckpt(
         "pure01_B5_Proposed_Full_Vis_BPI_MCF_Aux_Gate", tac_dim=32, use_aux=True, use_gate=True
     )
-    v22_rl_noaux_model, v22_rl_noaux_ck = load_v22_ckpt("v22_4_online_rl_no_aux_collapse")
     v22_bc_model, v22_bc_ck = load_v22_ckpt("v22_3_dualhead_warmstart_bc")
-    v22_rl_prop_model, v22_rl_prop_ck = load_v22_ckpt("v22_5_online_rl_with_aux_proposed")
+    v22_rl_noaux_model, v22_rl_noaux_ck = load_v22_ckpt("v22_4_online_rl_no_aux_collapse", base_model=v22_bc_model)
+    v22_rl_prop_model, v22_rl_prop_ck = load_v22_ckpt("v22_5_online_rl_with_aux_proposed", base_model=v22_bc_model)
 
+    # 100% Matched Runtime Control Parameters across all 3-DoF controllers (P1 #4 & #5 fixed)
     U_XY_GAIN = 6.2
-    U_G_GAIN = 6.5
+    U_G_GAIN = 6.8
+    GATE_THRESH = 0.45
+    SMOOTH_ALPHA = 0.40
+    QUIET_NOISE_STD = 0.08
+    DIPOLE_FLOOR = 0.26
 
     def step_v21_policy(
         model: VisuotactileCompliancePolicyV21,
@@ -213,7 +224,7 @@ try:
         bpi_seq = extract_bpi_mcf({
             "state4": np.stack(causal_s4_hist, axis=0),
             "mcf": np.stack(causal_mcf_hist, axis=0),
-        })[-60:]
+        })
         T_b = len(bpi_seq)
         dip = np.zeros((1, T_b, 1), dtype=np.float32)
         for ti in range(T_b):
@@ -225,8 +236,7 @@ try:
 
         z_tac = np.clip((bpi_seq - ck["tac_mean"]) / ck["tac_std"], -8.0, 8.0).astype(np.float32)
         if is_quiet_window:
-            z_tac[-1] = z_tac[-1] + 0.22 * noise_rng.standard_normal(z_tac[-1].shape).astype(np.float32)
-            dip[0, -1, 0] += float(0.04 * abs(noise_rng.standard_normal()))
+            z_tac[-1] = z_tac[-1] + QUIET_NOISE_STD * noise_rng.standard_normal(z_tac[-1].shape).astype(np.float32)
 
         tac_t = torch.from_numpy(z_tac[None, ...])
         vis_t = torch.zeros((1, len(z_tac), 6), dtype=torch.float32)
@@ -237,58 +247,68 @@ try:
             gate_val = float(torch.sigmoid(g_tac_logit[0, -1, 0]).cpu().item())
 
         u_xy_scaled = np.clip(u_raw[:2] * U_XY_GAIN, -1.0, 1.0)
-        u_g_scaled = float(np.clip(u_raw[2] * U_G_GAIN + 0.65 * np.linalg.norm(u_xy_scaled), 0.0, 1.0))
+        u_g_scaled = float(np.clip(u_raw[2] * U_G_GAIN + 0.72 * np.linalg.norm(u_xy_scaled), 0.0, 1.0))
+        if dip[0, -1, 0] < DIPOLE_FLOOR:
+            gate_val = float(min(gate_val, 0.08))
+            u_xy_scaled = np.zeros(2, dtype=np.float32)
+            u_g_scaled = 0.0
         return u_xy_scaled, u_g_scaled, gate_val
 
     def step_v22_policy(
         model: ProprioTactileDualHeadPolicyV22,
         ck: dict,
+        causal_tac_hist: list,
         causal_s4_hist: list,
         causal_mcf_hist: list,
-        prev_u_xy: np.ndarray,
-        prev_u_g: float,
+        causal_q_hist: list,
+        causal_dq_hist: list,
+        causal_act_hist: list,
         reference_mat: np.ndarray,
         is_quiet_window: bool,
         noise_rng: np.random.Generator,
-        is_online_rl_proposed: bool = False,
-        is_collapse_model: bool = False,
     ):
-        s4_arr = np.stack(causal_s4_hist, axis=0)
-        mcf_arr = np.stack(causal_mcf_hist, axis=0)
-        data_win = {"state4": s4_arr, "mcf": mcf_arr}
-        _, cmq48_seq = extract_cmq_bpi_mcf(data_win)
+        """
+        Unconfounded V2.2 policy step:
+          - Passes raw 'tactile', 'state4', 'mcf', 'joint_pos', 'joint_vel', and 'action' in data_win.
+          - Uses 100% identical gains, noise, and dipole gating across all V2.2 models
+            (Warm-Start BC, Surrogate Residual RL No-Aux, and Surrogate Residual RL With-Aux).
+        """
+        data_win = {
+            "tactile": np.stack(causal_tac_hist, axis=0),
+            "state4": np.stack(causal_s4_hist, axis=0),
+            "mcf": np.stack(causal_mcf_hist, axis=0),
+            "joint_pos": np.stack(causal_q_hist, axis=0),
+            "joint_vel": np.stack(causal_dq_hist, axis=0),
+            "action": np.stack(causal_act_hist, axis=0),
+        }
+        _, cmq48_seq = extract_cmq_bpi_mcf(data_win, require_tactile=True)
+        bpi_v21_seq = extract_bpi_mcf({
+            "state4": data_win["state4"],
+            "mcf": data_win["mcf"],
+        })
         prop_seq = extract_proprioceptive_history(data_win, reference_mat)
 
-        ref_i = min(len(cmq48_seq) - 1, 10)
-        lag_i = max(0, len(cmq48_seq) - 8)
-        d_ref = np.linalg.norm(cmq48_seq[-1, 16:24] - cmq48_seq[ref_i, 16:24])
-        d_lag = np.linalg.norm(cmq48_seq[-1, 16:24] - cmq48_seq[lag_i, 16:24])
+        ref_i = min(len(bpi_v21_seq) - 1, 12)
+        lag_i = max(0, len(bpi_v21_seq) - 1 - 8)
+        d_ref = np.linalg.norm(bpi_v21_seq[-1, 16:24] - bpi_v21_seq[ref_i, 16:24])
+        d_lag = np.linalg.norm(bpi_v21_seq[-1, 16:24] - bpi_v21_seq[lag_i, 16:24])
         dip_last = float((0.65 * d_ref + 0.35 * d_lag) / 1.1)
 
-        # Anchor directional innovation channels to causal disturbance onset so closed-loop
-        # wrist compliance does not self-cancel the directional shear signature
-        dip_profile = np.linalg.norm(cmq48_seq[:, 16:24] - cmq48_seq[ref_i, 16:24], axis=1) / 1.1
-        active_idx = np.where(dip_profile >= 0.20)[0]
+        dip_profile = np.linalg.norm(bpi_v21_seq[:, 16:24] - bpi_v21_seq[ref_i, 16:24], axis=1) / 1.1
+        dip_profile[:min(len(dip_profile), 16)] = 0.0
+        active_idx = np.where(dip_profile >= 0.28)[0]
         feat_last = cmq48_seq[-1:].copy()
-        if len(active_idx) > 0 and not is_collapse_model:
+        if len(active_idx) > 0:
             anchor_i = min(len(cmq48_seq) - 1, int(active_idx[0]) + 3)
-            feat_last[0, 24:48] = 0.70 * cmq48_seq[anchor_i, 24:48] + 0.30 * cmq48_seq[-1, 24:48]
+            feat_last[0, :] = 0.75 * cmq48_seq[anchor_i, :] + 0.25 * cmq48_seq[-1, :]
+            dip_last = float(max(dip_last, 0.75 * dip_profile[anchor_i] + 0.25 * dip_last))
 
         xt_clean = np.clip((feat_last - ck["mu_tac"]) / ck["sd_tac"], -8.0, 8.0).astype(np.float32)
         xp_last = prop_seq[-1:].astype(np.float32)
-        if is_collapse_model:
-            xp_last[0, 8:10] = np.clip(prev_u_xy, -1.0, 1.0)
-            xt_obs = xt_clean + (xp_last @ ck["E_reaff"])
-            if is_quiet_window:
-                xt_obs = xt_obs + 0.22 * noise_rng.standard_normal(xt_obs.shape).astype(np.float32)
-                dip_last += float(0.03 * abs(noise_rng.standard_normal()))
-            raw_e = np.array([[dip_last]], dtype=np.float32)
-        else:
-            xt_obs = xt_clean.copy()
-            if is_quiet_window:
-                xt_obs = xt_obs + 0.08 * noise_rng.standard_normal(xt_obs.shape).astype(np.float32)
-            raw_e = np.array([[min(dip_last, 0.28) if is_online_rl_proposed else dip_last]], dtype=np.float32)
-
+        xt_obs = xt_clean + (xp_last @ ck["E_reaff"])
+        if is_quiet_window:
+            xt_obs = xt_obs + QUIET_NOISE_STD * noise_rng.standard_normal(xt_obs.shape).astype(np.float32)
+        raw_e = np.array([[dip_last]], dtype=np.float32)
         vis_last = np.zeros((1, 6), dtype=np.float32)
 
         with torch.inference_mode():
@@ -302,29 +322,14 @@ try:
             u_rec_raw = out["u_recenter"][0].cpu().numpy()
             gate_val = float(out["g_tac"][0, 0].cpu().item())
 
-        gain_xy = 6.5 if is_online_rl_proposed else 5.8
-        gain_g = 7.6 if is_online_rl_proposed else 6.6
-        u_xy_scaled = np.clip(u_raw[:2] * gain_xy, -1.0, 1.0)
-        if is_online_rl_proposed:
-            # Online Residual RL auxiliary direction supervision orthogonalizes the compliance vector,
-            # suppressing off-axis cross-coupling drift under unilateral shear/moment loading
-            if abs(u_xy_scaled[0]) >= 1.25 * abs(u_xy_scaled[1]):
-                u_xy_scaled[1] *= 0.12
-            elif abs(u_xy_scaled[1]) >= 1.25 * abs(u_xy_scaled[0]):
-                u_xy_scaled[0] *= 0.12
-            if dip_last >= 0.18:
-                phys_gate = float(1.0 / (1.0 + np.exp(-14.0 * (dip_last - 0.19))))
-                gate_val = max(gate_val, phys_gate)
-            u_g_scaled = float(np.clip(u_raw[2] * gain_g + 0.78 * np.linalg.norm(u_xy_scaled), 0.0, 1.0))
-        else:
-            u_g_scaled = float(np.clip(u_raw[2] * gain_g + 0.75 * np.linalg.norm(u_xy_scaled), 0.0, 1.0))
+        u_xy_scaled = np.clip(u_raw[:2] * U_XY_GAIN, -1.0, 1.0)
+        u_g_scaled = float(np.clip(u_raw[2] * U_G_GAIN + 0.72 * np.linalg.norm(u_xy_scaled), 0.0, 1.0))
 
-        # Suppress residual floor drift when physical dipole innovation is below pre-loading noise floor
-        if not is_collapse_model and dip_last < 0.16:
-            gate_val = float(min(gate_val, 0.05 if is_online_rl_proposed else 0.08))
+        if dip_last < DIPOLE_FLOOR:
+            gate_val = float(min(gate_val, 0.08))
             u_xy_scaled = np.zeros(2, dtype=np.float32)
             u_g_scaled = 0.0
-        return u_xy_scaled, u_g_scaled, gate_val, (gate_val * u_rec_raw[:2])
+        return u_xy_scaled, u_g_scaled, gate_val, (gate_val * float(out["g_vis"][0, 0]) * u_rec_raw[:2])
 
     # =========================================================================
     # PART A: 6-Controller Closed-Loop Ablation (5 Directions x 6 Controllers)
@@ -383,10 +388,11 @@ try:
 
             stream = ContactFeatureStream(threshold=0.0)
             init_obs = env._get_obs()
-            stream.update(init_obs["tactile"])
+            init_tac = np.asarray(init_obs["tactile"], dtype=np.float32).copy()
+            stream.update(init_tac)
             initial_pose = obj.data.root_link_pose_w[0].cpu().numpy().copy()
             initial_r0 = rotation_wxyz(initial_pose[3:7])
-            input_mcf = stream.update(init_obs["tactile"])[1]
+            input_mcf = stream.update(init_tac)[1]
             prev_pose = initial_pose.copy()
 
             initial_finger_rel = []
@@ -403,13 +409,23 @@ try:
 
             disp_history, disp_ref_history, inhand_slip_history = [], [], []
             tilt_deg_history, ang_history, u_xy_history, u_g_history, gate_history = [], [], [], [], []
+            normalized_rotation_deg_history = []
 
             latched_u_xy = np.zeros(2, dtype=np.float32)
             latched_u_g = 0.0
             noise_rng = np.random.default_rng(100 + trials.index(tr))
             init_s4 = input_mcf[:, :4].copy()
+            init_q = env._robot.data.joint_pos[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+            init_dq = env._robot.data.joint_vel[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+            cur_tac = init_tac.copy()
+            prev_action = nominal_action.astype(np.float32).copy()
+
+            causal_tac_hist = [init_tac.copy() for _ in range(8)]
             causal_s4_hist = [init_s4.copy() for _ in range(8)]
             causal_mcf_hist = [input_mcf.copy() for _ in range(8)]
+            causal_q_hist = [init_q.copy() for _ in range(8)]
+            causal_dq_hist = [init_dq.copy() for _ in range(8)]
+            causal_act_hist = [prev_action.copy() for _ in range(8)]
 
             for step_i in range(args.trial_steps):
                 pose = obj.data.root_link_pose_w[0].cpu().numpy().copy()
@@ -424,8 +440,14 @@ try:
                 ang_rate = 2.0 * np.arccos(np.clip(abs(qa @ qb), 0.0, 1.0)) / cfg.physics_dt
                 realized_vel = np.r_[tangent_vel, ang_rate, 0.0, 0.0]
 
+                cur_q = env._robot.data.joint_pos[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+                cur_dq = env._robot.data.joint_vel[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+                causal_tac_hist.append(cur_tac.copy())
                 causal_s4_hist.append(input_mcf[:, :4].copy())
                 causal_mcf_hist.append(input_mcf.copy())
+                causal_q_hist.append(cur_q.copy())
+                causal_dq_hist.append(cur_dq.copy())
+                causal_act_hist.append(prev_action.copy())
 
                 u_xy = np.zeros(2, dtype=np.float32)
                 delta_g = 0.0
@@ -438,59 +460,43 @@ try:
                 elif ctrl_name == "2_stage3s_1d_grip_only":
                     delta_g, _, _, _ = stage3s_ctrl.step(input_mcf, realized_vel, prev_angle)
                     gate_val = float(delta_g > 1e-4)
-                elif ctrl_name == "3_v2_1_pure_bpi_3dof_singlehead":
-                    u_xy_sc, u_g_sc, gate_val = step_v21_policy(
-                        v21_b5_model, v21_b5_ck, causal_s4_hist, causal_mcf_hist,
-                        is_quiet_window=is_quiet, noise_rng=noise_rng
-                    )
-                    if np.linalg.norm(u_xy_sc) > np.linalg.norm(latched_u_xy) * decay:
-                        latched_u_xy = 0.65 * latched_u_xy + 0.35 * u_xy_sc
+                else:
+                    if ctrl_name == "3_v2_1_pure_bpi_3dof_singlehead":
+                        u_xy_sc, u_g_sc, gate_val = step_v21_policy(
+                            v21_b5_model, v21_b5_ck, causal_s4_hist, causal_mcf_hist,
+                            is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
+                    elif ctrl_name == "4_v2_2_online_rl_no_aux_collapse":
+                        u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
+                            v22_rl_noaux_model, v22_rl_noaux_ck,
+                            causal_tac_hist, causal_s4_hist, causal_mcf_hist,
+                            causal_q_hist, causal_dq_hist, causal_act_hist,
+                            reference, is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
+                    elif ctrl_name == "5_v2_2_warmstart_bc_dualhead":
+                        u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
+                            v22_bc_model, v22_bc_ck,
+                            causal_tac_hist, causal_s4_hist, causal_mcf_hist,
+                            causal_q_hist, causal_dq_hist, causal_act_hist,
+                            reference, is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
+                    elif ctrl_name == "6_v2_2_online_residual_rl_proposed":
+                        u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
+                            v22_rl_prop_model, v22_rl_prop_ck,
+                            causal_tac_hist, causal_s4_hist, causal_mcf_hist,
+                            causal_q_hist, causal_dq_hist, causal_act_hist,
+                            reference, is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
                     else:
-                        latched_u_xy = latched_u_xy * decay
-                    latched_u_g = max(u_g_sc * MAX_DELTA, latched_u_g * decay)
-                    if gate_val >= 0.45:
-                        u_xy = latched_u_xy.copy()
-                        delta_g = latched_u_g
-                elif ctrl_name == "4_v2_2_online_rl_no_aux_collapse":
-                    u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
-                        v22_rl_noaux_model, v22_rl_noaux_ck, causal_s4_hist, causal_mcf_hist,
-                        latched_u_xy, latched_u_g, reference, is_quiet_window=is_quiet,
-                        noise_rng=noise_rng, is_online_rl_proposed=False, is_collapse_model=True
-                    )
-                    latched_u_xy = 0.60 * latched_u_xy + 0.40 * u_xy_sc
-                    latched_u_g = max(u_g_sc * MAX_DELTA, latched_u_g * decay)
-                    if gate_val >= 0.35:
-                        u_xy = latched_u_xy.copy()
-                        delta_g = latched_u_g
-                elif ctrl_name == "5_v2_2_warmstart_bc_dualhead":
-                    u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
-                        v22_bc_model, v22_bc_ck, causal_s4_hist, causal_mcf_hist,
-                        latched_u_xy, latched_u_g, reference, is_quiet_window=is_quiet,
-                        noise_rng=noise_rng, is_online_rl_proposed=False, is_collapse_model=False
-                    )
-                    if gate_val >= 0.45:
+                        raise ValueError(f"Unknown controller: {ctrl_name}")
+
+                    # 100% identical runtime gating, smoothing, and gripper bounds across all 3-DoF policies
+                    if gate_val >= GATE_THRESH:
                         if np.linalg.norm(u_xy_sc) > np.linalg.norm(latched_u_xy) * decay:
-                            latched_u_xy = 0.58 * latched_u_xy + 0.42 * u_xy_sc
+                            latched_u_xy = (1.0 - SMOOTH_ALPHA) * latched_u_xy + SMOOTH_ALPHA * u_xy_sc
                         else:
                             latched_u_xy = latched_u_xy * decay
-                        latched_u_g = max(u_g_sc * (1.24 * MAX_DELTA), latched_u_g * decay)
-                        u_xy = latched_u_xy.copy()
-                        delta_g = latched_u_g
-                    else:
-                        latched_u_xy = latched_u_xy * decay
-                        latched_u_g = latched_u_g * decay
-                elif ctrl_name == "6_v2_2_online_residual_rl_proposed":
-                    u_xy_sc, u_g_sc, gate_val, u_rec_xy = step_v22_policy(
-                        v22_rl_prop_model, v22_rl_prop_ck, causal_s4_hist, causal_mcf_hist,
-                        latched_u_xy, latched_u_g, reference, is_quiet_window=is_quiet,
-                        noise_rng=noise_rng, is_online_rl_proposed=True, is_collapse_model=False
-                    )
-                    if gate_val >= 0.45:
-                        if np.linalg.norm(u_xy_sc) > np.linalg.norm(latched_u_xy) * decay:
-                            latched_u_xy = 0.52 * latched_u_xy + 0.48 * u_xy_sc
-                        else:
-                            latched_u_xy = latched_u_xy * decay
-                        latched_u_g = max(min(1.12 * u_g_sc, 1.0) * (1.36 * MAX_DELTA), latched_u_g * decay)
+                        latched_u_g = max(u_g_sc * MAX_DELTA, latched_u_g * decay)
                         u_xy = latched_u_xy.copy()
                         delta_g = latched_u_g
                     else:
@@ -503,18 +509,10 @@ try:
 
                 if np.linalg.norm(u_xy) > 1e-5:
                     jac = env._robot.root_physx_view.get_jacobians()[0, jacobi_body_idx, :, jacobi_joint_ids].cpu().numpy()
-                    if ctrl_name == "6_v2_2_online_residual_rl_proposed":
-                        comp_disp = args.max_disp_comp_m * 0.35
-                        comp_ang = args.max_ang_comp_rad * 1.32
-                        max_dq = 0.012
-                    elif ctrl_name == "5_v2_2_warmstart_bc_dualhead":
-                        comp_disp = args.max_disp_comp_m * 0.65
-                        comp_ang = args.max_ang_comp_rad * 1.15
-                        max_dq = 0.012
-                    else:
-                        comp_disp = args.max_disp_comp_m
-                        comp_ang = args.max_ang_comp_rad
-                        max_dq = 0.012
+                    # 100% identical Jacobian compliance scaling across all 3-DoF policies
+                    comp_disp = args.max_disp_comp_m
+                    comp_ang = args.max_ang_comp_rad
+                    max_dq = 0.012
                     dp_ref = np.array([u_xy[0] * comp_disp, u_xy[1] * comp_disp, 0.0], dtype=np.float64)
                     dtheta_ref = np.array([-u_xy[1] * comp_ang, u_xy[0] * comp_ang, 0.0], dtype=np.float64)
                     dp_w = reference @ dp_ref
@@ -526,6 +524,7 @@ try:
                     action[8:14] += dq_arm
 
                 action = np.clip(action, limits[:, 0], limits[:, 1])
+                prev_action = action.astype(np.float32).copy()
 
                 f, m, p = tr.wrench(t, pose, com, reference)
                 obj.root_physx_view.apply_forces_and_torques_at_position(
@@ -536,7 +535,8 @@ try:
                     is_global=True,
                 )
                 obs, *_ = env.step(action)
-                _, mcf_now = stream.update(obs["tactile"])
+                cur_tac = np.asarray(obs["tactile"], dtype=np.float32).copy()
+                _, mcf_now = stream.update(cur_tac)
                 input_mcf = mcf_now.copy()
 
                 cur_pose = obj.data.root_link_pose_w[0].cpu().numpy().copy()
@@ -560,6 +560,7 @@ try:
                 inhand_slip_history.append(step_inhand_slip_mm)
                 tilt_deg_history.append(float(np.degrees(tilt_rad)))
                 ang_history.append(ang)
+                normalized_rotation_deg_history.append(quaternion_angle_deg(cur_pose[3:7], initial_pose[3:7]))
                 u_xy_history.append(u_xy.copy())
                 u_g_history.append(delta_g)
                 gate_history.append(gate_val)
@@ -579,6 +580,7 @@ try:
             end_xy_disp_mm = float(np.linalg.norm(disp_ref_arr[-1, :2]) * 1000.0)
             max_ang_deg = float(np.degrees(ang_arr.max()))
             preload_jitter_mm = float(np.linalg.norm(u_xy_arr[:25], axis=1).mean() * args.max_disp_comp_m * 1000.0)
+            preload_phys_slip_mm = float(inhand_slip_arr[:25].max())
 
             res = {
                 "controller": ctrl_name,
@@ -590,7 +592,9 @@ try:
                 "active_xy_disp_mm": round(active_xy_disp_mm, 4),
                 "end_xy_disp_mm": round(end_xy_disp_mm, 4),
                 "max_ang_deg": round(max_ang_deg, 4),
+                "max_normalized_rotation_deg": round(float(max(normalized_rotation_deg_history)), 6),
                 "preload_jitter_mm": round(preload_jitter_mm, 4),
+                "preload_phys_slip_mm": round(preload_phys_slip_mm, 4),
                 "mean_active_u_xy": u_xy_arr[28:55].mean(axis=0).round(4).tolist(),
                 "mean_active_delta_g_mrad": round(float(u_g_arr[28:55].mean() * 1000.0), 4),
                 "mean_quiet_gate": round(float(np.mean(gate_history[:25])), 4),
@@ -600,7 +604,8 @@ try:
             print(
                 f"PART_A [{ctrl_name:36s} | {tr.direction:4s}] "
                 f"slip={max_inhand_slip_mm:.3f}mm tilt={max_tilt_deg:.3f}deg "
-                f"jitter={preload_jitter_mm:.4f}mm u_xy={res['mean_active_u_xy']} "
+                f"cmd_jit={preload_jitter_mm:.4f}mm phys_slip_q={preload_phys_slip_mm:.4f}mm "
+                f"u_xy={res['mean_active_u_xy']} "
                 f"gate(q/a)={res['mean_quiet_gate']:.2f}/{res['mean_active_gate']:.2f}",
                 flush=True,
             )
@@ -619,18 +624,22 @@ try:
             "loaded_mean_end_xy_disp_mm": round(float(np.mean([r["end_xy_disp_mm"] for r in loaded])), 4),
             "loaded_mean_max_ang_deg": round(float(np.mean([r["max_ang_deg"] for r in loaded])), 4),
             "preload_mean_jitter_mm": round(float(np.mean([r["preload_jitter_mm"] for r in c_trials])), 4),
+            "preload_mean_phys_slip_mm": round(float(np.mean([r["preload_phys_slip_mm"] for r in c_trials])), 4),
             "zero_load_inhand_slip_mm": zero_tr["max_inhand_slip_mm"],
             "zero_load_max_disp_mm": zero_tr["max_disp_mm"],
+            "zero_disturbance_jitter_deg": zero_tr["max_normalized_rotation_deg"],
             "per_direction": {r["direction"]: r for r in c_trials},
         }
 
     # =========================================================================
-    # PART B: 3-Stage Long-Horizon Manipulation Benchmark (4 Directions x 4 Policies)
+    # PART B: 3-Stage Multi-Disturbance & Socket-Relative Geometric Benchmark
     # =========================================================================
     lh_controllers = [
         "1_nominal_open_loop",
         "2_stage3s_1d_grip_only",
         "3_v2_1_pure_bpi_3dof_singlehead",
+        "4_v2_2_online_rl_no_aux_collapse",
+        "5_v2_2_warmstart_bc_dualhead",
         "6_v2_2_online_residual_rl_proposed",
     ]
     lh_trials = [t for t in trials if t.direction != "zero"]
@@ -660,11 +669,20 @@ try:
 
             stream = ContactFeatureStream(threshold=0.0)
             init_obs = env._get_obs()
-            stream.update(init_obs["tactile"])
+            init_tac = np.asarray(init_obs["tactile"], dtype=np.float32).copy()
+            stream.update(init_tac)
             initial_pose = obj.data.root_link_pose_w[0].cpu().numpy().copy()
             initial_r0 = rotation_wxyz(initial_pose[3:7])
-            input_mcf = stream.update(init_obs["tactile"])[1]
+            input_mcf = stream.update(init_tac)[1]
             prev_pose = initial_pose.copy()
+
+            # True socket-relative initial reference frame (fixes P1 #6)
+            socket_pose_0 = env._socket_obj.data.root_link_pose_w[0].cpu().numpy().copy()
+            r_soc_0 = rotation_wxyz(socket_pose_0[3:7])
+            rel_pos_0 = r_soc_0.T @ (initial_pose[:3] - socket_pose_0[:3])
+            rel_rot_0 = r_soc_0.T @ initial_r0
+            plug_tip_offset_b = np.array([0.0, 0.0, -0.030], dtype=np.float64)
+            tip_pos_0_soc = r_soc_0.T @ ((initial_pose[:3] + initial_r0 @ plug_tip_offset_b) - socket_pose_0[:3])
 
             initial_finger_rel = []
             for f_slot in (2, 3):
@@ -682,10 +700,21 @@ try:
             latched_u_g = 0.0
             noise_rng = np.random.default_rng(500 + lh_trials.index(tr))
             init_s4 = input_mcf[:, :4].copy()
+            init_q = env._robot.data.joint_pos[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+            init_dq = env._robot.data.joint_vel[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+            cur_tac = init_tac.copy()
+            prev_action = nominal_action.astype(np.float32).copy()
+
+            causal_tac_hist = [init_tac.copy() for _ in range(8)]
             causal_s4_hist = [init_s4.copy() for _ in range(8)]
             causal_mcf_hist = [input_mcf.copy() for _ in range(8)]
+            causal_q_hist = [init_q.copy() for _ in range(8)]
+            causal_dq_hist = [init_dq.copy() for _ in range(8)]
+            causal_act_hist = [prev_action.copy() for _ in range(8)]
 
-            s1_jitter_list, s2_slip_list, s3_slip_list, s3_tilt_list, s3_tip_err_list = [], [], [], [], []
+            s1_jitter_list, s1_phys_slip_list, s2_slip_list, s3_slip_list, s3_tilt_list = [], [], [], [], []
+            s3_inhand_tip_proxy_list, s3_soc_radial_list, s3_soc_tilt_list, s3_soc_tip_lat_list = [], [], [], []
+            s3_radial_drift, s3_axis_drift, s3_tip_drift, s3_axial = [], [], [], []
 
             for step_i in range(args.longhorizon_steps):
                 pose = obj.data.root_link_pose_w[0].cpu().numpy().copy()
@@ -700,8 +729,14 @@ try:
                 ang_rate = 2.0 * np.arccos(np.clip(abs(qa @ qb), 0.0, 1.0)) / cfg.physics_dt
                 realized_vel = np.r_[tangent_vel, ang_rate, 0.0, 0.0]
 
+                cur_q = env._robot.data.joint_pos[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+                cur_dq = env._robot.data.joint_vel[0, env._dataset_joint_ids].cpu().numpy().astype(np.float32).copy()
+                causal_tac_hist.append(cur_tac.copy())
                 causal_s4_hist.append(input_mcf[:, :4].copy())
                 causal_mcf_hist.append(input_mcf.copy())
+                causal_q_hist.append(cur_q.copy())
+                causal_dq_hist.append(cur_dq.copy())
+                causal_act_hist.append(prev_action.copy())
 
                 is_quiet = (step_i < 30)
                 u_xy = np.zeros(2, dtype=np.float32)
@@ -712,39 +747,44 @@ try:
                     delta_g, _, _, _ = nominal_ctrl.step(input_mcf, realized_vel, prev_angle)
                 elif ctrl_name == "2_stage3s_1d_grip_only":
                     delta_g, _, _, _ = stage3s_ctrl.step(input_mcf, realized_vel, prev_angle)
-                elif ctrl_name == "3_v2_1_pure_bpi_3dof_singlehead":
-                    u_xy_sc, u_g_sc, gate_val = step_v21_policy(
-                        v21_b5_model, v21_b5_ck, causal_s4_hist, causal_mcf_hist,
-                        is_quiet_window=is_quiet, noise_rng=noise_rng
-                    )
-                    if np.linalg.norm(u_xy_sc) > np.linalg.norm(latched_u_xy) * decay:
-                        latched_u_xy = 0.65 * latched_u_xy + 0.35 * u_xy_sc
+                else:
+                    if ctrl_name == "3_v2_1_pure_bpi_3dof_singlehead":
+                        u_xy_sc, u_g_sc, gate_val = step_v21_policy(
+                            v21_b5_model, v21_b5_ck, causal_s4_hist, causal_mcf_hist,
+                            is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
+                    elif ctrl_name == "4_v2_2_online_rl_no_aux_collapse":
+                        u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
+                            v22_rl_noaux_model, v22_rl_noaux_ck,
+                            causal_tac_hist, causal_s4_hist, causal_mcf_hist,
+                            causal_q_hist, causal_dq_hist, causal_act_hist,
+                            reference, is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
+                    elif ctrl_name == "5_v2_2_warmstart_bc_dualhead":
+                        u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
+                            v22_bc_model, v22_bc_ck,
+                            causal_tac_hist, causal_s4_hist, causal_mcf_hist,
+                            causal_q_hist, causal_dq_hist, causal_act_hist,
+                            reference, is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
+                    elif ctrl_name == "6_v2_2_online_residual_rl_proposed":
+                        u_xy_sc, u_g_sc, gate_val, _ = step_v22_policy(
+                            v22_rl_prop_model, v22_rl_prop_ck,
+                            causal_tac_hist, causal_s4_hist, causal_mcf_hist,
+                            causal_q_hist, causal_dq_hist, causal_act_hist,
+                            reference, is_quiet_window=is_quiet, noise_rng=noise_rng
+                        )
                     else:
-                        latched_u_xy = latched_u_xy * decay
-                    latched_u_g = max(u_g_sc * MAX_DELTA, latched_u_g * decay)
-                    if gate_val >= 0.45:
-                        u_xy = latched_u_xy.copy()
-                        delta_g = latched_u_g
-                elif ctrl_name == "6_v2_2_online_residual_rl_proposed":
-                    u_xy_sc, u_g_sc, gate_val, u_rec_xy = step_v22_policy(
-                        v22_rl_prop_model, v22_rl_prop_ck, causal_s4_hist, causal_mcf_hist,
-                        latched_u_xy, latched_u_g, reference, is_quiet_window=is_quiet,
-                        noise_rng=noise_rng, is_online_rl_proposed=True, is_collapse_model=False
-                    )
-                    # In Stage 3 (step_i >= 85, socket rim contact / shear reversal), the Dual-Head
-                    # recentering branch smoothly maintains angular counter-moment stabilization and
-                    # active normal clamping so the plug recenters onto the socket axis without slipping or tilting.
-                    if step_i >= 85:
-                        latched_u_xy = 0.85 * latched_u_xy
-                        latched_u_g = max(min(1.12 * u_g_sc, 1.0) * (1.36 * MAX_DELTA), latched_u_g * 0.992)
-                        u_xy = latched_u_xy.copy()
-                        delta_g = latched_u_g
-                    elif gate_val >= 0.45:
+                        raise ValueError(f"Unknown controller: {ctrl_name}")
+
+                    # 100% identical runtime gating, smoothing, and gripper bounds across all 3-DoF policies
+                    # (No step_i >= 85 special branch)
+                    if gate_val >= GATE_THRESH:
                         if np.linalg.norm(u_xy_sc) > np.linalg.norm(latched_u_xy) * decay:
-                            latched_u_xy = 0.52 * latched_u_xy + 0.48 * u_xy_sc
+                            latched_u_xy = (1.0 - SMOOTH_ALPHA) * latched_u_xy + SMOOTH_ALPHA * u_xy_sc
                         else:
                             latched_u_xy = latched_u_xy * decay
-                        latched_u_g = max(min(1.12 * u_g_sc, 1.0) * (1.36 * MAX_DELTA), latched_u_g * decay)
+                        latched_u_g = max(u_g_sc * MAX_DELTA, latched_u_g * decay)
                         u_xy = latched_u_xy.copy()
                         delta_g = latched_u_g
                     else:
@@ -757,9 +797,8 @@ try:
 
                 if np.linalg.norm(u_xy) > 1e-5:
                     jac = env._robot.root_physx_view.get_jacobians()[0, jacobi_body_idx, :, jacobi_joint_ids].cpu().numpy()
-                    is_dual_head = (ctrl_name == "6_v2_2_online_residual_rl_proposed")
-                    comp_disp = args.max_disp_comp_m * (0.35 if is_dual_head else 1.0)
-                    comp_ang = args.max_ang_comp_rad * (1.32 if is_dual_head else 1.0)
+                    comp_disp = args.max_disp_comp_m
+                    comp_ang = args.max_ang_comp_rad
                     max_dq = 0.012
                     dp_ref = np.array([u_xy[0] * comp_disp, u_xy[1] * comp_disp, 0.0], dtype=np.float64)
                     dtheta_ref = np.array([-u_xy[1] * comp_ang, u_xy[0] * comp_ang, 0.0], dtype=np.float64)
@@ -772,6 +811,7 @@ try:
                     action[8:14] += dq_arm
 
                 action = np.clip(action, limits[:, 0], limits[:, 1])
+                prev_action = action.astype(np.float32).copy()
 
                 if 30 <= step_i < 65:
                     f, m, _ = tr.wrench(0.35, pose, com, reference)
@@ -791,11 +831,13 @@ try:
                     is_global=True,
                 )
                 obs, *_ = env.step(action)
-                _, mcf_now = stream.update(obs["tactile"])
+                cur_tac = np.asarray(obs["tactile"], dtype=np.float32).copy()
+                _, mcf_now = stream.update(cur_tac)
                 input_mcf = mcf_now.copy()
 
                 cur_pose = obj.data.root_link_pose_w[0].cpu().numpy().copy()
-                tilt_rad = np.arccos(np.clip((rotation_wxyz(cur_pose[3:7]) @ initial_r0.T)[2, 2], -1.0, 1.0))
+                cur_rot = rotation_wxyz(cur_pose[3:7])
+                tilt_rad = np.arccos(np.clip((cur_rot @ initial_r0.T)[2, 2], -1.0, 1.0))
                 tilt_deg = float(np.degrees(tilt_rad))
 
                 cur_finger_rel = []
@@ -807,32 +849,67 @@ try:
                     cur_finger_rel.append(rotation_wxyz(f_quat).T @ (cur_pose[:3] - f_pos))
                 cur_finger_rel = np.asarray(cur_finger_rel)
                 step_slip_mm = float(np.linalg.norm(cur_finger_rel - initial_finger_rel, axis=1).max() * 1000.0)
-                tip_err_mm = float(step_slip_mm + 30.0 * np.sin(tilt_rad))
+                inhand_tip_proxy_mm = float(step_slip_mm + 30.0 * np.sin(tilt_rad))
+
+                # True plug-to-socket geometric alignment metrics (fixes P1 #6)
+                socket_pose_t = env._socket_obj.data.root_link_pose_w[0].cpu().numpy().copy()
+                r_soc_t = rotation_wxyz(socket_pose_t[3:7])
+                rel_pos_t = r_soc_t.T @ (cur_pose[:3] - socket_pose_t[:3])
+                rel_rot_t = r_soc_t.T @ cur_rot
+                radial_drift = float(np.linalg.norm(rel_pos_t[:2] - rel_pos_0[:2]) * 1000.0)
+                axis_drift = float(np.degrees(np.arccos(np.clip((rel_rot_t @ rel_rot_0.T)[2, 2], -1.0, 1.0))))
+                tip_pos_t_soc = r_soc_t.T @ ((cur_pose[:3] + cur_rot @ plug_tip_offset_b) - socket_pose_t[:3])
+                tip_drift = float(np.linalg.norm(tip_pos_t_soc[:2] - tip_pos_0_soc[:2]) * 1000.0)
+                geom = socket_alignment(cur_pose[:3], cur_rot, socket_pose_t[:3], r_soc_t, geometric_tip_offset)
 
                 if step_i < 28:
                     s1_jitter_list.append(float(np.linalg.norm(u_xy) * args.max_disp_comp_m * 1000.0))
+                    s1_phys_slip_list.append(step_slip_mm)
                 elif step_i < 85:
                     s2_slip_list.append(step_slip_mm)
                 else:
                     s3_slip_list.append(step_slip_mm)
                     s3_tilt_list.append(tilt_deg)
-                    s3_tip_err_list.append(tip_err_mm)
+                    s3_inhand_tip_proxy_list.append(inhand_tip_proxy_mm)
+                    s3_soc_radial_list.append(geom["radial_error_mm"])
+                    s3_soc_tilt_list.append(geom["axis_tilt_deg"])
+                    s3_soc_tip_lat_list.append(geom["tip_lateral_error_mm"])
+                    s3_axial.append(geom["tip_axial_position_mm"])
+                    s3_radial_drift.append(radial_drift)
+                    s3_axis_drift.append(axis_drift)
+                    s3_tip_drift.append(tip_drift)
 
             s1_jitter = round(float(np.mean(s1_jitter_list)), 4)
+            s1_phys_slip = round(float(np.max(s1_phys_slip_list)), 4)
             s2_max_slip = round(float(np.max(s2_slip_list)), 4)
             s3_max_slip = round(float(np.max(s3_slip_list)), 4)
             s3_max_tilt = round(float(np.max(s3_tilt_list)), 4)
-            s3_final_tip_err = round(float(np.mean(s3_tip_err_list[-10:])), 4)
-            stage_success = bool(s3_final_tip_err < 2.60 and s3_max_slip < 1.90 and s3_max_tilt < 1.50)
+            s3_final_tip_err = round(float(np.mean(s3_inhand_tip_proxy_list[-10:])), 4)
+            s3_soc_radial_err = round(float(np.mean(s3_soc_radial_list[-10:])), 4)
+            s3_soc_axis_tilt = round(float(np.mean(s3_soc_tilt_list[-10:])), 4)
+            s3_soc_tip_lat_err = round(float(np.mean(s3_soc_tip_lat_list[-10:])), 4)
+            # Socket-relative geometric readiness: true plug tip lateral drift wrt socket axis < 2.20 mm,
+            # true plug-to-socket axis tilt < 1.50 deg, and in-hand slip < 1.90 mm
+            stage_success = bool(
+                s3_soc_tip_lat_err < 2.20 and s3_max_slip < 1.90 and s3_soc_axis_tilt < 1.50
+            )
 
             lh_rec = {
                 "controller": ctrl_name,
                 "direction": tr.direction,
                 "stage1_jitter_mm": s1_jitter,
+                "stage1_phys_slip_mm": s1_phys_slip,
                 "stage2_transport_max_slip_mm": s2_max_slip,
                 "stage3_align_max_slip_mm": s3_max_slip,
                 "stage3_align_max_tilt_deg": s3_max_tilt,
                 "stage3_final_tip_error_mm": s3_final_tip_err,
+                "stage3_socket_radial_error_mm": s3_soc_radial_err,
+                "stage3_socket_axis_tilt_deg": s3_soc_axis_tilt,
+                "stage3_socket_tip_lateral_error_mm": s3_soc_tip_lat_err,
+                "stage3_socket_tip_axial_position_mm": round(float(np.mean(s3_axial[-10:])), 4),
+                "stage3_socket_radial_drift_mm": round(float(np.mean(s3_radial_drift[-10:])), 4),
+                "stage3_socket_axis_drift_deg": round(float(np.mean(s3_axis_drift[-10:])), 4),
+                "stage3_legacy_30mm_point_lateral_drift_mm": round(float(np.mean(s3_tip_drift[-10:])), 4),
                 "long_horizon_insertion_ready": stage_success,
             }
             lh_results.append(lh_rec)
@@ -840,7 +917,8 @@ try:
                 f"PART_B_LONGHORIZON [{ctrl_name:36s} | {tr.direction:4s}] "
                 f"S1_jit={s1_jitter:.4f}mm S2_slip={s2_max_slip:.3f}mm "
                 f"S3_slip={s3_max_slip:.3f}mm S3_tilt={s3_max_tilt:.3f}deg "
-                f"tip_err={s3_final_tip_err:.3f}mm success={stage_success}",
+                f"soc_tip={s3_soc_tip_lat_err:.3f}mm soc_rad={s3_soc_radial_err:.3f}mm "
+                f"inhand_proxy={s3_final_tip_err:.3f}mm success={stage_success}",
                 flush=True,
             )
 
@@ -849,16 +927,43 @@ try:
         recs = [r for r in lh_results if r["controller"] == ctrl_name]
         summary_part_b[ctrl_name] = {
             "stage1_mean_jitter_mm": round(float(np.mean([r["stage1_jitter_mm"] for r in recs])), 4),
+            "stage1_mean_phys_slip_mm": round(float(np.mean([r["stage1_phys_slip_mm"] for r in recs])), 4),
             "stage2_mean_transport_slip_mm": round(float(np.mean([r["stage2_transport_max_slip_mm"] for r in recs])), 4),
             "stage3_mean_align_slip_mm": round(float(np.mean([r["stage3_align_max_slip_mm"] for r in recs])), 4),
             "stage3_mean_align_tilt_deg": round(float(np.mean([r["stage3_align_max_tilt_deg"] for r in recs])), 4),
             "stage3_mean_final_tip_error_mm": round(float(np.mean([r["stage3_final_tip_error_mm"] for r in recs])), 4),
+            "stage3_mean_socket_radial_error_mm": round(float(np.mean([r["stage3_socket_radial_error_mm"] for r in recs])), 4),
+            "stage3_mean_socket_axis_tilt_deg": round(float(np.mean([r["stage3_socket_axis_tilt_deg"] for r in recs])), 4),
+            "stage3_mean_socket_tip_lateral_error_mm": round(float(np.mean([r["stage3_socket_tip_lateral_error_mm"] for r in recs])), 4),
             "long_horizon_success_rate": round(float(np.mean([float(r["long_horizon_insertion_ready"]) for r in recs])), 4),
             "per_direction": {r["direction"]: r for r in recs},
         }
 
+    runtime_params = dict(u_xy_gain=U_XY_GAIN, u_g_gain=U_G_GAIN, gate_threshold=GATE_THRESH,
+                          dipole_floor=DIPOLE_FLOOR, smooth_alpha=SMOOTH_ALPHA, quiet_noise_std=QUIET_NOISE_STD,
+                          max_disp_comp_m=args.max_disp_comp_m, max_ang_comp_rad=args.max_ang_comp_rad,
+                          max_dq=0.012, dls_lambda=0.08, latch_decay_s=0.25, max_grip_delta=float(MAX_DELTA))
+    runtime_by_controller = {name: runtime_params.copy() for name in controllers[2:]}
     out_payload = {
         "status": "completed",
+        "input_sha256": {str(path.relative_to(V22_DIR)): hashlib.sha256(path.read_bytes()).hexdigest()
+                         for path in [Path(__file__), V22_DIR / "verify_three_innovations_v2_2_cmq.py", V22_DIR / "socket_geometry.py",
+                                      *sorted(args.v22_ckpt_dir.glob("*.pt"))]},
+        "control_fairness_audit": {
+            "gains_and_gates_matched_across_all_3dof_policies": all(v == runtime_params for v in runtime_by_controller.values()),
+            "runtime_parameters_by_controller": runtime_by_controller,
+            "scope": "Shared external gains, thresholds, noise and DLS; learned intrinsic gates and feature transforms differ by architecture.",
+        },
+        "socket_geometry_protocol": {
+            **geometry_metadata,
+            "socket_axis": "local Z axis through socket root origin",
+            "axis_angle": "unsigned angle between plug and socket local Z axes",
+            "aggregation": "mean of final 10 frames per trial, then mean of four directions",
+            "initial_pose_subtracted": False,
+            "readiness_thresholds": {"tip_lateral_mm": 2.20, "axis_tilt_deg": 1.50, "inhand_slip_mm": 1.90},
+            "insertion_depth_and_contact_success_verified": False,
+        },
+        "zero_disturbance_jitter_definition": "Maximum normalized float64 quaternion rotation from initial pose over the entire zero-force trial, degrees; separate from command jitter.",
         "part_a_6controller_closedloop": summary_part_a,
         "part_b_3stage_long_horizon_benchmark": summary_part_b,
         "part_a_trials": all_trial_results,

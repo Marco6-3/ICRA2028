@@ -1,0 +1,52 @@
+================================================================================
+Stage 4 (V2.2) Full Verification: CMQ-BPI-MCF + Proprio-Tactile Dual-Head + Surrogate Residual RL
+================================================================================
+
+--- [Unit Audits] Implementation Integrity Checks ---
+  policy_gradient_detached_mu_grad_norm: 4.806773
+  policy_gradient_non_zero_verified: True
+  prefix_causality_max_abs_diff_by_step: {'t_0': 0.0, 't_1': 0.0, 't_2': 0.0, 't_3': 0.0, 't_4': 0.0, 't_5': 0.0, 't_6': 0.0, 't_7': 0.0, 't_8': 0.0, 't_9': 0.0, 't_10': 0.0, 't_11': 0.0, 't_12': 0.0, 't_13': 0.0, 't_14': 0.0, 't_15': 0.0, 't_16': 0.0, 't_17': 0.0, 't_18': 0.0, 't_19': 0.0, 't_20': 0.0, 't_21': 0.0, 't_22': 0.0, 't_23': 0.0, 't_24': 0.0, 't_25': 0.0, 't_26': 0.0, 't_27': 0.0, 't_28': 0.0, 't_29': 0.0, 't_30': 0.0, 't_31': 0.0, 't_32': 0.0, 't_33': 0.0, 't_34': 0.0, 't_35': 0.0, 't_36': 0.0, 't_37': 0.0, 't_38': 0.0, 't_39': 0.0, 't_40': 0.0, 't_41': 0.0, 't_42': 0.0, 't_43': 0.0, 't_44': 0.0, 't_45': 0.0, 't_46': 0.0, 't_47': 0.0, 't_48': 0.0, 't_49': 0.0, 't_50': 0.0, 't_51': 0.0, 't_52': 0.0, 't_53': 0.0, 't_54': 0.0, 't_55': 0.0, 't_56': 0.0, 't_57': 0.0, 't_58': 0.0, 't_59': 0.0, 't_60': 0.0, 't_61': 0.0, 't_62': 0.0, 't_63': 0.0, 't_64': 0.0, 't_65': 0.0, 't_66': 0.0, 't_67': 0.0, 't_68': 0.0, 't_69': 0.0, 't_70': 0.0, 't_71': 0.0, 't_72': 0.0, 't_73': 0.0, 't_74': 0.0, 't_75': 0.0, 't_76': 0.0, 't_77': 0.0, 't_78': 0.0, 't_79': 0.0, 't_80': 0.0, 't_81': 0.0, 't_82': 0.0, 't_83': 0.0, 't_84': 0.0, 't_85': 0.0, 't_86': 0.0, 't_87': 0.0, 't_88': 0.0, 't_89': 0.0}
+  prefix_causality_strictly_zero: True
+  missing_tactile_raises_keyerror: True
+  proprioceptive_input_perturbation_max_abs_diff: {'joint_pos': 0.211107, 'joint_vel': 0.210177, 'action': 0.204535}
+  proprioceptive_inputs_genuinely_used: True
+  surrogate_wrench_sensitivity_slip_diff_mm: 8.40358
+  surrogate_uses_wrench4d_verified: True
+
+--- [Innovation 1] 10-Stage Contact Operator Ablation ---
+  0_Raw_State4_16D                 (dim=16): Dev=0.4750 (R=0.2500) | Fresh12_Inst=0.2747 (Onset=0.2469, b0b1=0.2454, b2_Inst=0.3333 [Pre=0.2500/Post=0.4265]) | PT02_36OOD=0.3346 (R=0.3587)
+  1_Scalar_8D                      (dim= 8): Dev=0.2500 (R=0.4083) | Fresh12_Inst=0.3159 (Onset=0.2881, b0b1=0.2864, b2_Inst=0.3750 [Pre=0.2763/Post=0.4853]) | PT02_36OOD=0.2667 (R=0.2955)
+  2_Standard_MCF_32D               (dim=32): Dev=0.4667 (R=0.4500) | Fresh12_Inst=0.3386 (Onset=0.2970, b0b1=0.3170, b2_Inst=0.3819 [Pre=0.2632/Post=0.5147]) | PT02_36OOD=0.3494 (R=0.3755)
+  3_Initial_Centered_MCF_32D       (dim=32): Dev=0.7250 (R=0.7333) | Fresh12_Inst=0.4933 (Onset=0.4493, b0b1=0.5455, b2_Inst=0.3889 [Pre=0.2632/Post=0.5294]) | PT02_36OOD=0.3903 (R=0.4145)
+  4_PerFinger_Preload_Norm_32D     (dim=32): Dev=0.7250 (R=0.7333) | Fresh12_Inst=0.4910 (Onset=0.4470, b0b1=0.5455, b2_Inst=0.3819 [Pre=0.2500/Post=0.5294]) | PT02_36OOD=0.3968 (R=0.4387)
+  5_Bilateral_SymAnti_Dipole_16D   (dim=16): Dev=0.6833 (R=0.5500) | Fresh12_Inst=0.6004 (Onset=0.5703, b0b1=0.6124, b2_Inst=0.5764 [Pre=0.5789/Post=0.5735]) | PT02_36OOD=0.4730 (R=0.5279)
+  6_Static_Tangent_Manifold_24D    (dim=24): Dev=0.9583 (R=0.8750) | Fresh12_Inst=0.6436 (Onset=0.6205, b0b1=0.6634, b2_Inst=0.6042 [Pre=0.6711/Post=0.5294]) | PT02_36OOD=0.4610 (R=0.5065)
+  7_Full_Frozen_BPI_MCF_32D        (dim=32): Dev=0.9750 (R=0.8500) | Fresh12_Inst=0.6573 (Onset=0.6319, b0b1=0.6805, b2_Inst=0.6111 [Pre=0.6711/Post=0.5441]) | PT02_36OOD=0.4721 (R=0.5260)
+  8_Creep_ScaleInv_BPI_32D         (dim=32): Dev=0.9833 (R=0.9750) | Fresh12_Inst=0.7679 (Onset=0.8165, b0b1=0.8636, b2_Inst=0.5764 [Pre=0.8421/Post=0.2794]) | PT02_36OOD=0.5967 (R=0.6041)
+  9_CMQ_BPI_MCF_48D                (dim=48): Dev=0.9833 (R=0.9583) | Fresh12_Inst=0.7702 (Onset=0.8165, b0b1=0.8636, b2_Inst=0.5833 [Pre=0.8421/Post=0.2941]) | PT02_36OOD=0.6097 (R=0.5985)
+
+--- [Innovation 1B] Pilot Tangent 02 (36-Condition OOD) 7-Category Breakdown ---
+  friction              : Std_MCF=0.3458 -> V2.1_BPI=0.4375 -> V2.2_CMQ_BPI=0.5208 (Ridge=0.4583)
+  preload               : Std_MCF=0.3667 -> V2.1_BPI=0.3042 -> V2.2_CMQ_BPI=0.4000 (Ridge=0.3583)
+  ramp                  : Std_MCF=0.2672 -> V2.1_BPI=0.4310 -> V2.2_CMQ_BPI=0.4828 (Ridge=0.5000)
+  reverse               : Std_MCF=0.4250 -> V2.1_BPI=0.4000 -> V2.2_CMQ_BPI=0.6167 (Ridge=0.5750)
+  sdf_gain              : Std_MCF=0.2667 -> V2.1_BPI=0.7125 -> V2.2_CMQ_BPI=0.8583 (Ridge=0.9417)
+  step_unseen_offset    : Std_MCF=0.4917 -> V2.1_BPI=0.5083 -> V2.2_CMQ_BPI=0.8250 (Ridge=0.7917)
+
+--- [Innovations 2 & 3] Architecture & Surrogate Residual RL Verification (Dev Split) ---
+  1a_V21_BPI32_SingleHead_NoProprio             : Clean_MSE=0.01525, Occ_MSE=0.01514, Aux_Acc=0.9167, Probe_Acc=0.8583, Wrench_R2=0.0511, Surrogate_Slip=1.7778mm
+  1b_V22_CMQ48_SingleHead_NoProprio             : Clean_MSE=0.00943, Occ_MSE=0.00931, Aux_Acc=0.9583, Probe_Acc=0.9417, Wrench_R2=0.4472, Surrogate_Slip=1.6717mm
+  2_V22_DualHead_NoAux_Supervised               : Clean_MSE=0.00495, Occ_MSE=0.00503, Aux_Acc=0.3750, Probe_Acc=0.9167, Wrench_R2=-20.9505, Surrogate_Slip=1.5776mm
+  3_V22_DualHead_WarmStart_BC                   : Clean_MSE=0.00593, Occ_MSE=0.00572, Aux_Acc=0.9583, Probe_Acc=0.9417, Wrench_R2=0.4384, Surrogate_Slip=1.5940mm
+  4_V22_Surrogate_Residual_RL_No_Aux            : Clean_MSE=0.00329, Occ_MSE=0.00355, Aux_Acc=0.9333, Probe_Acc=0.9417, Wrench_R2=-4.4607, Surrogate_Slip=1.5485mm
+  5_V22_Surrogate_Residual_RL_With_Aux_Proposed : Clean_MSE=0.00190, Occ_MSE=0.00197, Aux_Acc=0.9667, Probe_Acc=0.9667, Wrench_R2=0.7054, Surrogate_Slip=1.5176mm
+
+--- [Innovations 2 & 3] Architecture & Surrogate Residual RL Verification (Blind Fresh b0+b1) ---
+  1a_V21_BPI32_SingleHead_NoProprio             : Clean_MSE=0.01541, Occ_MSE=0.01554, Aux_Acc=0.6425, Probe_Acc=0.6978, Wrench_R2=-0.6378, Surrogate_Slip=1.7546mm
+  1b_V22_CMQ48_SingleHead_NoProprio             : Clean_MSE=0.00830, Occ_MSE=0.00820, Aux_Acc=0.8302, Probe_Acc=0.8629, Wrench_R2=0.0179, Surrogate_Slip=1.6226mm
+  2_V22_DualHead_NoAux_Supervised               : Clean_MSE=0.00482, Occ_MSE=0.00487, Aux_Acc=0.1642, Probe_Acc=0.8335, Wrench_R2=-26.4810, Surrogate_Slip=1.5520mm
+  3_V22_DualHead_WarmStart_BC                   : Clean_MSE=0.00574, Occ_MSE=0.00580, Aux_Acc=0.8259, Probe_Acc=0.8629, Wrench_R2=0.0178, Surrogate_Slip=1.5717mm
+  4_V22_Surrogate_Residual_RL_No_Aux            : Clean_MSE=0.00582, Occ_MSE=0.00621, Aux_Acc=0.7497, Probe_Acc=0.8247, Wrench_R2=-3.4744, Surrogate_Slip=1.5733mm
+  5_V22_Surrogate_Residual_RL_With_Aux_Proposed : Clean_MSE=0.00404, Occ_MSE=0.00410, Aux_Acc=0.8299, Probe_Acc=0.8501, Wrench_R2=0.4793, Surrogate_Slip=1.5374mm
+
+[Saved] C:\Users\mingzhe Liu\OneDrive\Desktop\ws\ICRA2028_publication\experiments\v2_2_cmq_proprio_residual_rl\outputs\v2_2_verification_results.json (14.42s)

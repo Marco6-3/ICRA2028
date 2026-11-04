@@ -1,0 +1,63 @@
+{
+  "trial": {
+    "trial_id": "fresh_b2_pFx",
+    "direction": "+Fx",
+    "amplitude_n": 0.2,
+    "point_m": [
+      0.0,
+      0.0,
+      0.015
+    ],
+    "frame": "reference",
+    "waveform": "reverse",
+    "repeat": 0,
+    "preload_delta_rad": 0.0,
+    "friction_scale": 1.2,
+    "sdf_gain_scale": 1.0,
+    "onset_s": 0.2,
+    "duration_s": 0.3,
+    "torque_nm": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "initial_configuration": {
+    "target_z_offset_m": 0.0,
+    "initial_close_rad": 0.003006417986354458,
+    "pose_translation_jitter_m": [
+      4.8814438197542085e-06,
+      3.7624233481510504e-05,
+      1.5677871126680898e-05
+    ]
+  },
+  "initial_gate_passed": true,
+  "closing_delta_rad": 0.0,
+  "initial_per_finger_sum": [
+    5.44235897064209,
+    13.84825611114502,
+    8.830997467041016,
+    8.635022163391113
+  ],
+  "max_environment_normal_contact_n": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "nonzero_frames_per_finger": [
+    90,
+    90,
+    90,
+    90
+  ],
+  "max_displacement_m": 0.004864611197263002,
+  "max_orientation_change_rad": 0.07837986036457568,
+  "npz_sha256": "b8e8fff5b11b0b492b1caf49ba72d43f15d1f426a737b0de7dbe3199044f9f08"
+}

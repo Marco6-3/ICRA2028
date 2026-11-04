@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "completed_trials": [
+    "fresh_b0_zero",
+    "fresh_b0_pFx",
+    "fresh_b0_nFx",
+    "fresh_b0_pFy",
+    "fresh_b0_nFy",
+    "fresh_b1_zero",
+    "fresh_b1_pFx",
+    "fresh_b1_nFx",
+    "fresh_b1_pFy",
+    "fresh_b1_nFy",
+    "fresh_b2_zero",
+    "fresh_b2_pFx",
+    "fresh_b2_nFx",
+    "fresh_b2_pFy",
+    "fresh_b2_nFy"
+  ],
+  "rejected_initializations": [],
+  "errors": []
+}

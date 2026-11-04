@@ -1,0 +1,375 @@
+{
+  "onset_direction_checks": {
+    "c001_r00": [
+      {
+        "t": 30,
+        "u_xy": [
+          -0.8731008768081665,
+          0.07757670432329178
+        ],
+        "grip": 1.0,
+        "gate": 0.9999052286148071,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 31,
+        "u_xy": [
+          -0.910914957523346,
+          0.2557923495769501
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 32,
+        "u_xy": [
+          -0.9390339851379395,
+          0.04302557185292244
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 33,
+        "u_xy": [
+          -0.7160494923591614,
+          -0.09233636409044266
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 34,
+        "u_xy": [
+          -0.951914370059967,
+          -0.20794351398944855
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 35,
+        "u_xy": [
+          -1.0,
+          -0.24234256148338318
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 36,
+        "u_xy": [
+          -1.0,
+          0.014924135059118271
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      }
+    ],
+    "c002_r00": [
+      {
+        "t": 30,
+        "u_xy": [
+          0.297576904296875,
+          0.09118662774562836
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 31,
+        "u_xy": [
+          0.9548872709274292,
+          -0.052370697259902954
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 32,
+        "u_xy": [
+          0.8272452354431152,
+          0.30401885509490967
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 33,
+        "u_xy": [
+          0.9649844765663147,
+          -0.13176922500133514
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 34,
+        "u_xy": [
+          0.7623415589332581,
+          0.06480172276496887
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 35,
+        "u_xy": [
+          0.9273937940597534,
+          0.02498720772564411
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 36,
+        "u_xy": [
+          0.9870638847351074,
+          -0.057452812790870667
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      }
+    ],
+    "c003_r00": [
+      {
+        "t": 30,
+        "u_xy": [
+          0.0,
+          0.0
+        ],
+        "grip": 0.0,
+        "gate": 0.08,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 31,
+        "u_xy": [
+          0.0,
+          0.0
+        ],
+        "grip": 0.0,
+        "gate": 0.08,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 32,
+        "u_xy": [
+          0.0,
+          0.0
+        ],
+        "grip": 0.0,
+        "gate": 0.08,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 33,
+        "u_xy": [
+          0.0,
+          0.0
+        ],
+        "grip": 0.0,
+        "gate": 0.08,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 34,
+        "u_xy": [
+          0.0,
+          0.0
+        ],
+        "grip": 0.0,
+        "gate": 0.08,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 35,
+        "u_xy": [
+          0.0,
+          0.0
+        ],
+        "grip": 0.0,
+        "gate": 0.08,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 36,
+        "u_xy": [
+          0.0,
+          0.0
+        ],
+        "grip": 0.0,
+        "gate": 0.08,
+        "passed": true,
+        "no_camera_recenter_zero": true
+      }
+    ],
+    "c004_r00": [
+      {
+        "t": 30,
+        "u_xy": [
+          -0.23216211795806885,
+          0.35852566361427307
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 31,
+        "u_xy": [
+          0.04665187746286392,
+          0.05223456025123596
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 32,
+        "u_xy": [
+          -0.1617739349603653,
+          0.4373561441898346
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 33,
+        "u_xy": [
+          -0.292446494102478,
+          0.29675614833831787
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 34,
+        "u_xy": [
+          0.0813981294631958,
+          -0.11217804998159409
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 35,
+        "u_xy": [
+          -0.4251696765422821,
+          0.07657010853290558
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      },
+      {
+        "t": 36,
+        "u_xy": [
+          -0.09132396429777145,
+          0.2487659901380539
+        ],
+        "grip": 1.0,
+        "gate": 1.0,
+        "passed": false,
+        "no_camera_recenter_zero": true
+      }
+    ]
+  },
+  "onset_passed": 20,
+  "onset_total": 28,
+  "missing_visual_exact_damping": true,
+  "frozen_bc_unchanged_and_no_grad": true,
+  "residual_correction_max_abs": 0.3499999940395355,
+  "residual_correction_bounded": true,
+  "absolute_socket_geometry_test": true,
+  "offline_metric_comparisons": {
+    "dev_pure_c005_c008": {
+      "3_V22_DualHead_WarmStart_BC": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      },
+      "4_V22_Surrogate_Residual_RL_No_Aux": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      }
+    },
+    "blind_fresh_b0_b1": {
+      "3_V22_DualHead_WarmStart_BC": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      },
+      "4_V22_Surrogate_Residual_RL_No_Aux": {
+        "clean_action_mse": true,
+        "occluded_action_mse": true,
+        "wrench_r2": true,
+        "est_peak_slip_clean_mm": true,
+        "est_peak_slip_occluded_mm": true
+      }
+    }
+  },
+  "physical_acceptance": {
+    "matched_external_controls": false,
+    "part_a_proposed_beats_baselines": {
+      "3_v2_1_pure_bpi_3dof_singlehead": false,
+      "4_v2_2_online_rl_no_aux_collapse": true,
+      "5_v2_2_warmstart_bc_dualhead": true
+    },
+    "zero_jitter_le_016deg": false,
+    "part_b_proposed_best_by_metric": {
+      "stage3_mean_socket_radial_error_mm": false,
+      "stage3_mean_socket_axis_tilt_deg": false,
+      "stage3_mean_socket_tip_lateral_error_mm": false
+    }
+  }
+}
