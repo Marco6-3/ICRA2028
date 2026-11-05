@@ -1,5 +1,21 @@
 # ICRA2028 research collaboration
 
+## 2026-11-05 当前优先级：UMI + FlexiTac 数据与真实触觉闭环（暂不开展 RL）
+
+> **用户最新决定优先于下方 2026-11-03 的历史执行顺序。** 当前研究应先完成 UMI + 双指 FlexiTac 的传感集成、固定 UMI 可控载荷/跨 Session 数据实验、Raw/Scalar/MCF/BPI/CMQ 匹配学习评估，以及真实机械臂 Anti-Tilt / Anti-Slip 闭环。**本轮不启动 PPO/SAC/在线残差 RL，也不接 VLA。** 不删除已有 Stage 4 / V2.2 的代码、代理 RL 结果和二次审计。
+>
+> 当前可执行依据：[UMI + FlexiTac 研究计划](research/REAL_ROBOT_UMI_FLEXITAC_PLAN_20261105.md) + [真机执行协议](experiments/real_robot_reflex/PROTOCOL.md)。旧 `AGENTS` 中“先 PPO/SAC → 再 VLM → 再真机”的段落视作 **2026-11-03 的历史计划**，不再是当前任务依赖。
+>
+> 执行原则：
+> - 真实法向阵列的空间变化须先由受控独立载荷/位姿测量验证，不预设可唯一估计切向力；
+> - UMI 自由手持示教与固定加载数据分开管理；自由示教不自动具有真实外力标签或机器人最优纠偏动作；
+> - 真实 Raw Taxels 基线必须使用全阵列而非历史 `Raw_State4_16D` 摘要；
+> - 持续加载、反转后的瞬时正确率、长期漂移是与静默稳态同等重要的验证目标；正视 CMQ 现有反转后负结果；
+> - 所有测试须独立 Session/trial 分组，且训练集外的标准化、重调参、阈值选择不可污染最终测试；
+> - 优先简单安全的 1D 闭环，然后按硬件安全与公平要求扩展 3-DoF；记录夹持代价、独立真值与端到端延迟。
+
+---
+
 ## 2026-11-03 研究范围升级与最新执行准则（Stage 3S–V2.1，当前最高优先级）
 
 优先阅读 [research/ICRA2028_MINIMAL_PAPER_FREEZE.md](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)、[research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md) 与 [experiments/v2_1_bpi_mcf_3dof_reflex/README.md](experiments/v2_1_bpi_mcf_3dof_reflex/README.md)。旧版 Stage 1、Stage 2P、Stage 3S（`stage3s_isaac` 与 `stage3s_alignment`）的全部数据、源码、哈希与负结果原样保留，严禁覆写。
