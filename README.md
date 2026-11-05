@@ -1,11 +1,10 @@
-# ICRA2028 · 触觉流形接触场、本体-触觉解耦双头架构与防坍缩在线残差强化学习
+# ICRA2028 · 物理结构化触觉表征、UMI 数据与真实机器人闭环
 
-> **最新突破（2026-11-03，Stage 4 / `V2.2`）**：在 `V2.1` 基础上，针对桌面支撑跨工况 OOD 泛化、主动顺应自生触觉混叠以及离线启发式模仿上限三大深层挑战，完成 **Stage 4 (`V2.2`)** 三层创新设计与 Isaac Lab 闭环验证：
-> 1. **蠕变补偿多极双指流形接触场（`CMQ-BPI-MCF`，48D，10 阶段消融）**：引入法向粘弹性蠕变解耦、尺度不变偶极单位方向场（$\hat{\mathbf{d}}_{\text{anti}}, \hat{\mathbf{d}}_{\text{sym}}$）与二阶空间四极矩（$\mathbf{Q}$）。在 12 组独立物理盲测集 `Fresh12` 上将方向辨识率从 `V2.1` 的 `63.19%` 跃升至 **`81.65%`**（`+18.46%`，`b0+b1` 阶跃+斜坡达 **`86.36%`**）；在 36 工况桌面支撑 OOD 集 `pilot_tangent_02` 上从 `47.21%` 提升至 **`60.97%`**（`+13.76%`，其中跨增益 `sdf_gain` 达 **`85.83%`** / Ridge **`94.17%`**，未见偏心力臂 `step_unseen_offset` 达 **`82.50%`**，切向反转 `reverse` 达 **`61.67%`**）。
-> 2. **本体-触觉伴随拷贝解耦与顺应-回正双头架构（`ProprioTactileDualHeadPolicyV22`）**：通过机械臂腕部动作伴随拷贝（Efference Copy）剥离主动顺应运动引起的接触形变，并将输出解耦为高频顺应卸载头（$\mathbf{u}_{\text{damp}}$）与慢速姿态回正头（$\mathbf{u}_{\text{recenter}}$）。
-> 3. **防坍缩在线残差强化学习（`Online Warm-Start Residual RL + Anti-Collapse Self-Supervision`）**：实验证实无辅助自监督的在线残差 RL 会迅速发生**表征坍缩**（盲测集力螺旋 $R^2$ 跌至 `-1.7774`，Isaac Lab 静默期抖动暴增至 `2.2485 mm`）；结合跨模态力螺旋与方向自监督锚定后，盲测集冻结探针准确率升至 **`86.28%`**（$R^2 = +0.5382$）。在 **0% `Stage 3S` 混杂** 的 Isaac Lab 6-DoF 闭环测试中，受载四向平均滑移从 `Stage 3S` 的 `1.2303 mm` 和 `V2.1` 的 `0.7795 mm` 进一步降至 **`0.5964 mm`**（较 `V2.1` 再降 **`23.5%`**），最差方向 `+Fx` 滑移降至 **`1.8606 mm`**（全方向 `< 2.0 mm` 达标），预紧抖动保持 **`0.0000 mm`**；在 3 阶段长时序插孔操作基准中准入达标率从 `75% (3/4)` 跃升至 **`100% (4/4)`**（末端平均对齐误差 **`0.7881 mm`**）。
+> **2026-11-05 当前研究路线：UMI + FlexiTac 真机数据与闭环（暂不进行 RL）**。已明确按 **P0 双指传感器集成/时间同步 → P1 固定 UMI 的受控载荷与跨 Session 稳定性 → P2 自由 UMI 示教及 Raw/Scalar/MCF/BPI/CMQ 表征与样本效率 → P3 机械臂 Anti-Tilt / Anti-Slip 闭环** 推进。**本轮不启动 PPO/SAC/在线 Residual RL，也不集成 VLA**；原有 Stage 4 实验与负结果完整保留。详见 [当前执行计划](research/REAL_ROBOT_UMI_FLEXITAC_PLAN_20261105.md)、[执行协议](experiments/real_robot_reflex/PROTOCOL.md) 和 [AGENTS 当前优先级](AGENTS.md)。
 >
-> 详见 **[Stage 4 (V2.2) 完整实验归档](experiments/v2_2_cmq_proprio_residual_rl/README.md)** 与 **[Stage 4 (V2.2) 进展记录](research/STAGE4_V2_2_CMQ_PROPRIO_RESIDUAL_RL_20261103.md)**。
+> **2026-11-04 Stage 4 / V2.2 审计口径（优先于旧成果宣传文字）**：带辅助监督的代理策略在特定仿真物理闭环 Part A 上，四向平均峰值滑移 **0.7644 mm**，**单场景/单种子、无统计区间**；其训练使用固定轨迹和代理目标，不具有动作驱动环境状态转移，**不能称为已完成在线 Isaac Lab PPO/SAC**。插孔 Part B **尚未预对准**，真实网格端点横向误差 **105.9436 mm**，所有控制器几何准入 **0%**，不能声称已完成插孔。CMQ 在 Fresh12 的**即时方向**准确率为 **77.02%**（81.65% 是起始标签准确率），在 b2 **反转后**为 **29.41%**（BPI 为 54.41%）；这些是当前需要真机验证的边界，而非应隐藏的结果。细节见 [Stage 4 记录](research/STAGE4_V2_2_CMQ_PROPRIO_RESIDUAL_RL_20261103.md) 与 [二次审计](experiments/v2_2_cmq_proprio_residual_rl/AUDIT_RECHECK_20261104.md)。
+>
+> **以下 2026-11-03 及更早内容是历史阶段记录**。历史数据与新审计使用的场景、参数或指标可能不同，**不能直接据此计算跨版本增益**；后续执行顺序以 2026-11-05 的新计划为准。
 
 > **前序突破与研究范围升级（2026-11-03，Stage 3S–V2.1）**：根据前期实验暴露的三个物理瓶颈（滑动窗口 `MCF` 抹除慢变剪切、1D 夹爪收紧 $\Delta g$ 在 `0.20 N +Fx` 下受限、高预紧静态阈值易零载误触发），项目研究范围正式升级为三大核心机制：
 > 1. **参考帧锁定的双指预紧不变流形接触场（`BPI-MCF`，32D）**：锁定初始接触参考帧（$k_{\text{base}}=5$）+ 单指预紧归一化（$f_{i,0}$）+ 双指对称/反对称正交分解与偏心力矩偶极。8 阶段消融证实切向方向辨识率在开发集达 **`97.5%`**（Scalar `25.0%`，Standard MCF `46.7%`），在 12 组独立盲测集 `Fresh12` 上从 `33.9%` 跃升至 **`65.7%`**（`b0+b1` 达 **`68.1%`**），在 36 工况 OOD `pilot_tangent_02` 上达 **`47.2%`**。
@@ -103,7 +102,7 @@ Static CoP、Physics11D 等可以继续作为消融和历史结果保留。
 
 | 文档 | 用途 |
 | --- | --- |
-| [Stage 4 (`V2.2`) 实验归档](experiments/v2_2_cmq_proprio_residual_rl/README.md) | **最新（2026-11-03）**：`CMQ-BPI-MCF` 48D 10 阶段消融、36 工况 OOD 破局、本体双头 + 防坍缩在线残差 RL 与 Isaac Lab 闭环基准 |
+| [Stage 4 (`V2.2`) 实验归档](experiments/v2_2_cmq_proprio_residual_rl/README.md) | **历史（2026-11-03，须结合 11-04 审计）**：`CMQ-BPI-MCF` 48D 10 阶段消融、36 工况 OOD 破局、本体双头 + 防坍缩在线残差 RL 与 Isaac Lab 闭环基准 |
 | [Stage 4 (`V2.2`) 进展记录](research/STAGE4_V2_2_CMQ_PROPRIO_RESIDUAL_RL_20261103.md) | `CMQ-BPI-MCF` 数学原理、在线 RL 表征坍缩证明与 `0.5964 mm` 滑移 / `100%` 长时序准入报告 |
 | [Stage 3S–V2.1 实验归档](experiments/v2_1_bpi_mcf_3dof_reflex/README.md) | 前序（2026-11-03）：`BPI-MCF` 8 阶段消融、多模态防坍缩自监督、Isaac Lab 7 控制器 3-DoF 闭环与 3 阶段长时序基准 |
 | [2026-11-03 V2.1 进展记录](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md) | 三大创新点数学定义、审计问题清零与 2×A100/DGX Spark/真机推进方案 |
