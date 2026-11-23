@@ -1,6 +1,21 @@
 # ICRA2028 研究路线
 
-> **2026-11-03 最新研究范围升级与路线（Stage 3S–V2.1）**：
+> **2026-11-21 最新研究路线（Stage 6 / `V4 PAEC` — 路线 1：物理锚定接触状态压缩）**：
+> 项目已完成研究转型（不再购买 FlexiTac，与 `NewGripper` 硬件/无本体采集论文形成双论文联动；本仓库聚焦算法主论文 Paper B）。
+> - **已验证进展（离线真机公开数据，严格 FP32 + episode 划分 + 权重冻结审计）**：
+>   1. **Round-1 音频抽象 JEPA 证伪归档**（`ManiWAV/flip` 283 eps，[ROUND1_AUDIT_SUMMARY.md](experiments/v3_caec_jepa_mvp/outputs/maniwav_flip_v3/ROUND1_AUDIT_SUMMARY.md)）：实证抽象隐空间 JEPA + VICReg 在几百条轨迹上发生高维噪声膨胀（有效秩 `33.35`）导致下游少样本 BC 劣于低秩 `MAE`（`5.71`）。
+>   2. **V4 `PAEC` 双任务域内复现**（RSS-2025 RDP `peel_v3` 60 eps + `wipe_v1.5` 80 eps，37D = 6D Wrench + 1D 夹爪力 + 30D 双 GelSight，[peel 报告](experiments/v4_paec_contact_compression/outputs/rdp_peel_v4/RDP_PEEL_V4_RESULTS.md) / [wipe 报告](experiments/v4_paec_contact_compression/outputs/rdp_wipe_v4/RDP_WIPE_V4_RESULTS.md)）：`B1_RawFT_End2End`、`B2_MAE` 与 `B3_LatentJEPA`（有效秩 `40.21 / 41.79`）全部劣化下游 BC；唯有 **`PAEC`**（$d_z=16$，有效秩 `9.73–10.98`）稳定反超纯本体，并在前向 6D 力预测（Clean `0.4620 / 0.6343`、零漂 OOD `0.3759 / 0.5043`）与反转段夺冠。
+>   3. **双向 100% 冻结零样本跨任务迁移（`wipe ↔ peel`）**（[跨任务迁移报告](experiments/v4_paec_contact_compression/outputs/RDP_CROSS_TASK_V4_RESULTS.md)）：`wipe → peel` 纯零样本（`src_norm`）30% BC 达 **`0.58805`**（超越 `B0 0.59301` 与域内 `0.59032`），零样本反转段 6D 力预测 $R^2 = +0.2626$ 追平域内；反向不对称迁移 `peel → wipe` 中 `Xfer_PAEC_z16` 在 `src_norm` 10%（`0.56327`）/ 100%（`0.39521`，零漂 `0.39711` 仍超 `B0 0.40057`）及 `tgt_norm` 100%（`0.39557`，唯一战胜 `B0`）全面胜出，消融证实 `b+g` 与 `DriftAug` 缺一不可、且跨任务应直接迁移 16D 状态 $z_t$。
+> - **当前下一阶段待执行计划（未运行，严禁提前当成结论）**：
+>   1. **Step 1 — 仿真闭环与独立外扰/相变惊奇度真值验证**：在物理闭环仿真（如 MuJoCo / Isaac Lab 的剥离/滑移/卡扣/偏心抗扰任务）中，将离线 BC MSE 升级为**闭环成功率、滑移距离与脆性过载率**，并引入独立外扰/相变事件真值替代原同义反复的 `||d²w||` 标签。
+>   2. **Step 2 — 跨模态缺省迁移（推理期去六维力）**：检验训练期使用 6D Wrench 作为物理锚定目标、推理期仅输入 GelSight / 应变时 `PAEC` 还能保留多少压缩增益。
+>   3. **Step 3 — 接入 `NewGripper` 真机数据与闭环**：基于 `NewGripper`（500 Hz 6D F/T + 1–2 kHz 工具根部应变 + GelSight Mini + 6-DOF 本体）的无标签交互数据预训练通用 `PAEC` 接触编码器，冻结接入少样本真机策略（BC / Diffusion Policy / VLA）。
+>
+> 详见 **[V4 PAEC 算法蓝图](research/V4_PHYSICS_GROUNDED_CONTACT_COMPRESSION.md)** 与 **[v4_paec_contact_compression 实验索引](experiments/v4_paec_contact_compression/README.md)**。下文完整保留 Stage 1–4（`MCF / BPI-MCF / CMQ-BPI-MCF V2.2`）历史路线记录，不改写。
+
+---
+
+> **2026-11-03 历史研究范围升级与路线（Stage 3S–V2.1）**：
 > 基于 [Stage 3S–V2.1 实验归档](experiments/v2_1_bpi_mcf_3dof_reflex/README.md) 与 [2026-11-03 进展记录](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md)，底层三项核心机制（**32D 参考帧锁定 `BPI-MCF` 算子 + 跨模态力螺旋防坍缩自监督 + 因果偶极新息门控 3-DoF 空间反射控制**）已在离线 8 阶段消融与 Isaac Lab 无混杂闭环/3 阶段长时序基准中完成验证。
 >
 > **当前最新三步推进顺序**：

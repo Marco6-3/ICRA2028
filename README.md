@@ -1,4 +1,22 @@
-# ICRA2028 · 触觉流形接触场、本体-触觉解耦双头架构与防坍缩在线残差强化学习
+# ICRA2028 · 触觉与接触表征学习（V4 路线 1：物理锚定接触压缩 PAEC）
+
+> **最新研究进展（2026-11-21，Stage 6 / `V4 PAEC` — 路线 1 物理锚定压缩：双任务域内 + 双向零样本迁移全面跑通）**：
+> - **Round-1 音频 JEPA 证伪记录（已归档）**：在 `ManiWAV/flip`（283 eps）上的严格审计实验（[ROUND1_AUDIT_SUMMARY.md](experiments/v3_caec_jepa_mvp/outputs/maniwav_flip_v3/ROUND1_AUDIT_SUMMARY.md)）证实，纯抽象隐空间 JEPA + VICReg 在几百条轨迹尺度下会陷入“坍缩 vs. 高维噪声膨胀（有效秩 `33.35`）”困境，下游少样本 BC 输给低秩 `MAE`（有效秩 `5.71`），且接触麦克风对未见频谱传递函数偏移高度脆弱。
+> - **V4 路线 1 升级与双任务突破**：算法转向 **[V4 算法蓝图：物理锚定动作效应接触压缩（PAEC）](research/V4_PHYSICS_GROUNDED_CONTACT_COMPRESSION.md)**——以真实免标注多步物理力学净响应（$\widehat{\Delta \mathbf{y}}_{t,\Delta} = b_\phi(z_t) + g_\phi(z_t, a)$，$g(\cdot, \mathbf{0})\equiv \mathbf{0}$）锚定紧凑低维瓶颈 $z_t \in \mathbb{R}^{16}$，天然零坍缩、无需 VICReg 噪声膨胀。在官方 RSS-2025 `Reactive Diffusion Policy` 完整全采率物理数据集（37D = 6D Wrench + 1D 夹爪力 + 30D 双 GelSight）上已完成三大严格审计验证（**[v4_paec_contact_compression](experiments/v4_paec_contact_compression/README.md)**）：
+>   1. **双任务域内复现**（[peel_v3 报告](experiments/v4_paec_contact_compression/outputs/rdp_peel_v4/RDP_PEEL_V4_RESULTS.md)、[wipe_v1.5 报告](experiments/v4_paec_contact_compression/outputs/rdp_wipe_v4/RDP_WIPE_V4_RESULTS.md)）：`B1_RawFT_End2End`、`B2_MAE` 与 `B3_LatentJEPA`（有效秩膨胀至 `40.21 / 41.79`）在两项任务全部预算下均劣化下游 BC；唯有 **`PAEC`**（有效秩 `9.73–10.98`）在两任务上稳定反超纯本体，并在前向 6D 力螺旋预测（Clean `0.4620 / 0.6343`、零漂 OOD `0.3759 / 0.5043`）及反转段夺冠。
+>   2. **双向 100% 冻结跨任务零样本迁移（`wipe ↔ peel`）**（[跨任务迁移报告](experiments/v4_paec_contact_compression/outputs/RDP_CROSS_TASK_V4_RESULTS.md)）：`wipe → peel` 纯零样本（`src_norm`）下 30% BC 达 **`0.58805`**（超越 `B0 0.59301` 及域内自训 `0.59032`），零样本反转段力预测 $R^2 = +0.2626$ 追平域内；反向不对称迁移 `peel → wipe` 下 `Xfer_PAEC_z16` 在 `src_norm` 10%（`0.56327`）与 100%（`0.39521`，零漂 `0.39711` 仍优于纯本体 `0.40057`）及 `tgt_norm` 100%（`0.39557`，唯一战胜纯本体的冻结模型）全面夺冠，同时消融证实 `b+g` 与 `DriftAug` 缺一不可、且跨任务应直接迁移 16D 状态 $z_t$ 而非绑定源动作空间的探针头。
+> - **历史资产封存原则**：下方 V3（`ManiWAV` 证伪归档）与 Stage 1–4（`MCF / BPI-MCF / CMQ-BPI-MCF V2.2`）全部实验、代码与审计记录原样保留，不改写。
+
+---
+
+> **前序记录（2026-11-20，Stage 5 / `V3 CAEC-JEPA` 音频抽象 JEPA 探索，已按实测证伪归档）**：经负责人决策，本项目正式从手工法向阵列算子（FlexiTac `V2.2`）转型为**通用多频接触表征学习（Paper B）**，与 `NewGripper`（Paper A：YUBI 无本体采集 + 实体快换声振/触觉盒 + 脆性薄层操作基准）形成双线联动。
+> - **核心算法**：**[V3 算法蓝图：上下文分解动作效应接触表征学习（CAEC-JEPA）](research/V3_ACTION_EFFECT_CONTACT_JEPA.md)**——面向 200 Hz 统一接触时钟，融合慢上下文 $c_\tau$（工具/材质）、严格纯接触因果状态 $z_\tau$、零动作基线与连续动作净效应分解预测器（$b_\phi + g_\phi$，$g(\cdot, \mathbf{0})\equiv \mathbf{0}$）、免标签防坍缩（VICReg + 接触 IDM）、速度归一化惊奇度 $s_\tau$ 与下游 3-Token 接口（`[CTX, STATE, EVENT]`）。
+> - **早期验证（无需 FlexiTac）**：先在远程节点 `nvidia-desktop`（Tailscale / Jetson Orin CUDA）基于公开接触声振操作数据集 **`ManiWAV`** 运行严格审计的 MVP 基准（**[v3_caec_jepa_mvp](experiments/v3_caec_jepa_mvp/README.md)**），随后无缝接入 `NewGripper` 真机四模态数据。
+> - **历史资产封存原则**：下方 Stage 1–4（`MCF / BPI-MCF / CMQ-BPI-MCF V2.2`）全部实验、代码与 2026-11-04 审计记录原样保留，不改写。
+
+---
+
+## 历史主线归档：触觉流形接触场、本体-触觉解耦双头架构与防坍缩在线残差强化学习
 
 > **最新突破（2026-11-03，Stage 4 / `V2.2`）**：在 `V2.1` 基础上，针对桌面支撑跨工况 OOD 泛化、主动顺应自生触觉混叠以及离线启发式模仿上限三大深层挑战，完成 **Stage 4 (`V2.2`)** 三层创新设计与 Isaac Lab 闭环验证：
 > 1. **蠕变补偿多极双指流形接触场（`CMQ-BPI-MCF`，48D，10 阶段消融）**：引入法向粘弹性蠕变解耦、尺度不变偶极单位方向场（$\hat{\mathbf{d}}_{\text{anti}}, \hat{\mathbf{d}}_{\text{sym}}$）与二阶空间四极矩（$\mathbf{Q}$）。在 12 组独立物理盲测集 `Fresh12` 上将方向辨识率从 `V2.1` 的 `63.19%` 跃升至 **`81.65%`**（`+18.46%`，`b0+b1` 阶跃+斜坡达 **`86.36%`**）；在 36 工况桌面支撑 OOD 集 `pilot_tangent_02` 上从 `47.21%` 提升至 **`60.97%`**（`+13.76%`，其中跨增益 `sdf_gain` 达 **`85.83%`** / Ridge **`94.17%`**，未见偏心力臂 `step_unseen_offset` 达 **`82.50%`**，切向反转 `reverse` 达 **`61.67%`**）。
