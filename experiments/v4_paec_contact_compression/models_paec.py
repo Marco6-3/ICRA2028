@@ -30,7 +30,8 @@ class CausalContactBackbone(nn.Module):
     """
     Strictly causal temporal encoder compressing contact+executed-action history
     into a compact bottleneck z_t in R^{d_z}.
-    Supports backbone_type in {'gru', 'short_win', 'single_frame'}.
+    Supports backbone_type in {'gru', 'short_win', 'single_frame'} and configurable
+    width/depth for V4.3/V4.4 capacity & bottleneck scaling experiments.
     """
 
     def __init__(
@@ -38,6 +39,7 @@ class CausalContactBackbone(nn.Module):
         in_dim: int,
         d_z: int = 16,
         hidden_dim: int = 96,
+        num_layers: int = 2,
         backbone_type: str = "gru",
         short_win: int = 4,
     ):
@@ -45,6 +47,7 @@ class CausalContactBackbone(nn.Module):
         self.in_dim = in_dim
         self.d_z = d_z
         self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
         self.backbone_type = backbone_type
         self.short_win = short_win
 
@@ -61,7 +64,7 @@ class CausalContactBackbone(nn.Module):
             self.temporal = nn.GRU(
                 input_size=hidden_dim,
                 hidden_size=hidden_dim,
-                num_layers=2,
+                num_layers=num_layers,
                 batch_first=True,
             )
         elif backbone_type == "short_win":
@@ -120,6 +123,24 @@ def build_causal_contact_input(
     if use_act_exec:
         parts.append(act_exec)
     return torch.cat(parts, dim=-1)
+
+
+def apply_episode_drift_aug(
+    contact_obs: torch.Tensor,
+    drift_aug_std: float,
+    training: bool,
+    prob: float = 0.7,
+) -> torch.Tensor:
+    """
+    Episode-level constant zero-point sensor drift augmentation on encoder input ONLY.
+    Shared identically across PAEC, MAE+DriftAug, and JEPA+DriftAug for fair OOD evaluation.
+    """
+    if (not training) or drift_aug_std <= 0.0:
+        return contact_obs
+    B, _, D = contact_obs.shape
+    drift = torch.randn(B, 1, D, device=contact_obs.device, dtype=contact_obs.dtype) * drift_aug_std
+    mask = (torch.rand(B, 1, 1, device=contact_obs.device) < prob).to(contact_obs.dtype)
+    return contact_obs + drift * mask
 
 
 class DecomposedPhysicsPredictor(nn.Module):
@@ -201,6 +222,8 @@ class PAECModel(nn.Module):
         wrench_dim: int = 6,
         act_dim: int = 7,
         d_z: int = 16,
+        hidden_dim: int = 96,
+        num_layers: int = 2,
         horizons: Tuple[int, ...] = (1, 3, 6),
         backbone_type: str = "gru",
         use_bg_split: bool = True,
@@ -210,9 +233,11 @@ class PAECModel(nn.Module):
     ):
         super().__init__()
         self.contact_dim = contact_dim
-        self.wrench_dim = wrench_dim
+        self.wrench_dim = min(wrench_dim, contact_dim)
         self.act_dim = act_dim
         self.d_z = d_z
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
         self.horizons = tuple(horizons)
         self.use_bg_split = use_bg_split
         self.use_act_exec = use_act_exec
@@ -220,7 +245,13 @@ class PAECModel(nn.Module):
         self.drift_aug_std = drift_aug_std
 
         in_dim = contact_dim * (2 if use_causal_diff else 1) + (act_dim if use_act_exec else 0)
-        self.encoder = CausalContactBackbone(in_dim=in_dim, d_z=d_z, hidden_dim=96, backbone_type=backbone_type)
+        self.encoder = CausalContactBackbone(
+            in_dim=in_dim,
+            d_z=d_z,
+            hidden_dim=hidden_dim,
+            num_layers=num_layers,
+            backbone_type=backbone_type,
+        )
         self.predictor = DecomposedPhysicsPredictor(
             d_z=d_z,
             act_dim=act_dim,
@@ -255,14 +286,9 @@ class PAECModel(nn.Module):
     ) -> Tuple[torch.Tensor, Dict[str, float]]:
         # Optional zero-point sensor drift augmentation on encoder input ONLY
         # (Target deltas y_{t+d} - y_t are analytically invariant to constant drift!)
-        if self.training and self.drift_aug_std > 0.0:
-            B, _, D = contact_obs.shape
-            drift = torch.randn(B, 1, D, device=contact_obs.device) * self.drift_aug_std
-            # Apply to 70% of batch episodes so clean zero-bias episodes are also seen
-            mask = (torch.rand(B, 1, 1, device=contact_obs.device) < 0.7).float()
-            obs_in = contact_obs + drift * mask
-        else:
-            obs_in = contact_obs
+        # Note (V4.1): act_exec and act_next must be zero-centered (physical delta_q == 0 <=> a == 0)
+        # so that g_phi(z, 0) == 0 and is_hold anchor true stationary hold.
+        obs_in = apply_episode_drift_aug(contact_obs, self.drift_aug_std, self.training)
 
         z = self.encode(obs_in, act_exec)
         losses, w_losses, b_norms, g_norms = [], [], [], []
@@ -347,15 +373,33 @@ class PAECModel(nn.Module):
 
 
 class MAEContactRecon(nn.Module):
-    """Matched-capacity Masked/Future Absolute Signal Reconstruction baseline (B2)."""
+    """Matched-capacity Masked/Future Signal Reconstruction baseline (B2 / B2b_MAE_DriftAug)."""
 
-    def __init__(self, contact_dim: int, act_dim: int = 7, d_z: int = 16, mask_ratio: float = 0.30):
+    def __init__(
+        self,
+        contact_dim: int,
+        act_dim: int = 7,
+        d_z: int = 16,
+        hidden_dim: int = 96,
+        num_layers: int = 2,
+        mask_ratio: float = 0.30,
+        drift_aug_std: float = 0.0,
+    ):
         super().__init__()
         self.contact_dim = contact_dim
         self.d_z = d_z
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
         self.mask_ratio = mask_ratio
+        self.drift_aug_std = drift_aug_std
         in_dim = contact_dim * 2 + act_dim
-        self.encoder = CausalContactBackbone(in_dim=in_dim, d_z=d_z, hidden_dim=96, backbone_type="gru")
+        self.encoder = CausalContactBackbone(
+            in_dim=in_dim,
+            d_z=d_z,
+            hidden_dim=hidden_dim,
+            num_layers=num_layers,
+            backbone_type="gru",
+        )
         self.mask_tok = nn.Parameter(torch.zeros(1, 1, contact_dim))
         self.dec_cur = nn.Sequential(nn.Linear(d_z, 96), nn.SiLU(), nn.Linear(96, contact_dim))
         self.dec_fut = nn.Sequential(nn.Linear(d_z, 96), nn.SiLU(), nn.Linear(96, contact_dim))
@@ -366,8 +410,9 @@ class MAEContactRecon(nn.Module):
 
     def compute_loss(self, contact_obs: torch.Tensor, act_exec: torch.Tensor) -> Tuple[torch.Tensor, Dict[str, float]]:
         B, T, D = contact_obs.shape
+        obs_in = apply_episode_drift_aug(contact_obs, self.drift_aug_std, self.training)
         mask = (torch.rand(B, T, 1, device=contact_obs.device) < self.mask_ratio).float()
-        obs_m = contact_obs * (1.0 - mask) + self.mask_tok * mask
+        obs_m = obs_in * (1.0 - mask) + self.mask_tok * mask
         z = self.encode(obs_m, act_exec)
         l_cur = F.mse_loss(self.dec_cur(z), contact_obs)
         l_fut = F.mse_loss(self.dec_fut(z[:, :-1, :]), contact_obs[:, 1:, :])
@@ -378,16 +423,34 @@ class MAEContactRecon(nn.Module):
 class AbstractLatentJEPAVICReg(nn.Module):
     """
     Matched Abstract-Latent JEPA + EMA + VICReg baseline (B3).
-    Directly contrasts abstract latent z training against Physics-Anchored PAEC
-    on the exact same F/T + tactile dataset.
+    Supports both matched bottleneck d_z=16 (V4.1 fair baseline) and legacy d_z=64,
+    plus optional matched drift_aug_std on online encoder input (target encoder sees clean obs).
     """
 
-    def __init__(self, contact_dim: int, act_dim: int = 7, d_z: int = 64, horizons: Tuple[int, ...] = (1, 3, 6)):
+    def __init__(
+        self,
+        contact_dim: int,
+        act_dim: int = 7,
+        d_z: int = 16,
+        hidden_dim: int = 96,
+        num_layers: int = 2,
+        horizons: Tuple[int, ...] = (1, 3, 6),
+        drift_aug_std: float = 0.0,
+    ):
         super().__init__()
         self.d_z = d_z
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
         self.horizons = tuple(horizons)
+        self.drift_aug_std = drift_aug_std
         in_dim = contact_dim * 2 + act_dim
-        self.encoder = CausalContactBackbone(in_dim=in_dim, d_z=d_z, hidden_dim=96, backbone_type="gru")
+        self.encoder = CausalContactBackbone(
+            in_dim=in_dim,
+            d_z=d_z,
+            hidden_dim=hidden_dim,
+            num_layers=num_layers,
+            backbone_type="gru",
+        )
         self.target_encoder = copy.deepcopy(self.encoder)
         for p in self.target_encoder.parameters():
             p.requires_grad = False
@@ -407,10 +470,12 @@ class AbstractLatentJEPAVICReg(nn.Module):
     def compute_loss(
         self, contact_obs: torch.Tensor, act_exec: torch.Tensor, act_next: torch.Tensor
     ) -> Tuple[torch.Tensor, Dict[str, float]]:
-        x = build_causal_contact_input(contact_obs, act_exec, use_act_exec=True, use_causal_diff=True)
-        z = self.encoder(x)
+        obs_in = apply_episode_drift_aug(contact_obs, self.drift_aug_std, self.training)
+        x_online = build_causal_contact_input(obs_in, act_exec, use_act_exec=True, use_causal_diff=True)
+        x_clean = build_causal_contact_input(contact_obs, act_exec, use_act_exec=True, use_causal_diff=True)
+        z = self.encoder(x_online)
         with torch.no_grad():
-            z_tgt = self.target_encoder(x)
+            z_tgt = self.target_encoder(x_clean)
 
         preds = []
         for h_idx, delta in enumerate(self.horizons):

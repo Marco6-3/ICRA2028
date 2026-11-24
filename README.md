@@ -1,6 +1,12 @@
 # ICRA2028 · 触觉与接触表征学习（V4 路线 1：物理锚定接触压缩 PAEC）
 
-> **最新研究进展（2026-11-21，Stage 6 / `V4 PAEC` — 路线 1 物理锚定压缩：双任务域内 + 双向零样本迁移全面跑通）**：
+> **最新研究进展（2026-11-24，Stage 6 / `V4.1–V4.4 PAEC` — 物理零点协议冻结 + RH20T 7 本体规模律与跨库迁移突破）**：
+> - **V4.1 协议冻结与三任务全面复现**（`peel_v3`、`wipe_v1.5` 与新增第 3 任务 `lift_v2`）：修复零动作标准化偏移并补齐纯 6D 端到端（`B1b_RawWrench6D_E2E`）、同瓶颈 `JEPA_d16` 与同零漂增强（`B2b_MAE_DriftAug`、`B3b_JEPA_d16_Drift`），三项任务上仅 **`PAEC`** 稳定优于 `B0_ProprioOnly` 与全部基线。
+> - **V4.2–V4.4 RH20T 多机器人 Scaling Law 与跨数据集 `RH20T → RDP` 零梯度迁移**（[完整审计报告](experiments/v4_paec_contact_compression/outputs/v4_scaling_20261124/V4_1_TO_V4_4_SCALING_REPORT.md) | [研究协议](research/V4_SCALING_AND_PROTOCOL_V4_1.md)）：
+>   1. **7 本体规范化物理库**：从 `RH20T_lowdim`（`cfg1–cfg7` 全部 7 种机械臂/夹爪）流式抽取 **749 条轨迹 / 522,958 帧 / 11 个任务**至 20 Hz Canonical SI 物理格式，严格留出 `cfg_0006`（KUKA+Robotiq）作未见本体测试、`task_0002 / task_0010` 作未见任务测试。
+>   2. **清晰的数据与瓶颈尺度律**：`PAEC` 在未见任务前向 6D 力预测 $R^2$ 随规模由 `0.2099 (N=40) → 0.3431 (N=488)`，未见本体 `cfg_0006` 由 `0.1996 → 0.4264`（`PAEC_Small_d32` 达 **`0.4599`**）；3 独立预训练种子下未见任务 30-shot BC 达 **`0.60722 ± 0.00090`**（显著超越 `MAE+Drift 0.61636` 与 `JEPA_d16+Drift 0.61221`）。
+>   3. **跨实验室 `RH20T → RDP` 少样本超越域内自训**：以 **488 条异构 RH20T 预训练**后零梯度冻结迁移至未见 Flexiv RDP 三任务，**`PAEC_Small_d32`** 仅用 **5 条目标示教**即取得平均 MSE **`0.22928`**（优于 `B0 0.23815` **-3.7%** 且反超 RDP 域内自训 `0.23011`），10-shot 达 **`0.20281`**（同样优于域内自训 `0.20453`）。
+> - **历史归档（2026-11-21 `V4.0` + `V3 ManiWAV` + `Stage 1–4`）原样保留**：
 > - **Round-1 音频 JEPA 证伪记录（已归档）**：在 `ManiWAV/flip`（283 eps）上的严格审计实验（[ROUND1_AUDIT_SUMMARY.md](experiments/v3_caec_jepa_mvp/outputs/maniwav_flip_v3/ROUND1_AUDIT_SUMMARY.md)）证实，纯抽象隐空间 JEPA + VICReg 在几百条轨迹尺度下会陷入“坍缩 vs. 高维噪声膨胀（有效秩 `33.35`）”困境，下游少样本 BC 输给低秩 `MAE`（有效秩 `5.71`），且接触麦克风对未见频谱传递函数偏移高度脆弱。
 > - **V4 路线 1 升级与双任务突破**：算法转向 **[V4 算法蓝图：物理锚定动作效应接触压缩（PAEC）](research/V4_PHYSICS_GROUNDED_CONTACT_COMPRESSION.md)**——以真实免标注多步物理力学净响应（$\widehat{\Delta \mathbf{y}}_{t,\Delta} = b_\phi(z_t) + g_\phi(z_t, a)$，$g(\cdot, \mathbf{0})\equiv \mathbf{0}$）锚定紧凑低维瓶颈 $z_t \in \mathbb{R}^{16}$，天然零坍缩、无需 VICReg 噪声膨胀。在官方 RSS-2025 `Reactive Diffusion Policy` 完整全采率物理数据集（37D = 6D Wrench + 1D 夹爪力 + 30D 双 GelSight）上已完成三大严格审计验证（**[v4_paec_contact_compression](experiments/v4_paec_contact_compression/README.md)**）：
 >   1. **双任务域内复现**（[peel_v3 报告](experiments/v4_paec_contact_compression/outputs/rdp_peel_v4/RDP_PEEL_V4_RESULTS.md)、[wipe_v1.5 报告](experiments/v4_paec_contact_compression/outputs/rdp_wipe_v4/RDP_WIPE_V4_RESULTS.md)）：`B1_RawFT_End2End`、`B2_MAE` 与 `B3_LatentJEPA`（有效秩膨胀至 `40.21 / 41.79`）在两项任务全部预算下均劣化下游 BC；唯有 **`PAEC`**（有效秩 `9.73–10.98`）在两任务上稳定反超纯本体，并在前向 6D 力螺旋预测（Clean `0.4620 / 0.6343`、零漂 OOD `0.3759 / 0.5043`）及反转段夺冠。

@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
 """
-V4 Route 1 Audited Benchmark: Physics-Anchored Action-Effect Contact Compression (PAEC)
+V4.1 Route 1 Audited Benchmark: Physics-Anchored Action-Effect Contact Compression (PAEC)
 on real 6D Force/Torque + GelSight Tactile + 6-DOF Pose datasets (RDP peel / wipe / lift).
 
-Runs:
-  0. Strict unit audits (prefix causality, exact zero-action identity, full grad flow).
-  1. Label-free pretraining on TRAIN episodes only:
-       B2_MAE, B3_LatentJEPA_VICReg, B4_NoBG, B5_SingleFrame, B6_ShortWin,
-       Abl_NoDriftAug, Ours_PAEC.
-  2. Forward contact mechanics fidelity (Clean, Reversal, Zero-Drift OOD).
-  3. Representation effective rank & Codex matched-wrench / divergent-history test.
-  4. Calibrated physical wrench surprise event detection (speed-controlled).
-  5. Downstream low-shot Action-Chunk BC (low/mid/full episode budgets x 3 seeds)
-     across Clean, Contact-Active, Zero-Drift OOD (+1.5 sigma), and Stiffness-Gain OOD (1.6x).
+V4.1 Protocol Upgrades (over archived V4.0):
+  - Physical zero-action alignment: zero-centered RMS/SI action scaling (delta_q == 0 <=> a_norm == 0)
+    fixing g_phi(z, 0), is_hold, virtual probe axes, and Codex divergent-history velocity direction.
+  - Fair matched baselines: B2b_MAE_DriftAug, B3_LatentJEPA_d16, B3b_LatentJEPA_d16_DriftAug,
+    and B1b_RawWrench6D_End2End (to isolate 6D wrench vs 30D tactile noise).
+  - Supports --contact-subset {all, wrench6d}, --con-norm-mode {zscore, si_fixed},
+    --act-norm-mode {rms, si_fixed, zscore_legacy}, and scaling knobs (--hidden-dim, --num-layers, --d-z).
 """
 
 import argparse
@@ -27,7 +24,6 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from sklearn.linear_model import Ridge
 from sklearn.metrics import roc_auc_score
 
 from models_paec import (
@@ -38,6 +34,13 @@ from models_paec import (
     build_causal_contact_input,
     compute_effective_rank,
 )
+
+# Canonical fixed SI physical scaling constants (for cross-dataset / cross-embodiment transfer)
+# Force: 10 N, Torque: 0.5 N*m, Gripper force: 10 N
+# Pos delta: 5 mm, Rot delta: 0.05 rad, Grip delta: 5 mm
+SI_WRENCH_SCALE = np.array([10.0, 10.0, 10.0, 0.5, 0.5, 0.5], dtype=np.float32)
+SI_GRIP_FORCE_SCALE = 10.0
+SI_ACT_SCALE = np.array([0.005, 0.005, 0.005, 0.05, 0.05, 0.05, 0.005], dtype=np.float32)
 
 
 def set_seed(seed: int):
@@ -53,10 +56,27 @@ def set_seed(seed: int):
 # ==============================================================================
 # 0. STRICT UNIT AUDITS
 # ==============================================================================
-def run_unit_audits(contact_dim: int, wrench_dim: int, act_dim: int, device: torch.device) -> Dict[str, object]:
-    print("\n=== [0] Running Strict Unit Audits (PAEC) ===")
+def run_unit_audits(
+    contact_dim: int,
+    wrench_dim: int,
+    act_dim: int,
+    device: torch.device,
+    d_z: int = 16,
+    hidden_dim: int = 96,
+    num_layers: int = 2,
+    cache: Optional["RDPEpisodeCache"] = None,
+) -> Dict[str, object]:
+    print("\n=== [0] Running Strict Unit Audits (PAEC V4.1) ===")
     set_seed(123)
-    model = PAECModel(contact_dim=contact_dim, wrench_dim=wrench_dim, act_dim=act_dim, drift_aug_std=0.0).to(device)
+    model = PAECModel(
+        contact_dim=contact_dim,
+        wrench_dim=wrench_dim,
+        act_dim=act_dim,
+        d_z=d_z,
+        hidden_dim=hidden_dim,
+        num_layers=num_layers,
+        drift_aug_std=0.0,
+    ).to(device)
     model.eval()
 
     B, T1, T2 = 2, 20, 48
@@ -71,9 +91,22 @@ def run_unit_audits(contact_dim: int, wrench_dim: int, act_dim: int, device: tor
     causal_ok = (dz < 1e-5) and (dp < 1e-5) and (ds < 1e-5)
 
     with torch.no_grad():
-        _, _, g0 = model.predictor(z_f[:, :10], torch.zeros(B, 10, act_dim, device=device), 0)
+        zero_act = torch.zeros(B, 10, act_dim, device=device)
+        _, _, g0 = model.predictor(z_f[:, :10], zero_act, 0)
+        agg_zero_max = max(
+            float(PAECModel.aggregate_action(torch.zeros(B, T2, act_dim, device=device), d).abs().max().item())
+            for d in model.horizons
+        )
     zact_diff = float(g0.abs().max().item())
-    zact_ok = (zact_diff == 0.0)
+    zact_ok = (zact_diff == 0.0) and (agg_zero_max == 0.0)
+
+    # Physical zero-point alignment check on cache normalization (V4.1)
+    phys_zero_err = 0.0
+    phys_zero_ok = True
+    if cache is not None and cache.act_norm_mode != "zscore_legacy":
+        a0_norm = cache.normalize_action(np.zeros((1, act_dim), dtype=np.float32))
+        phys_zero_err = float(np.abs(a0_norm).max())
+        phys_zero_ok = (phys_zero_err == 0.0)
 
     model.train()
     opt = torch.optim.AdamW(model.parameters(), lr=1e-3)
@@ -100,13 +133,16 @@ def run_unit_audits(contact_dim: int, wrench_dim: int, act_dim: int, device: tor
         "prefix_causality_max_diff_surprise": ds,
         "prefix_causality_pass": causal_ok,
         "zero_action_g_max_abs": zact_diff,
+        "zero_action_agg_max_abs": agg_zero_max,
         "zero_action_identity_pass": zact_ok,
+        "physical_zero_action_norm_err": phys_zero_err,
+        "physical_zero_action_pass": phys_zero_ok,
         "trainable_params": nt,
         "nonzero_grad_params": nz,
         "nonfinite_grad_params": nf,
         "zero_grad_names": znames,
         "grad_audit_pass": grad_ok,
-        "all_pass": bool(causal_ok and zact_ok and grad_ok),
+        "all_pass": bool(causal_ok and zact_ok and phys_zero_ok and grad_ok),
     }
     print(json.dumps(audit, indent=2))
     assert audit["all_pass"], f"Unit audit failed: {audit}"
@@ -117,10 +153,22 @@ def run_unit_audits(contact_dim: int, wrench_dim: int, act_dim: int, device: tor
 # DATA LOADER
 # ==============================================================================
 class RDPEpisodeCache:
-    def __init__(self, cache_path: str):
+    def __init__(
+        self,
+        cache_path: str,
+        act_norm_mode: str = "rms",
+        con_norm_mode: str = "zscore",
+        contact_subset: str = "all",
+    ):
+        assert act_norm_mode in ("rms", "si_fixed", "zscore_legacy"), f"Unknown act_norm_mode={act_norm_mode}"
+        assert con_norm_mode in ("zscore", "si_fixed"), f"Unknown con_norm_mode={con_norm_mode}"
+        assert contact_subset in ("all", "wrench6d"), f"Unknown contact_subset={contact_subset}"
+        self.act_norm_mode = act_norm_mode
+        self.con_norm_mode = con_norm_mode
+        self.contact_subset = contact_subset
+
         raw = np.load(cache_path, allow_pickle=False)
         self.meta = json.loads(str(raw["meta_json"]))
-        self.contact_dim = int(self.meta["contact_dim"])
         self.wrench_dim = int(self.meta["wrench_dim"])
         self.proprio_dim = int(self.meta["proprio_dim"])
         self.act_dim = int(self.meta["act_dim"])
@@ -131,23 +179,61 @@ class RDPEpisodeCache:
         pdelta = raw["proprio_delta"].astype(np.float32)
         anext = raw["action_next"].astype(np.float32)
 
-        self.con_mean = raw["con_mean"].astype(np.float32)
-        self.con_std = raw["con_std"].astype(np.float32)
+        con_mean_raw = raw["con_mean"].astype(np.float32)
+        con_std_raw = raw["con_std"].astype(np.float32)
+        if contact_subset == "wrench6d":
+            con = con[:, : self.wrench_dim]
+            con_mean_raw = con_mean_raw[: self.wrench_dim]
+            con_std_raw = con_std_raw[: self.wrench_dim]
+        self.contact_dim = int(con.shape[1])
+
         self.prop_mean = raw["prop_mean"].astype(np.float32)
         self.prop_std = raw["prop_std"].astype(np.float32)
         self.act_mean = raw["act_mean"].astype(np.float32)
         self.act_std = raw["act_std"].astype(np.float32)
-
-        con_n = np.clip((con - self.con_mean) / self.con_std, -8.0, 8.0)
-        prop_n = np.clip((prop - self.prop_mean) / self.prop_std, -8.0, 8.0)
-        pdelta_n = np.clip((pdelta - self.act_mean) / self.act_std, -8.0, 8.0)
-        anext_n = np.clip((anext - self.act_mean) / self.act_std, -8.0, 8.0)
 
         ep_starts = raw["ep_starts"]
         ep_ends = raw["ep_ends"]
         self.train_eps = raw["train_eps"].tolist()
         self.val_eps = raw["val_eps"].tolist()
         self.test_eps = raw["test_eps"].tolist()
+
+        # Train-only RMS for zero-centered physical action scaling (V4.1 fix)
+        train_mask = np.zeros(len(anext), dtype=bool)
+        for eid in self.train_eps:
+            train_mask[int(ep_starts[eid]) : int(ep_ends[eid])] = True
+        self.act_rms = np.maximum(np.sqrt(np.mean(anext[train_mask] ** 2, axis=0)), 1e-4).astype(np.float32)
+
+        if con_norm_mode == "zscore":
+            self.con_mean = con_mean_raw
+            self.con_std = con_std_raw
+        else:
+            # Fixed SI physical units (zero-centered) to preserve N/m stiffness across datasets
+            self.con_mean = np.zeros(self.contact_dim, dtype=np.float32)
+            sc = con_std_raw.copy()
+            w_n = min(self.wrench_dim, self.contact_dim, len(SI_WRENCH_SCALE))
+            sc[:w_n] = SI_WRENCH_SCALE[:w_n]
+            if self.contact_dim > self.wrench_dim and int(self.meta.get("grip_force_dim", 0)) > 0:
+                sc[self.wrench_dim] = SI_GRIP_FORCE_SCALE
+            self.con_std = sc.astype(np.float32)
+
+        if act_norm_mode == "rms":
+            self.act_center = np.zeros(self.act_dim, dtype=np.float32)
+            self.act_scale = self.act_rms
+        elif act_norm_mode == "si_fixed":
+            self.act_center = np.zeros(self.act_dim, dtype=np.float32)
+            sc_a = self.act_rms.copy()
+            a_n = min(self.act_dim, len(SI_ACT_SCALE))
+            sc_a[:a_n] = SI_ACT_SCALE[:a_n]
+            self.act_scale = sc_a.astype(np.float32)
+        else:
+            self.act_center = self.act_mean
+            self.act_scale = self.act_std
+
+        con_n = self.normalize_contact(con)
+        prop_n = np.clip((prop - self.prop_mean) / self.prop_std, -8.0, 8.0)
+        pdelta_n = self.normalize_action(pdelta)
+        anext_n = self.normalize_action(anext)
 
         # Deterministic unseen zero-drift bias vector (+1.5 sigma alternating signs)
         rng_ood = np.random.default_rng(2028)
@@ -170,7 +256,7 @@ class RDPEpisodeCache:
 
             raw_v = anext[s:e, :3]
             raw_speed = np.linalg.norm(raw_v, axis=-1).astype(np.float32)
-            # Reversal mask (k=4 frames)
+            # Reversal mask (k=4 frames) in physical raw velocity coordinates
             k = 4
             rev_mask = np.zeros(L, dtype=bool)
             if L > 2 * k + 1:
@@ -191,11 +277,18 @@ class RDPEpisodeCache:
                     "prop": prop_n[s:e],
                     "pdelta": pdelta_n[s:e],
                     "act": anext_n[s:e],
+                    "act_raw": anext[s:e],
                     "cw": cw,
                     "speed": raw_speed,
                     "rev_mask": rev_mask,
                 }
             )
+
+    def normalize_contact(self, con: np.ndarray) -> np.ndarray:
+        return np.clip((con - self.con_mean) / self.con_std, -8.0, 8.0).astype(np.float32)
+
+    def normalize_action(self, act: np.ndarray) -> np.ndarray:
+        return np.clip((act - self.act_center) / self.act_scale, -8.0, 8.0).astype(np.float32)
 
     def apply_ood(self, con: np.ndarray, ood_mode: str) -> np.ndarray:
         if ood_mode == "clean":
@@ -367,7 +460,8 @@ def eval_codex_wrench_matching(models_feats_te: Dict[str, dict], cache: RDPEpiso
             continue
         for t in range(5, L - 5):
             inst_w.append(ep["con"][t, : cache.wrench_dim])
-            past_v.append(ep["act"][t - 4 : t, :3].mean(axis=0))
+            # Use physical zero-centered velocity scaled by act_rms (V4.1 fix: no mean subtraction!)
+            past_v.append((ep["act_raw"][t - 4 : t, :3] / cache.act_rms[:3]).mean(axis=0))
             fut_dw.append(ep["con"][t + 3, : cache.wrench_dim] - ep["con"][t, : cache.wrench_dim])
 
     inst_w = np.asarray(inst_w, dtype=np.float32)
@@ -480,6 +574,7 @@ def build_bc_samples(
     raw_win_len: int = 12,
     ood_mode: str = "clean",
     need_raw_win: bool = False,
+    raw_wrench_only: bool = False,
 ) -> Dict[str, np.ndarray]:
     props, feats, rawws, acts, wnorms, revs = [], [], [], [], [], []
     for e in ep_ids:
@@ -492,11 +587,12 @@ def build_bc_samples(
         p_full = np.concatenate([ep["prop"], ep["pdelta"]], axis=-1)
         act_full = ep["act"]
         con_in = cache.apply_ood(ep["con"], ood_mode)
-        # Raw causal input matching PAEC input format for B1_RawFT_End2End
+        # Raw causal input matching PAEC input format for B1_RawFT_End2End / B1b_RawWrench6D_End2End
         if need_raw_win:
-            diff_c = np.zeros_like(con_in)
-            diff_c[1:] = con_in[1:] - con_in[:-1]
-            raw_seq = np.concatenate([con_in, diff_c, ep["pdelta"]], axis=-1)
+            c_use = con_in[:, : cache.wrench_dim] if raw_wrench_only else con_in
+            diff_c = np.zeros_like(c_use)
+            diff_c[1:] = c_use[1:] - c_use[:-1]
+            raw_seq = np.concatenate([c_use, diff_c, ep["pdelta"]], axis=-1)
         f_arr = feats_dict[e][feat_key] if feats_dict is not None else None
 
         for t in range(st, en):
@@ -616,8 +712,15 @@ def main():
     parser.add_argument("--cache", type=str, required=True)
     parser.add_argument("--out-dir", type=str, required=True)
     parser.add_argument("--pretrain-steps", type=int, default=1200)
+    parser.add_argument("--pretrain-seed", type=int, default=42)
     parser.add_argument("--bc-epochs", type=int, default=35)
     parser.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
+    parser.add_argument("--act-norm-mode", type=str, default="rms", choices=["rms", "si_fixed", "zscore_legacy"])
+    parser.add_argument("--con-norm-mode", type=str, default="zscore", choices=["zscore", "si_fixed"])
+    parser.add_argument("--contact-subset", type=str, default="all", choices=["all", "wrench6d"])
+    parser.add_argument("--d-z", type=int, default=16)
+    parser.add_argument("--hidden-dim", type=int, default=96)
+    parser.add_argument("--num-layers", type=int, default=2)
     parser.add_argument("--save-ckpt", action="store_true")
     args = parser.parse_args()
 
@@ -626,33 +729,59 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
 
-    cache = RDPEpisodeCache(args.cache)
-    print(f"Loaded cache: {cache.meta}")
-    unit_audits = run_unit_audits(cache.contact_dim, cache.wrench_dim, cache.act_dim, device)
+    cache = RDPEpisodeCache(
+        args.cache,
+        act_norm_mode=args.act_norm_mode,
+        con_norm_mode=args.con_norm_mode,
+        contact_subset=args.contact_subset,
+    )
+    print(
+        f"Loaded cache (V4.1): subset={args.contact_subset} (contact_dim={cache.contact_dim}), "
+        f"act_norm={args.act_norm_mode}, con_norm={args.con_norm_mode}, meta={cache.meta}"
+    )
+    unit_audits = run_unit_audits(
+        cache.contact_dim,
+        cache.wrench_dim,
+        cache.act_dim,
+        device,
+        d_z=args.d_z,
+        hidden_dim=args.hidden_dim,
+        num_layers=args.num_layers,
+        cache=cache,
+    )
 
-    print("\n=== [1] Pretraining Matched Models (TRAIN episodes only) ===")
+    print("\n=== [1] Pretraining Matched Models (TRAIN episodes only, V4.1 Fair Suite) ===")
+    d_z, h_dim, n_lay = args.d_z, args.hidden_dim, args.num_layers
     models = {
-        "B2_MAE": MAEContactRecon(cache.contact_dim, cache.act_dim, d_z=16).to(device),
-        "B3_LatentJEPA": AbstractLatentJEPAVICReg(cache.contact_dim, cache.act_dim, d_z=64).to(device),
-        "B4_NoBG": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=16, use_bg_split=False, drift_aug_std=0.35).to(device),
-        "B5_SingleFrame": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=16, backbone_type="single_frame", drift_aug_std=0.35).to(device),
-        "B6_ShortWin": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=16, backbone_type="short_win", drift_aug_std=0.35).to(device),
-        "Abl_NoDriftAug": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=16, use_bg_split=True, drift_aug_std=0.0).to(device),
-        "Ours_PAEC": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=16, use_bg_split=True, drift_aug_std=0.35).to(device),
+        "B2_MAE": MAEContactRecon(cache.contact_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, drift_aug_std=0.0).to(device),
+        "B2b_MAE_DriftAug": MAEContactRecon(cache.contact_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, drift_aug_std=0.35).to(device),
+        "B3_LatentJEPA_d16": AbstractLatentJEPAVICReg(cache.contact_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, drift_aug_std=0.0).to(device),
+        "B3b_LatentJEPA_d16_DriftAug": AbstractLatentJEPAVICReg(cache.contact_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, drift_aug_std=0.35).to(device),
+        "B3_LatentJEPA_d64": AbstractLatentJEPAVICReg(cache.contact_dim, cache.act_dim, d_z=64, hidden_dim=h_dim, num_layers=n_lay, drift_aug_std=0.0).to(device),
+        "B4_NoBG": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, use_bg_split=False, drift_aug_std=0.35).to(device),
+        "B5_SingleFrame": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, backbone_type="single_frame", drift_aug_std=0.35).to(device),
+        "B6_ShortWin": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, backbone_type="short_win", drift_aug_std=0.35).to(device),
+        "Abl_NoDriftAug": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, use_bg_split=True, drift_aug_std=0.0).to(device),
+        "Ours_PAEC": PAECModel(cache.contact_dim, cache.wrench_dim, cache.act_dim, d_z=d_z, hidden_dim=h_dim, num_layers=n_lay, use_bg_split=True, drift_aug_std=0.35).to(device),
     }
     pretrain_stats = {}
     for name, mdl in models.items():
-        pretrain_stats[name] = pretrain_model(name, mdl, cache, device, steps=args.pretrain_steps, seed=42)
+        pretrain_stats[name] = pretrain_model(name, mdl, cache, device, steps=args.pretrain_steps, seed=args.pretrain_seed)
 
     if args.save_ckpt:
         ckpt_path = out_dir / "pretrained_models.pt"
         torch.save(
             {
+                "protocol_version": "v4.1",
+                "args": vars(args),
                 "meta": cache.meta,
                 "con_mean": cache.con_mean,
                 "con_std": cache.con_std,
+                "act_center": cache.act_center,
+                "act_scale": cache.act_scale,
                 "act_mean": cache.act_mean,
                 "act_std": cache.act_std,
+                "act_rms": cache.act_rms,
                 "state_dicts": {k: v.state_dict() for k, v in models.items()},
             },
             ckpt_path,
@@ -674,7 +803,7 @@ def main():
         if isinstance(mdl, PAECModel):
             info.update(eval_forward_mechanics(mdl, cache, device))
         geom_and_mech[name] = info
-        print(f"  [{name:16s}] {info}")
+        print(f"  [{name:27s}] {info}")
 
     print("\n=== [3] Codex-Inspired Matched-Wrench / Divergent-History Test ===")
     codex_test = eval_codex_wrench_matching(feats_te, cache)
@@ -688,18 +817,28 @@ def main():
     tr_w = np.concatenate([cache.episodes[e]["w_norm"] for e in cache.train_eps])
     w_thresh = float(np.percentile(tr_w, 65.0))
     raw_in_dim = cache.contact_dim * 2 + cache.act_dim
+    raw_w6_in_dim = cache.wrench_dim * 2 + cache.act_dim
 
     bc_specs = [
-        ("B0_ProprioOnly", "proprio_only", None, "z"),
-        ("B1_RawFT_End2End", "raw_end2end", None, "z"),
-        ("B2_MAE", "frozen_feat", "B2_MAE", "z"),
-        ("B3_LatentJEPA", "frozen_feat", "B3_LatentJEPA", "z"),
-        ("B4_NoBG", "frozen_feat", "B4_NoBG", "z"),
-        ("B5_SingleFrame", "frozen_feat", "B5_SingleFrame", "z"),
-        ("Abl_NoDriftAug", "frozen_feat", "Abl_NoDriftAug", "z"),
-        ("Ours_PAEC_z16", "frozen_feat", "Ours_PAEC", "z"),
-        ("Ours_PAEC_Probe", "frozen_feat", "Ours_PAEC", "z_probe"),
+        ("B0_ProprioOnly", "proprio_only", None, "z", False),
+        ("B1_RawFT_End2End", "raw_end2end", None, "z", False),
     ]
+    if cache.contact_dim > cache.wrench_dim:
+        bc_specs.append(("B1b_RawWrench6D_E2E", "raw_end2end", None, "z", True))
+    bc_specs.extend(
+        [
+            ("B2_MAE", "frozen_feat", "B2_MAE", "z", False),
+            ("B2b_MAE_DriftAug", "frozen_feat", "B2b_MAE_DriftAug", "z", False),
+            ("B3_JEPA_d16", "frozen_feat", "B3_LatentJEPA_d16", "z", False),
+            ("B3b_JEPA_d16_Drift", "frozen_feat", "B3b_LatentJEPA_d16_DriftAug", "z", False),
+            ("B3_JEPA_d64", "frozen_feat", "B3_LatentJEPA_d64", "z", False),
+            ("B4_NoBG", "frozen_feat", "B4_NoBG", "z", False),
+            ("B5_SingleFrame", "frozen_feat", "B5_SingleFrame", "z", False),
+            ("Abl_NoDriftAug", "frozen_feat", "Abl_NoDriftAug", "z", False),
+            ("Ours_PAEC_z", "frozen_feat", "Ours_PAEC", "z", False),
+            ("Ours_PAEC_Probe", "frozen_feat", "Ours_PAEC", "z_probe", False),
+        ]
+    )
 
     n_tr_tot = len(cache.train_eps)
     fracs = [0.20, 0.50, 1.00] if n_tr_tot < 25 else [0.10, 0.30, 1.00]
@@ -709,18 +848,19 @@ def main():
         n_sub = max(2, int(round(n_tr_tot * frac)))
         bc_results[fk] = {}
         print(f"\n--- Budget: {fk} ({n_sub}/{n_tr_tot} train episodes) ---")
-        for label, mode, mkey, fkey in bc_specs:
+        for label, mode, mkey, fkey, raw_w_only in bc_specs:
             need_rw = (mode == "raw_end2end")
-            va_d = build_bc_samples(cache, cache.val_eps, feats_va[mkey] if mkey else None, fkey, ood_mode="clean", need_raw_win=need_rw)
-            te_c = build_bc_samples(cache, cache.test_eps, feats_te[mkey] if mkey else None, fkey, ood_mode="clean", need_raw_win=need_rw)
-            te_dr = build_bc_samples(cache, cache.test_eps, feats_drift[mkey] if mkey else None, fkey, ood_mode="drift", need_raw_win=need_rw)
-            te_gn = build_bc_samples(cache, cache.test_eps, feats_gain[mkey] if mkey else None, fkey, ood_mode="gain", need_raw_win=need_rw)
+            cur_raw_dim = raw_w6_in_dim if raw_w_only else raw_in_dim
+            va_d = build_bc_samples(cache, cache.val_eps, feats_va[mkey] if mkey else None, fkey, ood_mode="clean", need_raw_win=need_rw, raw_wrench_only=raw_w_only)
+            te_c = build_bc_samples(cache, cache.test_eps, feats_te[mkey] if mkey else None, fkey, ood_mode="clean", need_raw_win=need_rw, raw_wrench_only=raw_w_only)
+            te_dr = build_bc_samples(cache, cache.test_eps, feats_drift[mkey] if mkey else None, fkey, ood_mode="drift", need_raw_win=need_rw, raw_wrench_only=raw_w_only)
+            te_gn = build_bc_samples(cache, cache.test_eps, feats_gain[mkey] if mkey else None, fkey, ood_mode="gain", need_raw_win=need_rw, raw_wrench_only=raw_w_only)
 
             runs = []
             for sd in args.seeds:
                 rng_s = np.random.default_rng(1000 + sd)
                 sub_eps = sorted(rng_s.choice(cache.train_eps, size=n_sub, replace=False).tolist())
-                tr_d = build_bc_samples(cache, sub_eps, feats_tr[mkey] if mkey else None, fkey, ood_mode="clean", need_raw_win=need_rw)
+                tr_d = build_bc_samples(cache, sub_eps, feats_tr[mkey] if mkey else None, fkey, ood_mode="clean", need_raw_win=need_rw, raw_wrench_only=raw_w_only)
                 r = train_eval_bc(
                     mode=mode,
                     tr_d=tr_d,
@@ -729,7 +869,7 @@ def main():
                     te_drift=te_dr,
                     te_gain=te_gn,
                     w_thresh=w_thresh,
-                    raw_contact_dim=raw_in_dim,
+                    raw_contact_dim=cur_raw_dim,
                     device=device,
                     seed=sd,
                     epochs=args.bc_epochs,
@@ -743,12 +883,14 @@ def main():
                 agg[f"{k}_std"] = round(float(np.std(vals)), 5)
             bc_results[fk][label] = agg
             print(
-                f"  [{fk}] {label:16s} | All={agg['test_all_mse_mean']:.5f}±{agg['test_all_mse_std']:.5f} "
+                f"  [{fk}] {label:20s} | All={agg['test_all_mse_mean']:.5f}±{agg['test_all_mse_std']:.5f} "
                 f"| Con={agg['test_contact_mse_mean']:.5f} | Rev={agg['test_rev_mse_mean']:.5f} "
                 f"| DriftOOD={agg['test_drift_ood_mse_mean']:.5f} | GainOOD={agg['test_gain_ood_mse_mean']:.5f}"
             )
 
     summary = {
+        "protocol_version": "v4.1",
+        "args": vars(args),
         "meta": cache.meta,
         "unit_audits": unit_audits,
         "pretrain_stats": pretrain_stats,
@@ -760,7 +902,7 @@ def main():
     out_json = out_dir / "v4_paec_results.json"
     with open(out_json, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
-    print(f"\nSaved V4 PAEC results to {out_json}")
+    print(f"\nSaved V4.1 PAEC results to {out_json}")
 
 
 if __name__ == "__main__":

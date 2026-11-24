@@ -57,9 +57,13 @@ def weight_checksum(model: nn.Module) -> str:
     return h.hexdigest()[:16]
 
 
-def load_raw_episodes(cache_path: str) -> List[Dict[str, np.ndarray]]:
+def load_raw_episodes(cache_path: str, contact_subset: str = "all") -> List[Dict[str, np.ndarray]]:
     raw = np.load(cache_path, allow_pickle=False)
+    meta = json.loads(str(raw["meta_json"]))
+    wdim = int(meta["wrench_dim"])
     con = raw["contact_obs"].astype(np.float32)
+    if contact_subset == "wrench6d":
+        con = con[:, :wdim]
     pdelta = raw["proprio_delta"].astype(np.float32)
     anext = raw["action_next"].astype(np.float32)
     ep_starts = raw["ep_starts"]
@@ -87,6 +91,7 @@ def normalize_target_episode(
     """
     Apply identical physical OOD perturbation in physical units, then normalize
     using either Source stats (src_norm) or Target train stats (tgt_norm).
+    Uses V4.1 zero-centered act_center / act_scale so physical delta_q == 0 <=> a_norm == 0.
     """
     con_phys = raw_ep["con_raw"]
     if ood_mode == "clean":
@@ -100,10 +105,10 @@ def normalize_target_episode(
 
     if norm_mode == "src_norm":
         c_m, c_s = src_cache.con_mean, src_cache.con_std
-        a_m, a_s = src_cache.act_mean, src_cache.act_std
+        a_m, a_s = src_cache.act_center, src_cache.act_scale
     elif norm_mode == "tgt_norm":
         c_m, c_s = tgt_cache.con_mean, tgt_cache.con_std
-        a_m, a_s = tgt_cache.act_mean, tgt_cache.act_std
+        a_m, a_s = tgt_cache.act_center, tgt_cache.act_scale
     else:
         raise ValueError(norm_mode)
 
@@ -210,13 +215,24 @@ def eval_zeroshot_forward_mechanics(
     return res
 
 
-def build_transfer_models(contact_dim: int, wrench_dim: int, act_dim: int, device: torch.device) -> Dict[str, nn.Module]:
+def build_transfer_models(
+    contact_dim: int,
+    wrench_dim: int,
+    act_dim: int,
+    device: torch.device,
+    d_z: int = 16,
+    hidden_dim: int = 96,
+    num_layers: int = 2,
+) -> Dict[str, nn.Module]:
     return {
-        "B2_MAE": MAEContactRecon(contact_dim, act_dim, d_z=16).to(device),
-        "B3_LatentJEPA": AbstractLatentJEPAVICReg(contact_dim, act_dim, d_z=64).to(device),
-        "B4_NoBG": PAECModel(contact_dim, wrench_dim, act_dim, d_z=16, use_bg_split=False, drift_aug_std=0.35).to(device),
-        "Abl_NoDriftAug": PAECModel(contact_dim, wrench_dim, act_dim, d_z=16, use_bg_split=True, drift_aug_std=0.0).to(device),
-        "Ours_PAEC": PAECModel(contact_dim, wrench_dim, act_dim, d_z=16, use_bg_split=True, drift_aug_std=0.35).to(device),
+        "B2_MAE": MAEContactRecon(contact_dim, act_dim, d_z=d_z, hidden_dim=hidden_dim, num_layers=num_layers, drift_aug_std=0.0).to(device),
+        "B2b_MAE_DriftAug": MAEContactRecon(contact_dim, act_dim, d_z=d_z, hidden_dim=hidden_dim, num_layers=num_layers, drift_aug_std=0.35).to(device),
+        "B3_LatentJEPA_d16": AbstractLatentJEPAVICReg(contact_dim, act_dim, d_z=d_z, hidden_dim=hidden_dim, num_layers=num_layers, drift_aug_std=0.0).to(device),
+        "B3b_LatentJEPA_d16_DriftAug": AbstractLatentJEPAVICReg(contact_dim, act_dim, d_z=d_z, hidden_dim=hidden_dim, num_layers=num_layers, drift_aug_std=0.35).to(device),
+        "B3_LatentJEPA_d64": AbstractLatentJEPAVICReg(contact_dim, act_dim, d_z=64, hidden_dim=hidden_dim, num_layers=num_layers, drift_aug_std=0.0).to(device),
+        "B4_NoBG": PAECModel(contact_dim, wrench_dim, act_dim, d_z=d_z, hidden_dim=hidden_dim, num_layers=num_layers, use_bg_split=False, drift_aug_std=0.35).to(device),
+        "Abl_NoDriftAug": PAECModel(contact_dim, wrench_dim, act_dim, d_z=d_z, hidden_dim=hidden_dim, num_layers=num_layers, use_bg_split=True, drift_aug_std=0.0).to(device),
+        "Ours_PAEC": PAECModel(contact_dim, wrench_dim, act_dim, d_z=d_z, hidden_dim=hidden_dim, num_layers=num_layers, use_bg_split=True, drift_aug_std=0.35).to(device),
     }
 
 
@@ -228,34 +244,60 @@ def main():
     parser.add_argument("--src-ckpt", type=str, default="", help="Optional path to pretrained_models.pt from source task")
     parser.add_argument("--save-src-ckpt", type=str, default="", help="Optional path to save freshly pretrained source ckpt")
     parser.add_argument("--pretrain-steps", type=int, default=1200)
+    parser.add_argument("--pretrain-seed", type=int, default=42)
     parser.add_argument("--bc-epochs", type=int, default=35)
     parser.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
     parser.add_argument("--norm-modes", type=str, nargs="+", default=["src_norm", "tgt_norm"])
+    parser.add_argument("--act-norm-mode", type=str, default="rms", choices=["rms", "si_fixed", "zscore_legacy"])
+    parser.add_argument("--con-norm-mode", type=str, default="zscore", choices=["zscore", "si_fixed"])
+    parser.add_argument("--contact-subset", type=str, default="all", choices=["all", "wrench6d"])
+    parser.add_argument("--d-z", type=int, default=16)
+    parser.add_argument("--hidden-dim", type=int, default=96)
+    parser.add_argument("--num-layers", type=int, default=2)
     args = parser.parse_args()
 
     t_start = time.time()
-    set_seed(42)
+    set_seed(args.pretrain_seed)
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
 
-    src_cache = RDPEpisodeCache(args.src_cache)
-    tgt_cache = RDPEpisodeCache(args.tgt_cache)
-    tgt_raw_eps = load_raw_episodes(args.tgt_cache)
+    src_cache = RDPEpisodeCache(
+        args.src_cache,
+        act_norm_mode=args.act_norm_mode,
+        con_norm_mode=args.con_norm_mode,
+        contact_subset=args.contact_subset,
+    )
+    tgt_cache = RDPEpisodeCache(
+        args.tgt_cache,
+        act_norm_mode=args.act_norm_mode,
+        con_norm_mode=args.con_norm_mode,
+        contact_subset=args.contact_subset,
+    )
+    tgt_raw_eps = load_raw_episodes(args.tgt_cache, contact_subset=args.contact_subset)
 
     # Strict cross-task sensor compatibility audit
     assert src_cache.contact_dim == tgt_cache.contact_dim, f"contact_dim mismatch: {src_cache.contact_dim} vs {tgt_cache.contact_dim}"
     assert src_cache.wrench_dim == tgt_cache.wrench_dim, f"wrench_dim mismatch"
     assert src_cache.act_dim == tgt_cache.act_dim, f"act_dim mismatch"
-    assert src_cache.meta["arm"] == tgt_cache.meta["arm"], f"arm mismatch"
-    assert src_cache.meta["tactile_keys"] == tgt_cache.meta["tactile_keys"], f"tactile_keys mismatch"
+    if args.contact_subset == "all":
+        assert src_cache.meta["arm"] == tgt_cache.meta["arm"], f"arm mismatch"
+        assert src_cache.meta["tactile_keys"] == tgt_cache.meta["tactile_keys"], f"tactile_keys mismatch"
     print(
-        f"Cross-task channel audit PASS: {src_cache.meta['source']} -> {tgt_cache.meta['source']} "
-        f"(arm={src_cache.meta['arm']}, contact_dim={src_cache.contact_dim}, tactile_keys={src_cache.meta['tactile_keys']})"
+        f"Cross-task channel audit PASS (V4.1, subset={args.contact_subset}): "
+        f"{src_cache.meta['source']} -> {tgt_cache.meta['source']} (contact_dim={src_cache.contact_dim})"
     )
 
-    models = build_transfer_models(src_cache.contact_dim, src_cache.wrench_dim, src_cache.act_dim, device)
+    models = build_transfer_models(
+        src_cache.contact_dim,
+        src_cache.wrench_dim,
+        src_cache.act_dim,
+        device,
+        d_z=args.d_z,
+        hidden_dim=args.hidden_dim,
+        num_layers=args.num_layers,
+    )
     pretrain_stats = {}
     ckpt_loaded_from = None
     if args.src_ckpt and Path(args.src_ckpt).exists():
@@ -269,17 +311,22 @@ def main():
     else:
         print("\n=== [1] Pretraining Matched Models on SOURCE Task TRAIN Episodes ONLY ===")
         for name, mdl in models.items():
-            pretrain_stats[name] = pretrain_model(name, mdl, src_cache, device, steps=args.pretrain_steps, seed=42)
+            pretrain_stats[name] = pretrain_model(name, mdl, src_cache, device, steps=args.pretrain_steps, seed=args.pretrain_seed)
         if args.save_src_ckpt:
             sp = Path(args.save_src_ckpt)
             sp.parent.mkdir(parents=True, exist_ok=True)
             torch.save(
                 {
+                    "protocol_version": "v4.1",
+                    "args": vars(args),
                     "meta": src_cache.meta,
                     "con_mean": src_cache.con_mean,
                     "con_std": src_cache.con_std,
+                    "act_center": src_cache.act_center,
+                    "act_scale": src_cache.act_scale,
                     "act_mean": src_cache.act_mean,
                     "act_std": src_cache.act_std,
+                    "act_rms": src_cache.act_rms,
                     "state_dicts": {k: v.state_dict() for k, v in models.items()},
                 },
                 sp,
@@ -368,10 +415,13 @@ def main():
 
         bc_specs = [
             ("Xfer_B2_MAE", "B2_MAE", "z"),
-            ("Xfer_B3_LatentJEPA", "B3_LatentJEPA", "z"),
+            ("Xfer_B2b_MAE_Drift", "B2b_MAE_DriftAug", "z"),
+            ("Xfer_B3_JEPA_d16", "B3_LatentJEPA_d16", "z"),
+            ("Xfer_B3b_JEPA_d16_Dr", "B3b_LatentJEPA_d16_DriftAug", "z"),
+            ("Xfer_B3_JEPA_d64", "B3_LatentJEPA_d64", "z"),
             ("Xfer_B4_NoBG", "B4_NoBG", "z"),
             ("Xfer_Abl_NoDriftAug", "Abl_NoDriftAug", "z"),
-            ("Xfer_PAEC_z16", "Ours_PAEC", "z"),
+            ("Xfer_PAEC_z", "Ours_PAEC", "z"),
             ("Xfer_PAEC_Probe", "Ours_PAEC", "z_probe"),
         ]
 
@@ -431,6 +481,8 @@ def main():
     assert frozen_audit_pass, f"Frozen audit failed! {checksums_before} vs {checksums_after}"
 
     summary = {
+        "protocol_version": "v4.1",
+        "args": vars(args),
         "src_meta": src_cache.meta,
         "tgt_meta": tgt_cache.meta,
         "ckpt_loaded_from": ckpt_loaded_from,
