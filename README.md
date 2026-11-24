@@ -1,6 +1,12 @@
 # ICRA2028 · 触觉与接触表征学习（V4 路线 1：物理锚定接触压缩 PAEC）
 
-> **最新研究进展（2026-11-24，Stage 6 / `V4.1–V4.4 PAEC` — 物理零点协议冻结 + RH20T 7 本体规模律与跨库迁移突破）**：
+> **最新研究进展（2026-11-24，Stage 6 / `V4.4 PAEC Colab L4 大规模预训练` — 7,042 轨迹 / 653.5 万帧 Scaling Law 与跨库迁移）**：
+> - **Colab L4 大规模 7 本体预训练突破**（[Colab 10k 规模律完整报告](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/V4_4_COLAB_10K_SCALING_REPORT.md) | [出版级图表](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/figures/) | [严格审计 JSON](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/v4_scaling_results.json)）：
+>   1. **全量 7 配置 7,042 轨迹 / 6,535,039 帧（110 任务）**：全部通过物理零点与接触审计（`PASS: ALL_CORE_PHYSICAL_CHECKS_CLEAN`），严格隔离 `88` 训练任务（`N=4,718`）与 **`22` 个未见任务**、留出 **`cfg_0001` 作未见本体**，全部 `283` 次下游评测 `strictly_frozen_pass = True`。
+>   2. **清晰的 5 点数据与容量 Scaling Law**：`PAEC_Tiny_d16` 在 22 个未见任务上的零样本 3 步物理力学 $R^2$ 随规模由 `0.3045 (N=100) → 0.4120 (400) → 0.4529 (1500) → 0.4644 (4000) → 0.4729 (4718)` 单调攀升；扩大至 **`PAEC_Small (256, 2L)`** 后反超 `Tiny` 达 **`0.4908`**（`d32` 未见本体 $R^2 = \mathbf{0.3362}$、3 种子验证 `Small_d16 = 0.4884 ± 0.0029` vs `Tiny_d16 = 0.4740 ± 0.0009`）。未见本体 10-shot BC 上 `PAEC`（`0.41174`）明显优于 `B0`（`0.41937`），而去掉 $b_\phi+g_\phi$ 分解的 `B4_NoBG`（`0.42283`）劣化。
+>   3. **跨库 `RH20T → Flexiv RDP` 少样本反超域内自训**：`PAEC_Small_d64`（平均 5-shot **`0.23037`** / 10-shot **`0.20349`**）与 `PAEC_Base_d64`（在强接触 `rdp_wipe` 上达 **`0.44755 / 0.39425 / 0.31175`**）零梯度冻结超越 `B0`（`0.23815 / 0.20744`）与 RDP 域内自训（`0.23011 / 0.20453`），而 `JEPA+VICReg`（`0.21032`）仍劣于 `B0`。
+>
+> **前序记录（2026-11-24 本地 V4.1–V4.4 小规模 749 轨迹基线）**：
 > - **V4.1 协议冻结与三任务全面复现**（`peel_v3`、`wipe_v1.5` 与新增第 3 任务 `lift_v2`）：修复零动作标准化偏移并补齐纯 6D 端到端（`B1b_RawWrench6D_E2E`）、同瓶颈 `JEPA_d16` 与同零漂增强（`B2b_MAE_DriftAug`、`B3b_JEPA_d16_Drift`），三项任务上仅 **`PAEC`** 稳定优于 `B0_ProprioOnly` 与全部基线。
 > - **V4.2–V4.4 RH20T 多机器人 Scaling Law 与跨数据集 `RH20T → RDP` 零梯度迁移**（[完整审计报告](experiments/v4_paec_contact_compression/outputs/v4_scaling_20261124/V4_1_TO_V4_4_SCALING_REPORT.md) | [研究协议](research/V4_SCALING_AND_PROTOCOL_V4_1.md)）：
 >   1. **7 本体规范化物理库**：从 `RH20T_lowdim`（`cfg1–cfg7` 全部 7 种机械臂/夹爪）流式抽取 **749 条轨迹 / 522,958 帧 / 11 个任务**至 20 Hz Canonical SI 物理格式，严格留出 `cfg_0006`（KUKA+Robotiq）作未见本体测试、`task_0002 / task_0010` 作未见任务测试。

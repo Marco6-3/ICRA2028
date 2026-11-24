@@ -265,16 +265,32 @@ def make_zero_leakage_splits(episodes: List[CanonicalEpisode], seed: int = 2026)
         if not added:
             break
 
-    def _split_eval_set(idxs: List[int]) -> Dict[str, List[int]]:
-        arr = np.array(idxs, dtype=np.int64)
-        rng.shuffle(arr)
-        n = len(arr)
+    def _split_eval_set(idxs: List[int], max_val: int = 40, max_test: int = 120) -> Dict[str, List[int]]:
+        # Task-stratified shuffle so val/test cover diverse tasks while keeping eval bounded at 10k+ scale
+        by_t = defaultdict(list)
+        for idx in idxs:
+            by_t[episodes[idx].task].append(idx)
+        for t in by_t:
+            rng.shuffle(by_t[t])
+        tks = sorted(by_t.keys())
+        rng.shuffle(tks)
+        ordered = []
+        while True:
+            added = False
+            for t in tks:
+                if by_t[t]:
+                    ordered.append(by_t[t].pop())
+                    added = True
+            if not added:
+                break
+        n = len(ordered)
         n_tr = min(35, max(10, int(0.35 * n)))
-        n_va = max(8, int(0.20 * n))
+        n_va = min(max_val, max(8, int(0.20 * n)))
+        rem_test = ordered[n_tr + n_va :]
         return {
-            "bc_train": arr[:n_tr].tolist(),
-            "val": arr[n_tr : n_tr + n_va].tolist(),
-            "test": arr[n_tr + n_va :].tolist(),
+            "bc_train": ordered[:n_tr],
+            "val": ordered[n_tr : n_tr + n_va],
+            "test": rem_test[:max_test],
         }
 
     return {
@@ -314,8 +330,9 @@ def build_model(arch: str, device: torch.device) -> nn.Module:
     if arch.startswith("PAEC_Small_d"):
         dz = int(arch.split("_d")[-1])
         return PAECModel(6, 6, 7, d_z=dz, hidden_dim=256, num_layers=2, use_bg_split=True, drift_aug_std=0.35).to(device)
-    if arch == "PAEC_Base_d16":
-        return PAECModel(6, 6, 7, d_z=16, hidden_dim=512, num_layers=4, use_bg_split=True, drift_aug_std=0.35).to(device)
+    if arch.startswith("PAEC_Base_d"):
+        dz = int(arch.split("_d")[-1])
+        return PAECModel(6, 6, 7, d_z=dz, hidden_dim=512, num_layers=4, use_bg_split=True, drift_aug_std=0.35).to(device)
     if arch == "B2b_MAE_Small_d16":
         return MAEContactRecon(6, 7, d_z=16, hidden_dim=256, num_layers=2, drift_aug_std=0.35).to(device)
     if arch == "B3b_JEPA_Small_d16":
@@ -570,11 +587,15 @@ def train_eval_bc_fast(
     y_va = torch.from_numpy(va_d["act"]).to(device)
     f_va = torch.from_numpy(va_d["feat"]).to(device) if mode == "frozen_feat" else None
 
-    def eval_tensors(p_t, y_t, f_t, w_norm, rev_m) -> Tuple[float, float, float]:
+    def eval_tensors(p_t, y_t, f_t, w_norm, rev_m, chunk: int = 4096) -> Tuple[float, float, float]:
         policy.eval()
+        M = p_t.shape[0]
+        errs_parts = []
         with torch.no_grad():
-            pred = policy(p_t, feat=f_t)
-            errs = ((pred - y_t) ** 2).mean(dim=(1, 2)).cpu().numpy()
+            for i in range(0, M, chunk):
+                pred = policy(p_t[i : i + chunk], feat=f_t[i : i + chunk] if f_t is not None else None)
+                errs_parts.append(((pred - y_t[i : i + chunk]) ** 2).mean(dim=(1, 2)).cpu().numpy())
+        errs = np.concatenate(errs_parts, axis=0)
         cm = w_norm >= w_thresh
         return (
             float(errs.mean()),
@@ -721,6 +742,7 @@ def main():
     parser.add_argument("--bc-epochs", type=int, default=30)
     parser.add_argument("--bc-seeds", type=int, nargs="+", default=[0, 1, 2])
     parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--save-best-ckpt", type=str, default="", help="Optional path to save top frozen pretrained checkpoints")
     args = parser.parse_args()
 
     t_all = time.time()
@@ -817,14 +839,16 @@ def main():
             )
         return ev
 
-    # 3. Exp A: Adaptive 4-point log-spaced Data Scaling Law
+    # 3. Exp A: Adaptive log-spaced Data Scaling Law (5-point when n_max >= 4000)
     n_max = len(splits["train_pool"])
     if n_max < 700:
         raw_scales = [(40, 1200), (120, 2000), (260, 3200), (n_max, 5000)]
     elif n_max < 1200:
         raw_scales = [(50, 1200), (150, 2000), (400, 3200), (n_max, 5000)]
-    else:
+    elif n_max < 4000:
         raw_scales = [(100, 1500), (300, 2500), (1000, 4000), (n_max, 6000)]
+    else:
+        raw_scales = [(100, 1500), (400, 2500), (1500, 4000), (4000, 6000), (n_max, 8000)]
     scale_schedule = []
     for n_ep, stp in raw_scales:
         if n_ep < n_max or len(scale_schedule) == 0:
@@ -862,35 +886,64 @@ def main():
         "PAEC_Small_d32",
         "PAEC_Small_d64",
         "PAEC_Base_d16",
+        "PAEC_Base_d32",
+        "PAEC_Base_d64",
         "B2b_MAE_Small_d16",
         "B3b_JEPA_Small_d16",
     ]
     # Include PAEC_Tiny_d16 directly from Exp A N=MAX
     results["exp_b_capacity_bottleneck"]["PAEC_Tiny_d16"] = results["exp_a_data_scaling"][f"N_{n_max}"]["models"]["PAEC_Tiny_d16"]
     for arch in exp_b_archs:
-        bs_use = 32 if "Base" in arch else args.batch_size
+        bs_use = min(args.batch_size, 64) if "Base" in arch else args.batch_size
         mdl = build_model(arch, device)
         pstats = pretrain_on_episodes(f"Nmax/{arch}", mdl, rh_eps, splits["train_pool"], device, steps=nmax_steps, batch_size=bs_use, seed=42)
         ev = _eval_everywhere(mdl, "z")
         ev["pretrain_stats"] = pstats
-        if arch == "PAEC_Small_d16":
+        if arch in ("PAEC_Small_d16", "PAEC_Small_d32", "PAEC_Base_d32"):
             ev["eval_probe"] = _eval_everywhere(mdl, "z_probe")
         results["exp_b_capacity_bottleneck"][arch] = ev
+        if arch in ("PAEC_Small_d32", "PAEC_Base_d32"):
+            cached_nmax_models[arch] = mdl
         with open(out_dir / "v4_scaling_results.json", "w", encoding="utf-8") as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
 
+    if args.save_best_ckpt:
+        ckpt_p = Path(args.save_best_ckpt)
+        ckpt_p.parent.mkdir(parents=True, exist_ok=True)
+        save_keys = [k for k in ("PAEC_Tiny_d16", "PAEC_Small_d32", "PAEC_Base_d32") if k in cached_nmax_models]
+        torch.save(
+            {
+                "protocol": "v4_4_canonical_si",
+                "canon_wrench_scale": CANON_WRENCH_SCALE,
+                "canon_act_scale": CANON_ACT_SCALE,
+                "n_train_episodes": n_max,
+                "state_dicts": {k: cached_nmax_models[k].state_dict() for k in save_keys},
+            },
+            ckpt_p,
+        )
+        print(f"Saved top frozen checkpoints {save_keys} to {ckpt_p}", flush=True)
+
     # 5. Exp C: Multi-Pretrain-Seed Verification (seeds 100, 2026 added to seed 42) at N=MAX
     print(f"\n=== EXP C: Multi-Pretrain-Seed Verification at N={n_max} (steps={nmax_steps}) ===", flush=True)
-    exp_c_archs = ["B2b_MAE_Tiny_d16", "B3b_JEPA_Tiny_d16", "B4_NoBG_Tiny_d16", "PAEC_Tiny_d16", "PAEC_Small_d16"]
+    exp_c_archs = [
+        "B2b_MAE_Tiny_d16",
+        "B3b_JEPA_Tiny_d16",
+        "B4_NoBG_Tiny_d16",
+        "PAEC_Tiny_d16",
+        "PAEC_Small_d16",
+        "PAEC_Small_d32",
+        "PAEC_Base_d32",
+    ]
     for arch in exp_c_archs:
         seed_runs = {}
         if arch in results["exp_a_data_scaling"][f"N_{n_max}"]["models"]:
             seed_runs["seed_42"] = results["exp_a_data_scaling"][f"N_{n_max}"]["models"][arch]
         elif arch in results["exp_b_capacity_bottleneck"]:
             seed_runs["seed_42"] = results["exp_b_capacity_bottleneck"][arch]
+        bs_use = min(args.batch_size, 64) if "Base" in arch else args.batch_size
         for psd in (100, 2026):
             mdl = build_model(arch, device)
-            pstats = pretrain_on_episodes(f"Seed{psd}/{arch}", mdl, rh_eps, splits["train_pool"], device, steps=nmax_steps, batch_size=args.batch_size, seed=psd)
+            pstats = pretrain_on_episodes(f"Seed{psd}/{arch}", mdl, rh_eps, splits["train_pool"], device, steps=nmax_steps, batch_size=bs_use, seed=psd)
             ev = _eval_everywhere(mdl, "z")
             ev["pretrain_stats"] = pstats
             seed_runs[f"seed_{psd}"] = ev

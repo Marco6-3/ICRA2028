@@ -110,6 +110,17 @@ def plot_fig2_data_scaling(scaling: Dict[str, Any], fig_dir: Path):
     ]
 
     fig, axes = plt.subplots(1, 3, figsize=(13.5, 4.2))
+
+    def _set_n_ticks(ax_cur):
+        ax_cur.set_xscale("log")
+        ax_cur.set_xticks(ns)
+        lbls = []
+        for idx, n_val in enumerate(ns):
+            if idx == len(ns) - 1 and len(ns) >= 2 and ns[-1] / ns[-2] < 1.35:
+                lbls.append(f"\n{n_val}")
+            else:
+                lbls.append(str(n_val))
+        ax_cur.set_xticklabels(lbls, fontsize=8.5)
     # Panel 1: Zero-Shot Wrench R2 on Unseen RH20T Tasks & Unseen Embodiment
     ax = axes[0]
     for arch, lbl, col, fmt in [("PAEC_Tiny_d16", "PAEC Unseen-Task", "#0072b2", "-o"), ("B4_NoBG_Tiny_d16", "NoBG Unseen-Task", "#56b4e9", "--s")]:
@@ -118,9 +129,7 @@ def plot_fig2_data_scaling(scaling: Dict[str, Any], fig_dir: Path):
     for arch, lbl, col, fmt in [("PAEC_Tiny_d16", "PAEC Unseen-Robot", "#009e73", "-^"), ("B4_NoBG_Tiny_d16", "NoBG Unseen-Robot", "#66c2a5", "--v")]:
         ys = [exp_a[k]["models"][arch]["rh20t_heldout_cfg"]["geom"].get("dw3_clean_r2", np.nan) for k in keys]
         ax.plot(ns, ys, fmt, color=col, linewidth=2.0, markersize=6, label=lbl)
-    ax.set_xscale("log")
-    ax.set_xticks(ns)
-    ax.set_xticklabels([str(n) for n in ns])
+    _set_n_ticks(ax)
     ax.set_xlabel("RH20T Pretraining Episodes (log scale)")
     ax.set_ylabel("Zero-Shot 3-Step Wrench $R^2$ (↑)")
     ax.set_title("(a) Physics Prediction Scaling (Held-Out)")
@@ -136,13 +145,11 @@ def plot_fig2_data_scaling(scaling: Dict[str, Any], fig_dir: Path):
     for arch, lbl, col, fmt in models:
         ys = [exp_a[k]["models"][arch]["rh20t_heldout_task"]["bc"][task_bkey]["test_all_mse_mean"] for k in keys]
         ax.plot(ns, ys, fmt, color=col, linewidth=2.0, markersize=6, label=lbl)
-    ax.set_xscale("log")
-    ax.set_xticks(ns)
-    ax.set_xticklabels([str(n) for n in ns])
+    _set_n_ticks(ax)
     ax.set_xlabel("RH20T Pretraining Episodes (log scale)")
     ax.set_ylabel(f"{task_bkey} BC Test MSE (↓)")
     ax.set_title(f"(b) RH20T Unseen-Task ({task_bkey} BC)")
-    ax.legend(frameon=True, framealpha=0.88, edgecolor="none", fontsize=7.8, loc="lower left")
+    ax.legend(frameon=True, framealpha=0.88, edgecolor="none", fontsize=7.8, loc="upper right")
     ax.grid(alpha=0.25)
 
     # Panel 3: Cross-Dataset Zero-Shot Mean BC MSE across all 3 RDP tasks (10-shot)
@@ -158,9 +165,7 @@ def plot_fig2_data_scaling(scaling: Dict[str, Any], fig_dir: Path):
             for k in keys
         ]
         ax.plot(ns, ys, fmt, color=col, linewidth=2.0, markersize=6, label=lbl)
-    ax.set_xscale("log")
-    ax.set_xticks(ns)
-    ax.set_xticklabels([str(n) for n in ns])
+    _set_n_ticks(ax)
     ax.set_xlabel("RH20T Pretraining Episodes (log scale)")
     ax.set_ylabel("Mean 10-Shot BC MSE on RDP (↓)")
     ax.set_title("(c) Cross-Dataset RH20T → RDP (10-Shot)")
@@ -168,7 +173,8 @@ def plot_fig2_data_scaling(scaling: Dict[str, Any], fig_dir: Path):
     ax.set_ylim(top=0.2112)
     ax.grid(alpha=0.25)
 
-    fig.suptitle("V4.3 Data Scaling Law on RH20T (PAEC-Tiny 96/2L/d16, Canonical 6D SI)", y=1.03, fontsize=12, fontweight="bold")
+    n_max_ep = scaling.get("splits", {}).get("train_pool_size", ns[-1])
+    fig.suptitle(f"V4.4 Data Scaling Law on RH20T (N={ns[0]}→{n_max_ep}, PAEC-Tiny 96/2L/d16, Canonical 6D SI)", y=1.03, fontsize=12, fontweight="bold")
     fig.tight_layout()
     _save_fig(fig, fig_dir, "fig2_rh20t_data_scaling_law")
 
@@ -218,14 +224,17 @@ def plot_fig3_capacity_bottleneck(scaling: Dict[str, Any], fig_dir: Path):
 
     # Panel 3: Cross-Dataset RDP 10-shot MSE across Bottleneck & Capacity
     ax = axes[2]
-    all_cmp = cap_present + [(a, f"Small\n{l}") for a, l in bot_present if a != "PAEC_Small_d16"]
+    cap_short = [("PAEC_Tiny_d16", "Tiny\nd=16"), ("PAEC_Small_d16", "Small\nd=16"), ("PAEC_Base_d16", "Base\nd=16")]
+    cap_short_present = [(a, l) for a, l in cap_short if a in exp_b]
+    extra_base = [(a, l) for a, l in [("PAEC_Base_d32", "Base\nd=32"), ("PAEC_Base_d64", "Base\nd=64")] if a in exp_b]
+    all_cmp = cap_short_present + [(a, f"Small\n{l}") for a, l in bot_present if a != "PAEC_Small_d16"] + extra_base
     xs3 = np.arange(len(all_cmp))
     rdp_mse = [float(np.mean([exp_b[a][rk]["bc"]["10eps"]["test_all_mse_mean"] for rk in rdp_keys])) for a, _ in all_cmp]
     b0_rdp = float(np.mean([scaling["anchors"]["b0"][rk]["10eps"]["test_all_mse_mean"] for rk in rdp_keys]))
-    ax.bar(xs3, rdp_mse, color=["#0072b2" if "d16" in a else "#009e73" for a, _ in all_cmp], alpha=0.9)
+    ax.bar(xs3, rdp_mse, color=["#0072b2" if "d16" in a else ("#cc79a7" if "Base" in a else "#009e73") for a, _ in all_cmp], alpha=0.9)
     ax.axhline(b0_rdp, color="#6b7280", linestyle="--", linewidth=1.2, label="RDP B0 ProprioOnly")
     ax.set_xticks(xs3)
-    ax.set_xticklabels([l for _, l in all_cmp], fontsize=8)
+    ax.set_xticklabels([l for _, l in all_cmp], fontsize=7.2)
     ax.set_ylabel("Mean RDP 10-Shot BC MSE (↓)")
     ax.set_title("(c) Cross-Dataset Transfer vs. Capacity/$d_z$")
     ax.legend(frameon=False)
@@ -233,7 +242,8 @@ def plot_fig3_capacity_bottleneck(scaling: Dict[str, Any], fig_dir: Path):
     ax.set_ylim(max(0.0, lo - 0.3 * (hi - lo)), hi + 0.3 * (hi - lo))
     ax.grid(axis="y", alpha=0.25)
 
-    fig.suptitle("V4.4 Capacity & Bottleneck Scaling at Maximum RH20T Scale", y=1.03, fontsize=12, fontweight="bold")
+    n_max_ep = scaling.get("splits", {}).get("train_pool_size", "MAX")
+    fig.suptitle(f"V4.4 Capacity & Bottleneck Scaling at Maximum RH20T Scale (N={n_max_ep})", y=1.03, fontsize=12, fontweight="bold")
     fig.tight_layout()
     _save_fig(fig, fig_dir, "fig3_capacity_and_bottleneck_scaling")
 
@@ -247,6 +257,7 @@ def plot_fig4_rh20t_to_rdp_fewshot(scaling: Dict[str, Any], fig_dir: Path):
     src_models = exp_a[n_max_key]["models"]
     paec_d16 = exp_b.get("PAEC_Small_d16", src_models["PAEC_Tiny_d16"])
     paec_d32 = exp_b.get("PAEC_Small_d32", paec_d16)
+    paec_base_d32 = exp_b.get("PAEC_Base_d32")
     mae_mod = exp_b.get("B2b_MAE_Small_d16", src_models["B2b_MAE_Tiny_d16"])
     jepa_mod = exp_b.get("B3b_JEPA_Small_d16", src_models["B3b_JEPA_Tiny_d16"])
 
@@ -264,6 +275,8 @@ def plot_fig4_rh20t_to_rdp_fewshot(scaling: Dict[str, Any], fig_dir: Path):
         ax.plot(xs, [jepa_mod[rk]["bc"][b]["test_all_mse_mean"] for b in budgets], ":d", color="#cc79a7", label="RH20T JEPA+VICReg (Small)")
         ax.plot(xs, [paec_d16[rk]["bc"][b]["test_all_mse_mean"] for b in budgets], "-o", color="#56b4e9", linewidth=1.8, label="RH20T PAEC-Small (d16)")
         ax.plot(xs, [paec_d32[rk]["bc"][b]["test_all_mse_mean"] for b in budgets], "-*", color="#0072b2", linewidth=2.3, markersize=8, label="RH20T PAEC-Small (d32)")
+        if paec_base_d32 is not None:
+            ax.plot(xs, [paec_base_d32[rk]["bc"][b]["test_all_mse_mean"] for b in budgets], "--P", color="#009e73", linewidth=1.6, markersize=5, label="RH20T PAEC-Base (d32)")
         ax.set_xticks(xs)
         ax.set_xticklabels(budgets)
         ax.set_xlabel("Target RDP Training Episodes")

@@ -15,6 +15,7 @@ Converts each episode to Canonical 6D Contact Schema (20 Hz uniform grid, TCP lo
 import argparse
 import io
 import json
+import os
 import re
 import subprocess
 import tarfile
@@ -24,6 +25,9 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 from scipy.spatial.transform import Rotation, Slerp
+
+
+CURL_BIN = "curl.exe" if os.name == "nt" else "curl"
 
 
 NEEDED_FILES = {
@@ -95,8 +99,18 @@ def process_episode_blobs(
 
     ft_list = ftb[cam]
     tcp_list = tcpb[cam]
-    ft_map = {int(x["timestamp"]): np.asarray(x["zeroed"], dtype=np.float64) for x in ft_list if "timestamp" in x and "zeroed" in x}
-    tcp_map = {int(x["timestamp"]): np.asarray(x["tcp"], dtype=np.float64) for x in tcp_list if "timestamp" in x and "tcp" in x}
+    ft_map = {}
+    for x in ft_list:
+        if isinstance(x, dict) and "timestamp" in x and "zeroed" in x:
+            arr = np.asarray(x["zeroed"], dtype=np.float64).reshape(-1)
+            if arr.shape[0] >= 6:
+                ft_map[int(x["timestamp"])] = arr[:6]
+    tcp_map = {}
+    for x in tcp_list:
+        if isinstance(x, dict) and "timestamp" in x and "tcp" in x:
+            arr = np.asarray(x["tcp"], dtype=np.float64).reshape(-1)
+            if arr.shape[0] >= 7:
+                tcp_map[int(x["timestamp"])] = arr[:7]
     ts_common = sorted(set(ft_map.keys()) & set(tcp_map.keys()))
     if len(ts_common) < 20:
         return None, "short_synced"
@@ -111,8 +125,11 @@ def process_episode_blobs(
     if med_dt > 0.25 or max_dt > 0.75 or ts_s[-1] < min_duration_s:
         return None, "bad_dt_or_short"
 
-    w_base = np.stack([ft_map[t] for t in ts_common], axis=0)
-    tcp = np.stack([tcp_map[t] for t in ts_common], axis=0)
+    try:
+        w_base = np.stack([ft_map[t] for t in ts_common], axis=0)
+        tcp = np.stack([tcp_map[t] for t in ts_common], axis=0)
+    except Exception:
+        return None, "bad_shape"
     if w_base.shape[1] < 6 or tcp.shape[1] < 7:
         return None, "bad_shape"
     w_base = w_base[:, :6]
@@ -304,7 +321,7 @@ def save_canonical_shard(out_path: Path, eps: List[Dict[str, Any]], stats_counte
 def _get_remote_size(url: str) -> Optional[int]:
     try:
         out = subprocess.check_output(
-            ["curl.exe", "-sIL", "--max-time", "20", url],
+            [CURL_BIN, "-sIL", "--max-time", "20", url],
             stderr=subprocess.DEVNULL,
         ).decode("utf-8", errors="ignore")
         sizes = re.findall(r"content-length:\s*(\d+)", out, flags=re.IGNORECASE)
@@ -317,8 +334,8 @@ def _get_remote_size(url: str) -> Optional[int]:
 
 class ChunkedHTTPRangeStream(io.RawIOBase):
     """
-    Fault-tolerant sequential stream backed by 16 MB curl HTTP Range requests.
-    Avoids proxy/CDN long-lived stream disconnects (~240s) and retries seamlessly.
+    Fault-tolerant sequential stream backed by chunked curl HTTP Range requests.
+    Avoids proxy/CDN long-lived stream disconnects and retries seamlessly.
     """
 
     def __init__(self, url: str, chunk_bytes: int = 16 * 1024 * 1024):
@@ -345,7 +362,7 @@ class ChunkedHTTPRangeStream(io.RawIOBase):
         for attempt in range(6):
             try:
                 p = subprocess.Popen(
-                    ["curl.exe", "-sL", "--max-time", "60", "--range", f"{self.offset}-{end}", self.url],
+                    [CURL_BIN, "-sL", "--max-time", "90", "--range", f"{self.offset}-{end}", self.url],
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                 )
@@ -382,11 +399,19 @@ class ChunkedHTTPRangeStream(io.RawIOBase):
         return b"".join(chunks)
 
 
-def stream_cfg(cfg_num: int, out_path: Path, max_episodes: int, max_seconds: int, target_hz: float):
+def stream_cfg(
+    cfg_num: int,
+    out_path: Path,
+    max_episodes: int,
+    max_seconds: int,
+    target_hz: float,
+    chunk_mb: int = 16,
+    save_every: int = 200,
+):
     url = f"https://huggingface.co/datasets/tonyfanggalaxies/RH20T/resolve/main/RH20T_lowdim/RH20T_cfg{cfg_num}.tar.gz"
     t0 = time.time()
-    rstream = ChunkedHTTPRangeStream(url, chunk_bytes=16 * 1024 * 1024)
-    print(f"  [cfg{cfg_num}] remote_size={rstream.total_size} bytes", flush=True)
+    rstream = ChunkedHTTPRangeStream(url, chunk_bytes=chunk_mb * 1024 * 1024)
+    print(f"  [cfg{cfg_num}] remote_size={rstream.total_size} bytes | chunk={chunk_mb}MB | save_every={save_every}", flush=True)
     eps: List[Dict[str, Any]] = []
     stats_counter: Dict[str, int] = {}
     cur_ep: Optional[str] = None
@@ -409,7 +434,7 @@ def stream_cfg(cfg_num: int, out_path: Path, max_episodes: int, max_seconds: int
                     f"dl={mb:.0f}MB elapsed={time.time()-t0:.0f}s",
                     flush=True,
                 )
-            if len(eps) % 200 == 0:
+            if len(eps) % save_every == 0:
                 save_canonical_shard(out_path, eps, stats_counter, url, time.time() - t0)
 
     try:
@@ -449,8 +474,18 @@ def main():
     parser.add_argument("--max-episodes", type=int, default=1200)
     parser.add_argument("--max-seconds", type=int, default=3600)
     parser.add_argument("--target-hz", type=float, default=20.0)
+    parser.add_argument("--chunk-mb", type=int, default=16)
+    parser.add_argument("--save-every", type=int, default=200)
     args = parser.parse_args()
-    stream_cfg(args.cfg, Path(args.out_npz), args.max_episodes, args.max_seconds, args.target_hz)
+    stream_cfg(
+        args.cfg,
+        Path(args.out_npz),
+        args.max_episodes,
+        args.max_seconds,
+        args.target_hz,
+        chunk_mb=args.chunk_mb,
+        save_every=args.save_every,
+    )
 
 
 if __name__ == "__main__":
