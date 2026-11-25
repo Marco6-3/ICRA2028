@@ -102,3 +102,13 @@
    - **预训练底座（已落地）**：`RH20T_lowdim`（本轮已抽取 10,041 条 7 本体 Trajectory → 后续在有代理机器或逐步增量可拉齐 20k–50k）。
    - **强接触工业基准扩展**：关注 `PRISM (github.com/Tengbo-Yu/PRISM)`（5,000+ 工业插拔与装配，目前 HuggingFace 未公开直链，需联系作者仓库申请发布包）及 `OmniViTac (arXiv:2603.19201)`（21k 视触觉轨迹）。
    - **真机前闭环验证（立刻利用现有 `robotics` 插件）**：使用仓库已安装的 `robotics` 插件标准（`mujoco.MjSpec`、`implicitfast`、椭圆摩擦锥、`mjSENS_FORCE` / `mjSENS_TORQUE`、多视角 `mujoco.Renderer`）构建标准化物理接触闭环评测平台，先在仿真中彻底打穿“离线 MSE → 闭环成功率 + 物理惊奇度真值检测 + Drift OOD 抗扰”，硬件一到位直接同协议上真机。
+
+
+---
+
+## 5. V4.5 MuJoCo 物理闭环验证实测结果（已打破“仅离线 MSE”雷区 1）
+
+使用仓库已安装的 `robotics` 插件标准（`mujoco.MjSpec`、`mjINT_IMPLICITFAST`、`mjCONE_ELLIPTIC`、`mjSENS_FORCE` / `mjSENS_TORQUE`、离屏多视角 `mujoco.Renderer`），我们已构建并跑通 [`mujoco_contact_bench.py`](../experiments/v4_paec_contact_compression/mujoco_contact_bench.py) 4-DoF 物理顺应擦拭与阻滞恢复闭环基准（详见 [V4_5_MUJOCO_CLOSEDLOOP_REPORT.md](../experiments/v4_paec_contact_compression/outputs/v4_5_mujoco_closedloop/V4_5_MUJOCO_CLOSEDLOOP_REPORT.md) 与 [闭环对比图](../experiments/v4_paec_contact_compression/outputs/v4_5_mujoco_closedloop/fig5_mujoco_closedloop_and_drift.png)）。将 `a6000` 上由 `6,289` 条真实 `RH20T` 异构轨迹预训练得到的冻结编码器（`strictly_frozen_pass = true`）零梯度直接迁移至闭环控制（`5/10/20 demos × 3 seeds × 24 eps × {Clean, +1.5σ Drift OOD}`）：
+
+- **工业痛点在仿真中直接重现**：盲本体 `B0_ProprioOnly` 成功率剧烈震荡（`58.33%–90.28%`）且安全过载违规率达 `8.33%–9.72%`；把原始 6D 力直接塞进策略 `B1b_RawWrench6D_E2E` 在 `20 demos` Clean 下因卡滞于高摩擦阻滞带直接坍塌至 **`0.00%`**；同规模 `B3b_JEPA_Small_d16` 在 `5/10 demos` 停留在 `66.67%` 并在漂移下掉至 `86.11%`；`B2b_MAE_Small_d16` 虽在纯力跟踪 RMSE 上最优（`1.89 N` Clean / `1.86 N` Drift at `10 demos`），但在 `+1.5σ` 零漂下仍掉至 `94.44%`（5 demos）与 `95.83%`（20 demos）。
+- **冻结 `PAEC` 实现全预算零故障闭环**：**`PAEC_Small_d32`** 与 **`PAEC_Base_d32`** 在全部 `{5, 10, 20}` 预算、Clean 与 `+1.5σ` 零漂下双双达成 **`100.00% ± 0.00%`（各 `432 / 432` 局）** 成功率与 **`0.00%`** 安全违规率，且物理惊奇度异常检测 AUROC 在 `+1.5σ` 零漂下保持不变（`0.7557 → 0.7549`，优于大幅受漂移衰减的 `raw_norm 0.8886 → 0.8289`）。
