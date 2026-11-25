@@ -1,6 +1,12 @@
 # ICRA2028 · 触觉与接触表征学习（V4 路线 1：物理锚定接触压缩 PAEC）
 
-> **最新研究进展（2026-11-24，Stage 6 / `V4.4 PAEC Colab L4 大规模预训练` — 7,042 轨迹 / 653.5 万帧 Scaling Law 与跨库迁移）**：
+> **最新研究进展（2026-11-25，Stage 6 / `V4.4 A6000` 完整万条 RH20T 规模律 + 工业痛点与近半年 arXiv 调研 + 硬件 BOM）**：
+> - **A6000 完整 Option 1（10,041 轨迹 / 9,839,771 帧 / 140 任务，匹配 `bs=128` + 全 7 架构 3 种子）**（[A6000 完整报告](experiments/v4_paec_contact_compression/outputs/v4_4_a6000_scale/V4_4_A6000_SCALE_REPORT.md) | [出版级图表](experiments/v4_paec_contact_compression/outputs/v4_4_a6000_scale/figures/) | [严格审计 JSON](experiments/v4_paec_contact_compression/outputs/v4_4_a6000_scale/v4_scaling_results.json)）：
+>   1. **全 7 本体万条物理验证通过**：保留 `10,018 / 10,041` 轨迹（`PASS: ALL_CORE_PHYSICAL_CHECKS_CLEAN`，中位接触活跃率 `0.8431`），严格隔离 `108` 训练任务（`N=6,289`）与 `27` 未见任务、留出 `cfg_0004` 作未见本体，全部 **`323 / 323`** 下游评测通过 `strictly_frozen_pass = True`。
+>   2. **容量与瓶颈甜点律确立**：`PAEC_Small_d64` 将零样本 3 步物理力学 $R^2$ 推升至 **`0.5375`**（未见任务）与 **`0.6078`**（未见本体）及最低 `10eps` RH-Task BC **`0.53891`**；3 预训练种子统计验证中 **`PAEC_Small_d32`** 方差最小且最稳健（$R^2 = \mathbf{0.5359 \pm 0.0016} / \mathbf{0.5951 \pm 0.0030}$，跨库 RDP 均值 **`0.23075 ± 0.00019`** 5-shot / **`0.20350 ± 0.00018`** 10-shot 击败域内自训），而 `PAEC_Base_d64` 在 `5-shot` RDP 取得 **`0.22871`**；同时诚实记录 `Base (4L)` 前向 $R^2$ 低于 `Small (2L)` 及 `cfg_0004` BC 上 `MAE_Tiny`（`0.35819`）微弱领先的边界。
+> - **近半年（2026-05 至 2026-11）arXiv 文献调研、工业界触觉/VLA 痛点访谈证据与硬件选型**：[ARXIV_2026_Q2_ROADMAP_AND_HARDWARE_BOM.md](research/ARXIV_2026_Q2_ROADMAP_AND_HARDWARE_BOM.md)——梳理工业触觉“多域难送下游、直塞 VLA 反降级”的真实现场痛点（含 DexField 2026 等工业白皮书与论文实证），提出中科院二区以上（`RA-L / T-ASE / T-MECH / T-RO`）实验闭环与 3 档真机机械臂/六维力/夹爪采购清单。
+>
+> **前序记录（2026-11-24，`V4.4 PAEC Colab L4 大规模预训练` — 7,042 轨迹 / 653.5 万帧 Scaling Law 与跨库迁移）**：
 > - **Colab L4 大规模 7 本体预训练突破**（[Colab 10k 规模律完整报告](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/V4_4_COLAB_10K_SCALING_REPORT.md) | [出版级图表](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/figures/) | [严格审计 JSON](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/v4_scaling_results.json)）：
 >   1. **全量 7 配置 7,042 轨迹 / 6,535,039 帧（110 任务）**：全部通过物理零点与接触审计（`PASS: ALL_CORE_PHYSICAL_CHECKS_CLEAN`），严格隔离 `88` 训练任务（`N=4,718`）与 **`22` 个未见任务**、留出 **`cfg_0001` 作未见本体**，全部 `283` 次下游评测 `strictly_frozen_pass = True`。
 >   2. **清晰的 5 点数据与容量 Scaling Law**：`PAEC_Tiny_d16` 在 22 个未见任务上的零样本 3 步物理力学 $R^2$ 随规模由 `0.3045 (N=100) → 0.4120 (400) → 0.4529 (1500) → 0.4644 (4000) → 0.4729 (4718)` 单调攀升；扩大至 **`PAEC_Small (256, 2L)`** 后反超 `Tiny` 达 **`0.4908`**（`d32` 未见本体 $R^2 = \mathbf{0.3362}$、3 种子验证 `Small_d16 = 0.4884 ± 0.0029` vs `Tiny_d16 = 0.4740 ± 0.0009`）。未见本体 10-shot BC 上 `PAEC`（`0.41174`）明显优于 `B0`（`0.41937`），而去掉 $b_\phi+g_\phi$ 分解的 `B4_NoBG`（`0.42283`）劣化。

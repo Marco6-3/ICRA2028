@@ -226,7 +226,7 @@ def process_episode_blobs(
     }, "ok"
 
 
-def save_canonical_shard(out_path: Path, eps: List[Dict[str, Any]], stats_counter: Dict[str, int], source_url: str, elapsed_s: float):
+def save_canonical_shard(out_path: Path, eps: List[Dict[str, Any]], stats_counter: Dict[str, int], source_url: str, elapsed_s: float, compressed: bool = False):
     if len(eps) == 0:
         print(f"[WARN] No valid episodes extracted for {out_path}; skip write.")
         return
@@ -284,7 +284,8 @@ def save_canonical_shard(out_path: Path, eps: List[Dict[str, Any]], stats_counte
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     tmp_path = out_path.with_suffix(".tmp.npz")
-    np.savez(
+    save_fn = np.savez_compressed if compressed else np.savez
+    save_fn(
         tmp_path,
         contact_obs=contact_obs,
         wrench_raw=wrench_raw,
@@ -407,8 +408,11 @@ def stream_cfg(
     target_hz: float,
     chunk_mb: int = 16,
     save_every: int = 200,
+    hf_endpoint: str = "https://huggingface.co",
+    compressed: bool = False,
 ):
-    url = f"https://huggingface.co/datasets/tonyfanggalaxies/RH20T/resolve/main/RH20T_lowdim/RH20T_cfg{cfg_num}.tar.gz"
+    host = hf_endpoint.rstrip("/")
+    url = f"{host}/datasets/tonyfanggalaxies/RH20T/resolve/main/RH20T_lowdim/RH20T_cfg{cfg_num}.tar.gz"
     t0 = time.time()
     rstream = ChunkedHTTPRangeStream(url, chunk_bytes=chunk_mb * 1024 * 1024)
     print(f"  [cfg{cfg_num}] remote_size={rstream.total_size} bytes | chunk={chunk_mb}MB | save_every={save_every}", flush=True)
@@ -435,7 +439,7 @@ def stream_cfg(
                     flush=True,
                 )
             if len(eps) % save_every == 0:
-                save_canonical_shard(out_path, eps, stats_counter, url, time.time() - t0)
+                save_canonical_shard(out_path, eps, stats_counter, url, time.time() - t0, compressed=compressed)
 
     try:
         with tarfile.open(fileobj=rstream, mode="r|gz") as tf:
@@ -464,7 +468,7 @@ def stream_cfg(
     except Exception as e:
         print(f"  [cfg{cfg_num}] stream ended ({type(e).__name__}: {e}); flushing {len(eps)} valid episodes", flush=True)
 
-    save_canonical_shard(out_path, eps, stats_counter, url, time.time() - t0)
+    save_canonical_shard(out_path, eps, stats_counter, url, time.time() - t0, compressed=compressed)
 
 
 def main():
@@ -476,15 +480,30 @@ def main():
     parser.add_argument("--target-hz", type=float, default=20.0)
     parser.add_argument("--chunk-mb", type=int, default=16)
     parser.add_argument("--save-every", type=int, default=200)
+    parser.add_argument("--hf-endpoint", type=str, default=os.environ.get("HF_ENDPOINT", "https://huggingface.co"))
+    parser.add_argument("--compressed", action="store_true", help="Write gzip-compressed npz via np.savez_compressed")
+    parser.add_argument("--skip-existing", action="store_true", help="Skip if out-npz already has >= max-episodes")
     args = parser.parse_args()
+    out_p = Path(args.out_npz)
+    if args.skip_existing and out_p.exists():
+        try:
+            with np.load(out_p, allow_pickle=False) as z:
+                n_have = int(len(z["ep_starts"]))
+            if n_have >= args.max_episodes:
+                print(f"[SKIP] {out_p.name} already has {n_have} >= {args.max_episodes} episodes.", flush=True)
+                return
+        except Exception:
+            pass
     stream_cfg(
         args.cfg,
-        Path(args.out_npz),
+        out_p,
         args.max_episodes,
         args.max_seconds,
         args.target_hz,
         chunk_mb=args.chunk_mb,
         save_every=args.save_every,
+        hf_endpoint=args.hf_endpoint,
+        compressed=args.compressed,
     )
 
 

@@ -742,14 +742,22 @@ def main():
     parser.add_argument("--bc-epochs", type=int, default=30)
     parser.add_argument("--bc-seeds", type=int, nargs="+", default=[0, 1, 2])
     parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--base-batch-size", type=int, default=0, help="Batch size for Base models (0=auto: match batch_size if VRAM>=36GiB else min(batch_size,64))")
     parser.add_argument("--save-best-ckpt", type=str, default="", help="Optional path to save top frozen pretrained checkpoints")
     args = parser.parse_args()
+
+    if args.base_batch_size > 0:
+        base_bs_use = int(args.base_batch_size)
+    elif torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory >= 36 * (1024 ** 3):
+        base_bs_use = int(args.batch_size)
+    else:
+        base_bs_use = min(int(args.batch_size), 64)
 
     t_all = time.time()
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Device: {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})", flush=True)
+    print(f"Device: {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'}) | bs={args.batch_size} base_bs={base_bs_use}", flush=True)
 
     # 1. Load RH20T Canonical shards + RDP canonical tasks
     rh_eps, rh_filter_stats = load_rh20t_shards(Path(args.rh20t_dir))
@@ -839,7 +847,7 @@ def main():
             )
         return ev
 
-    # 3. Exp A: Adaptive log-spaced Data Scaling Law (5-point when n_max >= 4000)
+    # 3. Exp A: Adaptive log-spaced Data Scaling Law (6-point when n_max >= 12000, 5-point when n_max >= 4000)
     n_max = len(splits["train_pool"])
     if n_max < 700:
         raw_scales = [(40, 1200), (120, 2000), (260, 3200), (n_max, 5000)]
@@ -847,8 +855,10 @@ def main():
         raw_scales = [(50, 1200), (150, 2000), (400, 3200), (n_max, 5000)]
     elif n_max < 4000:
         raw_scales = [(100, 1500), (300, 2500), (1000, 4000), (n_max, 6000)]
-    else:
+    elif n_max < 12000:
         raw_scales = [(100, 1500), (400, 2500), (1500, 4000), (4000, 6000), (n_max, 8000)]
+    else:
+        raw_scales = [(100, 1500), (400, 2500), (1500, 4000), (4500, 6000), (10000, 8000), (n_max, 12000)]
     scale_schedule = []
     for n_ep, stp in raw_scales:
         if n_ep < n_max or len(scale_schedule) == 0:
@@ -894,7 +904,7 @@ def main():
     # Include PAEC_Tiny_d16 directly from Exp A N=MAX
     results["exp_b_capacity_bottleneck"]["PAEC_Tiny_d16"] = results["exp_a_data_scaling"][f"N_{n_max}"]["models"]["PAEC_Tiny_d16"]
     for arch in exp_b_archs:
-        bs_use = min(args.batch_size, 64) if "Base" in arch else args.batch_size
+        bs_use = base_bs_use if "Base" in arch else args.batch_size
         mdl = build_model(arch, device)
         pstats = pretrain_on_episodes(f"Nmax/{arch}", mdl, rh_eps, splits["train_pool"], device, steps=nmax_steps, batch_size=bs_use, seed=42)
         ev = _eval_everywhere(mdl, "z")
@@ -902,7 +912,7 @@ def main():
         if arch in ("PAEC_Small_d16", "PAEC_Small_d32", "PAEC_Base_d32"):
             ev["eval_probe"] = _eval_everywhere(mdl, "z_probe")
         results["exp_b_capacity_bottleneck"][arch] = ev
-        if arch in ("PAEC_Small_d32", "PAEC_Base_d32"):
+        if arch in ("PAEC_Small_d32", "PAEC_Small_d64", "PAEC_Base_d32", "PAEC_Base_d64"):
             cached_nmax_models[arch] = mdl
         with open(out_dir / "v4_scaling_results.json", "w", encoding="utf-8") as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
@@ -910,7 +920,7 @@ def main():
     if args.save_best_ckpt:
         ckpt_p = Path(args.save_best_ckpt)
         ckpt_p.parent.mkdir(parents=True, exist_ok=True)
-        save_keys = [k for k in ("PAEC_Tiny_d16", "PAEC_Small_d32", "PAEC_Base_d32") if k in cached_nmax_models]
+        save_keys = [k for k in ("PAEC_Tiny_d16", "PAEC_Small_d32", "PAEC_Small_d64", "PAEC_Base_d32", "PAEC_Base_d64") if k in cached_nmax_models]
         torch.save(
             {
                 "protocol": "v4_4_canonical_si",
@@ -940,7 +950,7 @@ def main():
             seed_runs["seed_42"] = results["exp_a_data_scaling"][f"N_{n_max}"]["models"][arch]
         elif arch in results["exp_b_capacity_bottleneck"]:
             seed_runs["seed_42"] = results["exp_b_capacity_bottleneck"][arch]
-        bs_use = min(args.batch_size, 64) if "Base" in arch else args.batch_size
+        bs_use = base_bs_use if "Base" in arch else args.batch_size
         for psd in (100, 2026):
             mdl = build_model(arch, device)
             pstats = pretrain_on_episodes(f"Seed{psd}/{arch}", mdl, rh_eps, splits["train_pool"], device, steps=nmax_steps, batch_size=bs_use, seed=psd)

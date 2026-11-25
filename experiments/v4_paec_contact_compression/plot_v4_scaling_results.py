@@ -149,7 +149,7 @@ def plot_fig2_data_scaling(scaling: Dict[str, Any], fig_dir: Path):
     ax.set_xlabel("RH20T Pretraining Episodes (log scale)")
     ax.set_ylabel(f"{task_bkey} BC Test MSE (↓)")
     ax.set_title(f"(b) RH20T Unseen-Task ({task_bkey} BC)")
-    ax.legend(frameon=True, framealpha=0.88, edgecolor="none", fontsize=7.8, loc="upper right")
+    ax.legend(frameon=True, framealpha=0.92, edgecolor="none", fontsize=7.8, loc="best")
     ax.grid(alpha=0.25)
 
     # Panel 3: Cross-Dataset Zero-Shot Mean BC MSE across all 3 RDP tasks (10-shot)
@@ -202,7 +202,8 @@ def plot_fig3_capacity_bottleneck(scaling: Dict[str, Any], fig_dir: Path):
     ax.set_xticklabels([l for _, l in cap_present])
     ax.set_ylabel("Zero-Shot 3-Step Wrench $R^2$ (↑)")
     ax.set_title("(a) Model Capacity Scaling (Fixed $d_z=16$)")
-    ax.legend(frameon=False)
+    ax.set_ylim(0, max(r2_task + r2_cfg) * 1.24)
+    ax.legend(frameon=False, loc="upper left")
     ax.grid(axis="y", alpha=0.25)
 
     # Panel 2: Bottleneck sweep (Small 256/2L) - Effective Rank & Unseen-Task R2

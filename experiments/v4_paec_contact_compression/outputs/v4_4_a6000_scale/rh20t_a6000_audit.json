@@ -1,0 +1,537 @@
+{
+  "mode": "audit-local",
+  "data_dir": "H:\\icra2028_paec\\data\\rh20t_canonical",
+  "summary": {
+    "n_episodes_audited": 10041,
+    "n_with_6d_wrench": 10041,
+    "n_with_pose": 10041,
+    "n_unique_configs": 7,
+    "n_unique_tasks": 1,
+    "top_configs": {
+      "cfg4": 2005,
+      "cfg1": 1959,
+      "cfg2": 1764,
+      "cfg6": 1412,
+      "cfg5": 1217,
+      "cfg7": 899,
+      "cfg3": 785
+    },
+    "top_tasks": {
+      "rh20t_canonical": 10041
+    },
+    "ft_hz_median": null,
+    "pose_hz_median": null,
+    "nonzero_wrench_median": 1.0,
+    "contact_active_median": 0.8431,
+    "contact_active_p25": 0.7338,
+    "force_p95_median_n": 4.146,
+    "torque_p95_median_nm": 0.3461,
+    "stuck_repeat_median": 0.0,
+    "low_speed_rot_force_abs_corr_median": 0.1599,
+    "go_no_go_flags": [
+      "PASS: ALL_CORE_PHYSICAL_CHECKS_CLEAN"
+    ]
+  },
+  "sample_records": [
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep0",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        597,
+        6
+      ],
+      "pose_shape": [
+        597,
+        10
+      ],
+      "n_frames_ft": 597,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5946,
+      "force_p50_n": 0.4644,
+      "force_p95_n": 5.4795,
+      "force_max_n": 19.0722,
+      "torque_p95_nm": 0.1151,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.7422
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep1",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        794,
+        6
+      ],
+      "pose_shape": [
+        794,
+        10
+      ],
+      "n_frames_ft": 794,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5894,
+      "force_p50_n": 0.4174,
+      "force_p95_n": 2.0341,
+      "force_max_n": 19.0492,
+      "torque_p95_nm": 0.1218,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.3748
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep2",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        518,
+        6
+      ],
+      "pose_shape": [
+        518,
+        10
+      ],
+      "n_frames_ft": 518,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5135,
+      "force_p50_n": 0.4936,
+      "force_p95_n": 1.5641,
+      "force_max_n": 32.6487,
+      "torque_p95_nm": 0.1053,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.4903
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep3",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        502,
+        6
+      ],
+      "pose_shape": [
+        502,
+        10
+      ],
+      "n_frames_ft": 502,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6673,
+      "force_p50_n": 0.7161,
+      "force_p95_n": 8.5323,
+      "force_max_n": 25.1549,
+      "torque_p95_nm": 0.3364,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.0737
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep4",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        675,
+        6
+      ],
+      "pose_shape": [
+        675,
+        10
+      ],
+      "n_frames_ft": 675,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5896,
+      "force_p50_n": 0.4526,
+      "force_p95_n": 1.4204,
+      "force_max_n": 19.2405,
+      "torque_p95_nm": 0.148,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.1891
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep5",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        599,
+        6
+      ],
+      "pose_shape": [
+        599,
+        10
+      ],
+      "n_frames_ft": 599,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5743,
+      "force_p50_n": 0.4124,
+      "force_p95_n": 1.5703,
+      "force_max_n": 21.1498,
+      "torque_p95_nm": 0.1181,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.1098
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep6",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        591,
+        6
+      ],
+      "pose_shape": [
+        591,
+        10
+      ],
+      "n_frames_ft": 591,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5398,
+      "force_p50_n": 0.4316,
+      "force_p95_n": 1.8869,
+      "force_max_n": 31.7331,
+      "torque_p95_nm": 0.1573,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.4802
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep7",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        624,
+        6
+      ],
+      "pose_shape": [
+        624,
+        10
+      ],
+      "n_frames_ft": 624,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5256,
+      "force_p50_n": 0.3727,
+      "force_p95_n": 2.7574,
+      "force_max_n": 41.9959,
+      "torque_p95_nm": 0.1341,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.0994
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep8",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        575,
+        6
+      ],
+      "pose_shape": [
+        575,
+        10
+      ],
+      "n_frames_ft": 575,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.64,
+      "force_p50_n": 0.4815,
+      "force_p95_n": 4.3177,
+      "force_max_n": 10.4616,
+      "torque_p95_nm": 0.0943,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.3511
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep9",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        831,
+        6
+      ],
+      "pose_shape": [
+        831,
+        10
+      ],
+      "n_frames_ft": 831,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6101,
+      "force_p50_n": 0.4113,
+      "force_p95_n": 4.6087,
+      "force_max_n": 13.9959,
+      "torque_p95_nm": 0.0803,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.1363
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep10",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        347,
+        6
+      ],
+      "pose_shape": [
+        347,
+        10
+      ],
+      "n_frames_ft": 347,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5793,
+      "force_p50_n": 0.3877,
+      "force_p95_n": 1.6123,
+      "force_max_n": 21.5501,
+      "torque_p95_nm": 0.1149,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.3406
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep11",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        746,
+        6
+      ],
+      "pose_shape": [
+        746,
+        10
+      ],
+      "n_frames_ft": 746,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6542,
+      "force_p50_n": 0.5982,
+      "force_p95_n": 1.8907,
+      "force_max_n": 21.3467,
+      "torque_p95_nm": 0.1817,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.189
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep12",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        736,
+        6
+      ],
+      "pose_shape": [
+        736,
+        10
+      ],
+      "n_frames_ft": 736,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5571,
+      "force_p50_n": 0.4129,
+      "force_p95_n": 9.1204,
+      "force_max_n": 46.0869,
+      "torque_p95_nm": 0.5173,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.0844
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep13",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        364,
+        6
+      ],
+      "pose_shape": [
+        364,
+        10
+      ],
+      "n_frames_ft": 364,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6236,
+      "force_p50_n": 0.603,
+      "force_p95_n": 9.1942,
+      "force_max_n": 48.6486,
+      "torque_p95_nm": 0.1114,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.1649
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep14",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        866,
+        6
+      ],
+      "pose_shape": [
+        866,
+        10
+      ],
+      "n_frames_ft": 866,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.5843,
+      "force_p50_n": 0.4146,
+      "force_p95_n": 1.574,
+      "force_max_n": 20.4682,
+      "torque_p95_nm": 0.1228,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.3189
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep15",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        320,
+        6
+      ],
+      "pose_shape": [
+        320,
+        10
+      ],
+      "n_frames_ft": 320,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.65,
+      "force_p50_n": 0.5664,
+      "force_p95_n": 6.6841,
+      "force_max_n": 40.8643,
+      "torque_p95_nm": 0.1203,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.5916
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep16",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        632,
+        6
+      ],
+      "pose_shape": [
+        632,
+        10
+      ],
+      "n_frames_ft": 632,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6092,
+      "force_p50_n": 0.5726,
+      "force_p95_n": 1.4789,
+      "force_max_n": 16.6547,
+      "torque_p95_nm": 0.1403,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.2234
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep17",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        2865,
+        6
+      ],
+      "pose_shape": [
+        2865,
+        10
+      ],
+      "n_frames_ft": 2865,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6719,
+      "force_p50_n": 0.5556,
+      "force_p95_n": 1.2664,
+      "force_max_n": 23.4039,
+      "torque_p95_nm": 0.1227,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.0869
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep18",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        395,
+        6
+      ],
+      "pose_shape": [
+        395,
+        10
+      ],
+      "n_frames_ft": 395,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6329,
+      "force_p50_n": 0.5786,
+      "force_p95_n": 4.7878,
+      "force_max_n": 11.38,
+      "torque_p95_nm": 0.1313,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.1334
+    },
+    {
+      "ep_id": "rh20t_cfg1_a6000:ep19",
+      "cfg": "cfg1",
+      "task": "rh20t_canonical",
+      "has_wrench": true,
+      "has_pose": true,
+      "wrench_shape": [
+        1882,
+        6
+      ],
+      "pose_shape": [
+        1882,
+        10
+      ],
+      "n_frames_ft": 1882,
+      "nonfinite_frac": 0.0,
+      "nonzero_frac": 1.0,
+      "contact_active_frac": 0.6982,
+      "force_p50_n": 0.6838,
+      "force_p95_n": 1.7556,
+      "force_max_n": 18.717,
+      "torque_p95_nm": 0.1372,
+      "stuck_repeat_frac": 0.0,
+      "low_speed_rot_force_corr": 0.062
+    }
+  ]
+}
