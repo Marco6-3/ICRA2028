@@ -1,160 +1,50 @@
-# ICRA2028 · 触觉与接触表征学习（V4 路线 1：物理锚定接触压缩 PAEC）
+# ICRA2028 · 物理锚定接触状态压缩（V4 PAEC）
 
-> **最新研究进展（2026-11-25，Stage 6–7 / `V4.4 A6000` 万条缩放 + `V4.5 MuJoCo` 物理闭环零样本迁移 + 工业痛点调研与硬件 BOM）**：
-> - **V4.5 MuJoCo 物理闭环验证突破**（[V4.5 闭环报告](experiments/v4_paec_contact_compression/outputs/v4_5_mujoco_closedloop/V4_5_MUJOCO_CLOSEDLOOP_REPORT.md) | [闭环对比图](experiments/v4_paec_contact_compression/outputs/v4_5_mujoco_closedloop/fig5_mujoco_closedloop_and_drift.png) | [闭合审计 JSON](experiments/v4_paec_contact_compression/outputs/v4_5_mujoco_closedloop/mujoco_closedloop_results.json)）：将真实 `RH20T`（`6,289` eps）预训练权重 **100% 零梯度冻结（`strictly_frozen_pass = true`）** 迁移至高保真 4-DoF MuJoCo 顺应擦拭与阻滞恢复闭环环境（`5/10/20 demos × 3 seeds × 24 eps × {Clean, +1.5σ Drift OOD}`）：
->   1. 盲本体 `B0` 成功率波动大（`58.33%–90.28%`）且安全过载违规达 `8.33%–9.72%`；生塞原始 6D 力 `B1b_RawWrench6D_E2E` 在 20-demo Clean 下因卡滞坍塌至 **`0.00%`**；同规模 `B3b_JEPA`（`66.67% → 86.11%`）与 `B2b_MAE`（漂移下 `94.44% / 95.83%`）均出现性能掉队。
->   2. **`PAEC_Small_d32` 与 `PAEC_Base_d32`** 在全部预算 Clean 与 `+1.5σ` 零漂下双双保持 **`100.00% ± 0.00%`（各 432/432 局）** 成功率与 **`0.00%`** 安全违规率，且物理惊奇度 AUROC 在零漂下稳定（`0.7557 → 0.7549`，优于大幅受漂移退化的 `raw_norm 0.8886 → 0.8289`）。
-> - **A6000 完整 Option 1（10,041 轨迹 / 9,839,771 帧 / 140 任务，匹配 `bs=128` + 全 7 架构 3 种子）**（[A6000 完整报告](experiments/v4_paec_contact_compression/outputs/v4_4_a6000_scale/V4_4_A6000_SCALE_REPORT.md) | [出版级图表](experiments/v4_paec_contact_compression/outputs/v4_4_a6000_scale/figures/) | [严格审计 JSON](experiments/v4_paec_contact_compression/outputs/v4_4_a6000_scale/v4_scaling_results.json)）：
->   1. **全 7 本体万条物理验证通过**：保留 `10,018 / 10,041` 轨迹（`PASS: ALL_CORE_PHYSICAL_CHECKS_CLEAN`，中位接触活跃率 `0.8431`），严格隔离 `108` 训练任务（`N=6,289`）与 `27` 未见任务、留出 `cfg_0004` 作未见本体，全部 **`323 / 323`** 下游评测通过 `strictly_frozen_pass = True`。
->   2. **容量与瓶颈甜点律确立**：`PAEC_Small_d64` 将零样本 3 步物理力学 $R^2$ 推升至 **`0.5375`**（未见任务）与 **`0.6078`**（未见本体）及最低 `10eps` RH-Task BC **`0.53891`**；3 预训练种子统计验证中 **`PAEC_Small_d32`** 方差最小且最稳健（$R^2 = \mathbf{0.5359 \pm 0.0016} / \mathbf{0.5951 \pm 0.0030}$，跨库 RDP 均值 **`0.23075 ± 0.00019`** 5-shot / **`0.20350 ± 0.00018`** 10-shot 击败域内自训），而 `PAEC_Base_d64` 在 `5-shot` RDP 取得 **`0.22871`**；同时诚实记录 `Base (4L)` 前向 $R^2$ 低于 `Small (2L)` 及 `cfg_0004` BC 上 `MAE_Tiny`（`0.35819`）微弱领先的边界。
-> - **近半年（2026-05 至 2026-11）arXiv 文献调研、工业界触觉/VLA 痛点访谈证据与硬件选型**：[ARXIV_2026_Q2_ROADMAP_AND_HARDWARE_BOM.md](research/ARXIV_2026_Q2_ROADMAP_AND_HARDWARE_BOM.md)——梳理工业触觉“多域难送下游、直塞 VLA 反降级”的真实现场痛点（含 DexField 2026 等工业白皮书与论文实证），提出中科院二区以上（`RA-L / T-ASE / T-MECH / T-RO`）实验闭环与 3 档真机机械臂/六维力/夹爪采购清单。
+> **仓库主线**：本仓库聚焦 **PAEC（Physics-Anchored Action-Effect Contact Compression）** 研究主线——以机器人物理力学增量（6D Wrench / 夹爪力 / 触觉响应）与零动作恒等分解预测器（$\widehat{\Delta \mathbf{y}}_{t,\Delta} = b_\phi(z_t) + g_\phi(z_t, a)$，$g(\cdot, \mathbf{0}) \equiv \mathbf{0}$）将因果接触历史压缩为紧凑低维状态 $z_t$，并评估其在未见任务、未见本体、跨实验室数据集、工业漂移与 MuJoCo 闭环控制中的零梯度冻结迁移能力。
 >
-> **前序记录（2026-11-24，`V4.4 PAEC Colab L4 大规模预训练` — 7,042 轨迹 / 653.5 万帧 Scaling Law 与跨库迁移）**：
-> - **Colab L4 大规模 7 本体预训练突破**（[Colab 10k 规模律完整报告](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/V4_4_COLAB_10K_SCALING_REPORT.md) | [出版级图表](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/figures/) | [严格审计 JSON](experiments/v4_paec_contact_compression/outputs/v4_4_colab_10k/v4_scaling_results.json)）：
->   1. **全量 7 配置 7,042 轨迹 / 6,535,039 帧（110 任务）**：全部通过物理零点与接触审计（`PASS: ALL_CORE_PHYSICAL_CHECKS_CLEAN`），严格隔离 `88` 训练任务（`N=4,718`）与 **`22` 个未见任务**、留出 **`cfg_0001` 作未见本体**，全部 `283` 次下游评测 `strictly_frozen_pass = True`。
->   2. **清晰的 5 点数据与容量 Scaling Law**：`PAEC_Tiny_d16` 在 22 个未见任务上的零样本 3 步物理力学 $R^2$ 随规模由 `0.3045 (N=100) → 0.4120 (400) → 0.4529 (1500) → 0.4644 (4000) → 0.4729 (4718)` 单调攀升；扩大至 **`PAEC_Small (256, 2L)`** 后反超 `Tiny` 达 **`0.4908`**（`d32` 未见本体 $R^2 = \mathbf{0.3362}$、3 种子验证 `Small_d16 = 0.4884 ± 0.0029` vs `Tiny_d16 = 0.4740 ± 0.0009`）。未见本体 10-shot BC 上 `PAEC`（`0.41174`）明显优于 `B0`（`0.41937`），而去掉 $b_\phi+g_\phi$ 分解的 `B4_NoBG`（`0.42283`）劣化。
->   3. **跨库 `RH20T → Flexiv RDP` 少样本反超域内自训**：`PAEC_Small_d64`（平均 5-shot **`0.23037`** / 10-shot **`0.20349`**）与 `PAEC_Base_d64`（在强接触 `rdp_wipe` 上达 **`0.44755 / 0.39425 / 0.31175`**）零梯度冻结超越 `B0`（`0.23815 / 0.20744`）与 RDP 域内自训（`0.23011 / 0.20453`），而 `JEPA+VICReg`（`0.21032`）仍劣于 `B0`。
->
-> **前序记录（2026-11-24 本地 V4.1–V4.4 小规模 749 轨迹基线）**：
-> - **V4.1 协议冻结与三任务全面复现**（`peel_v3`、`wipe_v1.5` 与新增第 3 任务 `lift_v2`）：修复零动作标准化偏移并补齐纯 6D 端到端（`B1b_RawWrench6D_E2E`）、同瓶颈 `JEPA_d16` 与同零漂增强（`B2b_MAE_DriftAug`、`B3b_JEPA_d16_Drift`），三项任务上仅 **`PAEC`** 稳定优于 `B0_ProprioOnly` 与全部基线。
-> - **V4.2–V4.4 RH20T 多机器人 Scaling Law 与跨数据集 `RH20T → RDP` 零梯度迁移**（[完整审计报告](experiments/v4_paec_contact_compression/outputs/v4_scaling_20261124/V4_1_TO_V4_4_SCALING_REPORT.md) | [研究协议](research/V4_SCALING_AND_PROTOCOL_V4_1.md)）：
->   1. **7 本体规范化物理库**：从 `RH20T_lowdim`（`cfg1–cfg7` 全部 7 种机械臂/夹爪）流式抽取 **749 条轨迹 / 522,958 帧 / 11 个任务**至 20 Hz Canonical SI 物理格式，严格留出 `cfg_0006`（KUKA+Robotiq）作未见本体测试、`task_0002 / task_0010` 作未见任务测试。
->   2. **清晰的数据与瓶颈尺度律**：`PAEC` 在未见任务前向 6D 力预测 $R^2$ 随规模由 `0.2099 (N=40) → 0.3431 (N=488)`，未见本体 `cfg_0006` 由 `0.1996 → 0.4264`（`PAEC_Small_d32` 达 **`0.4599`**）；3 独立预训练种子下未见任务 30-shot BC 达 **`0.60722 ± 0.00090`**（显著超越 `MAE+Drift 0.61636` 与 `JEPA_d16+Drift 0.61221`）。
->   3. **跨实验室 `RH20T → RDP` 少样本超越域内自训**：以 **488 条异构 RH20T 预训练**后零梯度冻结迁移至未见 Flexiv RDP 三任务，**`PAEC_Small_d32`** 仅用 **5 条目标示教**即取得平均 MSE **`0.22928`**（优于 `B0 0.23815` **-3.7%** 且反超 RDP 域内自训 `0.23011`），10-shot 达 **`0.20281`**（同样优于域内自训 `0.20453`）。
-> - **历史归档（2026-11-21 `V4.0` + `V3 ManiWAV` + `Stage 1–4`）原样保留**：
-> - **Round-1 音频 JEPA 证伪记录（已归档）**：在 `ManiWAV/flip`（283 eps）上的严格审计实验（[ROUND1_AUDIT_SUMMARY.md](experiments/v3_caec_jepa_mvp/outputs/maniwav_flip_v3/ROUND1_AUDIT_SUMMARY.md)）证实，纯抽象隐空间 JEPA + VICReg 在几百条轨迹尺度下会陷入“坍缩 vs. 高维噪声膨胀（有效秩 `33.35`）”困境，下游少样本 BC 输给低秩 `MAE`（有效秩 `5.71`），且接触麦克风对未见频谱传递函数偏移高度脆弱。
-> - **V4 路线 1 升级与双任务突破**：算法转向 **[V4 算法蓝图：物理锚定动作效应接触压缩（PAEC）](research/V4_PHYSICS_GROUNDED_CONTACT_COMPRESSION.md)**——以真实免标注多步物理力学净响应（$\widehat{\Delta \mathbf{y}}_{t,\Delta} = b_\phi(z_t) + g_\phi(z_t, a)$，$g(\cdot, \mathbf{0})\equiv \mathbf{0}$）锚定紧凑低维瓶颈 $z_t \in \mathbb{R}^{16}$，天然零坍缩、无需 VICReg 噪声膨胀。在官方 RSS-2025 `Reactive Diffusion Policy` 完整全采率物理数据集（37D = 6D Wrench + 1D 夹爪力 + 30D 双 GelSight）上已完成三大严格审计验证（**[v4_paec_contact_compression](experiments/v4_paec_contact_compression/README.md)**）：
->   1. **双任务域内复现**（[peel_v3 报告](experiments/v4_paec_contact_compression/outputs/rdp_peel_v4/RDP_PEEL_V4_RESULTS.md)、[wipe_v1.5 报告](experiments/v4_paec_contact_compression/outputs/rdp_wipe_v4/RDP_WIPE_V4_RESULTS.md)）：`B1_RawFT_End2End`、`B2_MAE` 与 `B3_LatentJEPA`（有效秩膨胀至 `40.21 / 41.79`）在两项任务全部预算下均劣化下游 BC；唯有 **`PAEC`**（有效秩 `9.73–10.98`）在两任务上稳定反超纯本体，并在前向 6D 力螺旋预测（Clean `0.4620 / 0.6343`、零漂 OOD `0.3759 / 0.5043`）及反转段夺冠。
->   2. **双向 100% 冻结跨任务零样本迁移（`wipe ↔ peel`）**（[跨任务迁移报告](experiments/v4_paec_contact_compression/outputs/RDP_CROSS_TASK_V4_RESULTS.md)）：`wipe → peel` 纯零样本（`src_norm`）下 30% BC 达 **`0.58805`**（超越 `B0 0.59301` 及域内自训 `0.59032`），零样本反转段力预测 $R^2 = +0.2626$ 追平域内；反向不对称迁移 `peel → wipe` 下 `Xfer_PAEC_z16` 在 `src_norm` 10%（`0.56327`）与 100%（`0.39521`，零漂 `0.39711` 仍优于纯本体 `0.40057`）及 `tgt_norm` 100%（`0.39557`，唯一战胜纯本体的冻结模型）全面夺冠，同时消融证实 `b+g` 与 `DriftAug` 缺一不可、且跨任务应直接迁移 16D 状态 $z_t$ 而非绑定源动作空间的探针头。
-> - **历史资产封存原则**：下方 V3（`ManiWAV` 证伪归档）、2026-11-05 UMI+FlexiTac 规划与 Stage 1–4（`MCF / BPI-MCF / CMQ-BPI-MCF V2.2`）全部实验、代码与审计记录原样保留，不改写。
+> **历史主线归档说明**：早期的 Stage 1–4（`MCF / BPI-MCF / CMQ-BPI-MCF / real_robot_reflex`）与 V3（音频 `CAEC-JEPA`）已从 `main` 分支清理，完整历史快照保存在 Git 标签 **`archive/pre-v4-mainlines`** 中（`git checkout archive/pre-v4-mainlines` 可随时查阅）。
 
 ---
 
-> **前序记录（2026-11-20，Stage 5 / `V3 CAEC-JEPA` 音频抽象 JEPA 探索，已按实测证伪归档）**：经负责人决策，本项目正式从手工法向阵列算子（FlexiTac `V2.2`）转型为**通用多频接触表征学习（Paper B）**，与 `NewGripper`（Paper A：YUBI 无本体采集 + 实体快换声振/触觉盒 + 脆性薄层操作基准）形成双线联动。
-> - **核心算法**：**[V3 算法蓝图：上下文分解动作效应接触表征学习（CAEC-JEPA）](research/V3_ACTION_EFFECT_CONTACT_JEPA.md)**——面向 200 Hz 统一接触时钟，融合慢上下文 $c_\tau$（工具/材质）、严格纯接触因果状态 $z_\tau$、零动作基线与连续动作净效应分解预测器（$b_\phi + g_\phi$，$g(\cdot, \mathbf{0})\equiv \mathbf{0}$）、免标签防坍缩（VICReg + 接触 IDM）、速度归一化惊奇度 $s_\tau$ 与下游 3-Token 接口（`[CTX, STATE, EVENT]`）。
-> - **早期验证（无需 FlexiTac）**：先在远程节点 `nvidia-desktop`（Tailscale / Jetson Orin CUDA）基于公开接触声振操作数据集 **`ManiWAV`** 运行严格审计的 MVP 基准（**[v3_caec_jepa_mvp](experiments/v3_caec_jepa_mvp/README.md)**），随后无缝接入 `NewGripper` 真机四模态数据。
-> - **历史资产封存原则**：下方 Stage 1–4（`MCF / BPI-MCF / CMQ-BPI-MCF V2.2`）全部实验、代码与 2026-11-04 审计记录原样保留，不改写。
+## 核心进展摘要（严格 FP32 + Episode 划分 + SHA-256 权重冻结审计）
+
+1. **V4.7 工业三任务视觉-触觉 ACT 缺陷检测基准（2026-11-26，1,620 局闭环）**
+   - 配置：`15 demos × 3 seeds × 12 eval eps × 3 regimes`（`Clean` / `+0.5σ` 温漂 / `+1.5σ` 极端零漂），共享冻结 ImageNet `ResNet18 layer3` + `4×4` SpatialSoftmax 与 `O(1)` 递推触觉编码（递推等价最大误差 `1.67e-6 < 1e-5`），`strict_fp32=True`、`strictly_frozen_pass=True`。
+   - **Task 1（`battery_scan` 新能源电芯扫描，限力 `≤ 11.5 N`）**：`ACT_RGB_PAEC` 在 Clean 与 `+0.5σ` 下均取得 **`100.00 ± 0.00%`** 成功率与 **`0.0%`** 过载违例（`+1.5σ` 为 `66.67 ± 0.00%` / `0.0%` 违例）；在线缺陷检出 `PAEC_Rel_Surprise`（`max - median`）在 Clean / `+0.5σ` / `+1.5σ` 全工况保持 **`1.0000` AUROC**。
+   - **Task 2（`auto_connector` 汽车接插件插接，限力 `≤ 15.0 N`）与 Task 3（`semi_grasp` 半导体载具抓放，限力 `≤ 14.0 N`）诚实边界**：
+     - Task 2 中纯视觉 `ACT_RGB_Proprio` 过载违例高达 `58.33%`（峰值 `20.49 N`），`ACT_RGB_RawFT` Clean `58.33%` 但 `+0.5σ` 跌至 `0.00%`，`ACT_RGB_PAEC` Clean `50.00%`（`2.78%` 违例）、`+0.5σ` `11.11%`（`0.0%` 违例）、`+1.5σ` `0.00%`；
+     - Task 3 中 `Classical_Baseline` `0.00%` 且 `100.00%` 压碎违例（`15.85 N`），`ACT_RGB_PAEC` 为全场最高 `13.89%`（Clean 与 `+0.5σ` `0.00%` 违例），反映 `15-shot` 纯端到端 ACT 在毫米级硬约束对齐与多阶段离散切换上的边界。
+   - **单步端到端延迟（`batch = 1`）**：GPU（`RTX A6000`）`P50 = 5.266 ms / P95 = 5.685 ms`（`175.9 Hz`）；纯 CPU `P50 = 7.550 ms / P95 = 9.669 ms`（`103.4 Hz`）。
+   - 详情：[V4_7_ACT_DEFECT_INSPECTION_REPORT.md](experiments/v4_paec_contact_compression/outputs/v4_7_act_defect_suite/V4_7_ACT_DEFECT_INSPECTION_REPORT.md) | [fig7_v4_7_act_defect_suite.png](experiments/v4_paec_contact_compression/outputs/v4_7_act_defect_suite/fig7_v4_7_act_defect_suite.png)
+
+2. **V4.6 工业科学强化：同规模 `B4_NoBG` 消融、经典导纳控制与零抖动虚拟刚度探针（2026-11-26）**
+   - **同参数消融（`B4_NoBG_Small_d32` `900,694` vs `PAEC_Small_d32` `902,038`）**：`PAEC_Small_d32` 在跨库 `RH20T → RDP` `5/10/100%` Clean MSE 达 `0.23083 / 0.20375 / 0.16327`（超越 RDP 域内自训 `0.20453`），优于去掉 $b_\phi+g_\phi$ 分解的 `B4_NoBG_Small_d32`（`0.23133 / 0.20571 / 0.16474`）；同时诚实记录在同源 `RH20T cfg_0004` $R^2$（`0.6065` vs `0.5918`）与顺应擦拭闭环成功率上 `B4_NoBG_Small_d32` 同样可达到 `100.0%`。
+   - **经典导纳基线对比（`3 seeds × 24 eps = 72` 局）**：`Admittance_FixedFeed` / `Admittance_TunedShear` 在 Clean 均 `100.0%`（RMSE `1.19 / 1.13 N`），但在 `Static +1.5σ Drift` 跌至 `55.6% / 31.9%`；开机清零 `Admittance_InitTare` Clean `81.9%`、`Step +1.5σ Drift (t≥35)` `73.6 ± 5.2%`；冻结 `PAEC_Small_d32` 在全部工况与预算（`5/10/20 demos`）保持 **`100.0%`** 与 `0.0%` 违规。
+   - **零抖动虚拟方向刚度探针**：直接验证在未知软硬区刚度辨识上的定量能力。
+   - 详情：[V4_6_INDUSTRIAL_FORTIFICATION_REPORT.md](experiments/v4_paec_contact_compression/outputs/v4_6_industrial_fortification/V4_6_INDUSTRIAL_FORTIFICATION_REPORT.md) | [fig6_v4_6_industrial_fortification.png](experiments/v4_paec_contact_compression/outputs/v4_6_industrial_fortification/fig6_v4_6_industrial_fortification.png)
+
+3. **V4.5 MuJoCo 4-DoF 顺应擦拭与阻滞恢复闭环（2026-11-25）**
+   - 将 `RH20T`（`6,289` eps）预训练权重 **100% 零梯度冻结（`strictly_frozen_pass = true`）** 迁移至 MuJoCo 闭环仿真：`PAEC_Small_d32` 与 `PAEC_Base_d32` 在 `5/10/20 demos × {Clean, +1.5σ Drift}` 全预算全工况下均保持 **`100.00% ± 0.00%`（各 432/432 局）** 与 `0.00%` 违规（同规模 `B1b_RawWrench6D_E2E` 在 20-demo Clean 因卡滞坍塌至 `0.00%`）。
+   - 详情：[V4_5_MUJOCO_CLOSEDLOOP_REPORT.md](experiments/v4_paec_contact_compression/outputs/v4_5_mujoco_closedloop/V4_5_MUJOCO_CLOSEDLOOP_REPORT.md)
+
+4. **V4.4 `A6000` 万条 `RH20T` 规模律与跨库迁移（2026-11-25）**
+   - 全量 7 本体 `10,041` 轨迹 / `9,839,771` 帧 / `140` 任务（保留 `10,018` 轨迹，中位接触活跃率 `0.8431`），`323 / 323` 下游评测 `strictly_frozen_pass = True`。
+   - `PAEC_Small_d64` 未见任务 / 未见本体 3 步物理力学 $R^2$ 达 **`0.5375 / 0.6078`**；3 种子统计下 `PAEC_Small_d32` 最稳健（$R^2 = \mathbf{0.5359 \pm 0.0016} / \mathbf{0.5951 \pm 0.0030}$，跨库 `RH20T → RDP` `5-shot 0.23075 ± 0.00019` / `10-shot 0.20350 ± 0.00018` 击败域内自训）。
+   - 详情：[V4_4_A6000_SCALE_REPORT.md](experiments/v4_paec_contact_compression/outputs/v4_4_a6000_scale/V4_4_A6000_SCALE_REPORT.md)
+
+5. **V4.0–V4.3 `RDP` 域内复现、双向跨任务迁移与 `Colab L4` Scaling Law**
+   - 官方 RSS-2025 `Reactive Diffusion Policy`（`peel_v3`、`wipe_v1.5`、`lift_v2`）复现与双向 `wipe ↔ peel` 零样本冻结迁移，详见 [v4_paec_contact_compression README](experiments/v4_paec_contact_compression/README.md)。
 
 ---
 
-## 历史主线归档：物理结构化触觉表征、UMI 数据与 Stage 1–4 审计记录
+## 仓库结构与导航
 
-> **2026-11-05 当前研究路线：UMI + FlexiTac 真机数据与闭环（暂不进行 RL）**。已明确按 **P0 双指传感器集成/时间同步 → P1 固定 UMI 的受控载荷与跨 Session 稳定性 → P2 自由 UMI 示教及 Raw/Scalar/MCF/BPI/CMQ 表征与样本效率 → P3 机械臂 Anti-Tilt / Anti-Slip 闭环** 推进。**本轮不启动 PPO/SAC/在线 Residual RL，也不集成 VLA**；原有 Stage 4 实验与负结果完整保留。详见 [当前执行计划](research/REAL_ROBOT_UMI_FLEXITAC_PLAN_20261105.md)、[执行协议](experiments/real_robot_reflex/PROTOCOL.md) 和 [AGENTS 当前优先级](AGENTS.md)。
->
-> **2026-11-04 Stage 4 / V2.2 审计口径（优先于旧成果宣传文字）**：带辅助监督的代理策略在特定仿真物理闭环 Part A 上，四向平均峰值滑移 **0.7644 mm**，**单场景/单种子、无统计区间**；其训练使用固定轨迹和代理目标，不具有动作驱动环境状态转移，**不能称为已完成在线 Isaac Lab PPO/SAC**。插孔 Part B **尚未预对准**，真实网格端点横向误差 **105.9436 mm**，所有控制器几何准入 **0%**，不能声称已完成插孔。CMQ 在 Fresh12 的**即时方向**准确率为 **77.02%**（81.65% 是起始标签准确率），在 b2 **反转后**为 **29.41%**（BPI 为 54.41%）；这些是当前需要真机验证的边界，而非应隐藏的结果。细节见 [Stage 4 记录](research/STAGE4_V2_2_CMQ_PROPRIO_RESIDUAL_RL_20261103.md) 与 [二次审计](experiments/v2_2_cmq_proprio_residual_rl/AUDIT_RECHECK_20261104.md)。
->
-> **以下 2026-11-03 及更早内容是历史阶段记录**。历史数据与新审计使用的场景、参数或指标可能不同，**不能直接据此计算跨版本增益**；后续执行顺序以 2026-11-05 的新计划为准。
-
-> **前序突破与研究范围升级（2026-11-03，Stage 3S–V2.1）**：根据前期实验暴露的三个物理瓶颈（滑动窗口 `MCF` 抹除慢变剪切、1D 夹爪收紧 $\Delta g$ 在 `0.20 N +Fx` 下受限、高预紧静态阈值易零载误触发），项目研究范围正式升级为三大核心机制：
-> 1. **参考帧锁定的双指预紧不变流形接触场（`BPI-MCF`，32D）**：锁定初始接触参考帧（$k_{\text{base}}=5$）+ 单指预紧归一化（$f_{i,0}$）+ 双指对称/反对称正交分解与偏心力矩偶极。8 阶段消融证实切向方向辨识率在开发集达 **`97.5%`**（Scalar `25.0%`，Standard MCF `46.7%`），在 12 组独立盲测集 `Fresh12` 上从 `33.9%` 跃升至 **`65.7%`**（`b0+b1` 达 **`68.1%`**），在 36 工况 OOD `pilot_tangent_02` 上达 **`47.2%`**。
-> 2. **跨模态接触力螺旋与剪切方向自监督（防止多模态表征坍缩）**：全模型 26 组权重/偏置张量梯度审计 100% 严格大于零（`all_positive = True`）；在公平的冻结隐空间线性探针（`FrozenProbeDirAcc`，$\lambda=1.0$）下将方向可分性从朴素融合 `B1` 的 `85.8%` 提升至 **`94.4%`**（`B5`），遮挡反转跟踪误差 `RevNeg(Occ)` 从 `0.9034`（纯视觉）和 `0.3490`（`B1`）降至 **`0.2202`**。
-> 3. **因果偶极新息能量门控 3-DoF 空间反射策略（$[\Delta x_{\text{wrist}}, \Delta y_{\text{wrist}}, \Delta g_{\text{grip}}]$）**：在 **0% `Stage 3S` 混杂** 的 Isaac Lab 7 控制器闭环对比中，纯 V2.1 神经策略 `6_v2_1_pure_bpi_3dof_no_stage3s` 受载四向平均滑移降至 **`0.7795 mm`**（较开环 `8.2011 mm` 降低 **`90.5%`**，较原 `Stage 3S` 1D 基线 `1.2303 mm` 降低 **`36.6%`**，`+Fx` 最差滑移由 `3.7210 mm` 降至 **`2.1754 mm`**），且预紧静默段抖动为 **`0.0000 mm`**（无门控 `B3` 为 `1.4605 mm`）。在 3 阶段长时序操作基准（预紧 $\to$ 视觉遮挡受扰搬运 $\to$ 接触反转插孔对齐）中末端最终对齐误差降至 **`0.9627 mm`**。
->
-> 详见 **[V2.1 完整实验归档](experiments/v2_1_bpi_mcf_3dof_reflex/README.md)**、**[2026-11-03 进展记录](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md)** 与 **[更新后的研究范围修订稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)**。
-
-> **前序仿真成果（2026-10-15 / 2026-10-13）**：
-> - **2026-10-15 等预紧握持与因果脉冲触发**：完成 1190 个物理试次，拉平 Scalar/MCF 静息握力并检验早期脉冲触发，见 **[等预紧归档](experiments/stage3s_alignment/README.md)**。
-> - **2026-10-13 Stage 3S 1D 闭环**：归一化修复、无支撑受控加载及触觉 GRU→Δg 闭环已完成。0.18 N / 15 mm 偏心的四方向，MCF Reflex 最坏相对滑移 **1.013 mm**，相比 High-Grip 平均法向力积分降低 **33.9%**；0.20 N +Fx 的未达标结果、Scalar 对照及全部记录一并保留。见 **[Stage 3S 实验归档](experiments/stage3s_isaac/README.md)** 与 [进展记录](research/STAGE3S_SIM_REFLEX_20261013.md)。
-
-> **历史研究范围冻结记录（2026-10-10，已于 2026-11-03 修订升级）**：第一篇论文早期只研究“法向阵列的紧凑空间接触状态能否改善偏心扰动下的闭环控制”，入口为 **[研究方向修订与范围冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md)**。下方历史记录保留项目演进脉络。
-
-
-> **当前最高优先级（2026-10-07）：进入真机 Stage 3A Controlled Tactile Reflex。** 先不接 VLA。优先做 Anti-Tilt / eccentric disturbance，再做 Anti-Slip；主比较为 Fixed、Scalar Reflex、MCF Reflex。现有 Stage 2P checkpoint 是状态重构模型，不直接视为控制器。详见 [Stage 3A 真机方案](research/STAGE3A_REAL_ROBOT.md) 与 [真机执行协议](experiments/real_robot_reflex/PROTOCOL.md)。只有受控闭环实验出现可信增益后，才进入 Stage 3B 的 scripted / learned policy / VLA plug-and-play 展示。
-
-
-更新：2026-10-07。
-
-**已完成离线实验：Mamba / GRU 对照。** 按用户要求，沿用 TaF 当前状态重构流程，比较 Scalar / MCF、T=50/100、三种子与约48k参数，并测量 batch1 流式延迟。详见 [Mamba 架构实验](research/STAGE2P_MAMBA.md)。
-
-**历史推进记录：Stage 1 条件性通过并封存，随后完成 Stage 2P Now-casting。** 按用户纠偏，将无动作条件的未来力矩目标改为利用 1、20、50 帧历史重构当前剪切力和侧向力矩 `[Fx,Fy,Mx,My]`，比较相同参数量两层 GRU 的 Scalar 与 MCF。详见 [当前重构实验](research/STAGE2P_NOWCAST.md)。[首轮未来预测实验](research/STAGE2P.md) 和下文 Stage 1 方案保留作为历史记录。
-
-## 已封存 Stage 1
-
-之前的 Stage 1 主要尝试验证完整静态 11D contact descriptor，包括二阶矩等空间统计量。已有离线实验没有得到理想结果，因此当前不继续在原有静态 11D 上死磕，而是进行一次特征和验证任务的调整。
-
-新的候选表示是 **Minimalist Contact Flow**：
-
-```text
-s_t = [f_N, CoP_x, CoP_y, A]
-Δs_t = s_t - s_{t-1}
-MCF_t = [s_t, Δs_t]
-```
-
-四个状态量及其一阶差分全部保留时为 8D。
-
-当前待验证假设：
-
-> **CoP + 差分是否能够在 Contact-active Subsets 上显著优于纯 Scalar，并与 Dense Raw Tokens / Raw tactile representation 表现相当？**
-
-这只是实验假设，结论等待实验结果。
-
-详见 [Minimalist Contact Flow](research/MINIMALIST_CONTACT_FLOW.md)。
-
-## 为什么更换 Stage 1 指标
-
-此前使用平滑轨迹中的开环 Action MSE，触觉信息可能被大量普通、稳定运动稀释。
-
-因此下一轮不需要先采新数据，而是直接复用已有 LeFlexiTac / TaF 数据进行切片过滤：
-
-- 剔除完全未接触（`f_N ≈ 0`）的空载段，以及静态死锁且无外力扰动的平淡段。
-- 保留接触 / 脱开瞬间（`abs(Δf_N) > ε_f`）、受力中心移动 / 倾覆阶段（`norm(ΔCoP, 2) > ε_p`）、面积收缩 / 膨胀（`abs(ΔA) > ε_A`）；任一条件满足即保留。
-- 脱开事件和仅面积变化的片段优先保留，避免被空载或静态判据误删。
-
-两项核心评估任务：
-
-1. **任务 A（TaF）：预测外力矩变化量 `Δτ_ext`（Torque Delta）**。比较 Scalar vs MCF vs Dense Raw Tokens。
-2. **任务 B（LeFlexiTac）：接触状态跳变检测**。检验 MCF 是否能准确识别突然切换（微滑移或失稳前兆）。
-
-任务 A 的预期判定：Scalar 由于丢失空间偏心信息，预测力矩变化误差必然显著偏高；MCF 凭借 CoP 及其差分，以 8 维捕捉力矩偏置，误差显著低于 Scalar，且逼近 Dense Tokens。这是保留的实验假设，实验验证后再修正。
-
-## Stage 1 核心比较
-
-| Representation | 作用 |
+| 目录 / 文档 | 说明 |
 | --- | --- |
-| Scalar | 纯标量基线 |
-| **Minimalist Contact Flow** | 当前主要候选 |
-| Dense Raw Tokens / Raw tactile representation | 高维触觉参照 |
-
-Static CoP、Physics11D 等可以继续作为消融和历史结果保留。
-
-## Stage 1 希望回答的问题
-
-如果实验得到：
-
-**MCF > Scalar，并且 MCF ≈ Dense Raw**
-
-那么可以进一步形成候选观点：
-
-> **高阶空间矩可能是冗余的，核心是 CoP 及其动态演化。**
-
-如果没有得到这一结果，则根据实际实验结果重新分析，不提前规定后续结论。
-
-## 后续
-
-只有完成这一轮 Stage 1 后，再根据结果决定是否以及如何进入 Mamba / streaming temporal memory。
-
-当前顺序：
-
-**Static 11D 收尾 → Minimalist Contact Flow → Contact-active validation → 根据结果决定下一步。**
-
-## 导航
-
-| 文档 | 用途 |
-| --- | --- |
-| [Stage 4 (`V2.2`) 实验归档](experiments/v2_2_cmq_proprio_residual_rl/README.md) | **历史（2026-11-03，须结合 11-04 审计）**：`CMQ-BPI-MCF` 48D 10 阶段消融、36 工况 OOD 破局、本体双头 + 防坍缩在线残差 RL 与 Isaac Lab 闭环基准 |
-| [Stage 4 (`V2.2`) 进展记录](research/STAGE4_V2_2_CMQ_PROPRIO_RESIDUAL_RL_20261103.md) | `CMQ-BPI-MCF` 数学原理、在线 RL 表征坍缩证明与 `0.5964 mm` 滑移 / `100%` 长时序准入报告 |
-| [Stage 3S–V2.1 实验归档](experiments/v2_1_bpi_mcf_3dof_reflex/README.md) | 前序（2026-11-03）：`BPI-MCF` 8 阶段消融、多模态防坍缩自监督、Isaac Lab 7 控制器 3-DoF 闭环与 3 阶段长时序基准 |
-| [2026-11-03 V2.1 进展记录](research/STAGE3S_V2_1_BPI_MCF_3DOF_REFLEX_20261103.md) | 三大创新点数学定义、审计问题清零与 2×A100/DGX Spark/真机推进方案 |
-| [研究方向修订与冻结稿](research/ICRA2028_MINIMAL_PAPER_FREEZE.md) | 2026-11-03 范围升级说明与 2026-10-10 历史冻结稿 |
-| [MCF 物理可观测性边界辨析](research/MCF_OBSERVABILITY_LIMITS_DISCUSSION.md) | 单指零阶/一阶矩的旋转不可辨识反例与双指偶极扩展的理论背景 |
-| [Stage 3S 等预紧与触发归档](experiments/stage3s_alignment/README.md) | 2026-10-15 等预紧握持、成本—安全关系与弱触觉脉冲触发归档 |
-| [Stage 3S 1D 闭环归档](experiments/stage3s_isaac/README.md) | 2026-10-13 无支撑加载与 1D $\Delta g$ 闭环实验归档 |
-| [Minimalist Contact Flow](research/MINIMALIST_CONTACT_FLOW.md) | 早期 Stage 1 实验方案 |
-| [离线成果与决策](research/OFFLINE_RESULTS.md) | 已完成 11D 离线实验和结果 |
-| [研究主线](research/CORE.md) | 长期研究问题 |
-| [实验方案](research/EXPERIMENTS.md) | 实验设计与长期验证 |
-| [Core Baselines](research/BASELINES.md) | TacMamba / LeFlexiTac / RDP 等参考 |
-| [研究路线](ROADMAP.md) | 后续推进顺序 |
-| [协作规则](AGENTS.md) | Agent 执行原则 |
-
-本仓库中的候选假设可以被实验支持、修改或推翻；不在实验前把候选结论写成既定事实。
+| [experiments/v4_paec_contact_compression/](experiments/v4_paec_contact_compression/README.md) | `PAEC` 核心实现、MuJoCo 仿真、V4.0–V4.7 实验脚本、图表与审计报告 |
+| [research/V4_PHYSICS_GROUNDED_CONTACT_COMPRESSION.md](research/V4_PHYSICS_GROUNDED_CONTACT_COMPRESSION.md) | `PAEC` 算法原理与设计蓝图 |
+| [research/V4_SCALING_AND_PROTOCOL_V4_1.md](research/V4_SCALING_AND_PROTOCOL_V4_1.md) | `V4.1–V4.4` 物理零点、审计协议与 `RH20T / RDP` 缩放规范 |
+| [research/ARXIV_2026_Q2_ROADMAP_AND_HARDWARE_BOM.md](research/ARXIV_2026_Q2_ROADMAP_AND_HARDWARE_BOM.md) | 2026 Q2 文献调研、工业界痛点综述与真机硬件 BOM |
+| [papers/README.md](papers/README.md) | 参考文献整理（`TacForcing`、`TacMamba`、`T-REX` 等） |
+| [ROADMAP.md](ROADMAP.md) | V4 阶段演进与后续待选路径 |
+| [AGENTS.md](AGENTS.md) | 本仓库科研与工程协作规范 |
