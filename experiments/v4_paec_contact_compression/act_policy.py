@@ -242,10 +242,21 @@ def step_encode_recurrent(
     """
     Exact O(1) single-step recurrent evaluation for CausalContactBackbone(GRU)
     matching model.encode(w_seq, pa_seq)[:, -1, :] to < 1e-5.
+    Supports both wrapper models (PAECModel, MAE, JEPA) and raw CausalContactBackbone.
     """
     diff = torch.zeros_like(w_t) if w_prev is None else (w_t - w_prev)
-    x_t = torch.cat([w_t, diff, prev_a_t], dim=-1).unsqueeze(1)  # (B, 1, in_dim)
-    backbone = model.encoder
+    use_abs = getattr(model, "use_abs_wrench", True)
+    use_diff = getattr(model, "use_causal_diff", True)
+    use_act = getattr(model, "use_act_exec", True)
+    parts = []
+    if use_abs:
+        parts.append(w_t)
+    if use_diff:
+        parts.append(diff)
+    if use_act:
+        parts.append(prev_a_t)
+    x_t = torch.cat(parts, dim=-1).unsqueeze(1)  # (B, 1, in_dim)
+    backbone = model.encoder if hasattr(model, "encoder") else model
     e_t = backbone.in_proj(x_t)  # (B, 1, H)
     h_out, h_next = backbone.temporal(e_t, h_prev)  # (B, 1, H), (L, B, H)
     z_t = backbone.bottleneck(h_out + e_t).squeeze(1)  # (B, d_z)

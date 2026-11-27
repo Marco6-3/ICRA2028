@@ -109,13 +109,20 @@ def build_causal_contact_input(
     act_exec: torch.Tensor,
     use_act_exec: bool = True,
     use_causal_diff: bool = True,
+    use_abs_wrench: bool = True,
 ) -> torch.Tensor:
     """
     Construct strictly causal encoder input from (contact_obs, act_exec).
     Includes causal first difference (c_t - c_{t-1}, zero at t=0) which is
     analytically invariant to static sensor zero-point drift.
+    When use_abs_wrench=False, only causal differences (+ optional act_exec) are fed,
+    making the encoder strictly invariant to arbitrary static zero-point offsets.
     """
-    parts = [contact_obs]
+    if not use_abs_wrench and not use_causal_diff:
+        raise ValueError("use_abs_wrench=False requires use_causal_diff=True")
+    parts = []
+    if use_abs_wrench:
+        parts.append(contact_obs)
     if use_causal_diff:
         diff = torch.zeros_like(contact_obs)
         diff[:, 1:, :] = contact_obs[:, 1:, :] - contact_obs[:, :-1, :]
@@ -130,17 +137,28 @@ def apply_episode_drift_aug(
     drift_aug_std: float,
     training: bool,
     prob: float = 0.7,
+    step_drift_prob: float = 0.0,
 ) -> torch.Tensor:
     """
-    Episode-level constant zero-point sensor drift augmentation on encoder input ONLY.
+    Episode-level constant zero-point sensor drift augmentation on encoder input ONLY
+    (plus optional mid-episode step drift when step_drift_prob > 0).
     Shared identically across PAEC, MAE+DriftAug, and JEPA+DriftAug for fair OOD evaluation.
     """
     if (not training) or drift_aug_std <= 0.0:
         return contact_obs
-    B, _, D = contact_obs.shape
+    B, T, D = contact_obs.shape
     drift = torch.randn(B, 1, D, device=contact_obs.device, dtype=contact_obs.dtype) * drift_aug_std
     mask = (torch.rand(B, 1, 1, device=contact_obs.device) < prob).to(contact_obs.dtype)
-    return contact_obs + drift * mask
+    out = contact_obs + drift * mask
+    if step_drift_prob > 0.0 and T >= 8:
+        t_lo = max(4, T // 6)
+        t_hi = max(t_lo + 1, (5 * T) // 6)
+        t_idx = torch.arange(T, device=contact_obs.device).view(1, T, 1)
+        t_step = torch.randint(t_lo, t_hi, (B, 1, 1), device=contact_obs.device)
+        step_mask = (torch.rand(B, 1, 1, device=contact_obs.device) < step_drift_prob).to(contact_obs.dtype)
+        step_bias = torch.randn(B, 1, D, device=contact_obs.device, dtype=contact_obs.dtype) * drift_aug_std
+        out = out + step_bias * step_mask * (t_idx >= t_step).to(contact_obs.dtype)
+    return out
 
 
 class DecomposedPhysicsPredictor(nn.Module):
@@ -230,6 +248,8 @@ class PAECModel(nn.Module):
         use_act_exec: bool = True,
         use_causal_diff: bool = True,
         drift_aug_std: float = 0.35,
+        use_abs_wrench: bool = True,
+        step_drift_prob: float = 0.0,
     ):
         super().__init__()
         self.contact_dim = contact_dim
@@ -243,8 +263,10 @@ class PAECModel(nn.Module):
         self.use_act_exec = use_act_exec
         self.use_causal_diff = use_causal_diff
         self.drift_aug_std = drift_aug_std
+        self.use_abs_wrench = use_abs_wrench
+        self.step_drift_prob = step_drift_prob
 
-        in_dim = contact_dim * (2 if use_causal_diff else 1) + (act_dim if use_act_exec else 0)
+        in_dim = contact_dim * ((1 if use_abs_wrench else 0) + (1 if use_causal_diff else 0)) + (act_dim if use_act_exec else 0)
         self.encoder = CausalContactBackbone(
             in_dim=in_dim,
             d_z=d_z,
@@ -264,7 +286,11 @@ class PAECModel(nn.Module):
 
     def encode(self, contact_obs: torch.Tensor, act_exec: torch.Tensor) -> torch.Tensor:
         x = build_causal_contact_input(
-            contact_obs, act_exec, use_act_exec=self.use_act_exec, use_causal_diff=self.use_causal_diff
+            contact_obs,
+            act_exec,
+            use_act_exec=self.use_act_exec,
+            use_causal_diff=self.use_causal_diff,
+            use_abs_wrench=self.use_abs_wrench,
         )
         return self.encoder(x)
 
@@ -288,7 +314,12 @@ class PAECModel(nn.Module):
         # (Target deltas y_{t+d} - y_t are analytically invariant to constant drift!)
         # Note (V4.1): act_exec and act_next must be zero-centered (physical delta_q == 0 <=> a == 0)
         # so that g_phi(z, 0) == 0 and is_hold anchor true stationary hold.
-        obs_in = apply_episode_drift_aug(contact_obs, self.drift_aug_std, self.training)
+        obs_in = apply_episode_drift_aug(
+            contact_obs,
+            self.drift_aug_std,
+            self.training,
+            step_drift_prob=self.step_drift_prob,
+        )
 
         z = self.encode(obs_in, act_exec)
         losses, w_losses, b_norms, g_norms = [], [], [], []
